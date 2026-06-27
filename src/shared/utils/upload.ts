@@ -1,40 +1,50 @@
-// import multer, { FileFilterCallback } from "multer";
-// import path from "path";
-// import { Request } from "express";
+import multer, { FileFilterCallback } from "multer";
+import path from "path";
+import fs from "fs"; // <-- ADDED: Node file system module
+import { Request } from "express";
 
-// // Configure storage
-// const storage = multer.diskStorage({
-//   destination: (
-//     req: Request,
-//     file: Express.Multer.File,
-//     cb: (error: Error | null, destination: string) => void,
-//   ) => {
-//     cb(null, "uploads/");
-//   },
-//   filename: (
-//     req: Request,
-//     file: Express.Multer.File,
-//     cb: (error: Error | null, filename: string) => void,
-//   ) => {
-//     cb(null, `${Date.now()}-${file.originalname}`);
-//   },
-// });
+const uploadDir = "uploads";
 
-// // Configure file filter
-// const fileFilter = (
-//   req: Request,
-//   file: Express.Multer.File,
-//   cb: FileFilterCallback,
-// ): void => {
-//   const ext = path.extname(file.originalname).toLowerCase();
-//   if (ext === ".zip") {
-//     cb(null, true);
-//   } else {
-//     cb(new Error("Only ZIP files allowed"));
-//   }
-// };
+// Automatically create the 'uploads' directory if it doesn't exist
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
-// // Initialize multer
-// const upload = multer({ storage, fileFilter });
+// Configure storage
+const storage = multer.diskStorage({
+  destination: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, destination: string) => void,
+  ) => {
+    cb(null, uploadDir); // <-- UPDATED: Use the constant
+  },
+  filename: (
+    req: Request,
+    file: Express.Multer.File,
+    cb: (error: Error | null, filename: string) => void,
+  ) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
 
-// export default upload;
+// Configure file filter for IMAGES
+const fileFilter = (
+  req: Request,
+  file: Express.Multer.File,
+  cb: FileFilterCallback,
+): void => {
+  const ext = path.extname(file.originalname).toLowerCase();
+  const allowedExts = [".jpg", ".jpeg", ".png", ".webp"];
+  
+  if (allowedExts.includes(ext)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files (.jpg, .jpeg, .png, .webp) are allowed"));
+  }
+};
+
+// Initialize multer
+const upload = multer({ storage, fileFilter });
+
+export default upload;

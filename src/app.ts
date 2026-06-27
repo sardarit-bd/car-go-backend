@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { xss } from "express-xss-sanitizer";
-
+import path from "path"; 
 import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
 
@@ -29,7 +29,7 @@ app.use(
 
 app.use(express.json({ limit: "10kb" }));
 app.use(helmet());
-
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/", (req: Request, res: Response) => {
   res.send("right endpoint");
 });

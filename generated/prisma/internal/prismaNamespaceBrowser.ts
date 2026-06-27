@@ -85,6 +85,7 @@ export const VehicleScalarFieldEnum = {
   class: 'class',
   seats: 'seats',
   pricePerDay: 'pricePerDay',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

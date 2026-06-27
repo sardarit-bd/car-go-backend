@@ -1,5 +1,6 @@
 import * as vehicleRepository from "./vehicle.repository";
 import { GetVehiclesQuery } from "./vehicle.validator";
+import AppError from "../../shared/utils/AppError";
 
 const MS_IN_DAY = 24 * 60 * 60 * 1000;
 
@@ -59,4 +60,50 @@ export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
       totalPages: Math.ceil(total / limit),
     },
   };
+};
+
+
+
+
+export const getVehicleById = async (id: string) => {
+  const vehicle = await vehicleRepository.findVehicleById(id);
+  if (!vehicle) {
+    throw new AppError("Vehicle not found", 404);
+  }
+  return vehicle;
+};
+
+export const createVehicle = async (data: any, files: Express.Multer.File[]) => {
+  
+  const images = files.map((file) => ({ imageUrl: `/uploads/${file.filename}` }));
+  
+  const payload = {
+    ...data,
+    images,
+  };
+
+  return vehicleRepository.createVehicle(payload);
+};
+
+export const updateVehicle = async (id: string, data: any, files?: Express.Multer.File[]) => {
+  const vehicle = await vehicleRepository.findVehicleById(id);
+  if (!vehicle) {
+    throw new AppError("Vehicle not found", 404);
+  }
+
+
+  if (files && files.length > 0) {
+    const newImages = files.map((file) => ({ imageUrl: `/uploads/${file.filename}` }));
+    data.images = newImages;
+  }
+
+  return vehicleRepository.updateVehicle(id, data);
+};
+
+export const deleteVehicle = async (id: string) => {
+  const vehicle = await vehicleRepository.findVehicleById(id);
+  if (!vehicle) {
+    throw new AppError("Vehicle not found", 404);
+  }
+  await vehicleRepository.softDeleteVehicle(id);
 };

@@ -13,6 +13,7 @@ model Vehicle {
     locations      VehicleLocation[]
     availabilities VehicleAvailability[]
     bookings       Booking[]
+    deletedAt DateTime? 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 }
