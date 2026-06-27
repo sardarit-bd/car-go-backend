@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  ProtectionPackage: 'ProtectionPackage',
   Vehicle: 'Vehicle',
   VehicleImage: 'VehicleImage',
   VehicleLocation: 'VehicleLocation',
@@ -405,10 +406,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking" | "user"
+    modelProps: "protectionPackage" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    ProtectionPackage: {
+      payload: Prisma.$ProtectionPackagePayload<ExtArgs>
+      fields: Prisma.ProtectionPackageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ProtectionPackageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ProtectionPackageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        findFirst: {
+          args: Prisma.ProtectionPackageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ProtectionPackageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        findMany: {
+          args: Prisma.ProtectionPackageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>[]
+        }
+        create: {
+          args: Prisma.ProtectionPackageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        createMany: {
+          args: Prisma.ProtectionPackageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ProtectionPackageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>[]
+        }
+        delete: {
+          args: Prisma.ProtectionPackageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        update: {
+          args: Prisma.ProtectionPackageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        deleteMany: {
+          args: Prisma.ProtectionPackageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ProtectionPackageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ProtectionPackageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>[]
+        }
+        upsert: {
+          args: Prisma.ProtectionPackageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ProtectionPackagePayload>
+        }
+        aggregate: {
+          args: Prisma.ProtectionPackageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateProtectionPackage>
+        }
+        groupBy: {
+          args: Prisma.ProtectionPackageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProtectionPackageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ProtectionPackageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ProtectionPackageCountAggregateOutputType> | number
+        }
+      }
+    }
     Vehicle: {
       payload: Prisma.$VehiclePayload<ExtArgs>
       fields: Prisma.VehicleFieldRefs
@@ -892,6 +967,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const ProtectionPackageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ProtectionPackageScalarFieldEnum = (typeof ProtectionPackageScalarFieldEnum)[keyof typeof ProtectionPackageScalarFieldEnum]
+
+
 export const VehicleScalarFieldEnum = {
   id: 'id',
   ownerId: 'ownerId',
@@ -1007,20 +1095,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-/**
  * Reference to a field of type 'Decimal'
  */
 export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
@@ -1045,6 +1119,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -1185,6 +1273,7 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
+  protectionPackage?: Prisma.ProtectionPackageOmit
   vehicle?: Prisma.VehicleOmit
   vehicleImage?: Prisma.VehicleImageOmit
   vehicleLocation?: Prisma.VehicleLocationOmit

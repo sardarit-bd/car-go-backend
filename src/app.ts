@@ -6,7 +6,7 @@ import { xss } from "express-xss-sanitizer";
 import path from "path"; 
 import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
-
+import packageRoutes from "./modules/packages/package.routes";    
 const app: Application = express();
 
 app.use(
@@ -35,7 +35,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/vehicle", vehicleRoutes);
-
+app.use("/packages", packageRoutes);
 app.use(errorHandler);
 
 export default app;
