@@ -8,6 +8,8 @@ import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
 import packageRoutes from "./modules/packages/package.routes";    
 import addonRoutes from "./modules/addons/addon.routes";
+import locationRoutes from "./modules/locations/location.routes";
+import reservationRoutes from "./modules/reservations/reservation.routes";
 const app: Application = express();
 
 app.use(
@@ -38,6 +40,8 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/vehicle", vehicleRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/addons", addonRoutes);
+app.use("/api/locations", locationRoutes);
+app.use("/api/reservations", reservationRoutes);
 app.use(errorHandler);
 
 export default app;

@@ -20,70 +20,118 @@ export type BookingModel = runtime.Types.Result.DefaultSelection<Prisma.$Booking
 
 export type AggregateBooking = {
   _count: BookingCountAggregateOutputType | null
+  _avg: BookingAvgAggregateOutputType | null
+  _sum: BookingSumAggregateOutputType | null
   _min: BookingMinAggregateOutputType | null
   _max: BookingMaxAggregateOutputType | null
+}
+
+export type BookingAvgAggregateOutputType = {
+  totalPrice: runtime.Decimal | null
+}
+
+export type BookingSumAggregateOutputType = {
+  totalPrice: runtime.Decimal | null
 }
 
 export type BookingMinAggregateOutputType = {
   id: string | null
   vehicleId: string | null
+  phoneNumber: string | null
   pickupDate: Date | null
   returnDate: Date | null
+  pickupLocationId: string | null
+  returnLocationId: string | null
+  totalPrice: runtime.Decimal | null
   status: $Enums.BookingStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BookingMaxAggregateOutputType = {
   id: string | null
   vehicleId: string | null
+  phoneNumber: string | null
   pickupDate: Date | null
   returnDate: Date | null
+  pickupLocationId: string | null
+  returnLocationId: string | null
+  totalPrice: runtime.Decimal | null
   status: $Enums.BookingStatus | null
   createdAt: Date | null
   updatedAt: Date | null
+  deletedAt: Date | null
 }
 
 export type BookingCountAggregateOutputType = {
   id: number
   vehicleId: number
+  phoneNumber: number
   pickupDate: number
   returnDate: number
+  pickupLocationId: number
+  returnLocationId: number
+  totalPrice: number
   status: number
   createdAt: number
   updatedAt: number
+  deletedAt: number
   _all: number
 }
 
 
+export type BookingAvgAggregateInputType = {
+  totalPrice?: true
+}
+
+export type BookingSumAggregateInputType = {
+  totalPrice?: true
+}
+
 export type BookingMinAggregateInputType = {
   id?: true
   vehicleId?: true
+  phoneNumber?: true
   pickupDate?: true
   returnDate?: true
+  pickupLocationId?: true
+  returnLocationId?: true
+  totalPrice?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BookingMaxAggregateInputType = {
   id?: true
   vehicleId?: true
+  phoneNumber?: true
   pickupDate?: true
   returnDate?: true
+  pickupLocationId?: true
+  returnLocationId?: true
+  totalPrice?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
 }
 
 export type BookingCountAggregateInputType = {
   id?: true
   vehicleId?: true
+  phoneNumber?: true
   pickupDate?: true
   returnDate?: true
+  pickupLocationId?: true
+  returnLocationId?: true
+  totalPrice?: true
   status?: true
   createdAt?: true
   updatedAt?: true
+  deletedAt?: true
   _all?: true
 }
 
@@ -125,6 +173,18 @@ export type BookingAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: BookingAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: BookingSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: BookingMinAggregateInputType
@@ -155,6 +215,8 @@ export type BookingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: BookingCountAggregateInputType | true
+  _avg?: BookingAvgAggregateInputType
+  _sum?: BookingSumAggregateInputType
   _min?: BookingMinAggregateInputType
   _max?: BookingMaxAggregateInputType
 }
@@ -162,12 +224,19 @@ export type BookingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type BookingGroupByOutputType = {
   id: string
   vehicleId: string
+  phoneNumber: string
   pickupDate: Date
   returnDate: Date
+  pickupLocationId: string | null
+  returnLocationId: string | null
+  totalPrice: runtime.Decimal
   status: $Enums.BookingStatus
   createdAt: Date
   updatedAt: Date
+  deletedAt: Date | null
   _count: BookingCountAggregateOutputType | null
+  _avg: BookingAvgAggregateOutputType | null
+  _sum: BookingSumAggregateOutputType | null
   _min: BookingMinAggregateOutputType | null
   _max: BookingMaxAggregateOutputType | null
 }
@@ -193,22 +262,32 @@ export type BookingWhereInput = {
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
   vehicleId?: Prisma.StringFilter<"Booking"> | string
+  phoneNumber?: Prisma.StringFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }
 
 export type BookingOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
   returnDate?: Prisma.SortOrder
+  pickupLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  returnLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicle?: Prisma.VehicleOrderByWithRelationInput
 }
 
@@ -218,25 +297,37 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.BookingWhereInput[]
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   vehicleId?: Prisma.StringFilter<"Booking"> | string
+  phoneNumber?: Prisma.StringFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }, "id">
 
 export type BookingOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
   returnDate?: Prisma.SortOrder
+  pickupLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  returnLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.BookingCountOrderByAggregateInput
+  _avg?: Prisma.BookingAvgOrderByAggregateInput
   _max?: Prisma.BookingMaxOrderByAggregateInput
   _min?: Prisma.BookingMinOrderByAggregateInput
+  _sum?: Prisma.BookingSumOrderByAggregateInput
 }
 
 export type BookingScalarWhereWithAggregatesInput = {
@@ -245,80 +336,120 @@ export type BookingScalarWhereWithAggregatesInput = {
   NOT?: Prisma.BookingScalarWhereWithAggregatesInput | Prisma.BookingScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   vehicleId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  phoneNumber?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   returnDate?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
+  pickupLocationId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  returnLocationId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  totalPrice?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusWithAggregatesFilter<"Booking"> | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
 }
 
 export type BookingCreateInput = {
   id?: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
   vehicle: Prisma.VehicleCreateNestedOneWithoutBookingsInput
 }
 
 export type BookingUncheckedCreateInput = {
   id?: string
   vehicleId: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   vehicle?: Prisma.VehicleUpdateOneRequiredWithoutBookingsNestedInput
 }
 
 export type BookingUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingCreateManyInput = {
   id?: string
   vehicleId: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingListRelationFilter = {
@@ -334,31 +465,54 @@ export type BookingOrderByRelationAggregateInput = {
 export type BookingCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
   returnDate?: Prisma.SortOrder
+  pickupLocationId?: Prisma.SortOrder
+  returnLocationId?: Prisma.SortOrder
+  totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+}
+
+export type BookingAvgOrderByAggregateInput = {
+  totalPrice?: Prisma.SortOrder
 }
 
 export type BookingMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
   returnDate?: Prisma.SortOrder
+  pickupLocationId?: Prisma.SortOrder
+  returnLocationId?: Prisma.SortOrder
+  totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
 }
 
 export type BookingMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
+  phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
   returnDate?: Prisma.SortOrder
+  pickupLocationId?: Prisma.SortOrder
+  returnLocationId?: Prisma.SortOrder
+  totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  deletedAt?: Prisma.SortOrder
+}
+
+export type BookingSumOrderByAggregateInput = {
+  totalPrice?: Prisma.SortOrder
 }
 
 export type BookingCreateNestedManyWithoutVehicleInput = {
@@ -409,20 +563,30 @@ export type EnumBookingStatusFieldUpdateOperationsInput = {
 
 export type BookingCreateWithoutVehicleInput = {
   id?: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUncheckedCreateWithoutVehicleInput = {
   id?: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingCreateOrConnectWithoutVehicleInput = {
@@ -457,47 +621,72 @@ export type BookingScalarWhereInput = {
   NOT?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
   vehicleId?: Prisma.StringFilter<"Booking"> | string
+  phoneNumber?: Prisma.StringFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
+  deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
 }
 
 export type BookingCreateManyVehicleInput = {
   id?: string
+  phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
+  pickupLocationId?: string | null
+  returnLocationId?: string | null
+  totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  deletedAt?: Date | string | null
 }
 
 export type BookingUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingUncheckedUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type BookingUncheckedUpdateManyWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -505,47 +694,67 @@ export type BookingUncheckedUpdateManyWithoutVehicleInput = {
 export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleId?: boolean
+  phoneNumber?: boolean
   pickupDate?: boolean
   returnDate?: boolean
+  pickupLocationId?: boolean
+  returnLocationId?: boolean
+  totalPrice?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleId?: boolean
+  phoneNumber?: boolean
   pickupDate?: boolean
   returnDate?: boolean
+  pickupLocationId?: boolean
+  returnLocationId?: boolean
+  totalPrice?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   vehicleId?: boolean
+  phoneNumber?: boolean
   pickupDate?: boolean
   returnDate?: boolean
+  pickupLocationId?: boolean
+  returnLocationId?: boolean
+  totalPrice?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["booking"]>
 
 export type BookingSelectScalar = {
   id?: boolean
   vehicleId?: boolean
+  phoneNumber?: boolean
   pickupDate?: boolean
   returnDate?: boolean
+  pickupLocationId?: boolean
+  returnLocationId?: boolean
+  totalPrice?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "pickupDate" | "returnDate" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -564,11 +773,16 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     vehicleId: string
+    phoneNumber: string
     pickupDate: Date
     returnDate: Date
+    pickupLocationId: string | null
+    returnLocationId: string | null
+    totalPrice: runtime.Decimal
     status: $Enums.BookingStatus
     createdAt: Date
     updatedAt: Date
+    deletedAt: Date | null
   }, ExtArgs["result"]["booking"]>
   composites: {}
 }
@@ -995,11 +1209,16 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
 export interface BookingFieldRefs {
   readonly id: Prisma.FieldRef<"Booking", 'String'>
   readonly vehicleId: Prisma.FieldRef<"Booking", 'String'>
+  readonly phoneNumber: Prisma.FieldRef<"Booking", 'String'>
   readonly pickupDate: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly returnDate: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly pickupLocationId: Prisma.FieldRef<"Booking", 'String'>
+  readonly returnLocationId: Prisma.FieldRef<"Booking", 'String'>
+  readonly totalPrice: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly status: Prisma.FieldRef<"Booking", 'BookingStatus'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
+  readonly deletedAt: Prisma.FieldRef<"Booking", 'DateTime'>
 }
     
 

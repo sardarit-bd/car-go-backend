@@ -52,6 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Addon: 'Addon',
+  Location: 'Location',
   ProtectionPackage: 'ProtectionPackage',
   Vehicle: 'Vehicle',
   VehicleImage: 'VehicleImage',
@@ -88,6 +89,21 @@ export const AddonScalarFieldEnum = {
 } as const
 
 export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
+
+
+export const LocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  address: 'address',
+  city: 'city',
+  country: 'country',
+  phone: 'phone',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typeof LocationScalarFieldEnum]
 
 
 export const ProtectionPackageScalarFieldEnum = {
@@ -154,11 +170,16 @@ export type VehicleAvailabilityScalarFieldEnum = (typeof VehicleAvailabilityScal
 export const BookingScalarFieldEnum = {
   id: 'id',
   vehicleId: 'vehicleId',
+  phoneNumber: 'phoneNumber',
   pickupDate: 'pickupDate',
   returnDate: 'returnDate',
+  pickupLocationId: 'pickupLocationId',
+  returnLocationId: 'returnLocationId',
+  totalPrice: 'totalPrice',
   status: 'status',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]

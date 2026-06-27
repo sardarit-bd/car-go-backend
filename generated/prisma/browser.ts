@@ -23,6 +23,11 @@ export * from './enums';
  */
 export type Addon = Prisma.AddonModel
 /**
+ * Model Location
+ * 
+ */
+export type Location = Prisma.LocationModel
+/**
  * Model ProtectionPackage
  * 
  */

@@ -359,10 +359,6 @@ export type VehicleLocationUncheckedUpdateManyWithoutVehicleNestedInput = {
   deleteMany?: Prisma.VehicleLocationScalarWhereInput | Prisma.VehicleLocationScalarWhereInput[]
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type VehicleLocationCreateWithoutVehicleInput = {
   id?: string
   country: string
