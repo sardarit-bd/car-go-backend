@@ -5,7 +5,7 @@ import rateLimit from "express-rate-limit";
 import { xss } from "express-xss-sanitizer";
 
 import errorHandler from "./shared/errors/errorHandler";
-import authRoutes from "./modules/auth/authRoutes";
+import vehicleRoutes from "./modules/vehicle/vehicle.routes";
 
 const app: Application = express();
 
@@ -34,7 +34,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("right endpoint");
 });
 
-app.use("/api/auth", authRoutes);
+app.use("/api/vehicle", vehicleRoutes);
 
 app.use(errorHandler);
 

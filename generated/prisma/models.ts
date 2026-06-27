@@ -8,5 +8,10 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Vehicle'
+export type * from './models/VehicleImage'
+export type * from './models/VehicleLocation'
+export type * from './models/VehicleAvailability'
+export type * from './models/Booking'
 export type * from './models/User'
 export type * from './commonInputTypes'

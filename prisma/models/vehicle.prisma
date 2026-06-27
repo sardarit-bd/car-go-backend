@@ -1,0 +1,63 @@
+model Vehicle {
+    id String @id @default(cuid())
+    ownerId String
+    name        String
+    brand       String
+    model       String
+    description String
+    class String
+    seats       Int
+    pricePerDay Decimal @db.Decimal(10, 2)
+    //   owner User @relation(fields: [ownerId], references: [id])
+    images         VehicleImage[]
+    locations      VehicleLocation[]
+    availabilities VehicleAvailability[]
+    bookings       Booking[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model VehicleImage {
+    id String @id @default(cuid())
+    vehicleId String
+    imageUrl String
+    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model VehicleLocation {
+    id String @id @default(cuid())
+    vehicleId String
+    country String
+    city    String
+    address String?
+    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+model VehicleAvailability {
+    id String @id @default(cuid())
+    vehicleId String
+    availableFrom DateTime
+    availableTo   DateTime
+    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model Booking {
+    id         String        @id @default(cuid())
+    vehicleId  String
+    pickupDate DateTime
+    returnDate DateTime
+    status     BookingStatus @default(PENDING)
+    createdAt  DateTime      @default(now())
+    updatedAt  DateTime      @updatedAt
+
+    vehicle    Vehicle       @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+
+    @@index([vehicleId, status, pickupDate, returnDate])
+}

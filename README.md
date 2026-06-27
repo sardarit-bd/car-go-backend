@@ -40,3 +40,12 @@ Copy the example file:
 ```bash
 cp .env.example .env
 ```
+
+
+
+
+
+
+npx prisma format
+npx prisma migrate dev --name add_vehicle_tables
+npx prisma generate

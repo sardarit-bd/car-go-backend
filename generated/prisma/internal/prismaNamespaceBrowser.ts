@@ -51,6 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Vehicle: 'Vehicle',
+  VehicleImage: 'VehicleImage',
+  VehicleLocation: 'VehicleLocation',
+  VehicleAvailability: 'VehicleAvailability',
+  Booking: 'Booking',
   User: 'User'
 } as const
 
@@ -68,6 +73,66 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const VehicleScalarFieldEnum = {
+  id: 'id',
+  ownerId: 'ownerId',
+  name: 'name',
+  brand: 'brand',
+  model: 'model',
+  description: 'description',
+  class: 'class',
+  seats: 'seats',
+  pricePerDay: 'pricePerDay',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeof VehicleScalarFieldEnum]
+
+
+export const VehicleImageScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  imageUrl: 'imageUrl'
+} as const
+
+export type VehicleImageScalarFieldEnum = (typeof VehicleImageScalarFieldEnum)[keyof typeof VehicleImageScalarFieldEnum]
+
+
+export const VehicleLocationScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  country: 'country',
+  city: 'city',
+  address: 'address'
+} as const
+
+export type VehicleLocationScalarFieldEnum = (typeof VehicleLocationScalarFieldEnum)[keyof typeof VehicleLocationScalarFieldEnum]
+
+
+export const VehicleAvailabilityScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  availableFrom: 'availableFrom',
+  availableTo: 'availableTo'
+} as const
+
+export type VehicleAvailabilityScalarFieldEnum = (typeof VehicleAvailabilityScalarFieldEnum)[keyof typeof VehicleAvailabilityScalarFieldEnum]
+
+
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  vehicleId: 'vehicleId',
+  pickupDate: 'pickupDate',
+  returnDate: 'returnDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -93,4 +158,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
