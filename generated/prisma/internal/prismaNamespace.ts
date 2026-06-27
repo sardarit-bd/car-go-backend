@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  Addon: 'Addon',
   ProtectionPackage: 'ProtectionPackage',
   Vehicle: 'Vehicle',
   VehicleImage: 'VehicleImage',
@@ -406,10 +407,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "protectionPackage" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking" | "user"
+    modelProps: "addon" | "protectionPackage" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking" | "user"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    Addon: {
+      payload: Prisma.$AddonPayload<ExtArgs>
+      fields: Prisma.AddonFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AddonFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AddonFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        findFirst: {
+          args: Prisma.AddonFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AddonFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        findMany: {
+          args: Prisma.AddonFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>[]
+        }
+        create: {
+          args: Prisma.AddonCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        createMany: {
+          args: Prisma.AddonCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AddonCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>[]
+        }
+        delete: {
+          args: Prisma.AddonDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        update: {
+          args: Prisma.AddonUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        deleteMany: {
+          args: Prisma.AddonDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AddonUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AddonUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>[]
+        }
+        upsert: {
+          args: Prisma.AddonUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AddonPayload>
+        }
+        aggregate: {
+          args: Prisma.AddonAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAddon>
+        }
+        groupBy: {
+          args: Prisma.AddonGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AddonGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AddonCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AddonCountAggregateOutputType> | number
+        }
+      }
+    }
     ProtectionPackage: {
       payload: Prisma.$ProtectionPackagePayload<ExtArgs>
       fields: Prisma.ProtectionPackageFieldRefs
@@ -967,6 +1042,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AddonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  price: 'price',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
+
+
 export const ProtectionPackageScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1273,6 +1361,7 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
+  addon?: Prisma.AddonOmit
   protectionPackage?: Prisma.ProtectionPackageOmit
   vehicle?: Prisma.VehicleOmit
   vehicleImage?: Prisma.VehicleImageOmit

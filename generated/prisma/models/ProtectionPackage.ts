@@ -399,29 +399,9 @@ export type ProtectionPackageCreatedescriptionInput = {
   set: string[]
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type ProtectionPackageUpdatedescriptionInput = {
   set?: string[]
   push?: string | string[]
-}
-
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
-}
-
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
 }
 
 

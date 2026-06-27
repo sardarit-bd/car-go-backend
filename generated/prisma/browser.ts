@@ -18,6 +18,11 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
+ * Model Addon
+ * 
+ */
+export type Addon = Prisma.AddonModel
+/**
  * Model ProtectionPackage
  * 
  */

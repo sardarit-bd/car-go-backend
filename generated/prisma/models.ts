@@ -8,6 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Addon'
 export type * from './models/ProtectionPackage'
 export type * from './models/Vehicle'
 export type * from './models/VehicleImage'

@@ -7,6 +7,7 @@ import path from "path";
 import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
 import packageRoutes from "./modules/packages/package.routes";    
+import addonRoutes from "./modules/addons/addon.routes";
 const app: Application = express();
 
 app.use(
@@ -35,7 +36,8 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/vehicle", vehicleRoutes);
-app.use("/packages", packageRoutes);
+app.use("/api/packages", packageRoutes);
+app.use("/api/addons", addonRoutes);
 app.use(errorHandler);
 
 export default app;
