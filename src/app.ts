@@ -10,6 +10,7 @@ import packageRoutes from "./modules/packages/package.routes";
 import addonRoutes from "./modules/addons/addon.routes";
 import locationRoutes from "./modules/locations/location.routes";
 import reservationRoutes from "./modules/reservations/reservation.routes";
+import authRoutes from "./modules/auth/auth.routes";
 const app: Application = express();
 
 app.use(
@@ -36,7 +37,7 @@ app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 app.get("/", (req: Request, res: Response) => {
   res.send("right endpoint");
 });
-
+app.use("/api/auth", authRoutes);
 app.use("/api/vehicle", vehicleRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/addons", addonRoutes);

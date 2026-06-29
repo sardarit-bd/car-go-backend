@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { sql } from "../../config/supabase_db";
+import * as authRepository from "../../modules/auth/auth.repository";
 import AppError from "../utils/AppError";
 
 interface DecodedToken extends JwtPayload {
-  id: number;
+  id: string;
+  role: string;
 }
 
 const authMiddleware = async (
@@ -18,7 +19,7 @@ const authMiddleware = async (
     return next(new AppError("Unauthorized, token missing", 401));
   }
 
-  const token: string = authHeader.split(" ")[1];
+  const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(
@@ -26,15 +27,13 @@ const authMiddleware = async (
       process.env.JWT_SECRET as string,
     ) as DecodedToken;
 
-    const users =
-      await sql`SELECT id, name, email, role FROM users WHERE id = ${decoded.id}`;
+    const user = await authRepository.findUserById(decoded.id);
 
-    if (users.length === 0) {
+    if (!user) {
       return next(new AppError("User not found", 404));
     }
 
-    (req as any).user = users[0];
-
+    (req as any).user = user;
     next();
   } catch (err) {
     return next(new AppError("Invalid or expired token", 401));

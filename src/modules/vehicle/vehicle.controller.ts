@@ -79,14 +79,3 @@ export const deleteVehicle = async (
   }
 };
 
-
-
-
-
-
-
-
-
-
-
-
