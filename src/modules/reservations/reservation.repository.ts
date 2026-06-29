@@ -1,5 +1,5 @@
 import { prisma } from "../../../lib/prisma";
-import { BookingStatus } from "../../../generated/prisma/client"; // Adjust path if your generated client is elsewhere
+import { BookingStatus } from "../../../generated/prisma/client"; 
 
 export const findAllReservations = async () => {
   return prisma.booking.findMany({

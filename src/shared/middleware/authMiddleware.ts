@@ -13,13 +13,20 @@ const authMiddleware = async (
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
-  const authHeader = req.headers.authorization;
+  // 1. Try to get token from httpOnly cookie
+  let token = req.cookies?.token;
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return next(new AppError("Unauthorized, token missing", 401));
+  // 2. Fallback to Authorization header (useful for Postman testing)
+  if (!token) {
+    const authHeader = req.headers.authorization;
+    if (authHeader && authHeader.startsWith("Bearer ")) {
+      token = authHeader.split(" ")[1];
+    }
   }
 
-  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return next(new AppError("Unauthorized, token missing", 401));
+  }
 
   try {
     const decoded = jwt.verify(

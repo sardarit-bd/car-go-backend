@@ -2,11 +2,23 @@ import { Request, Response, NextFunction } from "express";
 import * as authService from "./auth.service";
 import sendResponse from "../../shared/utils/response";
 
+// Cookie configuration
+const COOKIE_OPTIONS = {
+  httpOnly: true, // Prevents XSS (JavaScript cannot read it)
+  secure: process.env.NODE_ENV === "production", // Use true in production (requires HTTPS)
+  sameSite: "lax" as const, // Protects against CSRF
+  maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days (matches your JWT expiry)
+};
+
 export const register = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.body);
     const { user, token } = await authService.register(req.body);
-    sendResponse(res, 201, true, "User registered successfully", { user, token });
+    
+    // Set the httpOnly cookie
+    res.cookie("token", token, COOKIE_OPTIONS);
+    
+    // We no longer send the token in the body for security reasons
+    sendResponse(res, 201, true, "User registered successfully", { user });
   } catch (error) {
     next(error);
   }
@@ -15,7 +27,11 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { user, token } = await authService.login(req.body);
-    sendResponse(res, 200, true, "Login successful", { user, token });
+    
+    // Set the httpOnly cookie
+    res.cookie("token", token, COOKIE_OPTIONS);
+    
+    sendResponse(res, 200, true, "Login successful", { user });
   } catch (error) {
     next(error);
   }
@@ -23,7 +39,8 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 
 export const logout = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // Since we use stateless JWT, logout is handled client-side by deleting the token.
+    // Clear the cookie
+    res.clearCookie("token");
     sendResponse(res, 200, true, "Logged out successfully", null);
   } catch (error) {
     next(error);

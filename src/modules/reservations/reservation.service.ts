@@ -1,6 +1,6 @@
 import * as reservationRepository from "./reservation.repository";
 import AppError from "../../shared/utils/AppError";
-import { BookingStatus } from "../../../generated/prisma";
+import { BookingStatus } from "../../../generated/prisma/enums";
 
 export const getAllReservations = async () => {
   return reservationRepository.findAllReservations();
@@ -17,12 +17,12 @@ export const getReservationsByPhone = async (phoneNumber: string) => {
 };
 
 export const createReservation = async (data: any) => {
-  // Future: Add logic here to check if the vehicle is actually available for these dates
+
   return reservationRepository.createReservation(data);
 };
 
 export const updateReservation = async (id: string, data: any) => {
-  await getReservationById(id); // Throws 404 if not found
+  await getReservationById(id); 
   return reservationRepository.updateReservation(id, data);
 };
 
@@ -44,7 +44,6 @@ export const deleteReservation = async (id: string) => {
 export const sendPaymentLink = async (id: string) => {
   const reservation = await getReservationById(id);
   
-  // TODO: Integrate with Stripe/PayPal here in the future
   console.log(`[Mock Payment Gateway] Sending payment link for $${reservation.totalPrice} to phone: ${reservation.phoneNumber}`);
   
   return {

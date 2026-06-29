@@ -4,6 +4,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { xss } from "express-xss-sanitizer";
 import path from "path"; 
+import cookieParser from "cookie-parser"; 
 import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
 import packageRoutes from "./modules/packages/package.routes";    
@@ -21,7 +22,7 @@ app.use(
 );
 
 app.use(xss());
-
+app.use(cookieParser()); 
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://192.168.0.105:3000"],
@@ -30,10 +31,20 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false, // Disable COEP
+    crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
+  })
+);
 
 app.use(express.json({ limit: "10kb" }));
-app.use(helmet());
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+
+
+const uploadsPath = path.join(process.cwd(), "uploads");
+console.log(" Serving static images from:", uploadsPath); 
+
+app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req: Request, res: Response) => {
   res.send("right endpoint");
 });
