@@ -1,5 +1,7 @@
+// backend/src/modules/reservations/reservation.repository.ts
+
 import { prisma } from "../../../lib/prisma";
-import { BookingStatus } from "../../../generated/prisma/client"; 
+import { BookingStatus, Prisma } from "../../../generated/prisma/client"; // <-- Added Prisma import
 
 export const findAllReservations = async () => {
   return prisma.booking.findMany({
@@ -24,14 +26,16 @@ export const findReservationsByPhoneNumber = async (phoneNumber: string) => {
   });
 };
 
-export const createReservation = async (data: any) => {
+// UPDATED: Replaced `data: any` with Prisma's strict type
+export const createReservation = async (data: Prisma.BookingCreateInput) => {
   return prisma.booking.create({
     data,
     include: { vehicle: true },
   });
 };
 
-export const updateReservation = async (id: string, data: any) => {
+// UPDATED: Replaced `data: any` with Prisma's strict type
+export const updateReservation = async (id: string, data: Prisma.BookingUpdateInput) => {
   return prisma.booking.update({
     where: { id },
     data,

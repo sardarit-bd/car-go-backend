@@ -52,20 +52,27 @@ enum BookingStatus {
 model Booking {
     id                String        @id @default(cuid())
     vehicleId         String
-    phoneNumber       String        // Added for the /check/:phoneNumber endpoint
+    phoneNumber       String        
     pickupDate        DateTime
     returnDate        DateTime
-    pickupLocationId  String?       // Added for location tracking
-    returnLocationId  String?       // Added for location tracking
-    totalPrice        Decimal       @db.Decimal(10, 2) // Added for quote/payment
+    pickupLocationId  String?    
+    returnLocationId  String?     
+    totalPrice        Decimal       @db.Decimal(10, 2)
     status            BookingStatus @default(PENDING)
-    
+
+    customerFirstName String
+    customerLastName  String
+    customerEmail     String
+    customerNotes     String?
+    packageData       Json?
+    addonsData        Json?
+
     createdAt         DateTime      @default(now())
     updatedAt         DateTime      @updatedAt
-    deletedAt         DateTime?     // Added for soft delete
+    deletedAt         DateTime?   
 
     vehicle           Vehicle       @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 
-    @@index([phoneNumber]) // Index for fast lookups by phone
+    @@index([phoneNumber]) 
     @@index([vehicleId, status, pickupDate, returnDate])
 }

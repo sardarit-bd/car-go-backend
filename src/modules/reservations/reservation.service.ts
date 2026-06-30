@@ -1,6 +1,9 @@
+// backend/src/modules/reservations/reservation.service.ts
+
 import * as reservationRepository from "./reservation.repository";
 import AppError from "../../shared/utils/AppError";
 import { BookingStatus } from "../../../generated/prisma/enums";
+import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; // <-- Import DTOs
 
 export const getAllReservations = async () => {
   return reservationRepository.findAllReservations();
@@ -16,12 +19,13 @@ export const getReservationsByPhone = async (phoneNumber: string) => {
   return reservationRepository.findReservationsByPhoneNumber(phoneNumber);
 };
 
-export const createReservation = async (data: any) => {
-
+// UPDATED: Replaced `data: any` with `CreateReservationDto`
+export const createReservation = async (data: CreateReservationDto) => {
   return reservationRepository.createReservation(data);
 };
 
-export const updateReservation = async (id: string, data: any) => {
+// UPDATED: Replaced `data: any` with `UpdateReservationDto`
+export const updateReservation = async (id: string, data: UpdateReservationDto) => {
   await getReservationById(id); 
   return reservationRepository.updateReservation(id, data);
 };

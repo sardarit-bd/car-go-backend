@@ -1,6 +1,10 @@
+// backend/src/modules/reservations/reservation.controller.ts
+
 import { Request, Response, NextFunction } from "express";
 import sendResponse from "../../shared/utils/response";
 import * as reservationService from "./reservation.service";
+import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; // <-- Import DTOs
+import { BookingStatus } from "../../../generated/prisma/enums"; // <-- Import Enum for strict typing
 
 export const getReservations = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -19,21 +23,27 @@ export const getReservationByPhone = async (req: Request, res: Response, next: N
 
 export const createReservation = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await reservationService.createReservation(req.body);
+    // UPDATED: Cast req.body to CreateReservationDto
+    const result = await reservationService.createReservation(req.body as CreateReservationDto);
     sendResponse(res, 201, true, "Reservation created successfully", result);
-  } catch (error) { next(error); }
+  } catch (error) { 
+    next(error); 
+    console.log(error);
+  }
 };
 
 export const updateReservation = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await reservationService.updateReservation(req.params.id, req.body);
+    // UPDATED: Cast req.body to UpdateReservationDto
+    const result = await reservationService.updateReservation(req.params.id, req.body as UpdateReservationDto);
     sendResponse(res, 200, true, "Reservation updated successfully", result);
   } catch (error) { next(error); }
 };
 
 export const updateStatus = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await reservationService.updateStatus(req.params.id, req.body.status);
+    // UPDATED: Cast req.body.status to BookingStatus enum for strict type safety
+    const result = await reservationService.updateStatus(req.params.id, req.body.status as BookingStatus);
     sendResponse(res, 200, true, "Reservation status updated successfully", result);
   } catch (error) { next(error); }
 };
