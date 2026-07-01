@@ -55,6 +55,7 @@ export const ModelName = {
   Addon: 'Addon',
   Location: 'Location',
   ProtectionPackage: 'ProtectionPackage',
+  Review: 'Review',
   Vehicle: 'Vehicle',
   VehicleImage: 'VehicleImage',
   VehicleLocation: 'VehicleLocation',
@@ -135,6 +136,20 @@ export const ProtectionPackageScalarFieldEnum = {
 } as const
 
 export type ProtectionPackageScalarFieldEnum = (typeof ProtectionPackageScalarFieldEnum)[keyof typeof ProtectionPackageScalarFieldEnum]
+
+
+export const ReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  rating: 'rating',
+  comment: 'comment',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
 
 
 export const VehicleScalarFieldEnum = {

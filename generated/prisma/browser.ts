@@ -38,6 +38,11 @@ export type Location = Prisma.LocationModel
  */
 export type ProtectionPackage = Prisma.ProtectionPackageModel
 /**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel
+/**
  * Model Vehicle
  * 
  */

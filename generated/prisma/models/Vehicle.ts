@@ -542,14 +542,6 @@ export type VehicleScalarRelationFilter = {
   isNot?: Prisma.VehicleWhereInput
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type VehicleCreateNestedOneWithoutImagesInput = {
   create?: Prisma.XOR<Prisma.VehicleCreateWithoutImagesInput, Prisma.VehicleUncheckedCreateWithoutImagesInput>
   connectOrCreate?: Prisma.VehicleCreateOrConnectWithoutImagesInput
