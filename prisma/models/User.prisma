@@ -17,7 +17,8 @@ model User {
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   deletedAt        DateTime? // Consistent with your soft delete pattern
-    reviews   Review[]
+  reviews   Review[]
+  blogs     Blog[]
 
   // Add your relations here (e.g., bookings, vehicles)
 }

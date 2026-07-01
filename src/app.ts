@@ -13,6 +13,7 @@ import locationRoutes from "./modules/locations/location.routes";
 import reservationRoutes from "./modules/reservations/reservation.routes";
 import authRoutes from "./modules/auth/auth.routes";
 import reviewRoutes from "./modules/reviews/review.routes";
+import BlogRoutes from "./modules/blogs/blog.routes";
 const app: Application = express();
 
 app.use(
@@ -56,6 +57,7 @@ app.use("/api/addons", addonRoutes);
 app.use("/api/locations", locationRoutes);
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/blogs", BlogRoutes);
 app.use(errorHandler);
 
 export default app;
