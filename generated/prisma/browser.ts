@@ -33,6 +33,11 @@ export type User = Prisma.UserModel
  */
 export type Addon = Prisma.AddonModel
 /**
+ * Model ContactMessage
+ * 
+ */
+export type ContactMessage = Prisma.ContactMessageModel
+/**
  * Model Location
  * 
  */

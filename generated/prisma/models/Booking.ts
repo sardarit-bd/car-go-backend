@@ -48,6 +48,8 @@ export type BookingMinAggregateOutputType = {
   customerLastName: string | null
   customerEmail: string | null
   customerNotes: string | null
+  stripeSessionId: string | null
+  paymentStatus: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -67,6 +69,8 @@ export type BookingMaxAggregateOutputType = {
   customerLastName: string | null
   customerEmail: string | null
   customerNotes: string | null
+  stripeSessionId: string | null
+  paymentStatus: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -88,6 +92,8 @@ export type BookingCountAggregateOutputType = {
   customerNotes: number
   packageData: number
   addonsData: number
+  stripeSessionId: number
+  paymentStatus: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -117,6 +123,8 @@ export type BookingMinAggregateInputType = {
   customerLastName?: true
   customerEmail?: true
   customerNotes?: true
+  stripeSessionId?: true
+  paymentStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -136,6 +144,8 @@ export type BookingMaxAggregateInputType = {
   customerLastName?: true
   customerEmail?: true
   customerNotes?: true
+  stripeSessionId?: true
+  paymentStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -157,6 +167,8 @@ export type BookingCountAggregateInputType = {
   customerNotes?: true
   packageData?: true
   addonsData?: true
+  stripeSessionId?: true
+  paymentStatus?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -265,6 +277,8 @@ export type BookingGroupByOutputType = {
   customerNotes: string | null
   packageData: runtime.JsonValue | null
   addonsData: runtime.JsonValue | null
+  stripeSessionId: string | null
+  paymentStatus: string
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -309,6 +323,8 @@ export type BookingWhereInput = {
   customerNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
   packageData?: Prisma.JsonNullableFilter<"Booking">
   addonsData?: Prisma.JsonNullableFilter<"Booking">
+  stripeSessionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  paymentStatus?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -331,6 +347,8 @@ export type BookingOrderByWithRelationInput = {
   customerNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   packageData?: Prisma.SortOrderInput | Prisma.SortOrder
   addonsData?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSessionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -356,6 +374,8 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   customerNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
   packageData?: Prisma.JsonNullableFilter<"Booking">
   addonsData?: Prisma.JsonNullableFilter<"Booking">
+  stripeSessionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  paymentStatus?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -378,6 +398,8 @@ export type BookingOrderByWithAggregationInput = {
   customerNotes?: Prisma.SortOrderInput | Prisma.SortOrder
   packageData?: Prisma.SortOrderInput | Prisma.SortOrder
   addonsData?: Prisma.SortOrderInput | Prisma.SortOrder
+  stripeSessionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -407,6 +429,8 @@ export type BookingScalarWhereWithAggregatesInput = {
   customerNotes?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   packageData?: Prisma.JsonNullableWithAggregatesFilter<"Booking">
   addonsData?: Prisma.JsonNullableWithAggregatesFilter<"Booking">
+  stripeSessionId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  paymentStatus?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Booking"> | Date | string | null
@@ -427,6 +451,8 @@ export type BookingCreateInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -449,6 +475,8 @@ export type BookingUncheckedCreateInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -469,6 +497,8 @@ export type BookingUpdateInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -491,6 +521,8 @@ export type BookingUncheckedUpdateInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -512,6 +544,8 @@ export type BookingCreateManyInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -532,6 +566,8 @@ export type BookingUpdateManyMutationInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -553,6 +589,8 @@ export type BookingUncheckedUpdateManyInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -584,6 +622,8 @@ export type BookingCountOrderByAggregateInput = {
   customerNotes?: Prisma.SortOrder
   packageData?: Prisma.SortOrder
   addonsData?: Prisma.SortOrder
+  stripeSessionId?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -607,6 +647,8 @@ export type BookingMaxOrderByAggregateInput = {
   customerLastName?: Prisma.SortOrder
   customerEmail?: Prisma.SortOrder
   customerNotes?: Prisma.SortOrder
+  stripeSessionId?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -626,6 +668,8 @@ export type BookingMinOrderByAggregateInput = {
   customerLastName?: Prisma.SortOrder
   customerEmail?: Prisma.SortOrder
   customerNotes?: Prisma.SortOrder
+  stripeSessionId?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -696,6 +740,8 @@ export type BookingCreateWithoutVehicleInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -716,6 +762,8 @@ export type BookingUncheckedCreateWithoutVehicleInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -766,6 +814,8 @@ export type BookingScalarWhereInput = {
   customerNotes?: Prisma.StringNullableFilter<"Booking"> | string | null
   packageData?: Prisma.JsonNullableFilter<"Booking">
   addonsData?: Prisma.JsonNullableFilter<"Booking">
+  stripeSessionId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  paymentStatus?: Prisma.StringFilter<"Booking"> | string
   createdAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
@@ -786,6 +836,8 @@ export type BookingCreateManyVehicleInput = {
   customerNotes?: string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: string | null
+  paymentStatus?: string
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -806,6 +858,8 @@ export type BookingUpdateWithoutVehicleInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -826,6 +880,8 @@ export type BookingUncheckedUpdateWithoutVehicleInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -846,6 +902,8 @@ export type BookingUncheckedUpdateManyWithoutVehicleInput = {
   customerNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packageData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   addonsData?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  stripeSessionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  paymentStatus?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -869,6 +927,8 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   customerNotes?: boolean
   packageData?: boolean
   addonsData?: boolean
+  stripeSessionId?: boolean
+  paymentStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -891,6 +951,8 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   customerNotes?: boolean
   packageData?: boolean
   addonsData?: boolean
+  stripeSessionId?: boolean
+  paymentStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -913,6 +975,8 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   customerNotes?: boolean
   packageData?: boolean
   addonsData?: boolean
+  stripeSessionId?: boolean
+  paymentStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -935,12 +999,14 @@ export type BookingSelectScalar = {
   customerNotes?: boolean
   packageData?: boolean
   addonsData?: boolean
+  stripeSessionId?: boolean
+  paymentStatus?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "stripeSessionId" | "paymentStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -972,6 +1038,8 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     customerNotes: string | null
     packageData: runtime.JsonValue | null
     addonsData: runtime.JsonValue | null
+    stripeSessionId: string | null
+    paymentStatus: string
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -1414,6 +1482,8 @@ export interface BookingFieldRefs {
   readonly customerNotes: Prisma.FieldRef<"Booking", 'String'>
   readonly packageData: Prisma.FieldRef<"Booking", 'Json'>
   readonly addonsData: Prisma.FieldRef<"Booking", 'Json'>
+  readonly stripeSessionId: Prisma.FieldRef<"Booking", 'String'>
+  readonly paymentStatus: Prisma.FieldRef<"Booking", 'String'>
   readonly createdAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Booking", 'DateTime'>

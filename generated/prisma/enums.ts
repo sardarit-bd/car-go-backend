@@ -18,6 +18,16 @@ export const Role = {
 export type Role = (typeof Role)[keyof typeof Role]
 
 
+export const ContactStatus = {
+  PENDING: 'PENDING',
+  IN_PROGRESS: 'IN_PROGRESS',
+  SOLVED: 'SOLVED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type ContactStatus = (typeof ContactStatus)[keyof typeof ContactStatus]
+
+
 export const ReviewStatus = {
   PENDING: 'PENDING',
   APPROVED: 'APPROVED',

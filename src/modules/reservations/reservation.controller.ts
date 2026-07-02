@@ -68,3 +68,22 @@ export const deleteReservation = async (req: Request, res: Response, next: NextF
     sendResponse(res, 200, true, "Reservation deleted successfully", null);
   } catch (error) { next(error); }
 };
+
+
+
+export const createCheckoutSession = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { id } = req.params;
+    const result = await reservationService.createCheckoutSession(id);
+    sendResponse(res, 200, true, "Checkout session created successfully", result);
+  } catch (error) { next(error); }
+};
+
+export const handleStripeWebhook = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const sig = req.headers['stripe-signature'] as string;
+    // req.body is a Buffer here because of the express.raw middleware in app.ts
+    const result = await reservationService.handleStripeWebhook(sig, req.body);
+    sendResponse(res, 200, true, "Webhook received", result);
+  } catch (error) { next(error); }
+};

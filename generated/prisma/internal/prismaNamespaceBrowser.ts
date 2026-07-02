@@ -54,6 +54,7 @@ export const ModelName = {
   Blog: 'Blog',
   User: 'User',
   Addon: 'Addon',
+  ContactMessage: 'ContactMessage',
   Location: 'Location',
   ProtectionPackage: 'ProtectionPackage',
   Review: 'Review',
@@ -125,6 +126,20 @@ export const AddonScalarFieldEnum = {
 } as const
 
 export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
+
+
+export const ContactMessageScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  email: 'email',
+  message: 'message',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type ContactMessageScalarFieldEnum = (typeof ContactMessageScalarFieldEnum)[keyof typeof ContactMessageScalarFieldEnum]
 
 
 export const LocationScalarFieldEnum = {
@@ -233,6 +248,8 @@ export const BookingScalarFieldEnum = {
   customerNotes: 'customerNotes',
   packageData: 'packageData',
   addonsData: 'addonsData',
+  stripeSessionId: 'stripeSessionId',
+  paymentStatus: 'paymentStatus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

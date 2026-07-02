@@ -11,6 +11,7 @@
 export type * from './models/Blog'
 export type * from './models/User'
 export type * from './models/Addon'
+export type * from './models/ContactMessage'
 export type * from './models/Location'
 export type * from './models/ProtectionPackage'
 export type * from './models/Review'

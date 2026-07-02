@@ -14,11 +14,13 @@ import reservationRoutes from "./modules/reservations/reservation.routes";
 import authRoutes from "./modules/auth/auth.routes";
 import reviewRoutes from "./modules/reviews/review.routes";
 import BlogRoutes from "./modules/blogs/blog.routes";
+import contactRoutes from "./modules/contacts/contact.routes";
+
 const app: Application = express();
 
 app.use(
   rateLimit({
-    windowMs: 15 * 60 * 1000,
+    windowMs: 1 * 60 * 1000,
     max: 100,
   }),
 );
@@ -39,7 +41,7 @@ app.use(
     crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
   })
 );
-
+app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
 app.use(express.json({ limit: "10kb" }));
 
 
@@ -58,6 +60,7 @@ app.use("/api/locations", locationRoutes);
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/blogs", BlogRoutes);
+app.use("/api/contacts", contactRoutes);
 app.use(errorHandler);
 
 export default app;

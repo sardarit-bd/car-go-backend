@@ -2,11 +2,14 @@ import { prisma } from "../../../lib/prisma";
 
 export interface VehicleFilters {
   model?: string;
+  search?: string;
+  transmission?: string;
   seats?: number;
   location?: string;
   pickupDate: Date;
   returnDate: Date;
 }
+
 
 export interface PaginationOptions {
   skip: number;
@@ -14,31 +17,38 @@ export interface PaginationOptions {
 }
 
 const buildWhereClause = (filters: VehicleFilters) => {
-  const { model, seats, location, pickupDate, returnDate } = filters;
+  const { model, search, transmission, seats, pickupDate, returnDate } = filters;
 
   return {
     deletedAt: null,
     ...(model && { model: { contains: model, mode: "insensitive" as const } }),
     ...(seats !== undefined && { seats: { gte: seats } }),
-    ...(location && {
-      locations: {
-        some: {
-          OR: [
-            { city: { equals: location, mode: "insensitive" as const } },
-            { country: { equals: location, mode: "insensitive" as const } },
-          ],
-        },
-      },
+    
+    ...(search && {
+      OR: [
+        { brand: { contains: search, mode: "insensitive" as const } },
+        { model: { contains: search, mode: "insensitive" as const } },
+        { class: { contains: search, mode: "insensitive" as const } },
+      ],
     }),
+
+
+    ...(transmission && {
+      transmission: { equals: transmission, mode: "insensitive" as const },
+    }),
+
+
     bookings: {
       none: {
         status: "CONFIRMED" as const,
+        deletedAt: null, 
         pickupDate: { lt: returnDate },
         returnDate: { gt: pickupDate },
       },
     },
   };
 };
+
 
 export const findAvailableVehicles = async (
   filters: VehicleFilters,
@@ -64,8 +74,6 @@ export const countAvailableVehicles = async (filters: VehicleFilters) => {
   return prisma.vehicle.count({ where });
 };
 
-
-
 export const findVehicleById = async (id: string) => {
   return prisma.vehicle.findFirst({
     where: { id, deletedAt: null },
@@ -73,7 +81,6 @@ export const findVehicleById = async (id: string) => {
       images: true,
       locations: true,
       availabilities: true,
-      // Excluded 'bookings' as per your requirement
     },
   });
 };
@@ -103,9 +110,7 @@ export const updateVehicle = async (id: string, data: any) => {
     where: { id },
     data: {
       ...scalarData,
-      // Append new images if provided
       images: images && images.length > 0 ? { create: images } : undefined,
-      // Replace locations/availabilities if provided (delete old, create new)
       locations: locations ? { deleteMany: {}, create: locations } : undefined,
       availabilities: availabilities ? { deleteMany: {}, create: availabilities } : undefined,
     },

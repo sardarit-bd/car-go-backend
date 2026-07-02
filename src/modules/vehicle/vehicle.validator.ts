@@ -5,6 +5,9 @@ const emptyStringToUndefined = (value: unknown, originalValue: unknown) =>
 
 export const getVehiclesQuerySchema = yup.object({
   model: yup.string().trim().optional(),
+  
+  search: yup.string().trim().optional(),
+  transmission: yup.string().trim().optional(),
 
   seats: yup
     .number()

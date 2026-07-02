@@ -1,7 +1,4 @@
 import { Router } from "express";
-import { getVehicles } from "./vehicle.controller";
-import validate from "../../shared/middleware/validate";
-import { getVehiclesQuerySchema } from "./vehicle.validator";
 import { 
   getVehicles, 
   getVehicleById, 

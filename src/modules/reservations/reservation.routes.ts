@@ -17,5 +17,7 @@ router.delete("/:id", validate(validator.reservationIdParamsSchema, "params"), c
 router.patch("/:id/status", validate(validator.reservationIdParamsSchema, "params"), validate(validator.updateStatusBodySchema, "body"), controller.updateStatus);
 router.patch("/:id/quote", validate(validator.reservationIdParamsSchema, "params"), validate(validator.updateQuoteBodySchema, "body"), controller.updateQuote);
 router.post("/:id/send-payment-link", validate(validator.reservationIdParamsSchema, "params"), controller.sendPaymentLink);
+router.post("/:id/checkout-session", validate(validator.reservationIdParamsSchema, "params"), controller.createCheckoutSession);
+router.post("/webhook", controller.handleStripeWebhook);
 
 export default router;
