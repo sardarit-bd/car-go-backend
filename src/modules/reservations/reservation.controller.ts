@@ -3,12 +3,15 @@
 import { Request, Response, NextFunction } from "express";
 import sendResponse from "../../shared/utils/response";
 import * as reservationService from "./reservation.service";
-import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; // <-- Import DTOs
-import { BookingStatus } from "../../../generated/prisma/enums"; // <-- Import Enum for strict typing
+import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; 
+import { BookingStatus } from "../../../generated/prisma/enums"; 
 
 export const getReservations = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const result = await reservationService.getAllReservations();
+    const page = Math.max(1, Number(req.query.page) || 1);
+    const limit = Math.max(1, Number(req.query.limit) || 10);
+
+    const result = await reservationService.getAllReservations(page, limit);
     sendResponse(res, 200, true, "Reservations fetched successfully", result);
   } catch (error) { next(error); }
 };

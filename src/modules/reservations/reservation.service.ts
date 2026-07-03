@@ -3,15 +3,15 @@
 import * as reservationRepository from "./reservation.repository";
 import AppError from "../../shared/utils/AppError";
 import { BookingStatus } from "../../../generated/prisma/enums";
-import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; // <-- Import DTOs
+import { CreateReservationDto, UpdateReservationDto } from "./dto/reservation.dto"; 
 import Stripe from 'stripe'; 
 
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 
-export const getAllReservations = async () => {
-  return reservationRepository.findAllReservations();
+export const getAllReservations = async (page: number, limit: number) => {
+  return reservationRepository.findAllReservations(page, limit);
 };
 
 export const getReservationById = async (id: string) => {

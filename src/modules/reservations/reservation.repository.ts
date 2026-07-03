@@ -1,14 +1,35 @@
 // backend/src/modules/reservations/reservation.repository.ts
 
 import { prisma } from "../../../lib/prisma";
-import { BookingStatus, Prisma } from "../../../generated/prisma/client"; // <-- Added Prisma import
+import { BookingStatus, Prisma } from "../../../generated/prisma/client"; 
 
-export const findAllReservations = async () => {
-  return prisma.booking.findMany({
-    where: { deletedAt: null },
-    orderBy: { createdAt: "desc" },
-    include: { vehicle: true },
-  });
+export const findAllReservations = async (page: number, limit: number) => {
+
+  const skip = (page - 1) * limit;
+
+
+  const [data, total] = await Promise.all([
+    prisma.booking.findMany({
+      where: { deletedAt: null },
+      orderBy: { createdAt: "desc" },
+      include: { vehicle: true },
+      skip,      
+      take: limit, 
+    }),
+    prisma.booking.count({
+      where: { deletedAt: null },
+    }),
+  ]);
+
+  return {
+    data,
+    pagination: {
+      total,
+      page,
+      limit,
+      totalPages: Math.ceil(total / limit),
+    },
+  };
 };
 
 export const findReservationById = async (id: string) => {
