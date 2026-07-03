@@ -10,8 +10,20 @@ import Stripe from 'stripe';
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
 
-export const getAllReservations = async (page: number, limit: number) => {
-  return reservationRepository.findAllReservations(page, limit);
+export const getAllReservations = async (
+  page: number,
+  limit: number,
+  filters?: {
+    status?: "PENDING" | "CONFIRMED" | "CANCELLED";
+    pickupDateFrom?: string;
+    pickupDateTo?: string;
+    returnDateFrom?: string;
+    returnDateTo?: string;
+    phoneNumber?: string;
+    customerEmail?: string;
+  }
+) => {
+  return reservationRepository.findAllReservations(page, limit, filters);
 };
 
 export const getReservationById = async (id: string) => {
