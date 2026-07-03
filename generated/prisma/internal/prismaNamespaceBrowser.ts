@@ -54,6 +54,14 @@ export const ModelName = {
   Blog: 'Blog',
   User: 'User',
   Addon: 'Addon',
+  CmsContact: 'CmsContact',
+  CmsFaq: 'CmsFaq',
+  CmsHero: 'CmsHero',
+  CmsHeroFeature: 'CmsHeroFeature',
+  CmsPage: 'CmsPage',
+  CmsSocialMedia: 'CmsSocialMedia',
+  CmsWhyChooseUs: 'CmsWhyChooseUs',
+  CmsWhyChooseUsFeature: 'CmsWhyChooseUsFeature',
   ContactMessage: 'ContactMessage',
   Location: 'Location',
   ProtectionPackage: 'ProtectionPackage',
@@ -126,6 +134,112 @@ export const AddonScalarFieldEnum = {
 } as const
 
 export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
+
+
+export const CmsContactScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  value: 'value',
+  label: 'label',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsContactScalarFieldEnum = (typeof CmsContactScalarFieldEnum)[keyof typeof CmsContactScalarFieldEnum]
+
+
+export const CmsFaqScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  order: 'order',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsFaqScalarFieldEnum = (typeof CmsFaqScalarFieldEnum)[keyof typeof CmsFaqScalarFieldEnum]
+
+
+export const CmsHeroScalarFieldEnum = {
+  id: 'id',
+  tagline: 'tagline',
+  title: 'title',
+  subtitle: 'subtitle',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsHeroScalarFieldEnum = (typeof CmsHeroScalarFieldEnum)[keyof typeof CmsHeroScalarFieldEnum]
+
+
+export const CmsHeroFeatureScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  order: 'order',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsHeroFeatureScalarFieldEnum = (typeof CmsHeroFeatureScalarFieldEnum)[keyof typeof CmsHeroFeatureScalarFieldEnum]
+
+
+export const CmsPageScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  content: 'content',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsPageScalarFieldEnum = (typeof CmsPageScalarFieldEnum)[keyof typeof CmsPageScalarFieldEnum]
+
+
+export const CmsSocialMediaScalarFieldEnum = {
+  id: 'id',
+  platform: 'platform',
+  url: 'url',
+  isActive: 'isActive',
+  order: 'order',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsSocialMediaScalarFieldEnum = (typeof CmsSocialMediaScalarFieldEnum)[keyof typeof CmsSocialMediaScalarFieldEnum]
+
+
+export const CmsWhyChooseUsScalarFieldEnum = {
+  id: 'id',
+  subtitle: 'subtitle',
+  title: 'title',
+  mainImage: 'mainImage',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsWhyChooseUsScalarFieldEnum = (typeof CmsWhyChooseUsScalarFieldEnum)[keyof typeof CmsWhyChooseUsScalarFieldEnum]
+
+
+export const CmsWhyChooseUsFeatureScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsWhyChooseUsFeatureScalarFieldEnum = (typeof CmsWhyChooseUsFeatureScalarFieldEnum)[keyof typeof CmsWhyChooseUsFeatureScalarFieldEnum]
 
 
 export const ContactMessageScalarFieldEnum = {

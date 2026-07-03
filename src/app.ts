@@ -15,6 +15,14 @@ import authRoutes from "./modules/auth/auth.routes";
 import reviewRoutes from "./modules/reviews/review.routes";
 import BlogRoutes from "./modules/blogs/blog.routes";
 import contactRoutes from "./modules/contacts/contact.routes";
+import cmsFaqRoutes from "./modules/cms/cmsFaq/cmsFaq.routes";
+import cmsPageRoutes from "./modules/cms/cmsPage/cmsPage.routes";
+import cmsContactRoutes from "./modules/cms/cmsContact/cmsContact.routes";
+import cmsSocialMediaRoutes from "./modules/cms/cmsSocialMedia/cmsSocialMedia.routes";
+import cmsHeroRoutes from "./modules/cms/cmsHero/cmsHero.routes";
+import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.routes";
+import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes";
+import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes";
 
 const app: Application = express();
 
@@ -61,6 +69,14 @@ app.use("/api/reservations", reservationRoutes);
 app.use("/api/reviews", reviewRoutes);
 app.use("/api/blogs", BlogRoutes);
 app.use("/api/contacts", contactRoutes);
+app.use("/api/admin/cms/faq", cmsFaqRoutes);
+app.use("/api/admin/cms/page", cmsPageRoutes);
+app.use("/api/admin/cms/contact", cmsContactRoutes);
+app.use("/api/admin/cms/social-media", cmsSocialMediaRoutes);
+app.use("/api/admin/cms/hero", cmsHeroRoutes);
+app.use("/api/admin/cms/hero-feature", cmsHeroFeatureRoutes);
+app.use("/api/admin/cms/why-choose-us", cmsWhyChooseUsRoutes);
+app.use("/api/admin/cms/why-choose-us-feature", cmsWhyChooseUsFeatureRoutes);
 app.use(errorHandler);
 
 export default app;

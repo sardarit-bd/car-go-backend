@@ -387,6 +387,14 @@ export const ModelName = {
   Blog: 'Blog',
   User: 'User',
   Addon: 'Addon',
+  CmsContact: 'CmsContact',
+  CmsFaq: 'CmsFaq',
+  CmsHero: 'CmsHero',
+  CmsHeroFeature: 'CmsHeroFeature',
+  CmsPage: 'CmsPage',
+  CmsSocialMedia: 'CmsSocialMedia',
+  CmsWhyChooseUs: 'CmsWhyChooseUs',
+  CmsWhyChooseUsFeature: 'CmsWhyChooseUsFeature',
   ContactMessage: 'ContactMessage',
   Location: 'Location',
   ProtectionPackage: 'ProtectionPackage',
@@ -411,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "blog" | "user" | "addon" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking"
+    modelProps: "blog" | "user" | "addon" | "cmsContact" | "cmsFaq" | "cmsHero" | "cmsHeroFeature" | "cmsPage" | "cmsSocialMedia" | "cmsWhyChooseUs" | "cmsWhyChooseUsFeature" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -634,6 +642,598 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AddonCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AddonCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsContact: {
+      payload: Prisma.$CmsContactPayload<ExtArgs>
+      fields: Prisma.CmsContactFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsContactFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsContactFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsContactFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsContactFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        findMany: {
+          args: Prisma.CmsContactFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>[]
+        }
+        create: {
+          args: Prisma.CmsContactCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        createMany: {
+          args: Prisma.CmsContactCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsContactCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsContactDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        update: {
+          args: Prisma.CmsContactUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsContactDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsContactUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsContactUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsContactUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsContactPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsContactAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsContact>
+        }
+        groupBy: {
+          args: Prisma.CmsContactGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsContactGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsContactCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsContactCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsFaq: {
+      payload: Prisma.$CmsFaqPayload<ExtArgs>
+      fields: Prisma.CmsFaqFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsFaqFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsFaqFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsFaqFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsFaqFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        findMany: {
+          args: Prisma.CmsFaqFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>[]
+        }
+        create: {
+          args: Prisma.CmsFaqCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        createMany: {
+          args: Prisma.CmsFaqCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsFaqCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsFaqDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        update: {
+          args: Prisma.CmsFaqUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsFaqDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsFaqUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsFaqUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsFaqUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsFaqPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsFaqAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsFaq>
+        }
+        groupBy: {
+          args: Prisma.CmsFaqGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsFaqGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsFaqCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsFaqCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsHero: {
+      payload: Prisma.$CmsHeroPayload<ExtArgs>
+      fields: Prisma.CmsHeroFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsHeroFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsHeroFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsHeroFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsHeroFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        findMany: {
+          args: Prisma.CmsHeroFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>[]
+        }
+        create: {
+          args: Prisma.CmsHeroCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        createMany: {
+          args: Prisma.CmsHeroCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsHeroCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsHeroDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        update: {
+          args: Prisma.CmsHeroUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsHeroDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsHeroUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsHeroUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsHeroUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsHeroAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsHero>
+        }
+        groupBy: {
+          args: Prisma.CmsHeroGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsHeroGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsHeroCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsHeroCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsHeroFeature: {
+      payload: Prisma.$CmsHeroFeaturePayload<ExtArgs>
+      fields: Prisma.CmsHeroFeatureFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsHeroFeatureFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsHeroFeatureFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        findFirst: {
+          args: Prisma.CmsHeroFeatureFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsHeroFeatureFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        findMany: {
+          args: Prisma.CmsHeroFeatureFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>[]
+        }
+        create: {
+          args: Prisma.CmsHeroFeatureCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        createMany: {
+          args: Prisma.CmsHeroFeatureCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsHeroFeatureCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>[]
+        }
+        delete: {
+          args: Prisma.CmsHeroFeatureDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        update: {
+          args: Prisma.CmsHeroFeatureUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsHeroFeatureDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsHeroFeatureUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsHeroFeatureUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsHeroFeatureUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsHeroFeaturePayload>
+        }
+        aggregate: {
+          args: Prisma.CmsHeroFeatureAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsHeroFeature>
+        }
+        groupBy: {
+          args: Prisma.CmsHeroFeatureGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsHeroFeatureGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsHeroFeatureCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsHeroFeatureCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsPage: {
+      payload: Prisma.$CmsPagePayload<ExtArgs>
+      fields: Prisma.CmsPageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsPageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsPageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        findFirst: {
+          args: Prisma.CmsPageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsPageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        findMany: {
+          args: Prisma.CmsPageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>[]
+        }
+        create: {
+          args: Prisma.CmsPageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        createMany: {
+          args: Prisma.CmsPageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsPageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>[]
+        }
+        delete: {
+          args: Prisma.CmsPageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        update: {
+          args: Prisma.CmsPageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsPageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsPageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsPageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsPageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsPagePayload>
+        }
+        aggregate: {
+          args: Prisma.CmsPageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsPage>
+        }
+        groupBy: {
+          args: Prisma.CmsPageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsPageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsPageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsPageCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsSocialMedia: {
+      payload: Prisma.$CmsSocialMediaPayload<ExtArgs>
+      fields: Prisma.CmsSocialMediaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsSocialMediaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsSocialMediaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsSocialMediaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsSocialMediaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        findMany: {
+          args: Prisma.CmsSocialMediaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>[]
+        }
+        create: {
+          args: Prisma.CmsSocialMediaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        createMany: {
+          args: Prisma.CmsSocialMediaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsSocialMediaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsSocialMediaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        update: {
+          args: Prisma.CmsSocialMediaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsSocialMediaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsSocialMediaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsSocialMediaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsSocialMediaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsSocialMediaPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsSocialMediaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsSocialMedia>
+        }
+        groupBy: {
+          args: Prisma.CmsSocialMediaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsSocialMediaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsSocialMediaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsSocialMediaCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsWhyChooseUs: {
+      payload: Prisma.$CmsWhyChooseUsPayload<ExtArgs>
+      fields: Prisma.CmsWhyChooseUsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsWhyChooseUsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsWhyChooseUsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsWhyChooseUsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsWhyChooseUsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        findMany: {
+          args: Prisma.CmsWhyChooseUsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>[]
+        }
+        create: {
+          args: Prisma.CmsWhyChooseUsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        createMany: {
+          args: Prisma.CmsWhyChooseUsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsWhyChooseUsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsWhyChooseUsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        update: {
+          args: Prisma.CmsWhyChooseUsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsWhyChooseUsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsWhyChooseUsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsWhyChooseUsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsWhyChooseUsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsWhyChooseUsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsWhyChooseUs>
+        }
+        groupBy: {
+          args: Prisma.CmsWhyChooseUsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsWhyChooseUsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsWhyChooseUsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsWhyChooseUsCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsWhyChooseUsFeature: {
+      payload: Prisma.$CmsWhyChooseUsFeaturePayload<ExtArgs>
+      fields: Prisma.CmsWhyChooseUsFeatureFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsWhyChooseUsFeatureFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsWhyChooseUsFeatureFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        findFirst: {
+          args: Prisma.CmsWhyChooseUsFeatureFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsWhyChooseUsFeatureFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        findMany: {
+          args: Prisma.CmsWhyChooseUsFeatureFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>[]
+        }
+        create: {
+          args: Prisma.CmsWhyChooseUsFeatureCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        createMany: {
+          args: Prisma.CmsWhyChooseUsFeatureCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsWhyChooseUsFeatureCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>[]
+        }
+        delete: {
+          args: Prisma.CmsWhyChooseUsFeatureDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        update: {
+          args: Prisma.CmsWhyChooseUsFeatureUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsWhyChooseUsFeatureDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsWhyChooseUsFeatureUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsWhyChooseUsFeatureUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsWhyChooseUsFeatureUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsWhyChooseUsFeaturePayload>
+        }
+        aggregate: {
+          args: Prisma.CmsWhyChooseUsFeatureAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsWhyChooseUsFeature>
+        }
+        groupBy: {
+          args: Prisma.CmsWhyChooseUsFeatureGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsWhyChooseUsFeatureGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsWhyChooseUsFeatureCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsWhyChooseUsFeatureCountAggregateOutputType> | number
         }
       }
     }
@@ -1389,6 +1989,112 @@ export const AddonScalarFieldEnum = {
 export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
 
 
+export const CmsContactScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  value: 'value',
+  label: 'label',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsContactScalarFieldEnum = (typeof CmsContactScalarFieldEnum)[keyof typeof CmsContactScalarFieldEnum]
+
+
+export const CmsFaqScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  order: 'order',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsFaqScalarFieldEnum = (typeof CmsFaqScalarFieldEnum)[keyof typeof CmsFaqScalarFieldEnum]
+
+
+export const CmsHeroScalarFieldEnum = {
+  id: 'id',
+  tagline: 'tagline',
+  title: 'title',
+  subtitle: 'subtitle',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsHeroScalarFieldEnum = (typeof CmsHeroScalarFieldEnum)[keyof typeof CmsHeroScalarFieldEnum]
+
+
+export const CmsHeroFeatureScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  order: 'order',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsHeroFeatureScalarFieldEnum = (typeof CmsHeroFeatureScalarFieldEnum)[keyof typeof CmsHeroFeatureScalarFieldEnum]
+
+
+export const CmsPageScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  content: 'content',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsPageScalarFieldEnum = (typeof CmsPageScalarFieldEnum)[keyof typeof CmsPageScalarFieldEnum]
+
+
+export const CmsSocialMediaScalarFieldEnum = {
+  id: 'id',
+  platform: 'platform',
+  url: 'url',
+  isActive: 'isActive',
+  order: 'order',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsSocialMediaScalarFieldEnum = (typeof CmsSocialMediaScalarFieldEnum)[keyof typeof CmsSocialMediaScalarFieldEnum]
+
+
+export const CmsWhyChooseUsScalarFieldEnum = {
+  id: 'id',
+  subtitle: 'subtitle',
+  title: 'title',
+  mainImage: 'mainImage',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsWhyChooseUsScalarFieldEnum = (typeof CmsWhyChooseUsScalarFieldEnum)[keyof typeof CmsWhyChooseUsScalarFieldEnum]
+
+
+export const CmsWhyChooseUsFeatureScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  isActive: 'isActive',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsWhyChooseUsFeatureScalarFieldEnum = (typeof CmsWhyChooseUsFeatureScalarFieldEnum)[keyof typeof CmsWhyChooseUsFeatureScalarFieldEnum]
+
+
 export const ContactMessageScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -1623,20 +2329,6 @@ export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMo
 
 
 /**
- * Reference to a field of type 'ContactStatus'
- */
-export type EnumContactStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactStatus'>
-    
-
-
-/**
- * Reference to a field of type 'ContactStatus[]'
- */
-export type ListEnumContactStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1647,6 +2339,27 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'Int[]'
  */
 export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'ContactStatus'
+ */
+export type EnumContactStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ContactStatus[]'
+ */
+export type ListEnumContactStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ContactStatus[]'>
     
 
 
@@ -1818,6 +2531,14 @@ export type GlobalOmitConfig = {
   blog?: Prisma.BlogOmit
   user?: Prisma.UserOmit
   addon?: Prisma.AddonOmit
+  cmsContact?: Prisma.CmsContactOmit
+  cmsFaq?: Prisma.CmsFaqOmit
+  cmsHero?: Prisma.CmsHeroOmit
+  cmsHeroFeature?: Prisma.CmsHeroFeatureOmit
+  cmsPage?: Prisma.CmsPageOmit
+  cmsSocialMedia?: Prisma.CmsSocialMediaOmit
+  cmsWhyChooseUs?: Prisma.CmsWhyChooseUsOmit
+  cmsWhyChooseUsFeature?: Prisma.CmsWhyChooseUsFeatureOmit
   contactMessage?: Prisma.ContactMessageOmit
   location?: Prisma.LocationOmit
   protectionPackage?: Prisma.ProtectionPackageOmit

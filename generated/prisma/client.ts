@@ -57,6 +57,46 @@ export type User = Prisma.UserModel
  */
 export type Addon = Prisma.AddonModel
 /**
+ * Model CmsContact
+ * 
+ */
+export type CmsContact = Prisma.CmsContactModel
+/**
+ * Model CmsFaq
+ * 
+ */
+export type CmsFaq = Prisma.CmsFaqModel
+/**
+ * Model CmsHero
+ * 
+ */
+export type CmsHero = Prisma.CmsHeroModel
+/**
+ * Model CmsHeroFeature
+ * 
+ */
+export type CmsHeroFeature = Prisma.CmsHeroFeatureModel
+/**
+ * Model CmsPage
+ * 
+ */
+export type CmsPage = Prisma.CmsPageModel
+/**
+ * Model CmsSocialMedia
+ * 
+ */
+export type CmsSocialMedia = Prisma.CmsSocialMediaModel
+/**
+ * Model CmsWhyChooseUs
+ * 
+ */
+export type CmsWhyChooseUs = Prisma.CmsWhyChooseUsModel
+/**
+ * Model CmsWhyChooseUsFeature
+ * 
+ */
+export type CmsWhyChooseUsFeature = Prisma.CmsWhyChooseUsFeatureModel
+/**
  * Model ContactMessage
  * 
  */

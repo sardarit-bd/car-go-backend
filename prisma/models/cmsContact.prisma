@@ -1,0 +1,9 @@
+model CmsContact {
+    id        String    @id @default(uuid())
+    type      String    @unique // "EMAIL", "PHONE", "ADDRESS"
+    value     String
+    label     String?
+    updatedAt DateTime  @updatedAt
+    createdAt DateTime  @default(now())
+    deletedAt DateTime?
+}

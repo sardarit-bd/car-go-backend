@@ -1,0 +1,8 @@
+model CmsPage {
+    id        String    @id @default(uuid())
+    type      String    @unique // "PRIVACY_POLICY" or "TERMS_CONDITIONS"
+    content   String    @db.Text
+    updatedAt DateTime  @updatedAt
+    createdAt DateTime  @default(now())
+    deletedAt DateTime?
+}

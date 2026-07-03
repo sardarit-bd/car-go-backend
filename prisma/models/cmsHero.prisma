@@ -1,0 +1,9 @@
+model CmsHero {
+    id        String    @id @default(uuid())
+    tagline   String? // "FAST, CONVENIENT, SAFE"
+    title     String // "CAR RENTAL CAR GO"
+    subtitle  String    @db.Text // "Always on time, delivered straight to your address."
+    updatedAt DateTime  @updatedAt
+    createdAt DateTime  @default(now())
+    deletedAt DateTime?
+}
