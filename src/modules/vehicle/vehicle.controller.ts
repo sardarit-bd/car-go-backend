@@ -54,7 +54,7 @@ export const updateVehicle = async (
 ): Promise<void> => {
   try {
     const { id } = req.params as { id: string };
-    console.log(req.body);
+
     const files = req.files as Express.Multer.File[] | undefined;
     const result = await vehicleService.updateVehicle(id, req.body, files);
     sendResponse(res, 200, true, "Vehicle updated successfully", result);

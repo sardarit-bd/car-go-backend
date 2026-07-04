@@ -34,7 +34,6 @@ export const createVehicle = async (req, res, next) => {
 export const updateVehicle = async (req, res, next) => {
     try {
         const { id } = req.params;
-        console.log(req.body);
         const files = req.files;
         const result = await vehicleService.updateVehicle(id, req.body, files);
         sendResponse(res, 200, true, "Vehicle updated successfully", result);

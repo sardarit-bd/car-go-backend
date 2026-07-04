@@ -21,7 +21,6 @@ export const createAddon = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    console.log(req.body);
     const result = await addonService.createAddon(req.body);
     sendResponse(res, 201, true, "Addon created successfully", result);
   } catch (error) {

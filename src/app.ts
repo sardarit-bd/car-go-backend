@@ -3,11 +3,11 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { xss } from "express-xss-sanitizer";
-import path from "path"; 
-import cookieParser from "cookie-parser"; 
+import path from "path";
+import cookieParser from "cookie-parser";
 import errorHandler from "./shared/errors/errorHandler";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes";
-import packageRoutes from "./modules/packages/package.routes";    
+import packageRoutes from "./modules/packages/package.routes";
 import addonRoutes from "./modules/addons/addon.routes";
 import locationRoutes from "./modules/locations/location.routes";
 import reservationRoutes from "./modules/reservations/reservation.routes";
@@ -34,7 +34,7 @@ app.use(
 );
 
 app.use(xss());
-app.use(cookieParser()); 
+app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:3000", "http://192.168.0.105:3000"],
@@ -47,14 +47,12 @@ app.use(
   helmet({
     crossOriginEmbedderPolicy: false, // Disable COEP
     crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
-  })
+  }),
 );
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
 app.use(express.json({ limit: "10kb" }));
 
-
 const uploadsPath = path.join(process.cwd(), "uploads");
-console.log(" Serving static images from:", uploadsPath); 
 
 app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req: Request, res: Response) => {

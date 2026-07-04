@@ -11,7 +11,6 @@ export const getAddons = async (req, res, next) => {
 };
 export const createAddon = async (req, res, next) => {
     try {
-        console.log(req.body);
         const result = await addonService.createAddon(req.body);
         sendResponse(res, 201, true, "Addon created successfully", result);
     }

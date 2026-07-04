@@ -43,7 +43,6 @@ app.use(helmet({
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
 app.use(express.json({ limit: "10kb" }));
 const uploadsPath = path.join(process.cwd(), "uploads");
-console.log(" Serving static images from:", uploadsPath);
 app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req, res) => {
     res.send("right endpoint");
