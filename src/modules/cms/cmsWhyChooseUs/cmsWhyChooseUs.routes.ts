@@ -1,6 +1,7 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import validate from "../../../shared/middleware/validate";
+import authMiddleware from "../../../shared/middleware/authMiddleware";
+import upload from "../../../shared/utils/upload"; // <-- Import your multer config
 import {
   createCmsWhyChooseUsSchema,
   updateCmsWhyChooseUsSchema,
@@ -20,6 +21,7 @@ router.use(authMiddleware);
 
 router.post(
   "/",
+  upload.single("mainImage"), // <-- Add multer middleware
   validate(createCmsWhyChooseUsSchema),
   createCmsWhyChooseUs
 );
@@ -35,6 +37,7 @@ router.get(
 router.put(
   "/:id",
   validate(cmsWhyChooseUsParamsSchema, "params"),
+  upload.single("mainImage"), // <-- Add multer middleware
   validate(updateCmsWhyChooseUsSchema),
   updateCmsWhyChooseUs
 );

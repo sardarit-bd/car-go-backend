@@ -15,7 +15,7 @@ export const getCmsHeroService = async () => {
 
 export const getCmsHeroByIdService = async (id: string) => {
   const hero = await cmsHeroRepository.findCmsHeroById(id);
-  if (!hero) {
+if (!hero) {
     throw new AppError("Hero section not found", 404);
   }
   return hero;

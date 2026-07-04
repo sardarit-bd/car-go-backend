@@ -151,8 +151,10 @@ export type CmsContactScalarFieldEnum = (typeof CmsContactScalarFieldEnum)[keyof
 
 export const CmsFaqScalarFieldEnum = {
   id: 'id',
-  question: 'question',
-  answer: 'answer',
+  questionPl: 'questionPl',
+  questionEn: 'questionEn',
+  answerPl: 'answerPl',
+  answerEn: 'answerEn',
   order: 'order',
   isActive: 'isActive',
   createdAt: 'createdAt',
@@ -165,9 +167,12 @@ export type CmsFaqScalarFieldEnum = (typeof CmsFaqScalarFieldEnum)[keyof typeof 
 
 export const CmsHeroScalarFieldEnum = {
   id: 'id',
-  tagline: 'tagline',
-  title: 'title',
-  subtitle: 'subtitle',
+  taglinePl: 'taglinePl',
+  taglineEn: 'taglineEn',
+  titlePl: 'titlePl',
+  titleEn: 'titleEn',
+  subtitlePl: 'subtitlePl',
+  subtitleEn: 'subtitleEn',
   updatedAt: 'updatedAt',
   createdAt: 'createdAt',
   deletedAt: 'deletedAt'
@@ -178,7 +183,8 @@ export type CmsHeroScalarFieldEnum = (typeof CmsHeroScalarFieldEnum)[keyof typeo
 
 export const CmsHeroFeatureScalarFieldEnum = {
   id: 'id',
-  text: 'text',
+  textPl: 'textPl',
+  textEn: 'textEn',
   order: 'order',
   isActive: 'isActive',
   updatedAt: 'updatedAt',
@@ -217,8 +223,10 @@ export type CmsSocialMediaScalarFieldEnum = (typeof CmsSocialMediaScalarFieldEnu
 
 export const CmsWhyChooseUsScalarFieldEnum = {
   id: 'id',
-  subtitle: 'subtitle',
-  title: 'title',
+  subtitlePl: 'subtitlePl',
+  subtitleEn: 'subtitleEn',
+  titlePl: 'titlePl',
+  titleEn: 'titleEn',
   mainImage: 'mainImage',
   updatedAt: 'updatedAt',
   createdAt: 'createdAt',
@@ -230,8 +238,10 @@ export type CmsWhyChooseUsScalarFieldEnum = (typeof CmsWhyChooseUsScalarFieldEnu
 
 export const CmsWhyChooseUsFeatureScalarFieldEnum = {
   id: 'id',
-  title: 'title',
-  description: 'description',
+  titlePl: 'titlePl',
+  titleEn: 'titleEn',
+  descriptionPl: 'descriptionPl',
+  descriptionEn: 'descriptionEn',
   order: 'order',
   isActive: 'isActive',
   updatedAt: 'updatedAt',

@@ -1,0 +1,10 @@
+import { Router } from "express";
+import * as contactController from "./contact.controller";
+import authMiddleware from "../../shared/middleware/authMiddleware";
+import validate from "../../shared/middleware/validate";
+import { createContactSchema, updateContactStatusSchema } from "./contact.validator";
+const router = Router();
+router.post("/", validate(createContactSchema), contactController.createContact);
+router.get("/", authMiddleware, contactController.getAllContacts);
+router.patch("/:id/status", authMiddleware, validate(updateContactStatusSchema), contactController.updateContactStatus);
+export default router;

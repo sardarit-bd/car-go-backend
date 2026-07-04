@@ -5,12 +5,40 @@ export const createCmsContactSchema = yup.object({
     .string()
     .oneOf(["EMAIL", "PHONE", "ADDRESS"], "Invalid contact type")
     .required("Contact type is required"),
-  value: yup.string().required("Value is required"),
+  value: yup
+    .string()
+    .required("Value is required")
+    .test("value-format", "Invalid format for this contact type", function (value) {
+      const { type } = this.parent;
+      if (type === "EMAIL") {
+        // Standard email regex
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+      if (type === "PHONE") {
+        // Allows optional +, digits, spaces, dashes, parentheses. Length 7 to 20.
+        return /^\+?[0-9\s\-()]{7,20}$/.test(value);
+      }
+      return true; // ADDRESS can be any string
+    }),
   label: yup.string().optional(),
 });
 
 export const updateCmsContactSchema = yup.object({
-  value: yup.string().optional(),
+  type: yup.string().oneOf(["EMAIL", "PHONE", "ADDRESS"]).optional(),
+  value: yup
+    .string()
+    .optional()
+    .test("value-format", "Invalid format for this contact type", function (value) {
+      if (!value) return true;
+      const { type } = this.parent;
+      if (type === "EMAIL") {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+      if (type === "PHONE") {
+        return /^\+?[0-9\s\-()]{7,20}$/.test(value);
+      }
+      return true;
+    }),
   label: yup.string().optional(),
 });
 

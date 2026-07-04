@@ -36,8 +36,10 @@ export type CmsWhyChooseUsFeatureSumAggregateOutputType = {
 
 export type CmsWhyChooseUsFeatureMinAggregateOutputType = {
   id: string | null
-  title: string | null
-  description: string | null
+  titlePl: string | null
+  titleEn: string | null
+  descriptionPl: string | null
+  descriptionEn: string | null
   order: number | null
   isActive: boolean | null
   updatedAt: Date | null
@@ -47,8 +49,10 @@ export type CmsWhyChooseUsFeatureMinAggregateOutputType = {
 
 export type CmsWhyChooseUsFeatureMaxAggregateOutputType = {
   id: string | null
-  title: string | null
-  description: string | null
+  titlePl: string | null
+  titleEn: string | null
+  descriptionPl: string | null
+  descriptionEn: string | null
   order: number | null
   isActive: boolean | null
   updatedAt: Date | null
@@ -58,8 +62,10 @@ export type CmsWhyChooseUsFeatureMaxAggregateOutputType = {
 
 export type CmsWhyChooseUsFeatureCountAggregateOutputType = {
   id: number
-  title: number
-  description: number
+  titlePl: number
+  titleEn: number
+  descriptionPl: number
+  descriptionEn: number
   order: number
   isActive: number
   updatedAt: number
@@ -79,8 +85,10 @@ export type CmsWhyChooseUsFeatureSumAggregateInputType = {
 
 export type CmsWhyChooseUsFeatureMinAggregateInputType = {
   id?: true
-  title?: true
-  description?: true
+  titlePl?: true
+  titleEn?: true
+  descriptionPl?: true
+  descriptionEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -90,8 +98,10 @@ export type CmsWhyChooseUsFeatureMinAggregateInputType = {
 
 export type CmsWhyChooseUsFeatureMaxAggregateInputType = {
   id?: true
-  title?: true
-  description?: true
+  titlePl?: true
+  titleEn?: true
+  descriptionPl?: true
+  descriptionEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -101,8 +111,10 @@ export type CmsWhyChooseUsFeatureMaxAggregateInputType = {
 
 export type CmsWhyChooseUsFeatureCountAggregateInputType = {
   id?: true
-  title?: true
-  description?: true
+  titlePl?: true
+  titleEn?: true
+  descriptionPl?: true
+  descriptionEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -199,8 +211,10 @@ export type CmsWhyChooseUsFeatureGroupByArgs<ExtArgs extends runtime.Types.Exten
 
 export type CmsWhyChooseUsFeatureGroupByOutputType = {
   id: string
-  title: string
-  description: string
+  titlePl: string
+  titleEn: string
+  descriptionPl: string
+  descriptionEn: string
   order: number
   isActive: boolean
   updatedAt: Date
@@ -233,8 +247,10 @@ export type CmsWhyChooseUsFeatureWhereInput = {
   OR?: Prisma.CmsWhyChooseUsFeatureWhereInput[]
   NOT?: Prisma.CmsWhyChooseUsFeatureWhereInput | Prisma.CmsWhyChooseUsFeatureWhereInput[]
   id?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
-  title?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
-  description?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  titlePl?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  titleEn?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionPl?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionEn?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
   order?: Prisma.IntFilter<"CmsWhyChooseUsFeature"> | number
   isActive?: Prisma.BoolFilter<"CmsWhyChooseUsFeature"> | boolean
   updatedAt?: Prisma.DateTimeFilter<"CmsWhyChooseUsFeature"> | Date | string
@@ -244,8 +260,10 @@ export type CmsWhyChooseUsFeatureWhereInput = {
 
 export type CmsWhyChooseUsFeatureOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -258,8 +276,10 @@ export type CmsWhyChooseUsFeatureWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsWhyChooseUsFeatureWhereInput | Prisma.CmsWhyChooseUsFeatureWhereInput[]
   OR?: Prisma.CmsWhyChooseUsFeatureWhereInput[]
   NOT?: Prisma.CmsWhyChooseUsFeatureWhereInput | Prisma.CmsWhyChooseUsFeatureWhereInput[]
-  title?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
-  description?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  titlePl?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  titleEn?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionPl?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionEn?: Prisma.StringFilter<"CmsWhyChooseUsFeature"> | string
   order?: Prisma.IntFilter<"CmsWhyChooseUsFeature"> | number
   isActive?: Prisma.BoolFilter<"CmsWhyChooseUsFeature"> | boolean
   updatedAt?: Prisma.DateTimeFilter<"CmsWhyChooseUsFeature"> | Date | string
@@ -269,8 +289,10 @@ export type CmsWhyChooseUsFeatureWhereUniqueInput = Prisma.AtLeast<{
 
 export type CmsWhyChooseUsFeatureOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -288,8 +310,10 @@ export type CmsWhyChooseUsFeatureScalarWhereWithAggregatesInput = {
   OR?: Prisma.CmsWhyChooseUsFeatureScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CmsWhyChooseUsFeatureScalarWhereWithAggregatesInput | Prisma.CmsWhyChooseUsFeatureScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
-  title?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
-  description?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
+  titlePl?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
+  titleEn?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionPl?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
+  descriptionEn?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUsFeature"> | string
   order?: Prisma.IntWithAggregatesFilter<"CmsWhyChooseUsFeature"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"CmsWhyChooseUsFeature"> | boolean
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CmsWhyChooseUsFeature"> | Date | string
@@ -299,8 +323,10 @@ export type CmsWhyChooseUsFeatureScalarWhereWithAggregatesInput = {
 
 export type CmsWhyChooseUsFeatureCreateInput = {
   id?: string
-  title: string
-  description: string
+  titlePl?: string
+  titleEn?: string
+  descriptionPl?: string
+  descriptionEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -310,8 +336,10 @@ export type CmsWhyChooseUsFeatureCreateInput = {
 
 export type CmsWhyChooseUsFeatureUncheckedCreateInput = {
   id?: string
-  title: string
-  description: string
+  titlePl?: string
+  titleEn?: string
+  descriptionPl?: string
+  descriptionEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -321,8 +349,10 @@ export type CmsWhyChooseUsFeatureUncheckedCreateInput = {
 
 export type CmsWhyChooseUsFeatureUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -332,8 +362,10 @@ export type CmsWhyChooseUsFeatureUpdateInput = {
 
 export type CmsWhyChooseUsFeatureUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -343,8 +375,10 @@ export type CmsWhyChooseUsFeatureUncheckedUpdateInput = {
 
 export type CmsWhyChooseUsFeatureCreateManyInput = {
   id?: string
-  title: string
-  description: string
+  titlePl?: string
+  titleEn?: string
+  descriptionPl?: string
+  descriptionEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -354,8 +388,10 @@ export type CmsWhyChooseUsFeatureCreateManyInput = {
 
 export type CmsWhyChooseUsFeatureUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -365,8 +401,10 @@ export type CmsWhyChooseUsFeatureUpdateManyMutationInput = {
 
 export type CmsWhyChooseUsFeatureUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.StringFieldUpdateOperationsInput | string
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -376,8 +414,10 @@ export type CmsWhyChooseUsFeatureUncheckedUpdateManyInput = {
 
 export type CmsWhyChooseUsFeatureCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -391,8 +431,10 @@ export type CmsWhyChooseUsFeatureAvgOrderByAggregateInput = {
 
 export type CmsWhyChooseUsFeatureMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -402,8 +444,10 @@ export type CmsWhyChooseUsFeatureMaxOrderByAggregateInput = {
 
 export type CmsWhyChooseUsFeatureMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -419,8 +463,10 @@ export type CmsWhyChooseUsFeatureSumOrderByAggregateInput = {
 
 export type CmsWhyChooseUsFeatureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  description?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  descriptionPl?: boolean
+  descriptionEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -430,8 +476,10 @@ export type CmsWhyChooseUsFeatureSelect<ExtArgs extends runtime.Types.Extensions
 
 export type CmsWhyChooseUsFeatureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  description?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  descriptionPl?: boolean
+  descriptionEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -441,8 +489,10 @@ export type CmsWhyChooseUsFeatureSelectCreateManyAndReturn<ExtArgs extends runti
 
 export type CmsWhyChooseUsFeatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  title?: boolean
-  description?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  descriptionPl?: boolean
+  descriptionEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -452,8 +502,10 @@ export type CmsWhyChooseUsFeatureSelectUpdateManyAndReturn<ExtArgs extends runti
 
 export type CmsWhyChooseUsFeatureSelectScalar = {
   id?: boolean
-  title?: boolean
-  description?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  descriptionPl?: boolean
+  descriptionEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -461,15 +513,17 @@ export type CmsWhyChooseUsFeatureSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CmsWhyChooseUsFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "order" | "isActive" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsWhyChooseUsFeature"]>
+export type CmsWhyChooseUsFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titlePl" | "titleEn" | "descriptionPl" | "descriptionEn" | "order" | "isActive" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsWhyChooseUsFeature"]>
 
 export type $CmsWhyChooseUsFeaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsWhyChooseUsFeature"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    title: string
-    description: string
+    titlePl: string
+    titleEn: string
+    descriptionPl: string
+    descriptionEn: string
     order: number
     isActive: boolean
     updatedAt: Date
@@ -899,8 +953,10 @@ export interface Prisma__CmsWhyChooseUsFeatureClient<T, Null = never, ExtArgs ex
  */
 export interface CmsWhyChooseUsFeatureFieldRefs {
   readonly id: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
-  readonly title: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
-  readonly description: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
+  readonly titlePl: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
+  readonly titleEn: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
+  readonly descriptionPl: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
+  readonly descriptionEn: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'String'>
   readonly order: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'Int'>
   readonly isActive: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'Boolean'>
   readonly updatedAt: Prisma.FieldRef<"CmsWhyChooseUsFeature", 'DateTime'>

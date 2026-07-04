@@ -1,6 +1,7 @@
 model CmsHeroFeature {
     id        String    @id @default(uuid())
-    text      String
+    textPl    String    @default("")
+    textEn    String    @default("")
     order     Int       @default(0)
     isActive  Boolean   @default(true)
     updatedAt DateTime  @updatedAt

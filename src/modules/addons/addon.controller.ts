@@ -35,7 +35,7 @@ export const updateAddon = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const result = await addonService.updateAddon(id, req.body);
     sendResponse(res, 200, true, "Addon updated successfully", result);
   } catch (error) {
@@ -49,7 +49,7 @@ export const deleteAddon = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     await addonService.deleteAddon(id);
     sendResponse(res, 200, true, "Addon deleted successfully", null);
   } catch (error) {

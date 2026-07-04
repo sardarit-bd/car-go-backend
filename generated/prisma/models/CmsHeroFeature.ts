@@ -36,7 +36,8 @@ export type CmsHeroFeatureSumAggregateOutputType = {
 
 export type CmsHeroFeatureMinAggregateOutputType = {
   id: string | null
-  text: string | null
+  textPl: string | null
+  textEn: string | null
   order: number | null
   isActive: boolean | null
   updatedAt: Date | null
@@ -46,7 +47,8 @@ export type CmsHeroFeatureMinAggregateOutputType = {
 
 export type CmsHeroFeatureMaxAggregateOutputType = {
   id: string | null
-  text: string | null
+  textPl: string | null
+  textEn: string | null
   order: number | null
   isActive: boolean | null
   updatedAt: Date | null
@@ -56,7 +58,8 @@ export type CmsHeroFeatureMaxAggregateOutputType = {
 
 export type CmsHeroFeatureCountAggregateOutputType = {
   id: number
-  text: number
+  textPl: number
+  textEn: number
   order: number
   isActive: number
   updatedAt: number
@@ -76,7 +79,8 @@ export type CmsHeroFeatureSumAggregateInputType = {
 
 export type CmsHeroFeatureMinAggregateInputType = {
   id?: true
-  text?: true
+  textPl?: true
+  textEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -86,7 +90,8 @@ export type CmsHeroFeatureMinAggregateInputType = {
 
 export type CmsHeroFeatureMaxAggregateInputType = {
   id?: true
-  text?: true
+  textPl?: true
+  textEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -96,7 +101,8 @@ export type CmsHeroFeatureMaxAggregateInputType = {
 
 export type CmsHeroFeatureCountAggregateInputType = {
   id?: true
-  text?: true
+  textPl?: true
+  textEn?: true
   order?: true
   isActive?: true
   updatedAt?: true
@@ -193,7 +199,8 @@ export type CmsHeroFeatureGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type CmsHeroFeatureGroupByOutputType = {
   id: string
-  text: string
+  textPl: string
+  textEn: string
   order: number
   isActive: boolean
   updatedAt: Date
@@ -226,7 +233,8 @@ export type CmsHeroFeatureWhereInput = {
   OR?: Prisma.CmsHeroFeatureWhereInput[]
   NOT?: Prisma.CmsHeroFeatureWhereInput | Prisma.CmsHeroFeatureWhereInput[]
   id?: Prisma.StringFilter<"CmsHeroFeature"> | string
-  text?: Prisma.StringFilter<"CmsHeroFeature"> | string
+  textPl?: Prisma.StringFilter<"CmsHeroFeature"> | string
+  textEn?: Prisma.StringFilter<"CmsHeroFeature"> | string
   order?: Prisma.IntFilter<"CmsHeroFeature"> | number
   isActive?: Prisma.BoolFilter<"CmsHeroFeature"> | boolean
   updatedAt?: Prisma.DateTimeFilter<"CmsHeroFeature"> | Date | string
@@ -236,7 +244,8 @@ export type CmsHeroFeatureWhereInput = {
 
 export type CmsHeroFeatureOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  text?: Prisma.SortOrder
+  textPl?: Prisma.SortOrder
+  textEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -249,7 +258,8 @@ export type CmsHeroFeatureWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsHeroFeatureWhereInput | Prisma.CmsHeroFeatureWhereInput[]
   OR?: Prisma.CmsHeroFeatureWhereInput[]
   NOT?: Prisma.CmsHeroFeatureWhereInput | Prisma.CmsHeroFeatureWhereInput[]
-  text?: Prisma.StringFilter<"CmsHeroFeature"> | string
+  textPl?: Prisma.StringFilter<"CmsHeroFeature"> | string
+  textEn?: Prisma.StringFilter<"CmsHeroFeature"> | string
   order?: Prisma.IntFilter<"CmsHeroFeature"> | number
   isActive?: Prisma.BoolFilter<"CmsHeroFeature"> | boolean
   updatedAt?: Prisma.DateTimeFilter<"CmsHeroFeature"> | Date | string
@@ -259,7 +269,8 @@ export type CmsHeroFeatureWhereUniqueInput = Prisma.AtLeast<{
 
 export type CmsHeroFeatureOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  text?: Prisma.SortOrder
+  textPl?: Prisma.SortOrder
+  textEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -277,7 +288,8 @@ export type CmsHeroFeatureScalarWhereWithAggregatesInput = {
   OR?: Prisma.CmsHeroFeatureScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CmsHeroFeatureScalarWhereWithAggregatesInput | Prisma.CmsHeroFeatureScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsHeroFeature"> | string
-  text?: Prisma.StringWithAggregatesFilter<"CmsHeroFeature"> | string
+  textPl?: Prisma.StringWithAggregatesFilter<"CmsHeroFeature"> | string
+  textEn?: Prisma.StringWithAggregatesFilter<"CmsHeroFeature"> | string
   order?: Prisma.IntWithAggregatesFilter<"CmsHeroFeature"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"CmsHeroFeature"> | boolean
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CmsHeroFeature"> | Date | string
@@ -287,7 +299,8 @@ export type CmsHeroFeatureScalarWhereWithAggregatesInput = {
 
 export type CmsHeroFeatureCreateInput = {
   id?: string
-  text: string
+  textPl?: string
+  textEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -297,7 +310,8 @@ export type CmsHeroFeatureCreateInput = {
 
 export type CmsHeroFeatureUncheckedCreateInput = {
   id?: string
-  text: string
+  textPl?: string
+  textEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -307,7 +321,8 @@ export type CmsHeroFeatureUncheckedCreateInput = {
 
 export type CmsHeroFeatureUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  text?: Prisma.StringFieldUpdateOperationsInput | string
+  textPl?: Prisma.StringFieldUpdateOperationsInput | string
+  textEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -317,7 +332,8 @@ export type CmsHeroFeatureUpdateInput = {
 
 export type CmsHeroFeatureUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  text?: Prisma.StringFieldUpdateOperationsInput | string
+  textPl?: Prisma.StringFieldUpdateOperationsInput | string
+  textEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -327,7 +343,8 @@ export type CmsHeroFeatureUncheckedUpdateInput = {
 
 export type CmsHeroFeatureCreateManyInput = {
   id?: string
-  text: string
+  textPl?: string
+  textEn?: string
   order?: number
   isActive?: boolean
   updatedAt?: Date | string
@@ -337,7 +354,8 @@ export type CmsHeroFeatureCreateManyInput = {
 
 export type CmsHeroFeatureUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  text?: Prisma.StringFieldUpdateOperationsInput | string
+  textPl?: Prisma.StringFieldUpdateOperationsInput | string
+  textEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -347,7 +365,8 @@ export type CmsHeroFeatureUpdateManyMutationInput = {
 
 export type CmsHeroFeatureUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  text?: Prisma.StringFieldUpdateOperationsInput | string
+  textPl?: Prisma.StringFieldUpdateOperationsInput | string
+  textEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -357,7 +376,8 @@ export type CmsHeroFeatureUncheckedUpdateManyInput = {
 
 export type CmsHeroFeatureCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  text?: Prisma.SortOrder
+  textPl?: Prisma.SortOrder
+  textEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -371,7 +391,8 @@ export type CmsHeroFeatureAvgOrderByAggregateInput = {
 
 export type CmsHeroFeatureMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  text?: Prisma.SortOrder
+  textPl?: Prisma.SortOrder
+  textEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -381,7 +402,8 @@ export type CmsHeroFeatureMaxOrderByAggregateInput = {
 
 export type CmsHeroFeatureMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  text?: Prisma.SortOrder
+  textPl?: Prisma.SortOrder
+  textEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -397,7 +419,8 @@ export type CmsHeroFeatureSumOrderByAggregateInput = {
 
 export type CmsHeroFeatureSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  text?: boolean
+  textPl?: boolean
+  textEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -407,7 +430,8 @@ export type CmsHeroFeatureSelect<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type CmsHeroFeatureSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  text?: boolean
+  textPl?: boolean
+  textEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -417,7 +441,8 @@ export type CmsHeroFeatureSelectCreateManyAndReturn<ExtArgs extends runtime.Type
 
 export type CmsHeroFeatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  text?: boolean
+  textPl?: boolean
+  textEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -427,7 +452,8 @@ export type CmsHeroFeatureSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
 
 export type CmsHeroFeatureSelectScalar = {
   id?: boolean
-  text?: boolean
+  textPl?: boolean
+  textEn?: boolean
   order?: boolean
   isActive?: boolean
   updatedAt?: boolean
@@ -435,14 +461,15 @@ export type CmsHeroFeatureSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CmsHeroFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "text" | "order" | "isActive" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsHeroFeature"]>
+export type CmsHeroFeatureOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "textPl" | "textEn" | "order" | "isActive" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsHeroFeature"]>
 
 export type $CmsHeroFeaturePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsHeroFeature"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    text: string
+    textPl: string
+    textEn: string
     order: number
     isActive: boolean
     updatedAt: Date
@@ -872,7 +899,8 @@ export interface Prisma__CmsHeroFeatureClient<T, Null = never, ExtArgs extends r
  */
 export interface CmsHeroFeatureFieldRefs {
   readonly id: Prisma.FieldRef<"CmsHeroFeature", 'String'>
-  readonly text: Prisma.FieldRef<"CmsHeroFeature", 'String'>
+  readonly textPl: Prisma.FieldRef<"CmsHeroFeature", 'String'>
+  readonly textEn: Prisma.FieldRef<"CmsHeroFeature", 'String'>
   readonly order: Prisma.FieldRef<"CmsHeroFeature", 'Int'>
   readonly isActive: Prisma.FieldRef<"CmsHeroFeature", 'Boolean'>
   readonly updatedAt: Prisma.FieldRef<"CmsHeroFeature", 'DateTime'>

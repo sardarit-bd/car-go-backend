@@ -9,9 +9,8 @@ export const getVehicles = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    
     const query = req.query as unknown as GetVehiclesQuery;
-    
+
     const result = await getAvailableVehicles(query);
 
     sendResponse(res, 200, true, "Vehicles fetched successfully", result);
@@ -20,14 +19,13 @@ export const getVehicles = async (
   }
 };
 
-
 export const getVehicleById = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const result = await vehicleService.getVehicleById(id);
     sendResponse(res, 200, true, "Vehicle fetched successfully", result);
   } catch (error) {
@@ -55,7 +53,7 @@ export const updateVehicle = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     console.log(req.body);
     const files = req.files as Express.Multer.File[] | undefined;
     const result = await vehicleService.updateVehicle(id, req.body, files);
@@ -71,11 +69,10 @@ export const deleteVehicle = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     await vehicleService.deleteVehicle(id);
     sendResponse(res, 200, true, "Vehicle deleted successfully", null);
   } catch (error) {
     next(error);
   }
 };
-

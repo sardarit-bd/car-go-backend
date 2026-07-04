@@ -1,9 +1,11 @@
 model CmsWhyChooseUs {
-    id        String    @id @default(uuid())
-    subtitle  String? // "Why Choose Us"
-    title     String // "Unmatched quality and service for your needs"
-    mainImage String? // Central car image
-    updatedAt DateTime  @updatedAt
-    createdAt DateTime  @default(now())
-    deletedAt DateTime?
+    id         String    @id @default(uuid())
+    subtitlePl String?
+    subtitleEn String?
+    titlePl    String    @default("")
+    titleEn    String    @default("")
+    mainImage  String?
+    updatedAt  DateTime  @updatedAt
+    createdAt  DateTime  @default(now())
+    deletedAt  DateTime?
 }

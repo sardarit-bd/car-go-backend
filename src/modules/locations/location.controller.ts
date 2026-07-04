@@ -34,7 +34,7 @@ export const updateLocation = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const result = await locationService.updateLocation(id, req.body);
     sendResponse(res, 200, true, "Location updated successfully", result);
   } catch (error) {
@@ -48,7 +48,7 @@ export const deleteLocation = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     await locationService.deleteLocation(id);
     sendResponse(res, 200, true, "Location deleted successfully", null);
   } catch (error) {

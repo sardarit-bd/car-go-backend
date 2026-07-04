@@ -1,0 +1,50 @@
+import * as cmsHeroFeatureService from "./cmsHeroFeature.service";
+import sendResponse from "../../../shared/utils/response";
+export const createCmsHeroFeature = async (req, res, next) => {
+    try {
+        const feature = await cmsHeroFeatureService.createCmsHeroFeatureService(req.body);
+        return sendResponse(res, 201, true, "Hero feature created successfully", feature);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const getAllCmsHeroFeatures = async (req, res, next) => {
+    try {
+        const features = await cmsHeroFeatureService.getAllCmsHeroFeaturesService();
+        return sendResponse(res, 200, true, "Hero features retrieved successfully", features);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const getCmsHeroFeatureById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const feature = await cmsHeroFeatureService.getCmsHeroFeatureByIdService(id);
+        return sendResponse(res, 200, true, "Hero feature retrieved successfully", feature);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const updateCmsHeroFeature = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const feature = await cmsHeroFeatureService.updateCmsHeroFeatureService(id, req.body);
+        return sendResponse(res, 200, true, "Hero feature updated successfully", feature);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const deleteCmsHeroFeature = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        await cmsHeroFeatureService.deleteCmsHeroFeatureService(id);
+        return sendResponse(res, 200, true, "Hero feature deleted successfully", null);
+    }
+    catch (error) {
+        next(error);
+    }
+};

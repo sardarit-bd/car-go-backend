@@ -26,9 +26,12 @@ export type AggregateCmsHero = {
 
 export type CmsHeroMinAggregateOutputType = {
   id: string | null
-  tagline: string | null
-  title: string | null
-  subtitle: string | null
+  taglinePl: string | null
+  taglineEn: string | null
+  titlePl: string | null
+  titleEn: string | null
+  subtitlePl: string | null
+  subtitleEn: string | null
   updatedAt: Date | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -36,9 +39,12 @@ export type CmsHeroMinAggregateOutputType = {
 
 export type CmsHeroMaxAggregateOutputType = {
   id: string | null
-  tagline: string | null
-  title: string | null
-  subtitle: string | null
+  taglinePl: string | null
+  taglineEn: string | null
+  titlePl: string | null
+  titleEn: string | null
+  subtitlePl: string | null
+  subtitleEn: string | null
   updatedAt: Date | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -46,9 +52,12 @@ export type CmsHeroMaxAggregateOutputType = {
 
 export type CmsHeroCountAggregateOutputType = {
   id: number
-  tagline: number
-  title: number
-  subtitle: number
+  taglinePl: number
+  taglineEn: number
+  titlePl: number
+  titleEn: number
+  subtitlePl: number
+  subtitleEn: number
   updatedAt: number
   createdAt: number
   deletedAt: number
@@ -58,9 +67,12 @@ export type CmsHeroCountAggregateOutputType = {
 
 export type CmsHeroMinAggregateInputType = {
   id?: true
-  tagline?: true
-  title?: true
-  subtitle?: true
+  taglinePl?: true
+  taglineEn?: true
+  titlePl?: true
+  titleEn?: true
+  subtitlePl?: true
+  subtitleEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -68,9 +80,12 @@ export type CmsHeroMinAggregateInputType = {
 
 export type CmsHeroMaxAggregateInputType = {
   id?: true
-  tagline?: true
-  title?: true
-  subtitle?: true
+  taglinePl?: true
+  taglineEn?: true
+  titlePl?: true
+  titleEn?: true
+  subtitlePl?: true
+  subtitleEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -78,9 +93,12 @@ export type CmsHeroMaxAggregateInputType = {
 
 export type CmsHeroCountAggregateInputType = {
   id?: true
-  tagline?: true
-  title?: true
-  subtitle?: true
+  taglinePl?: true
+  taglineEn?: true
+  titlePl?: true
+  titleEn?: true
+  subtitlePl?: true
+  subtitleEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -161,9 +179,12 @@ export type CmsHeroGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type CmsHeroGroupByOutputType = {
   id: string
-  tagline: string | null
-  title: string
-  subtitle: string
+  taglinePl: string | null
+  taglineEn: string | null
+  titlePl: string
+  titleEn: string
+  subtitlePl: string
+  subtitleEn: string
   updatedAt: Date
   createdAt: Date
   deletedAt: Date | null
@@ -192,9 +213,12 @@ export type CmsHeroWhereInput = {
   OR?: Prisma.CmsHeroWhereInput[]
   NOT?: Prisma.CmsHeroWhereInput | Prisma.CmsHeroWhereInput[]
   id?: Prisma.StringFilter<"CmsHero"> | string
-  tagline?: Prisma.StringNullableFilter<"CmsHero"> | string | null
-  title?: Prisma.StringFilter<"CmsHero"> | string
-  subtitle?: Prisma.StringFilter<"CmsHero"> | string
+  taglinePl?: Prisma.StringNullableFilter<"CmsHero"> | string | null
+  taglineEn?: Prisma.StringNullableFilter<"CmsHero"> | string | null
+  titlePl?: Prisma.StringFilter<"CmsHero"> | string
+  titleEn?: Prisma.StringFilter<"CmsHero"> | string
+  subtitlePl?: Prisma.StringFilter<"CmsHero"> | string
+  subtitleEn?: Prisma.StringFilter<"CmsHero"> | string
   updatedAt?: Prisma.DateTimeFilter<"CmsHero"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsHero"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"CmsHero"> | Date | string | null
@@ -202,9 +226,12 @@ export type CmsHeroWhereInput = {
 
 export type CmsHeroOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  tagline?: Prisma.SortOrderInput | Prisma.SortOrder
-  title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
+  taglinePl?: Prisma.SortOrderInput | Prisma.SortOrder
+  taglineEn?: Prisma.SortOrderInput | Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -215,9 +242,12 @@ export type CmsHeroWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsHeroWhereInput | Prisma.CmsHeroWhereInput[]
   OR?: Prisma.CmsHeroWhereInput[]
   NOT?: Prisma.CmsHeroWhereInput | Prisma.CmsHeroWhereInput[]
-  tagline?: Prisma.StringNullableFilter<"CmsHero"> | string | null
-  title?: Prisma.StringFilter<"CmsHero"> | string
-  subtitle?: Prisma.StringFilter<"CmsHero"> | string
+  taglinePl?: Prisma.StringNullableFilter<"CmsHero"> | string | null
+  taglineEn?: Prisma.StringNullableFilter<"CmsHero"> | string | null
+  titlePl?: Prisma.StringFilter<"CmsHero"> | string
+  titleEn?: Prisma.StringFilter<"CmsHero"> | string
+  subtitlePl?: Prisma.StringFilter<"CmsHero"> | string
+  subtitleEn?: Prisma.StringFilter<"CmsHero"> | string
   updatedAt?: Prisma.DateTimeFilter<"CmsHero"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsHero"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"CmsHero"> | Date | string | null
@@ -225,9 +255,12 @@ export type CmsHeroWhereUniqueInput = Prisma.AtLeast<{
 
 export type CmsHeroOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  tagline?: Prisma.SortOrderInput | Prisma.SortOrder
-  title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
+  taglinePl?: Prisma.SortOrderInput | Prisma.SortOrder
+  taglineEn?: Prisma.SortOrderInput | Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -241,9 +274,12 @@ export type CmsHeroScalarWhereWithAggregatesInput = {
   OR?: Prisma.CmsHeroScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CmsHeroScalarWhereWithAggregatesInput | Prisma.CmsHeroScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
-  tagline?: Prisma.StringNullableWithAggregatesFilter<"CmsHero"> | string | null
-  title?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
-  subtitle?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
+  taglinePl?: Prisma.StringNullableWithAggregatesFilter<"CmsHero"> | string | null
+  taglineEn?: Prisma.StringNullableWithAggregatesFilter<"CmsHero"> | string | null
+  titlePl?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
+  titleEn?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
+  subtitlePl?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
+  subtitleEn?: Prisma.StringWithAggregatesFilter<"CmsHero"> | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CmsHero"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CmsHero"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CmsHero"> | Date | string | null
@@ -251,9 +287,12 @@ export type CmsHeroScalarWhereWithAggregatesInput = {
 
 export type CmsHeroCreateInput = {
   id?: string
-  tagline?: string | null
-  title: string
-  subtitle: string
+  taglinePl?: string | null
+  taglineEn?: string | null
+  titlePl?: string
+  titleEn?: string
+  subtitlePl?: string
+  subtitleEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -261,9 +300,12 @@ export type CmsHeroCreateInput = {
 
 export type CmsHeroUncheckedCreateInput = {
   id?: string
-  tagline?: string | null
-  title: string
-  subtitle: string
+  taglinePl?: string | null
+  taglineEn?: string | null
+  titlePl?: string
+  titleEn?: string
+  subtitlePl?: string
+  subtitleEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -271,9 +313,12 @@ export type CmsHeroUncheckedCreateInput = {
 
 export type CmsHeroUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  taglinePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taglineEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitleEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -281,9 +326,12 @@ export type CmsHeroUpdateInput = {
 
 export type CmsHeroUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  taglinePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taglineEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitleEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -291,9 +339,12 @@ export type CmsHeroUncheckedUpdateInput = {
 
 export type CmsHeroCreateManyInput = {
   id?: string
-  tagline?: string | null
-  title: string
-  subtitle: string
+  taglinePl?: string | null
+  taglineEn?: string | null
+  titlePl?: string
+  titleEn?: string
+  subtitlePl?: string
+  subtitleEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -301,9 +352,12 @@ export type CmsHeroCreateManyInput = {
 
 export type CmsHeroUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  taglinePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taglineEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitleEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -311,9 +365,12 @@ export type CmsHeroUpdateManyMutationInput = {
 
 export type CmsHeroUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  tagline?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.StringFieldUpdateOperationsInput | string
+  taglinePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  taglineEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitleEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -321,9 +378,12 @@ export type CmsHeroUncheckedUpdateManyInput = {
 
 export type CmsHeroCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tagline?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
+  taglinePl?: Prisma.SortOrder
+  taglineEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -331,9 +391,12 @@ export type CmsHeroCountOrderByAggregateInput = {
 
 export type CmsHeroMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tagline?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
+  taglinePl?: Prisma.SortOrder
+  taglineEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -341,9 +404,12 @@ export type CmsHeroMaxOrderByAggregateInput = {
 
 export type CmsHeroMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  tagline?: Prisma.SortOrder
-  title?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
+  taglinePl?: Prisma.SortOrder
+  taglineEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -353,9 +419,12 @@ export type CmsHeroMinOrderByAggregateInput = {
 
 export type CmsHeroSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tagline?: boolean
-  title?: boolean
-  subtitle?: boolean
+  taglinePl?: boolean
+  taglineEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -363,9 +432,12 @@ export type CmsHeroSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type CmsHeroSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tagline?: boolean
-  title?: boolean
-  subtitle?: boolean
+  taglinePl?: boolean
+  taglineEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -373,9 +445,12 @@ export type CmsHeroSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type CmsHeroSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  tagline?: boolean
-  title?: boolean
-  subtitle?: boolean
+  taglinePl?: boolean
+  taglineEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -383,24 +458,30 @@ export type CmsHeroSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type CmsHeroSelectScalar = {
   id?: boolean
-  tagline?: boolean
-  title?: boolean
-  subtitle?: boolean
+  taglinePl?: boolean
+  taglineEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
 }
 
-export type CmsHeroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tagline" | "title" | "subtitle" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsHero"]>
+export type CmsHeroOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "taglinePl" | "taglineEn" | "titlePl" | "titleEn" | "subtitlePl" | "subtitleEn" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsHero"]>
 
 export type $CmsHeroPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsHero"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    tagline: string | null
-    title: string
-    subtitle: string
+    taglinePl: string | null
+    taglineEn: string | null
+    titlePl: string
+    titleEn: string
+    subtitlePl: string
+    subtitleEn: string
     updatedAt: Date
     createdAt: Date
     deletedAt: Date | null
@@ -828,9 +909,12 @@ export interface Prisma__CmsHeroClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface CmsHeroFieldRefs {
   readonly id: Prisma.FieldRef<"CmsHero", 'String'>
-  readonly tagline: Prisma.FieldRef<"CmsHero", 'String'>
-  readonly title: Prisma.FieldRef<"CmsHero", 'String'>
-  readonly subtitle: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly taglinePl: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly taglineEn: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly titlePl: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly titleEn: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly subtitlePl: Prisma.FieldRef<"CmsHero", 'String'>
+  readonly subtitleEn: Prisma.FieldRef<"CmsHero", 'String'>
   readonly updatedAt: Prisma.FieldRef<"CmsHero", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"CmsHero", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"CmsHero", 'DateTime'>

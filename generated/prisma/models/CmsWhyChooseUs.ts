@@ -26,8 +26,10 @@ export type AggregateCmsWhyChooseUs = {
 
 export type CmsWhyChooseUsMinAggregateOutputType = {
   id: string | null
-  subtitle: string | null
-  title: string | null
+  subtitlePl: string | null
+  subtitleEn: string | null
+  titlePl: string | null
+  titleEn: string | null
   mainImage: string | null
   updatedAt: Date | null
   createdAt: Date | null
@@ -36,8 +38,10 @@ export type CmsWhyChooseUsMinAggregateOutputType = {
 
 export type CmsWhyChooseUsMaxAggregateOutputType = {
   id: string | null
-  subtitle: string | null
-  title: string | null
+  subtitlePl: string | null
+  subtitleEn: string | null
+  titlePl: string | null
+  titleEn: string | null
   mainImage: string | null
   updatedAt: Date | null
   createdAt: Date | null
@@ -46,8 +50,10 @@ export type CmsWhyChooseUsMaxAggregateOutputType = {
 
 export type CmsWhyChooseUsCountAggregateOutputType = {
   id: number
-  subtitle: number
-  title: number
+  subtitlePl: number
+  subtitleEn: number
+  titlePl: number
+  titleEn: number
   mainImage: number
   updatedAt: number
   createdAt: number
@@ -58,8 +64,10 @@ export type CmsWhyChooseUsCountAggregateOutputType = {
 
 export type CmsWhyChooseUsMinAggregateInputType = {
   id?: true
-  subtitle?: true
-  title?: true
+  subtitlePl?: true
+  subtitleEn?: true
+  titlePl?: true
+  titleEn?: true
   mainImage?: true
   updatedAt?: true
   createdAt?: true
@@ -68,8 +76,10 @@ export type CmsWhyChooseUsMinAggregateInputType = {
 
 export type CmsWhyChooseUsMaxAggregateInputType = {
   id?: true
-  subtitle?: true
-  title?: true
+  subtitlePl?: true
+  subtitleEn?: true
+  titlePl?: true
+  titleEn?: true
   mainImage?: true
   updatedAt?: true
   createdAt?: true
@@ -78,8 +88,10 @@ export type CmsWhyChooseUsMaxAggregateInputType = {
 
 export type CmsWhyChooseUsCountAggregateInputType = {
   id?: true
-  subtitle?: true
-  title?: true
+  subtitlePl?: true
+  subtitleEn?: true
+  titlePl?: true
+  titleEn?: true
   mainImage?: true
   updatedAt?: true
   createdAt?: true
@@ -161,8 +173,10 @@ export type CmsWhyChooseUsGroupByArgs<ExtArgs extends runtime.Types.Extensions.I
 
 export type CmsWhyChooseUsGroupByOutputType = {
   id: string
-  subtitle: string | null
-  title: string
+  subtitlePl: string | null
+  subtitleEn: string | null
+  titlePl: string
+  titleEn: string
   mainImage: string | null
   updatedAt: Date
   createdAt: Date
@@ -192,8 +206,10 @@ export type CmsWhyChooseUsWhereInput = {
   OR?: Prisma.CmsWhyChooseUsWhereInput[]
   NOT?: Prisma.CmsWhyChooseUsWhereInput | Prisma.CmsWhyChooseUsWhereInput[]
   id?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
-  subtitle?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
-  title?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
+  subtitlePl?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
+  subtitleEn?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
+  titlePl?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
+  titleEn?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
   mainImage?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"CmsWhyChooseUs"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsWhyChooseUs"> | Date | string
@@ -202,8 +218,10 @@ export type CmsWhyChooseUsWhereInput = {
 
 export type CmsWhyChooseUsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
-  title?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrderInput | Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrderInput | Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -215,8 +233,10 @@ export type CmsWhyChooseUsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsWhyChooseUsWhereInput | Prisma.CmsWhyChooseUsWhereInput[]
   OR?: Prisma.CmsWhyChooseUsWhereInput[]
   NOT?: Prisma.CmsWhyChooseUsWhereInput | Prisma.CmsWhyChooseUsWhereInput[]
-  subtitle?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
-  title?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
+  subtitlePl?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
+  subtitleEn?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
+  titlePl?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
+  titleEn?: Prisma.StringFilter<"CmsWhyChooseUs"> | string
   mainImage?: Prisma.StringNullableFilter<"CmsWhyChooseUs"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"CmsWhyChooseUs"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsWhyChooseUs"> | Date | string
@@ -225,8 +245,10 @@ export type CmsWhyChooseUsWhereUniqueInput = Prisma.AtLeast<{
 
 export type CmsWhyChooseUsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrderInput | Prisma.SortOrder
-  title?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrderInput | Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrderInput | Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -241,8 +263,10 @@ export type CmsWhyChooseUsScalarWhereWithAggregatesInput = {
   OR?: Prisma.CmsWhyChooseUsScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CmsWhyChooseUsScalarWhereWithAggregatesInput | Prisma.CmsWhyChooseUsScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUs"> | string
-  subtitle?: Prisma.StringNullableWithAggregatesFilter<"CmsWhyChooseUs"> | string | null
-  title?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUs"> | string
+  subtitlePl?: Prisma.StringNullableWithAggregatesFilter<"CmsWhyChooseUs"> | string | null
+  subtitleEn?: Prisma.StringNullableWithAggregatesFilter<"CmsWhyChooseUs"> | string | null
+  titlePl?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUs"> | string
+  titleEn?: Prisma.StringWithAggregatesFilter<"CmsWhyChooseUs"> | string
   mainImage?: Prisma.StringNullableWithAggregatesFilter<"CmsWhyChooseUs"> | string | null
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CmsWhyChooseUs"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CmsWhyChooseUs"> | Date | string
@@ -251,8 +275,10 @@ export type CmsWhyChooseUsScalarWhereWithAggregatesInput = {
 
 export type CmsWhyChooseUsCreateInput = {
   id?: string
-  subtitle?: string | null
-  title: string
+  subtitlePl?: string | null
+  subtitleEn?: string | null
+  titlePl?: string
+  titleEn?: string
   mainImage?: string | null
   updatedAt?: Date | string
   createdAt?: Date | string
@@ -261,8 +287,10 @@ export type CmsWhyChooseUsCreateInput = {
 
 export type CmsWhyChooseUsUncheckedCreateInput = {
   id?: string
-  subtitle?: string | null
-  title: string
+  subtitlePl?: string | null
+  subtitleEn?: string | null
+  titlePl?: string
+  titleEn?: string
   mainImage?: string | null
   updatedAt?: Date | string
   createdAt?: Date | string
@@ -271,8 +299,10 @@ export type CmsWhyChooseUsUncheckedCreateInput = {
 
 export type CmsWhyChooseUsUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtitleEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
   mainImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -281,8 +311,10 @@ export type CmsWhyChooseUsUpdateInput = {
 
 export type CmsWhyChooseUsUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtitleEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
   mainImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -291,8 +323,10 @@ export type CmsWhyChooseUsUncheckedUpdateInput = {
 
 export type CmsWhyChooseUsCreateManyInput = {
   id?: string
-  subtitle?: string | null
-  title: string
+  subtitlePl?: string | null
+  subtitleEn?: string | null
+  titlePl?: string
+  titleEn?: string
   mainImage?: string | null
   updatedAt?: Date | string
   createdAt?: Date | string
@@ -301,8 +335,10 @@ export type CmsWhyChooseUsCreateManyInput = {
 
 export type CmsWhyChooseUsUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtitleEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
   mainImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -311,8 +347,10 @@ export type CmsWhyChooseUsUpdateManyMutationInput = {
 
 export type CmsWhyChooseUsUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  subtitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  title?: Prisma.StringFieldUpdateOperationsInput | string
+  subtitlePl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtitleEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  titlePl?: Prisma.StringFieldUpdateOperationsInput | string
+  titleEn?: Prisma.StringFieldUpdateOperationsInput | string
   mainImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -321,8 +359,10 @@ export type CmsWhyChooseUsUncheckedUpdateManyInput = {
 
 export type CmsWhyChooseUsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -331,8 +371,10 @@ export type CmsWhyChooseUsCountOrderByAggregateInput = {
 
 export type CmsWhyChooseUsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -341,8 +383,10 @@ export type CmsWhyChooseUsMaxOrderByAggregateInput = {
 
 export type CmsWhyChooseUsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  subtitle?: Prisma.SortOrder
-  title?: Prisma.SortOrder
+  subtitlePl?: Prisma.SortOrder
+  subtitleEn?: Prisma.SortOrder
+  titlePl?: Prisma.SortOrder
+  titleEn?: Prisma.SortOrder
   mainImage?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -353,8 +397,10 @@ export type CmsWhyChooseUsMinOrderByAggregateInput = {
 
 export type CmsWhyChooseUsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  subtitle?: boolean
-  title?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
   mainImage?: boolean
   updatedAt?: boolean
   createdAt?: boolean
@@ -363,8 +409,10 @@ export type CmsWhyChooseUsSelect<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type CmsWhyChooseUsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  subtitle?: boolean
-  title?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
   mainImage?: boolean
   updatedAt?: boolean
   createdAt?: boolean
@@ -373,8 +421,10 @@ export type CmsWhyChooseUsSelectCreateManyAndReturn<ExtArgs extends runtime.Type
 
 export type CmsWhyChooseUsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  subtitle?: boolean
-  title?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
   mainImage?: boolean
   updatedAt?: boolean
   createdAt?: boolean
@@ -383,23 +433,27 @@ export type CmsWhyChooseUsSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
 
 export type CmsWhyChooseUsSelectScalar = {
   id?: boolean
-  subtitle?: boolean
-  title?: boolean
+  subtitlePl?: boolean
+  subtitleEn?: boolean
+  titlePl?: boolean
+  titleEn?: boolean
   mainImage?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
 }
 
-export type CmsWhyChooseUsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "subtitle" | "title" | "mainImage" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsWhyChooseUs"]>
+export type CmsWhyChooseUsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "subtitlePl" | "subtitleEn" | "titlePl" | "titleEn" | "mainImage" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsWhyChooseUs"]>
 
 export type $CmsWhyChooseUsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsWhyChooseUs"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    subtitle: string | null
-    title: string
+    subtitlePl: string | null
+    subtitleEn: string | null
+    titlePl: string
+    titleEn: string
     mainImage: string | null
     updatedAt: Date
     createdAt: Date
@@ -828,8 +882,10 @@ export interface Prisma__CmsWhyChooseUsClient<T, Null = never, ExtArgs extends r
  */
 export interface CmsWhyChooseUsFieldRefs {
   readonly id: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
-  readonly subtitle: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
-  readonly title: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
+  readonly subtitlePl: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
+  readonly subtitleEn: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
+  readonly titlePl: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
+  readonly titleEn: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
   readonly mainImage: Prisma.FieldRef<"CmsWhyChooseUs", 'String'>
   readonly updatedAt: Prisma.FieldRef<"CmsWhyChooseUs", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"CmsWhyChooseUs", 'DateTime'>

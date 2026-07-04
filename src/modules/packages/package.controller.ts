@@ -34,7 +34,7 @@ export const updatePackage = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     const result = await packageService.updatePackage(id, req.body);
     sendResponse(res, 200, true, "Package updated successfully", result);
   } catch (error) {
@@ -48,7 +48,7 @@ export const deletePackage = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const { id } = req.params as { id: string };
     await packageService.deletePackage(id);
     sendResponse(res, 200, true, "Package deleted successfully", null);
   } catch (error) {

@@ -2,7 +2,10 @@ import { reviewRepository } from "./review.repository";
 import AppError from "../../shared/utils/AppError";
 
 export const reviewService = {
-  createReview: async (userId: string, payload: { rating: number; comment: string }) => {
+  createReview: async (
+    userId: string,
+    payload: { rating: number; comment: string },
+  ) => {
     return reviewRepository.create({
       userId,
       rating: payload.rating,
@@ -19,7 +22,11 @@ export const reviewService = {
     };
   },
 
-  getAdminReviews: async (page: number = 1, limit: number = 10, status?: string) => {
+  getAdminReviews: async (
+    page: number = 1,
+    limit: number = 10,
+    status?: string,
+  ) => {
     const reviews = await reviewRepository.findAllForAdmin(page, limit, status);
     const total = await reviewRepository.countAllForAdmin(status);
     return {
@@ -28,17 +35,20 @@ export const reviewService = {
     };
   },
 
-  updateReviewStatus: async (reviewId: string, status: "APPROVED" | "REJECTED") => {
+  updateReviewStatus: async (
+    reviewId: string,
+    status: "APPROVED" | "REJECTED",
+  ) => {
     const review = await reviewRepository.findById(reviewId);
-    if (!review) throw new AppError(404, "Review not found or already deleted");
-    
+    if (!review) throw new AppError("Review not found or already deleted", 404);
+
     return reviewRepository.updateStatus(reviewId, status);
   },
 
   deleteReview: async (reviewId: string) => {
     const review = await reviewRepository.findById(reviewId);
-    if (!review) throw new AppError(404, "Review not found or already deleted");
-    
+    if (!review) throw new AppError("Review not found or already deleted", 404);
+
     return reviewRepository.softDelete(reviewId);
   },
 };

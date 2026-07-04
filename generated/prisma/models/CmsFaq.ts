@@ -36,8 +36,10 @@ export type CmsFaqSumAggregateOutputType = {
 
 export type CmsFaqMinAggregateOutputType = {
   id: string | null
-  question: string | null
-  answer: string | null
+  questionPl: string | null
+  questionEn: string | null
+  answerPl: string | null
+  answerEn: string | null
   order: number | null
   isActive: boolean | null
   createdAt: Date | null
@@ -47,8 +49,10 @@ export type CmsFaqMinAggregateOutputType = {
 
 export type CmsFaqMaxAggregateOutputType = {
   id: string | null
-  question: string | null
-  answer: string | null
+  questionPl: string | null
+  questionEn: string | null
+  answerPl: string | null
+  answerEn: string | null
   order: number | null
   isActive: boolean | null
   createdAt: Date | null
@@ -58,8 +62,10 @@ export type CmsFaqMaxAggregateOutputType = {
 
 export type CmsFaqCountAggregateOutputType = {
   id: number
-  question: number
-  answer: number
+  questionPl: number
+  questionEn: number
+  answerPl: number
+  answerEn: number
   order: number
   isActive: number
   createdAt: number
@@ -79,8 +85,10 @@ export type CmsFaqSumAggregateInputType = {
 
 export type CmsFaqMinAggregateInputType = {
   id?: true
-  question?: true
-  answer?: true
+  questionPl?: true
+  questionEn?: true
+  answerPl?: true
+  answerEn?: true
   order?: true
   isActive?: true
   createdAt?: true
@@ -90,8 +98,10 @@ export type CmsFaqMinAggregateInputType = {
 
 export type CmsFaqMaxAggregateInputType = {
   id?: true
-  question?: true
-  answer?: true
+  questionPl?: true
+  questionEn?: true
+  answerPl?: true
+  answerEn?: true
   order?: true
   isActive?: true
   createdAt?: true
@@ -101,8 +111,10 @@ export type CmsFaqMaxAggregateInputType = {
 
 export type CmsFaqCountAggregateInputType = {
   id?: true
-  question?: true
-  answer?: true
+  questionPl?: true
+  questionEn?: true
+  answerPl?: true
+  answerEn?: true
   order?: true
   isActive?: true
   createdAt?: true
@@ -199,8 +211,10 @@ export type CmsFaqGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 
 export type CmsFaqGroupByOutputType = {
   id: string
-  question: string
-  answer: string
+  questionPl: string
+  questionEn: string
+  answerPl: string
+  answerEn: string
   order: number
   isActive: boolean
   createdAt: Date
@@ -233,8 +247,10 @@ export type CmsFaqWhereInput = {
   OR?: Prisma.CmsFaqWhereInput[]
   NOT?: Prisma.CmsFaqWhereInput | Prisma.CmsFaqWhereInput[]
   id?: Prisma.StringFilter<"CmsFaq"> | string
-  question?: Prisma.StringFilter<"CmsFaq"> | string
-  answer?: Prisma.StringFilter<"CmsFaq"> | string
+  questionPl?: Prisma.StringFilter<"CmsFaq"> | string
+  questionEn?: Prisma.StringFilter<"CmsFaq"> | string
+  answerPl?: Prisma.StringFilter<"CmsFaq"> | string
+  answerEn?: Prisma.StringFilter<"CmsFaq"> | string
   order?: Prisma.IntFilter<"CmsFaq"> | number
   isActive?: Prisma.BoolFilter<"CmsFaq"> | boolean
   createdAt?: Prisma.DateTimeFilter<"CmsFaq"> | Date | string
@@ -244,8 +260,10 @@ export type CmsFaqWhereInput = {
 
 export type CmsFaqOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  question?: Prisma.SortOrder
-  answer?: Prisma.SortOrder
+  questionPl?: Prisma.SortOrder
+  questionEn?: Prisma.SortOrder
+  answerPl?: Prisma.SortOrder
+  answerEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -258,8 +276,10 @@ export type CmsFaqWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsFaqWhereInput | Prisma.CmsFaqWhereInput[]
   OR?: Prisma.CmsFaqWhereInput[]
   NOT?: Prisma.CmsFaqWhereInput | Prisma.CmsFaqWhereInput[]
-  question?: Prisma.StringFilter<"CmsFaq"> | string
-  answer?: Prisma.StringFilter<"CmsFaq"> | string
+  questionPl?: Prisma.StringFilter<"CmsFaq"> | string
+  questionEn?: Prisma.StringFilter<"CmsFaq"> | string
+  answerPl?: Prisma.StringFilter<"CmsFaq"> | string
+  answerEn?: Prisma.StringFilter<"CmsFaq"> | string
   order?: Prisma.IntFilter<"CmsFaq"> | number
   isActive?: Prisma.BoolFilter<"CmsFaq"> | boolean
   createdAt?: Prisma.DateTimeFilter<"CmsFaq"> | Date | string
@@ -269,8 +289,10 @@ export type CmsFaqWhereUniqueInput = Prisma.AtLeast<{
 
 export type CmsFaqOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  question?: Prisma.SortOrder
-  answer?: Prisma.SortOrder
+  questionPl?: Prisma.SortOrder
+  questionEn?: Prisma.SortOrder
+  answerPl?: Prisma.SortOrder
+  answerEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -288,8 +310,10 @@ export type CmsFaqScalarWhereWithAggregatesInput = {
   OR?: Prisma.CmsFaqScalarWhereWithAggregatesInput[]
   NOT?: Prisma.CmsFaqScalarWhereWithAggregatesInput | Prisma.CmsFaqScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
-  question?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
-  answer?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
+  questionPl?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
+  questionEn?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
+  answerPl?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
+  answerEn?: Prisma.StringWithAggregatesFilter<"CmsFaq"> | string
   order?: Prisma.IntWithAggregatesFilter<"CmsFaq"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"CmsFaq"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CmsFaq"> | Date | string
@@ -299,8 +323,10 @@ export type CmsFaqScalarWhereWithAggregatesInput = {
 
 export type CmsFaqCreateInput = {
   id?: string
-  question: string
-  answer: string
+  questionPl?: string
+  questionEn?: string
+  answerPl?: string
+  answerEn?: string
   order?: number
   isActive?: boolean
   createdAt?: Date | string
@@ -310,8 +336,10 @@ export type CmsFaqCreateInput = {
 
 export type CmsFaqUncheckedCreateInput = {
   id?: string
-  question: string
-  answer: string
+  questionPl?: string
+  questionEn?: string
+  answerPl?: string
+  answerEn?: string
   order?: number
   isActive?: boolean
   createdAt?: Date | string
@@ -321,8 +349,10 @@ export type CmsFaqUncheckedCreateInput = {
 
 export type CmsFaqUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  question?: Prisma.StringFieldUpdateOperationsInput | string
-  answer?: Prisma.StringFieldUpdateOperationsInput | string
+  questionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  questionEn?: Prisma.StringFieldUpdateOperationsInput | string
+  answerPl?: Prisma.StringFieldUpdateOperationsInput | string
+  answerEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -332,8 +362,10 @@ export type CmsFaqUpdateInput = {
 
 export type CmsFaqUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  question?: Prisma.StringFieldUpdateOperationsInput | string
-  answer?: Prisma.StringFieldUpdateOperationsInput | string
+  questionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  questionEn?: Prisma.StringFieldUpdateOperationsInput | string
+  answerPl?: Prisma.StringFieldUpdateOperationsInput | string
+  answerEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -343,8 +375,10 @@ export type CmsFaqUncheckedUpdateInput = {
 
 export type CmsFaqCreateManyInput = {
   id?: string
-  question: string
-  answer: string
+  questionPl?: string
+  questionEn?: string
+  answerPl?: string
+  answerEn?: string
   order?: number
   isActive?: boolean
   createdAt?: Date | string
@@ -354,8 +388,10 @@ export type CmsFaqCreateManyInput = {
 
 export type CmsFaqUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  question?: Prisma.StringFieldUpdateOperationsInput | string
-  answer?: Prisma.StringFieldUpdateOperationsInput | string
+  questionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  questionEn?: Prisma.StringFieldUpdateOperationsInput | string
+  answerPl?: Prisma.StringFieldUpdateOperationsInput | string
+  answerEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -365,8 +401,10 @@ export type CmsFaqUpdateManyMutationInput = {
 
 export type CmsFaqUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  question?: Prisma.StringFieldUpdateOperationsInput | string
-  answer?: Prisma.StringFieldUpdateOperationsInput | string
+  questionPl?: Prisma.StringFieldUpdateOperationsInput | string
+  questionEn?: Prisma.StringFieldUpdateOperationsInput | string
+  answerPl?: Prisma.StringFieldUpdateOperationsInput | string
+  answerEn?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -376,8 +414,10 @@ export type CmsFaqUncheckedUpdateManyInput = {
 
 export type CmsFaqCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  question?: Prisma.SortOrder
-  answer?: Prisma.SortOrder
+  questionPl?: Prisma.SortOrder
+  questionEn?: Prisma.SortOrder
+  answerPl?: Prisma.SortOrder
+  answerEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -391,8 +431,10 @@ export type CmsFaqAvgOrderByAggregateInput = {
 
 export type CmsFaqMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  question?: Prisma.SortOrder
-  answer?: Prisma.SortOrder
+  questionPl?: Prisma.SortOrder
+  questionEn?: Prisma.SortOrder
+  answerPl?: Prisma.SortOrder
+  answerEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -402,8 +444,10 @@ export type CmsFaqMaxOrderByAggregateInput = {
 
 export type CmsFaqMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  question?: Prisma.SortOrder
-  answer?: Prisma.SortOrder
+  questionPl?: Prisma.SortOrder
+  questionEn?: Prisma.SortOrder
+  answerPl?: Prisma.SortOrder
+  answerEn?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -431,8 +475,10 @@ export type BoolFieldUpdateOperationsInput = {
 
 export type CmsFaqSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  question?: boolean
-  answer?: boolean
+  questionPl?: boolean
+  questionEn?: boolean
+  answerPl?: boolean
+  answerEn?: boolean
   order?: boolean
   isActive?: boolean
   createdAt?: boolean
@@ -442,8 +488,10 @@ export type CmsFaqSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
 
 export type CmsFaqSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  question?: boolean
-  answer?: boolean
+  questionPl?: boolean
+  questionEn?: boolean
+  answerPl?: boolean
+  answerEn?: boolean
   order?: boolean
   isActive?: boolean
   createdAt?: boolean
@@ -453,8 +501,10 @@ export type CmsFaqSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type CmsFaqSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  question?: boolean
-  answer?: boolean
+  questionPl?: boolean
+  questionEn?: boolean
+  answerPl?: boolean
+  answerEn?: boolean
   order?: boolean
   isActive?: boolean
   createdAt?: boolean
@@ -464,8 +514,10 @@ export type CmsFaqSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 
 export type CmsFaqSelectScalar = {
   id?: boolean
-  question?: boolean
-  answer?: boolean
+  questionPl?: boolean
+  questionEn?: boolean
+  answerPl?: boolean
+  answerEn?: boolean
   order?: boolean
   isActive?: boolean
   createdAt?: boolean
@@ -473,15 +525,17 @@ export type CmsFaqSelectScalar = {
   deletedAt?: boolean
 }
 
-export type CmsFaqOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "question" | "answer" | "order" | "isActive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["cmsFaq"]>
+export type CmsFaqOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "questionPl" | "questionEn" | "answerPl" | "answerEn" | "order" | "isActive" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["cmsFaq"]>
 
 export type $CmsFaqPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsFaq"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    question: string
-    answer: string
+    questionPl: string
+    questionEn: string
+    answerPl: string
+    answerEn: string
     order: number
     isActive: boolean
     createdAt: Date
@@ -911,8 +965,10 @@ export interface Prisma__CmsFaqClient<T, Null = never, ExtArgs extends runtime.T
  */
 export interface CmsFaqFieldRefs {
   readonly id: Prisma.FieldRef<"CmsFaq", 'String'>
-  readonly question: Prisma.FieldRef<"CmsFaq", 'String'>
-  readonly answer: Prisma.FieldRef<"CmsFaq", 'String'>
+  readonly questionPl: Prisma.FieldRef<"CmsFaq", 'String'>
+  readonly questionEn: Prisma.FieldRef<"CmsFaq", 'String'>
+  readonly answerPl: Prisma.FieldRef<"CmsFaq", 'String'>
+  readonly answerEn: Prisma.FieldRef<"CmsFaq", 'String'>
   readonly order: Prisma.FieldRef<"CmsFaq", 'Int'>
   readonly isActive: Prisma.FieldRef<"CmsFaq", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"CmsFaq", 'DateTime'>
