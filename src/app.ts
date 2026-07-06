@@ -29,7 +29,13 @@ const app: Application = express();
 app.use(
   rateLimit({
     windowMs: 1 * 60 * 1000,
-    max: 100,
+    max: 300,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+      success: false,
+      message: "Too many requests, please try again in a minute.",
+    },
   }),
 );
 
