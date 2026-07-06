@@ -1,6 +1,6 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate.js";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsPageSchema,
   updateCmsPageSchema,
@@ -17,40 +17,26 @@ import {
 } from "./cmsPage.controller.js";
 
 const router = Router();
-
+router.get("/", getAllCmsPages);
 router.use(authMiddleware);
 
-router.post(
-  "/",
-  validate(createCmsPageSchema),
-  createCmsPage
-);
+router.post("/", validate(createCmsPageSchema), createCmsPage);
 
-router.get("/", getAllCmsPages);
-
-router.get(
-  "/:id",
-  validate(cmsPageParamsSchema, "params"),
-  getCmsPageById
-);
+router.get("/:id", validate(cmsPageParamsSchema, "params"), getCmsPageById);
 
 router.get(
   "/type/:type",
   validate(cmsPageTypeParamsSchema, "params"),
-  getCmsPageByType
+  getCmsPageByType,
 );
 
 router.put(
   "/:id",
   validate(cmsPageParamsSchema, "params"),
   validate(updateCmsPageSchema),
-  updateCmsPage
+  updateCmsPage,
 );
 
-router.delete(
-  "/:id",
-  validate(cmsPageParamsSchema, "params"),
-  deleteCmsPage
-);
+router.delete("/:id", validate(cmsPageParamsSchema, "params"), deleteCmsPage);
 
 export default router;

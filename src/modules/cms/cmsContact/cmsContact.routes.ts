@@ -1,6 +1,6 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate.js";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsContactSchema,
   updateCmsContactSchema,
@@ -16,39 +16,30 @@ import {
 } from "./cmsContact.controller.js";
 
 const router = Router();
-
+router.get("/", getAllCmsContacts);
 router.use(authMiddleware);
 
-router.post(
-  "/",
-  validate(createCmsContactSchema),
-  createCmsContact
-);
-
-router.get("/", getAllCmsContacts);
+router.post("/", validate(createCmsContactSchema), createCmsContact);
 
 router.get(
   "/:id",
   validate(cmsContactParamsSchema, "params"),
-  getCmsContactById
+  getCmsContactById,
 );
 
-router.get(
-  "/type/:type",
-  getCmsContactByType
-);
+router.get("/type/:type", getCmsContactByType);
 
 router.put(
   "/:id",
   validate(cmsContactParamsSchema, "params"),
   validate(updateCmsContactSchema),
-  updateCmsContact
+  updateCmsContact,
 );
 
 router.delete(
   "/:id",
   validate(cmsContactParamsSchema, "params"),
-  deleteCmsContact
+  deleteCmsContact,
 );
 
 export default router;

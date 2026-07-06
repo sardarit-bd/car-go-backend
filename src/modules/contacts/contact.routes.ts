@@ -1,30 +1,26 @@
 import { Router } from "express";
 import * as contactController from "./contact.controller.js";
 import authMiddleware from "../../shared/middleware/authMiddleware.js";
-import  validate  from "../../shared/middleware/validate.js"; 
-import { createContactSchema, updateContactStatusSchema } from "./contact.validator.js";
+import validate from "../../shared/middleware/validate.js";
+import {
+  createContactSchema,
+  updateContactStatusSchema,
+} from "./contact.validator.js";
 
 const router = Router();
 
-
+router.get("/", authMiddleware, contactController.getAllContacts);
 router.post(
   "/",
   validate(createContactSchema),
-  contactController.createContact
-);
-
-
-router.get(
-  "/",
-  authMiddleware,
-  contactController.getAllContacts
+  contactController.createContact,
 );
 
 router.patch(
   "/:id/status",
   authMiddleware,
   validate(updateContactStatusSchema),
-  contactController.updateContactStatus
+  contactController.updateContactStatus,
 );
 
 export default router;

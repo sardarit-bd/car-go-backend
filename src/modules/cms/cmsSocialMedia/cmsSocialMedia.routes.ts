@@ -1,6 +1,6 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate.js";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsSocialMediaSchema,
   updateCmsSocialMediaSchema,
@@ -15,34 +15,28 @@ import {
 } from "./cmsSocialMedia.controller.js";
 
 const router = Router();
-
+router.get("/", getAllCmsSocialMedia);
 router.use(authMiddleware);
 
-router.post(
-  "/",
-  validate(createCmsSocialMediaSchema),
-  createCmsSocialMedia
-);
-
-router.get("/", getAllCmsSocialMedia);
+router.post("/", validate(createCmsSocialMediaSchema), createCmsSocialMedia);
 
 router.get(
   "/:id",
   validate(cmsSocialMediaParamsSchema, "params"),
-  getCmsSocialMediaById
+  getCmsSocialMediaById,
 );
 
 router.put(
   "/:id",
   validate(cmsSocialMediaParamsSchema, "params"),
   validate(updateCmsSocialMediaSchema),
-  updateCmsSocialMedia
+  updateCmsSocialMedia,
 );
 
 router.delete(
   "/:id",
   validate(cmsSocialMediaParamsSchema, "params"),
-  deleteCmsSocialMedia
+  deleteCmsSocialMedia,
 );
 
 export default router;

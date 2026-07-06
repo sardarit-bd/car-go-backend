@@ -1,6 +1,6 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate.js";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsWhyChooseUsFeatureSchema,
   updateCmsWhyChooseUsFeatureSchema,
@@ -15,34 +15,31 @@ import {
 } from "./cmsWhyChooseUsFeature.controller.js";
 
 const router = Router();
-
+router.get("/", getAllCmsWhyChooseUsFeatures);
 router.use(authMiddleware);
-
 router.post(
   "/",
   validate(createCmsWhyChooseUsFeatureSchema),
-  createCmsWhyChooseUsFeature
+  createCmsWhyChooseUsFeature,
 );
-
-router.get("/", getAllCmsWhyChooseUsFeatures);
 
 router.get(
   "/:id",
   validate(cmsWhyChooseUsFeatureParamsSchema, "params"),
-  getCmsWhyChooseUsFeatureById
+  getCmsWhyChooseUsFeatureById,
 );
 
 router.put(
   "/:id",
   validate(cmsWhyChooseUsFeatureParamsSchema, "params"),
   validate(updateCmsWhyChooseUsFeatureSchema),
-  updateCmsWhyChooseUsFeature
+  updateCmsWhyChooseUsFeature,
 );
 
 router.delete(
   "/:id",
   validate(cmsWhyChooseUsFeatureParamsSchema, "params"),
-  deleteCmsWhyChooseUsFeature
+  deleteCmsWhyChooseUsFeature,
 );
 
 export default router;

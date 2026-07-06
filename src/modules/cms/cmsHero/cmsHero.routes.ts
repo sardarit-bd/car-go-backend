@@ -1,6 +1,6 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate.js";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsHeroSchema,
   updateCmsHeroSchema,
@@ -16,33 +16,15 @@ import {
 
 const router = Router();
 
-router.use(authMiddleware);
-
-router.post(
-  "/",
-  validate(createCmsHeroSchema),
-  createCmsHero
-);
-
 router.get("/", getCmsHero);
-
-router.get(
-  "/:id",
-  validate(cmsHeroParamsSchema, "params"),
-  getCmsHeroById
-);
-
+router.use(authMiddleware);
+router.post("/", validate(createCmsHeroSchema), createCmsHero);
+router.get("/:id", validate(cmsHeroParamsSchema, "params"), getCmsHeroById);
 router.put(
   "/:id",
   validate(cmsHeroParamsSchema, "params"),
   validate(updateCmsHeroSchema),
-  updateCmsHero
+  updateCmsHero,
 );
-
-router.delete(
-  "/:id",
-  validate(cmsHeroParamsSchema, "params"),
-  deleteCmsHero
-);
-
+router.delete("/:id", validate(cmsHeroParamsSchema, "params"), deleteCmsHero);
 export default router;

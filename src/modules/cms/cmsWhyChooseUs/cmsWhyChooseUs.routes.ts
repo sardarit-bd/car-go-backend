@@ -1,7 +1,7 @@
 import { Router } from "express";
 import validate from "../../../shared/middleware/validate.js";
 import authMiddleware from "../../../shared/middleware/authMiddleware.js";
-import upload from "../../../shared/utils/upload.js"; // <-- Import your multer config
+import upload from "../../../shared/utils/upload.js";
 import {
   createCmsWhyChooseUsSchema,
   updateCmsWhyChooseUsSchema,
@@ -16,36 +16,30 @@ import {
 } from "./cmsWhyChooseUs.controller.js";
 
 const router = Router();
-
+router.get("/", getCmsWhyChooseUs);
 router.use(authMiddleware);
-
 router.post(
   "/",
-  upload.single("mainImage"), // <-- Add multer middleware
+  upload.single("mainImage"),
   validate(createCmsWhyChooseUsSchema),
-  createCmsWhyChooseUs
+  createCmsWhyChooseUs,
 );
-
-router.get("/", getCmsWhyChooseUs);
-
 router.get(
   "/:id",
   validate(cmsWhyChooseUsParamsSchema, "params"),
-  getCmsWhyChooseUsById
+  getCmsWhyChooseUsById,
 );
-
 router.put(
   "/:id",
   validate(cmsWhyChooseUsParamsSchema, "params"),
-  upload.single("mainImage"), // <-- Add multer middleware
+  upload.single("mainImage"),
   validate(updateCmsWhyChooseUsSchema),
-  updateCmsWhyChooseUs
+  updateCmsWhyChooseUs,
 );
-
 router.delete(
   "/:id",
   validate(cmsWhyChooseUsParamsSchema, "params"),
-  deleteCmsWhyChooseUs
+  deleteCmsWhyChooseUs,
 );
 
 export default router;
