@@ -15,21 +15,17 @@ import {
 } from "./cmsFaq.controller.js";
 
 const router = Router();
-
-router.post("/", validate(createCmsFaqSchema), createCmsFaq);
-
-router.use(authMiddleware);
 router.get("/", getAllCmsFaqs);
 
+router.use(authMiddleware);
+router.post("/", validate(createCmsFaqSchema), createCmsFaq);
 router.get("/:id", validate(cmsFaqParamsSchema, "params"), getCmsFaqById);
-
 router.put(
   "/:id",
   validate(cmsFaqParamsSchema, "params"),
   validate(updateCmsFaqSchema),
   updateCmsFaq,
 );
-
 router.delete("/:id", validate(cmsFaqParamsSchema, "params"), deleteCmsFaq);
 
 export default router;
