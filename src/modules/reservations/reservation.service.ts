@@ -1,12 +1,12 @@
 // backend/src/modules/reservations/reservation.service.ts
 
-import * as reservationRepository from "./reservation.repository";
-import AppError from "../../shared/utils/AppError";
-import { BookingStatus } from "../../../generated/prisma/enums";
+import * as reservationRepository from "./reservation.repository.js";
+import AppError from "../../shared/utils/AppError.js";
+import { BookingStatus } from "../../../generated/prisma/enums.js";
 import {
   CreateReservationDto,
   UpdateReservationDto,
-} from "./dto/reservation.dto";
+} from "./dto/reservation.dto.js";
 import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);

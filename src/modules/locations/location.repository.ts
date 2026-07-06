@@ -1,4 +1,4 @@
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "../../../lib/prisma.js";
 
 export const findAllLocations = async () => {
   return prisma.location.findMany({

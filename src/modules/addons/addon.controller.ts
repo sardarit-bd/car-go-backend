@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import sendResponse from "../../shared/utils/response";
-import * as addonService from "./addon.service";
+import sendResponse from "../../shared/utils/response.js";
+import * as addonService from "./addon.service.js";
 
 export const getAddons = async (
   req: Request,

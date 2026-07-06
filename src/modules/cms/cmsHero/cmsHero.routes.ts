@@ -1,18 +1,18 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsHeroSchema,
   updateCmsHeroSchema,
   cmsHeroParamsSchema,
-} from "./cmsHero.validator";
+} from "./cmsHero.validator.js";
 import {
   createCmsHero,
   getCmsHero,
   getCmsHeroById,
   updateCmsHero,
   deleteCmsHero,
-} from "./cmsHero.controller";
+} from "./cmsHero.controller.js";
 
 const router = Router();
 

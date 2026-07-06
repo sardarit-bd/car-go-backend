@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import * as contactService from "./contact.service";
-import sendResponse from "../../shared/utils/response";
-import AppError from "../../shared/utils/AppError";
+import * as contactService from "./contact.service.js";
+import sendResponse from "../../shared/utils/response.js";
+import AppError from "../../shared/utils/AppError.js";
 
 export const createContact = async (
   req: Request,

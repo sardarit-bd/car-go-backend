@@ -1,6 +1,6 @@
-import * as locationRepository from "./location.repository";
-import AppError from "../../shared/utils/AppError";
-import { CreateLocationBody, UpdateLocationBody } from "./location.validator";
+import * as locationRepository from "./location.repository.js";
+import AppError from "../../shared/utils/AppError.js";
+import { CreateLocationBody, UpdateLocationBody } from "./location.validator.js";
 
 export const getAllLocations = async () => {
   return locationRepository.findAllLocations();

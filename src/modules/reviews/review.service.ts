@@ -1,5 +1,5 @@
-import { reviewRepository } from "./review.repository";
-import AppError from "../../shared/utils/AppError";
+import { reviewRepository } from "./review.repository.js";
+import AppError from "../../shared/utils/AppError.js";
 
 export const reviewService = {
   createReview: async (

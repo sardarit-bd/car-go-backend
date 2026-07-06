@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as cmsSocialMediaService from "./cmsSocialMedia.service";
-import sendResponse from "../../../shared/utils/response";
+import * as cmsSocialMediaService from "./cmsSocialMedia.service.js";
+import sendResponse from "../../../shared/utils/response.js";
 
 export const createCmsSocialMedia = async (
   req: Request,

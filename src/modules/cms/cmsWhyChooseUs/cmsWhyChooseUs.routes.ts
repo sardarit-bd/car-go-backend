@@ -1,19 +1,19 @@
 import { Router } from "express";
-import validate from "../../../shared/middleware/validate";
-import authMiddleware from "../../../shared/middleware/authMiddleware";
-import upload from "../../../shared/utils/upload"; // <-- Import your multer config
+import validate from "../../../shared/middleware/validate.js";
+import authMiddleware from "../../../shared/middleware/authMiddleware.js";
+import upload from "../../../shared/utils/upload.js"; // <-- Import your multer config
 import {
   createCmsWhyChooseUsSchema,
   updateCmsWhyChooseUsSchema,
   cmsWhyChooseUsParamsSchema,
-} from "./cmsWhyChooseUs.validator";
+} from "./cmsWhyChooseUs.validator.js";
 import {
   createCmsWhyChooseUs,
   getCmsWhyChooseUs,
   getCmsWhyChooseUsById,
   updateCmsWhyChooseUs,
   deleteCmsWhyChooseUs,
-} from "./cmsWhyChooseUs.controller";
+} from "./cmsWhyChooseUs.controller.js";
 
 const router = Router();
 

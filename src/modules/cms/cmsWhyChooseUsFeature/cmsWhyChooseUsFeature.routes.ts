@@ -1,18 +1,18 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsWhyChooseUsFeatureSchema,
   updateCmsWhyChooseUsFeatureSchema,
   cmsWhyChooseUsFeatureParamsSchema,
-} from "./cmsWhyChooseUsFeature.validator";
+} from "./cmsWhyChooseUsFeature.validator.js";
 import {
   createCmsWhyChooseUsFeature,
   getAllCmsWhyChooseUsFeatures,
   getCmsWhyChooseUsFeatureById,
   updateCmsWhyChooseUsFeature,
   deleteCmsWhyChooseUsFeature,
-} from "./cmsWhyChooseUsFeature.controller";
+} from "./cmsWhyChooseUsFeature.controller.js";
 
 const router = Router();
 

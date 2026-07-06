@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "bundler",
     "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "strict": true,
     "esModuleInterop": true,
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
+    "outDir": "./dist",
+    "rootDir": "."
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "lib/**/*", "generated/prisma/**/*"],
   "files": ["src/express.d.ts"]
 }

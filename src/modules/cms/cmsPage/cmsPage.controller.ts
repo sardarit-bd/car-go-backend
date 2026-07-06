@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as cmsPageService from "./cmsPage.service";
-import sendResponse from "../../../shared/utils/response";
+import * as cmsPageService from "./cmsPage.service.js";
+import sendResponse from "../../../shared/utils/response.js";
 
 export const createCmsPage = async (
   req: Request,

@@ -1,13 +1,13 @@
 // backend/src/modules/reservations/reservation.controller.ts
 
 import { Request, Response, NextFunction } from "express";
-import sendResponse from "../../shared/utils/response";
-import * as reservationService from "./reservation.service";
+import sendResponse from "../../shared/utils/response.js";
+import * as reservationService from "./reservation.service.js";
 import {
   CreateReservationDto,
   UpdateReservationDto,
-} from "./dto/reservation.dto";
-import { BookingStatus } from "../../../generated/prisma/enums";
+} from "./dto/reservation.dto.js";
+import { BookingStatus } from "../../../generated/prisma/enums.js";
 
 export const getReservations = async (
   req: Request,

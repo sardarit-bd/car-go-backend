@@ -1,12 +1,12 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsPageSchema,
   updateCmsPageSchema,
   cmsPageParamsSchema,
   cmsPageTypeParamsSchema,
-} from "./cmsPage.validator";
+} from "./cmsPage.validator.js";
 import {
   createCmsPage,
   getAllCmsPages,
@@ -14,7 +14,7 @@ import {
   getCmsPageByType,
   updateCmsPage,
   deleteCmsPage,
-} from "./cmsPage.controller";
+} from "./cmsPage.controller.js";
 
 const router = Router();
 

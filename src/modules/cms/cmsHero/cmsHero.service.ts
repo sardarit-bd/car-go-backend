@@ -1,5 +1,5 @@
-import * as cmsHeroRepository from "./cmsHero.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsHeroRepository from "./cmsHero.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsHeroService = async (data: any) => {
   return cmsHeroRepository.createCmsHero(data);

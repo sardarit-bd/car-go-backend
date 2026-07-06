@@ -1,5 +1,5 @@
-import * as blogRepository from "./blog.repository";
-import AppError from "../../shared/utils/AppError";
+import * as blogRepository from "./blog.repository.js";
+import AppError from "../../shared/utils/AppError.js";
 
 const generateSlug = (title: string) => {
   return title

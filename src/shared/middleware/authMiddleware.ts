@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import * as authRepository from "../../modules/auth/auth.repository";
-import AppError from "../utils/AppError";
+import * as authRepository from "../../modules/auth/auth.repository.js";
+import AppError from "../utils/AppError.js";
 
 interface DecodedToken extends JwtPayload {
   id: string;

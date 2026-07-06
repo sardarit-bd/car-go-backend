@@ -1,5 +1,5 @@
-import * as cmsContactRepository from "./cmsContact.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsContactRepository from "./cmsContact.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsContactService = async (data: any) => {
   return cmsContactRepository.createCmsContact(data);

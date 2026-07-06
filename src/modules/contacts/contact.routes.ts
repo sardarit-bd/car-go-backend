@@ -1,8 +1,8 @@
 import { Router } from "express";
-import * as contactController from "./contact.controller";
-import authMiddleware from "../../shared/middleware/authMiddleware";
-import  validate  from "../../shared/middleware/validate"; 
-import { createContactSchema, updateContactStatusSchema } from "./contact.validator";
+import * as contactController from "./contact.controller.js";
+import authMiddleware from "../../shared/middleware/authMiddleware.js";
+import  validate  from "../../shared/middleware/validate.js"; 
+import { createContactSchema, updateContactStatusSchema } from "./contact.validator.js";
 
 const router = Router();
 

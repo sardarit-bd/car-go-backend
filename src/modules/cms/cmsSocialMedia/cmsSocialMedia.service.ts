@@ -1,5 +1,5 @@
-import * as cmsSocialMediaRepository from "./cmsSocialMedia.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsSocialMediaRepository from "./cmsSocialMedia.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsSocialMediaService = async (data: any) => {
   return cmsSocialMediaRepository.createCmsSocialMedia(data);

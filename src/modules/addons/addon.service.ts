@@ -1,6 +1,6 @@
-import * as addonRepository from "./addon.repository";
-import AppError from "../../shared/utils/AppError";
-import { CreateAddonBody, UpdateAddonBody } from "./addon.validator";
+import * as addonRepository from "./addon.repository.js";
+import AppError from "../../shared/utils/AppError.js";
+import { CreateAddonBody, UpdateAddonBody } from "./addon.validator.js";
 
 export const getAllAddons = async () => {
   return addonRepository.findAllAddons();

@@ -5,15 +5,15 @@ import {
   createVehicle, 
   updateVehicle, 
   deleteVehicle 
-} from "./vehicle.controller";
-import validate from "../../shared/middleware/validate";
+} from "./vehicle.controller.js";
+import validate from "../../shared/middleware/validate.js";
 import { 
   getVehiclesQuerySchema, 
   vehicleIdParamsSchema,  
   createVehicleBodySchema, 
   updateVehicleBodySchema 
-} from "./vehicle.validator";
-import upload from "../../shared/utils/upload";
+} from "./vehicle.validator.js";
+import upload from "../../shared/utils/upload.js";
 const router = Router();
 
 router.get("/", validate(getVehiclesQuerySchema, "query"), getVehicles);

@@ -1,5 +1,5 @@
-import * as cmsWhyChooseUsFeatureRepository from "./cmsWhyChooseUsFeature.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsWhyChooseUsFeatureRepository from "./cmsWhyChooseUsFeature.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsWhyChooseUsFeatureService = async (data: any) => {
   return cmsWhyChooseUsFeatureRepository.createCmsWhyChooseUsFeature(data);

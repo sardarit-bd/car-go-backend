@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import sendResponse from "../../shared/utils/response";
-import * as locationService from "./location.service";
+import sendResponse from "../../shared/utils/response.js";
+import * as locationService from "./location.service.js";
 
 export const getLocations = async (
   req: Request,

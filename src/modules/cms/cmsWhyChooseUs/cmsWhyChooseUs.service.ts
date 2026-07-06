@@ -1,5 +1,5 @@
-import * as cmsWhyChooseUsRepository from "./cmsWhyChooseUs.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsWhyChooseUsRepository from "./cmsWhyChooseUs.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsWhyChooseUsService = async (data: any) => {
   return cmsWhyChooseUsRepository.createCmsWhyChooseUs(data);

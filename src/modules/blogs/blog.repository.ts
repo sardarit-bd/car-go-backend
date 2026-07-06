@@ -1,4 +1,4 @@
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "../../../lib/prisma.js";
 
 export const createBlog = async (data: any) => {
   return prisma.blog.create({ data });

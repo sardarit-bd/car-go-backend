@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as cmsContactService from "./cmsContact.service";
-import successResponse from "../../../shared/utils/response";
+import * as cmsContactService from "./cmsContact.service.js";
+import successResponse from "../../../shared/utils/response.js";
 
 export const createCmsContact = async (
   req: Request,

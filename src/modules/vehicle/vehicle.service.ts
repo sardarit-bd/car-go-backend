@@ -1,6 +1,6 @@
-import * as vehicleRepository from "./vehicle.repository";
-import { GetVehiclesQuery } from "./vehicle.validator";
-import AppError from "../../shared/utils/AppError";
+import * as vehicleRepository from "./vehicle.repository.js";
+import { GetVehiclesQuery } from "./vehicle.validator.js";
+import AppError from "../../shared/utils/AppError.js";
 
 const MS_IN_DAY = 24 * 60 * 60 * 1000;
 

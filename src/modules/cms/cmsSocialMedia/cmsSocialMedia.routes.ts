@@ -1,18 +1,18 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsSocialMediaSchema,
   updateCmsSocialMediaSchema,
   cmsSocialMediaParamsSchema,
-} from "./cmsSocialMedia.validator";
+} from "./cmsSocialMedia.validator.js";
 import {
   createCmsSocialMedia,
   getAllCmsSocialMedia,
   getCmsSocialMediaById,
   updateCmsSocialMedia,
   deleteCmsSocialMedia,
-} from "./cmsSocialMedia.controller";
+} from "./cmsSocialMedia.controller.js";
 
 const router = Router();
 

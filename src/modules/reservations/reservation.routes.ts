@@ -1,7 +1,7 @@
 import { Router } from "express";
-import validate from "../../shared/middleware/validate";
-import * as controller from "./reservation.controller";
-import * as validator from "./reservation.validator";
+import validate from "../../shared/middleware/validate.js";
+import * as controller from "./reservation.controller.js";
+import * as validator from "./reservation.validator.js";
 
 const router = Router();
 

@@ -1,9 +1,9 @@
 import { Router } from "express";
-import * as blogController from "./blog.controller";
-import authMiddleware from "../../shared/middleware/authMiddleware";
-import upload from "../../shared/utils/upload";
-// import { validate } from "../../shared/middleware/validate"; // Uncomment if you use a validation middleware
-// import { createBlogSchema, updateBlogSchema } from "./blog.validator";
+import * as blogController from "./blog.controller.js";
+import authMiddleware from "../../shared/middleware/authMiddleware.js";
+import upload from "../../shared/utils/upload.js";
+// import { validate } from "../../shared/middleware/validate.js"; // Uncomment if you use a validation middleware
+// import { createBlogSchema, updateBlogSchema } from "./blog.validator.js";
 
 const router = Router();
 

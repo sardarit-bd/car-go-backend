@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import sendResponse from "../../shared/utils/response";
-import { getAvailableVehicles } from "./vehicle.service";
-import { GetVehiclesQuery } from "./vehicle.validator";
-import * as vehicleService from "./vehicle.service";
+import sendResponse from "../../shared/utils/response.js";
+import { getAvailableVehicles } from "./vehicle.service.js";
+import { GetVehiclesQuery } from "./vehicle.validator.js";
+import * as vehicleService from "./vehicle.service.js";
 export const getVehicles = async (
   req: Request,
   res: Response,

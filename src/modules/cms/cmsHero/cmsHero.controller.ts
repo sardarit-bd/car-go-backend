@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as cmsHeroService from "./cmsHero.service";
-import sendResponse from "../../../shared/utils/response";
+import * as cmsHeroService from "./cmsHero.service.js";
+import sendResponse from "../../../shared/utils/response.js";
 
 export const createCmsHero = async (
   req: Request,

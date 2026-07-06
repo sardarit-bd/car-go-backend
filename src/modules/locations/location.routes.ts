@@ -1,16 +1,16 @@
 import { Router } from "express";
-import validate from "../../shared/middleware/validate";
+import validate from "../../shared/middleware/validate.js";
 import {
   getLocations,
   createLocation,
   updateLocation,
   deleteLocation,
-} from "./location.controller";
+} from "./location.controller.js";
 import {
   locationIdParamsSchema,
   createLocationBodySchema,
   updateLocationBodySchema,
-} from "./location.validator";
+} from "./location.validator.js";
 
 const router = Router();
 

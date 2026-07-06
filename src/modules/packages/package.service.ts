@@ -1,6 +1,6 @@
-import * as packageRepository from "./package.repository";
-import AppError from "../../shared/utils/AppError";
-import { CreatePackageBody, UpdatePackageBody } from "./package.validator";
+import * as packageRepository from "./package.repository.js";
+import AppError from "../../shared/utils/AppError.js";
+import { CreatePackageBody, UpdatePackageBody } from "./package.validator.js";
 
 export const getAllPackages = async () => {
   return packageRepository.findAllPackages();

@@ -1,18 +1,18 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsFaqSchema,
   updateCmsFaqSchema,
   cmsFaqParamsSchema,
-} from "./cmsFaq.validator";
+} from "./cmsFaq.validator.js";
 import {
   createCmsFaq,
   getAllCmsFaqs,
   getCmsFaqById,
   updateCmsFaq,
   deleteCmsFaq,
-} from "./cmsFaq.controller";
+} from "./cmsFaq.controller.js";
 
 const router = Router();
 

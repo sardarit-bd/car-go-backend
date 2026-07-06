@@ -5,24 +5,24 @@ import rateLimit from "express-rate-limit";
 import { xss } from "express-xss-sanitizer";
 import path from "path";
 import cookieParser from "cookie-parser";
-import errorHandler from "./shared/errors/errorHandler";
-import vehicleRoutes from "./modules/vehicle/vehicle.routes";
-import packageRoutes from "./modules/packages/package.routes";
-import addonRoutes from "./modules/addons/addon.routes";
-import locationRoutes from "./modules/locations/location.routes";
-import reservationRoutes from "./modules/reservations/reservation.routes";
-import authRoutes from "./modules/auth/auth.routes";
-import reviewRoutes from "./modules/reviews/review.routes";
-import BlogRoutes from "./modules/blogs/blog.routes";
-import contactRoutes from "./modules/contacts/contact.routes";
-import cmsFaqRoutes from "./modules/cms/cmsFaq/cmsFaq.routes";
-import cmsPageRoutes from "./modules/cms/cmsPage/cmsPage.routes";
-import cmsContactRoutes from "./modules/cms/cmsContact/cmsContact.routes";
-import cmsSocialMediaRoutes from "./modules/cms/cmsSocialMedia/cmsSocialMedia.routes";
-import cmsHeroRoutes from "./modules/cms/cmsHero/cmsHero.routes";
-import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.routes";
-import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes";
-import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes";
+import errorHandler from "./shared/errors/errorHandler.js";
+import vehicleRoutes from "./modules/vehicle/vehicle.routes.js";
+import packageRoutes from "./modules/packages/package.routes.js";
+import addonRoutes from "./modules/addons/addon.routes.js";
+import locationRoutes from "./modules/locations/location.routes.js";
+import reservationRoutes from "./modules/reservations/reservation.routes.js";
+import authRoutes from "./modules/auth/auth.routes.js";
+import reviewRoutes from "./modules/reviews/review.routes.js";
+import BlogRoutes from "./modules/blogs/blog.routes.js";
+import contactRoutes from "./modules/contacts/contact.routes.js";
+import cmsFaqRoutes from "./modules/cms/cmsFaq/cmsFaq.routes.js";
+import cmsPageRoutes from "./modules/cms/cmsPage/cmsPage.routes.js";
+import cmsContactRoutes from "./modules/cms/cmsContact/cmsContact.routes.js";
+import cmsSocialMediaRoutes from "./modules/cms/cmsSocialMedia/cmsSocialMedia.routes.js";
+import cmsHeroRoutes from "./modules/cms/cmsHero/cmsHero.routes.js";
+import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.routes.js";
+import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes.js";
+import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes.js";
 
 const app: Application = express();
 
@@ -37,7 +37,11 @@ app.use(xss());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://192.168.0.105:3000"],
+    origin: [
+      "http://localhost:3000",
+      "http://192.168.0.105:3000",
+      "https://car-go-flame.vercel.app",
+    ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -45,8 +49,8 @@ app.use(
 );
 app.use(
   helmet({
-    crossOriginEmbedderPolicy: false, // Disable COEP
-    crossOriginResourcePolicy: { policy: "cross-origin" }, // Allow cross-origin resources
+    crossOriginEmbedderPolicy: false,
+    crossOriginResourcePolicy: { policy: "cross-origin" },
   }),
 );
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));

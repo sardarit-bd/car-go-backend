@@ -1,5 +1,5 @@
-import { prisma } from "../../../lib/prisma";
-import { Role } from "../../../generated/prisma/enums";
+import { prisma } from "../../../lib/prisma.js";
+import { Role } from "../../../generated/prisma/enums.js";
 
 export const findUserByEmail = async (email: string) => {
   return prisma.user.findFirst({

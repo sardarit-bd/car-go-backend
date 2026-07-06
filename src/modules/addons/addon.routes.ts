@@ -1,16 +1,16 @@
 import { Router } from "express";
-import validate from "../../shared/middleware/validate";
+import validate from "../../shared/middleware/validate.js";
 import {
   getAddons,
   createAddon,
   updateAddon,
   deleteAddon,
-} from "./addon.controller";
+} from "./addon.controller.js";
 import {
   addonIdParamsSchema,
   createAddonBodySchema,
   updateAddonBodySchema,
-} from "./addon.validator";
+} from "./addon.validator.js";
 
 const router = Router();
 

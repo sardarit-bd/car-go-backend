@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import * as blogService from "./blog.service";
-import sendResponse from "../../shared/utils/response";
-import AppError from "../../shared/utils/AppError";
+import * as blogService from "./blog.service.js";
+import sendResponse from "../../shared/utils/response.js";
+import AppError from "../../shared/utils/AppError.js";
 
 export const createBlog = async (
   req: Request,

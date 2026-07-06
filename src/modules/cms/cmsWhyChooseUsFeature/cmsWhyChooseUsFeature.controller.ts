@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as cmsWhyChooseUsFeatureService from "./cmsWhyChooseUsFeature.service";
-import successResponse from "../../../shared/utils/response";
+import * as cmsWhyChooseUsFeatureService from "./cmsWhyChooseUsFeature.service.js";
+import successResponse from "../../../shared/utils/response.js";
 
 export const createCmsWhyChooseUsFeature = async (
   req: Request,

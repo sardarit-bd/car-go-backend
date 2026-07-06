@@ -1,5 +1,5 @@
-import * as cmsPageRepository from "./cmsPage.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsPageRepository from "./cmsPage.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsPageService = async (data: any) => {
   return cmsPageRepository.createCmsPage(data);

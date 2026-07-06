@@ -1,5 +1,5 @@
-import * as contactRepository from "./contact.repository";
-import AppError from "../../shared/utils/AppError";
+import * as contactRepository from "./contact.repository.js";
+import AppError from "../../shared/utils/AppError.js";
 
 // Helper to verify Google reCAPTCHA token
 const verifyCaptcha = async (token?: string) => {

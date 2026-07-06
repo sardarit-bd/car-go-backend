@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import sendResponse from "../../shared/utils/response";
-import * as packageService from "./package.service";
+import sendResponse from "../../shared/utils/response.js";
+import * as packageService from "./package.service.js";
 
 export const getPackages = async (
   req: Request,

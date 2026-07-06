@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AnySchema, ValidationError } from "yup";
-import AppError from "../utils/AppError";
+import AppError from "../utils/AppError.js";
 
 const validate =
   (schema: AnySchema, source: "body" | "query" | "params" = "body") =>

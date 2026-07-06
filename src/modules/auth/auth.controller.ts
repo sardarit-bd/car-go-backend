@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import * as authService from "./auth.service";
-import sendResponse from "../../shared/utils/response";
+import * as authService from "./auth.service.js";
+import sendResponse from "../../shared/utils/response.js";
 
 // Cookie configuration
 const COOKIE_OPTIONS = {

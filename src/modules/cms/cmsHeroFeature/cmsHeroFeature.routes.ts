@@ -1,18 +1,18 @@
 import { Router } from "express";
-import  validate  from "../../../shared/middleware/validate";
-import  authMiddleware  from "../../../shared/middleware/authMiddleware";
+import  validate  from "../../../shared/middleware/validate.js";
+import  authMiddleware  from "../../../shared/middleware/authMiddleware.js";
 import {
   createCmsHeroFeatureSchema,
   updateCmsHeroFeatureSchema,
   cmsHeroFeatureParamsSchema,
-} from "./cmsHeroFeature.validator";
+} from "./cmsHeroFeature.validator.js";
 import {
   createCmsHeroFeature,
   getAllCmsHeroFeatures,
   getCmsHeroFeatureById,
   updateCmsHeroFeature,
   deleteCmsHeroFeature,
-} from "./cmsHeroFeature.controller";
+} from "./cmsHeroFeature.controller.js";
 
 const router = Router();
 

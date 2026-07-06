@@ -1,4 +1,4 @@
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "../../../lib/prisma.js";
 
 export const createContact = async (data: any) => {
   return prisma.contactMessage.create({ data });

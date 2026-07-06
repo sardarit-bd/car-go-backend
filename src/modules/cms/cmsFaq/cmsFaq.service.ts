@@ -1,5 +1,5 @@
-import * as cmsFaqRepository from "./cmsFaq.repository";
-import AppError from "../../../shared/utils/AppError";
+import * as cmsFaqRepository from "./cmsFaq.repository.js";
+import AppError from "../../../shared/utils/AppError.js";
 
 export const createCmsFaqService = async (data: any) => {
   return cmsFaqRepository.createCmsFaq(data);
