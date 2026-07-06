@@ -25,7 +25,7 @@ import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.ro
 import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes.js";
 
 const app: Application = express();
-
+app.set("trust proxy", 1);
 app.use(
   rateLimit({
     windowMs: 1 * 60 * 1000,
