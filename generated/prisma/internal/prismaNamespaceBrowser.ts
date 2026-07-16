@@ -129,6 +129,7 @@ export const AddonScalarFieldEnum = {
   name: 'name',
   description: 'description',
   price: 'price',
+  image: 'image',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

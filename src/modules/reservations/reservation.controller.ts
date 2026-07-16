@@ -200,3 +200,19 @@ export const handleStripeWebhook = async (
     next(error);
   }
 };
+
+export const getReservationById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const result = await reservationService.getReservationById(id as string);
+    console.log(result);
+    sendResponse(res, 200, true, "Reservation fetched successfully", result);
+  } catch (error) {
+    next(error);
+  }
+};

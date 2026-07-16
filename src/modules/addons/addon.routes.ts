@@ -1,5 +1,6 @@
 import { Router } from "express";
 import validate from "../../shared/middleware/validate.js";
+import upload from "../../shared/utils/upload.js";
 import {
   getAddons,
   createAddon,
@@ -14,28 +15,23 @@ import {
 
 const router = Router();
 
-// Public route
 router.get("/", getAddons);
 
-// Admin routes (Auth middleware skipped for now as requested)
-// TODO: Add admin auth middleware here before production
 router.post(
   "/",
+  upload.single("image"),
   validate(createAddonBodySchema, "body"),
   createAddon,
 );
 
 router.patch(
   "/:id",
+  upload.single("image"),
   validate(addonIdParamsSchema, "params"),
   validate(updateAddonBodySchema, "body"),
   updateAddon,
 );
 
-router.delete(
-  "/:id",
-  validate(addonIdParamsSchema, "params"),
-  deleteAddon,
-);
+router.delete("/:id", validate(addonIdParamsSchema, "params"), deleteAddon);
 
 export default router;
