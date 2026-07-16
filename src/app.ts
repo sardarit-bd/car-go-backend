@@ -23,7 +23,7 @@ import cmsHeroRoutes from "./modules/cms/cmsHero/cmsHero.routes.js";
 import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.routes.js";
 import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes.js";
 import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes.js";
-
+import cmsAboutUsRoutes from "./modules/cms/cmsAboutUs/cmsAboutUs.routes.js";
 const app: Application = express();
 app.set("trust proxy", 1);
 app.use(
@@ -84,6 +84,7 @@ app.use("/api/admin/cms/social-media", cmsSocialMediaRoutes);
 app.use("/api/admin/cms/hero", cmsHeroRoutes);
 app.use("/api/admin/cms/hero-feature", cmsHeroFeatureRoutes);
 app.use("/api/admin/cms/why-choose-us", cmsWhyChooseUsRoutes);
+app.use("/api/admin/cms/about-us", cmsAboutUsRoutes);
 app.use("/api/admin/cms/why-choose-us-feature", cmsWhyChooseUsFeatureRoutes);
 app.use(errorHandler);
 

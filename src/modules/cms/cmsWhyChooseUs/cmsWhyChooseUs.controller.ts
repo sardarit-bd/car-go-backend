@@ -8,7 +8,6 @@ export const createCmsWhyChooseUs = async (
   next: NextFunction,
 ) => {
   try {
-    // If an image was uploaded, set the mainImage path in req.body
     if (req.file) {
       req.body.mainImage = `/uploads/${req.file.filename}`;
     }

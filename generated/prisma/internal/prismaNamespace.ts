@@ -387,6 +387,7 @@ export const ModelName = {
   Blog: 'Blog',
   User: 'User',
   Addon: 'Addon',
+  CmsAboutUs: 'CmsAboutUs',
   CmsContact: 'CmsContact',
   CmsFaq: 'CmsFaq',
   CmsHero: 'CmsHero',
@@ -419,7 +420,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "blog" | "user" | "addon" | "cmsContact" | "cmsFaq" | "cmsHero" | "cmsHeroFeature" | "cmsPage" | "cmsSocialMedia" | "cmsWhyChooseUs" | "cmsWhyChooseUsFeature" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking"
+    modelProps: "blog" | "user" | "addon" | "cmsAboutUs" | "cmsContact" | "cmsFaq" | "cmsHero" | "cmsHeroFeature" | "cmsPage" | "cmsSocialMedia" | "cmsWhyChooseUs" | "cmsWhyChooseUsFeature" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -642,6 +643,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AddonCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AddonCountAggregateOutputType> | number
+        }
+      }
+    }
+    CmsAboutUs: {
+      payload: Prisma.$CmsAboutUsPayload<ExtArgs>
+      fields: Prisma.CmsAboutUsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CmsAboutUsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CmsAboutUsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        findFirst: {
+          args: Prisma.CmsAboutUsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CmsAboutUsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        findMany: {
+          args: Prisma.CmsAboutUsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>[]
+        }
+        create: {
+          args: Prisma.CmsAboutUsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        createMany: {
+          args: Prisma.CmsAboutUsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CmsAboutUsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>[]
+        }
+        delete: {
+          args: Prisma.CmsAboutUsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        update: {
+          args: Prisma.CmsAboutUsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        deleteMany: {
+          args: Prisma.CmsAboutUsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CmsAboutUsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CmsAboutUsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>[]
+        }
+        upsert: {
+          args: Prisma.CmsAboutUsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CmsAboutUsPayload>
+        }
+        aggregate: {
+          args: Prisma.CmsAboutUsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCmsAboutUs>
+        }
+        groupBy: {
+          args: Prisma.CmsAboutUsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsAboutUsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CmsAboutUsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CmsAboutUsCountAggregateOutputType> | number
         }
       }
     }
@@ -1989,6 +2064,35 @@ export const AddonScalarFieldEnum = {
 export type AddonScalarFieldEnum = (typeof AddonScalarFieldEnum)[keyof typeof AddonScalarFieldEnum]
 
 
+export const CmsAboutUsScalarFieldEnum = {
+  id: 'id',
+  titlePl: 'titlePl',
+  subtitlePl: 'subtitlePl',
+  titleEn: 'titleEn',
+  subtitleEn: 'subtitleEn',
+  feature1Icon: 'feature1Icon',
+  feature1TitlePl: 'feature1TitlePl',
+  feature1TitleEn: 'feature1TitleEn',
+  feature1DescPl: 'feature1DescPl',
+  feature1DescEn: 'feature1DescEn',
+  feature2Icon: 'feature2Icon',
+  feature2TitlePl: 'feature2TitlePl',
+  feature2TitleEn: 'feature2TitleEn',
+  feature2DescPl: 'feature2DescPl',
+  feature2DescEn: 'feature2DescEn',
+  ctaTextPl: 'ctaTextPl',
+  ctaTextEn: 'ctaTextEn',
+  ctaLink: 'ctaLink',
+  image1Url: 'image1Url',
+  image2Url: 'image2Url',
+  updatedAt: 'updatedAt',
+  createdAt: 'createdAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type CmsAboutUsScalarFieldEnum = (typeof CmsAboutUsScalarFieldEnum)[keyof typeof CmsAboutUsScalarFieldEnum]
+
+
 export const CmsContactScalarFieldEnum = {
   id: 'id',
   type: 'type',
@@ -2541,6 +2645,7 @@ export type GlobalOmitConfig = {
   blog?: Prisma.BlogOmit
   user?: Prisma.UserOmit
   addon?: Prisma.AddonOmit
+  cmsAboutUs?: Prisma.CmsAboutUsOmit
   cmsContact?: Prisma.CmsContactOmit
   cmsFaq?: Prisma.CmsFaqOmit
   cmsHero?: Prisma.CmsHeroOmit

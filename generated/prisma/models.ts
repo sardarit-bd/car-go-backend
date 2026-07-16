@@ -11,6 +11,7 @@
 export type * from './models/Blog.js'
 export type * from './models/User.js'
 export type * from './models/Addon.js'
+export type * from './models/CmsAboutUs.js'
 export type * from './models/CmsContact.js'
 export type * from './models/CmsFaq.js'
 export type * from './models/CmsHero.js'
