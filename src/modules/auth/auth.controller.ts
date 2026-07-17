@@ -122,3 +122,35 @@ export const updateProfile = async (
     next(error);
   }
 };
+export const activateAccount = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { email, token, password } = req.body;
+    const result = await authService.activateAccount({
+      email,
+      token,
+      password,
+    });
+
+    sendResponse(res, 200, true, "Profile updated successfully", result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const changePassword = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const userId = (req as any).user.id;
+    const result = await authService.changePassword(userId, req.body);
+    sendResponse(res, 200, true, "Profile updated successfully", result);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -16,7 +16,7 @@ export const register = async (data: {
   lastName: string;
   email: string;
   password: string;
-  confirmPassword: string; 
+  confirmPassword: string;
 }) => {
   const existingUser = await authRepository.findUserByEmail(data.email);
   if (existingUser) {
@@ -87,7 +87,7 @@ export const resetPassword = async (token: string, newPassword: string) => {
   }
 
   const hashedPassword = await bcrypt.hash(newPassword, 10);
-  
+
   await authRepository.updateUser(user.id, {
     password: hashedPassword,
     resetToken: null,
@@ -112,13 +112,13 @@ export const updateProfile = async (
     phone?: string;
     password?: string;
     currentPassword?: string;
-  }
+  },
 ) => {
-  const fullUser = await prisma.user.findUnique({ 
+  const fullUser = await prisma.user.findUnique({
     where: { id: userId },
-    select: { id: true, password: true, email: true }
+    select: { id: true, password: true, email: true },
   });
-  
+
   if (!fullUser) {
     throw new AppError("User not found", 404);
   }
@@ -127,9 +127,15 @@ export const updateProfile = async (
 
   if (data.password) {
     if (!data.currentPassword) {
-      throw new AppError("Current password is required to set a new password", 400);
+      throw new AppError(
+        "Current password is required to set a new password",
+        400,
+      );
     }
-    const isMatch = await bcrypt.compare(data.currentPassword, fullUser.password);
+    const isMatch = await bcrypt.compare(
+      data.currentPassword,
+      fullUser.password,
+    );
     if (!isMatch) {
       throw new AppError("Current password is incorrect", 401);
     }
@@ -137,7 +143,7 @@ export const updateProfile = async (
   } else {
     delete updateData.password;
   }
-  
+
   delete updateData.currentPassword;
   delete updateData.confirmPassword;
 
@@ -155,6 +161,47 @@ const generateToken = (id: string, role: string) => {
   return jwt.sign(
     { id, role } as JwtPayload,
     process.env.JWT_SECRET as string,
-    { expiresIn: "7d" }
+    { expiresIn: "7d" },
   );
+};
+
+export const activateAccount = async (data: {
+  email: string;
+  token: string;
+  password: string;
+}) => {
+  const user = await authRepository.findUserByEmail(data.email);
+  if (!user) {
+    throw new AppError("Invalid activation link or user not found", 400);
+  }
+
+  if (
+    !user.activationToken ||
+    user.activationToken !== data.token ||
+    !user.activationTokenExpiry ||
+    user.activationTokenExpiry < new Date()
+  ) {
+    throw new AppError("Activation token is invalid or has expired", 400);
+  }
+
+  const hashedPassword = await bcrypt.hash(data.password, 10);
+
+  const updatedUser = await authRepository.updateUser(user.id, {
+    password: hashedPassword,
+    activationToken: null,
+    activationTokenExpiry: null,
+  });
+
+  const token = generateToken(updatedUser.id, updatedUser.role);
+
+  return {
+    user: {
+      id: updatedUser.id,
+      firstName: updatedUser.firstName,
+      lastName: updatedUser.lastName,
+      email: updatedUser.email,
+      role: updatedUser.role,
+    },
+    token,
+  };
 };

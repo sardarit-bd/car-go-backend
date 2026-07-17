@@ -8,8 +8,7 @@ import {
   UpdateReservationDto,
 } from "./dto/reservation.dto.js";
 import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+import { triggerGuestAccountActivation } from "../../shared/utils/accountActivation.js";
 
 export const getAllReservations = async (
   page: number,
@@ -37,10 +36,41 @@ export const getReservationsByPhone = async (phoneNumber: string) => {
   return reservationRepository.findReservationsByPhoneNumber(phoneNumber);
 };
 
-// UPDATED: Replaced `data: any` with `CreateReservationDto`
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+
+// ... (getAllReservations, getReservationById, getReservationsByPhone remain unchanged) ...
+
 export const createReservation = async (data: CreateReservationDto) => {
-  return reservationRepository.createReservation(data);
+  // 1. Create the reservation
+  const reservation = await reservationRepository.createReservation(data);
+
+  // 2. Trigger account activation setup if status is CONFIRMED or PENDING
+  if (reservation.status === "CONFIRMED" || reservation.status === "PENDING") {
+    try {
+      const activationResult = await triggerGuestAccountActivation({
+        email: data.customerEmail,
+        firstName: data.customerFirstName,
+        lastName: data.customerLastName,
+        phone: data.phoneNumber,
+      });
+
+      // 3. Return the reservation along with the activation link for the frontend
+      return {
+        ...reservation,
+        activationLink: activationResult.activationLink,
+        emailSent: activationResult.emailSent,
+      };
+    } catch (activationError) {
+      // If activation setup fails, we still return the reservation successfully.
+      // The booking is saved, but the user just won't get the activation email.
+      return reservation;
+    }
+  }
+
+  return reservation;
 };
+
+// ... (updateReservation, updateStatus, updateQuote, deleteReservation, sendPaymentLink, createCheckoutSession, handleStripeWebhook remain unchanged) ...
 
 // UPDATED: Replaced `data: any` with `UpdateReservationDto`
 export const updateReservation = async (

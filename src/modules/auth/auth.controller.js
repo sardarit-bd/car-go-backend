@@ -28,7 +28,6 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   try {
-    console.log("hiited login");
     const { user, token } = await authService.login(req.body);
 
     res.cookie("token", token, COOKIE_OPTIONS);

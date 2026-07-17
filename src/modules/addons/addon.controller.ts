@@ -9,7 +9,6 @@ export const getAddons = async (
 ): Promise<void> => {
   try {
     const result = await addonService.getAllAddons();
-    console.log(result);
     sendResponse(res, 200, true, "Addons fetched successfully", result);
   } catch (error) {
     next(error);
