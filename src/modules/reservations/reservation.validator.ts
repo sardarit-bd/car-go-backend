@@ -14,8 +14,8 @@ export const reservationIdParamsSchema = yup.object({
   id: yup.string().required("Reservation ID is required"),
 });
 
-export const phoneNumberParamsSchema = yup.object({
-  phoneNumber: yup.string().required("Phone number is required"),
+export const emailParamsSchema = yup.object({
+  email: yup.string().required("email is required"),
 });
 
 export const revertionIdParamsSchema = yup.object({

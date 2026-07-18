@@ -32,8 +32,8 @@ export const getReservationById = async (id: string) => {
   return reservation;
 };
 
-export const getReservationsByPhone = async (phoneNumber: string) => {
-  return reservationRepository.findReservationsByPhoneNumber(phoneNumber);
+export const getReservationsByEmail = async (email: string) => {
+  return reservationRepository.findReservationsByEmail(email);
 };
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);

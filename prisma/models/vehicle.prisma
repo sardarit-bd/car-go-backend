@@ -1,64 +1,63 @@
 model Vehicle {
-    id String @id @default(cuid())
-    ownerId String
-    name        String
-    brand       String
-    model       String
-    description String
-    class String
-    seats       Int
-    pricePerDay Decimal @db.Decimal(10, 2)
+    id             String                @id @default(cuid())
+    ownerId        String
+    name           String
+    brand          String
+    model          String
+    description    String
+    class          String
+    seats          Int
+    pricePerDay    Decimal               @db.Decimal(10, 2)
     //   owner User @relation(fields: [ownerId], references: [id])
     images         VehicleImage[]
     locations      VehicleLocation[]
     availabilities VehicleAvailability[]
     bookings       Booking[]
-    deletedAt DateTime? 
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    deletedAt      DateTime?
+    createdAt      DateTime              @default(now())
+    updatedAt      DateTime              @updatedAt
 }
 
 model VehicleImage {
-    id String @id @default(cuid())
+    id        String  @id @default(cuid())
     vehicleId String
-    imageUrl String
-    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+    imageUrl  String
+    vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }
 
 model VehicleLocation {
-    id String @id @default(cuid())
+    id        String  @id @default(cuid())
     vehicleId String
-    country String
-    city    String
-    address String?
-    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+    country   String
+    city      String
+    address   String?
+    vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }
 
 model VehicleAvailability {
-    id String @id @default(cuid())
-    vehicleId String
+    id            String   @id @default(cuid())
+    vehicleId     String
     availableFrom DateTime
     availableTo   DateTime
-    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+    vehicle       Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }
 
 enum BookingStatus {
-  PENDING
-  CONFIRMED
-  CANCELLED
-  COMPLETED
+    PENDING
+    CONFIRMED
+    CANCELLED
 }
 
 model Booking {
-    id                String        @id @default(cuid())
-    vehicleId         String
-    phoneNumber       String        
-    pickupDate        DateTime
-    returnDate        DateTime
-    pickupLocationId  String?    
-    returnLocationId  String?     
-    totalPrice        Decimal       @db.Decimal(10, 2)
-    status            BookingStatus @default(PENDING)
+    id               String        @id @default(cuid())
+    vehicleId        String
+    phoneNumber      String
+    pickupDate       DateTime
+    returnDate       DateTime
+    pickupLocationId String?
+    returnLocationId String?
+    totalPrice       Decimal       @db.Decimal(10, 2)
+    status           BookingStatus @default(PENDING)
 
     customerFirstName String
     customerLastName  String
@@ -67,15 +66,15 @@ model Booking {
     packageData       Json?
     addonsData        Json?
 
-    stripeSessionId   String?
-    paymentStatus     String        @default("UNPAID") 
+    stripeSessionId String?
+    paymentStatus   String  @default("UNPAID")
 
-    createdAt         DateTime      @default(now())
-    updatedAt         DateTime      @updatedAt
-    deletedAt         DateTime?   
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    deletedAt DateTime?
 
-    vehicle           Vehicle       @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+    vehicle Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 
-    @@index([phoneNumber]) 
+    @@index([phoneNumber])
     @@index([vehicleId, status, pickupDate, returnDate])
 }
