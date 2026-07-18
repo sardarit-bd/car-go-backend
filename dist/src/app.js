@@ -23,10 +23,22 @@ import cmsHeroRoutes from "./modules/cms/cmsHero/cmsHero.routes.js";
 import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.routes.js";
 import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes.js";
 import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes.js";
+import cmsAboutUsRoutes from "./modules/cms/cmsAboutUs/cmsAboutUs.routes.js";
 const app = express();
+app.use((req, res, next) => {
+    console.log("INCOMING:", req.method, req.originalUrl);
+    next();
+});
+app.set("trust proxy", 1);
 app.use(rateLimit({
     windowMs: 1 * 60 * 1000,
-    max: 100,
+    max: 300,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: {
+        success: false,
+        message: "Too many requests, please try again in a minute.",
+    },
 }));
 app.use(xss());
 app.use(cookieParser());
@@ -67,6 +79,7 @@ app.use("/api/admin/cms/social-media", cmsSocialMediaRoutes);
 app.use("/api/admin/cms/hero", cmsHeroRoutes);
 app.use("/api/admin/cms/hero-feature", cmsHeroFeatureRoutes);
 app.use("/api/admin/cms/why-choose-us", cmsWhyChooseUsRoutes);
+app.use("/api/admin/cms/about-us", cmsAboutUsRoutes);
 app.use("/api/admin/cms/why-choose-us-feature", cmsWhyChooseUsFeatureRoutes);
 app.use(errorHandler);
 export default app;

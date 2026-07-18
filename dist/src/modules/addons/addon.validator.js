@@ -11,6 +11,7 @@ export const createAddonBodySchema = yup.object({
         .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
         .positive("Price must be greater than 0")
         .required("Price is required"),
+    image: yup.string().optional(),
 });
 export const updateAddonBodySchema = yup.object({
     name: yup.string().trim().optional(),
@@ -20,4 +21,5 @@ export const updateAddonBodySchema = yup.object({
         .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
         .positive("Price must be greater than 0")
         .optional(),
+    image: yup.string().optional(),
 });

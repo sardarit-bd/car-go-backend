@@ -2,11 +2,16 @@ import { Router } from "express";
 import validate from "../../shared/middleware/validate.js";
 import * as controller from "./reservation.controller.js";
 import * as validator from "./reservation.validator.js";
+import authMiddleware from "../../shared/middleware/authMiddleware.js";
 const router = Router();
+router.get("/:id", validate(validator.revertionIdParamsSchema, "params"), controller.getReservationById);
+router.use(authMiddleware);
+router.get("/myrevertion", 
+// validate(validator.emailParamsSchema, "params"),
+controller.getReservationByEmail);
 router.get("/", 
-//   validate(validator.getReservationsQuerySchema, "query"), 
+//   validate(validator.getReservationsQuerySchema, "query"),
 controller.getReservations);
-router.get("/check/:phoneNumber", validate(validator.phoneNumberParamsSchema, "params"), controller.getReservationByPhone);
 router.post("/", validate(validator.createReservationBodySchema, "body"), controller.createReservation);
 router.patch("/:id", validate(validator.reservationIdParamsSchema, "params"), validate(validator.updateReservationBodySchema, "body"), controller.updateReservation);
 router.delete("/:id", validate(validator.reservationIdParamsSchema, "params"), controller.deleteReservation);

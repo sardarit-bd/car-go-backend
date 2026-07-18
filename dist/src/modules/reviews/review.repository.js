@@ -12,9 +12,9 @@ export const reviewRepository = {
                         id: true,
                         firstName: true,
                         lastName: true,
-                        email: true
-                    }
-                }
+                        email: true,
+                    },
+                },
             },
             orderBy: { createdAt: "desc" },
             skip: (page - 1) * limit,
@@ -33,9 +33,9 @@ export const reviewRepository = {
                         id: true,
                         firstName: true,
                         lastName: true,
-                        email: true
-                    }
-                }
+                        email: true,
+                    },
+                },
             },
             orderBy: { createdAt: "desc" },
             skip: (page - 1) * limit,
@@ -56,16 +56,23 @@ export const reviewRepository = {
     },
     findById: (id) => {
         return prisma.review.findFirst({
-            where: { id, deletedAt: null }
+            where: { id, deletedAt: null },
         });
     },
     countApproved: () => {
-        return prisma.review.count({ where: { status: "APPROVED", deletedAt: null } });
+        return prisma.review.count({
+            where: { status: "APPROVED", deletedAt: null },
+        });
     },
     countAllForAdmin: (status) => {
         const where = { deletedAt: null };
         if (status)
             where.status = status;
         return prisma.review.count({ where });
-    }
+    },
+    findByUserId: (userId) => {
+        return prisma.review.findFirst({
+            where: { userId, deletedAt: null },
+        });
+    },
 };

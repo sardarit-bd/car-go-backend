@@ -2,7 +2,6 @@ import * as cmsWhyChooseUsService from "./cmsWhyChooseUs.service.js";
 import sendResponse from "../../../shared/utils/response.js";
 export const createCmsWhyChooseUs = async (req, res, next) => {
     try {
-        // If an image was uploaded, set the mainImage path in req.body
         if (req.file) {
             req.body.mainImage = `/uploads/${req.file.filename}`;
         }
