@@ -2,9 +2,7 @@ import jwt from "jsonwebtoken";
 import * as authRepository from "../../modules/auth/auth.repository.js";
 import AppError from "../utils/AppError.js";
 const authMiddleware = async (req, res, next) => {
-    // 1. Try to get token from httpOnly cookie
     let token = req.cookies?.token;
-    // 2. Fallback to Authorization header (useful for Postman testing)
     if (!token) {
         const authHeader = req.headers.authorization;
         if (authHeader && authHeader.startsWith("Bearer ")) {

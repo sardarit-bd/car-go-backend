@@ -46,6 +46,10 @@ export const login = async (data: { email: string; password: string }) => {
     throw new AppError("Invalid email or password", 401);
   }
 
+  if (!user.password) {
+    throw new AppError("Password is not set", 400);
+  }
+
   const isMatch = await bcrypt.compare(data.password, user.password);
   if (!isMatch) {
     throw new AppError("Invalid email or password", 401);
@@ -132,6 +136,9 @@ export const updateProfile = async (
         400,
       );
     }
+    if (!fullUser.password) {
+      throw new AppError("Password is not set for this account", 400);
+    }
     const isMatch = await bcrypt.compare(
       data.currentPassword,
       fullUser.password,
@@ -203,5 +210,46 @@ export const activateAccount = async (data: {
       role: updatedUser.role,
     },
     token,
+  };
+};
+
+export const changePassword = async (
+  userId: string,
+  payload: {
+    currentPassword: string;
+    newPassword: string;
+  },
+) => {
+  const { currentPassword, newPassword } = payload;
+
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+  });
+
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
+  if (!user.password) {
+    throw new AppError("Password is not set for this account", 400);
+  }
+
+  const isMatch = await bcrypt.compare(currentPassword, user.password);
+
+  if (!isMatch) {
+    throw new AppError("Current password is incorrect", 400);
+  }
+
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  await prisma.user.update({
+    where: { id: userId },
+    data: {
+      password: hashedPassword,
+    },
+  });
+
+  return {
+    message: "Password changed successfully",
   };
 };

@@ -42,6 +42,7 @@ export const ModelName = {
     Blog: 'Blog',
     User: 'User',
     Addon: 'Addon',
+    CmsAboutUs: 'CmsAboutUs',
     CmsContact: 'CmsContact',
     CmsFaq: 'CmsFaq',
     CmsHero: 'CmsHero',
@@ -91,6 +92,8 @@ export const UserScalarFieldEnum = {
     role: 'role',
     resetToken: 'resetToken',
     resetTokenExpiry: 'resetTokenExpiry',
+    activationToken: 'activationToken',
+    activationTokenExpiry: 'activationTokenExpiry',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -100,8 +103,34 @@ export const AddonScalarFieldEnum = {
     name: 'name',
     description: 'description',
     price: 'price',
+    image: 'image',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+};
+export const CmsAboutUsScalarFieldEnum = {
+    id: 'id',
+    titlePl: 'titlePl',
+    subtitlePl: 'subtitlePl',
+    titleEn: 'titleEn',
+    subtitleEn: 'subtitleEn',
+    feature1Icon: 'feature1Icon',
+    feature1TitlePl: 'feature1TitlePl',
+    feature1TitleEn: 'feature1TitleEn',
+    feature1DescPl: 'feature1DescPl',
+    feature1DescEn: 'feature1DescEn',
+    feature2Icon: 'feature2Icon',
+    feature2TitlePl: 'feature2TitlePl',
+    feature2TitleEn: 'feature2TitleEn',
+    feature2DescPl: 'feature2DescPl',
+    feature2DescEn: 'feature2DescEn',
+    ctaTextPl: 'ctaTextPl',
+    ctaTextEn: 'ctaTextEn',
+    ctaLink: 'ctaLink',
+    image1Url: 'image1Url',
+    image2Url: 'image2Url',
+    updatedAt: 'updatedAt',
+    createdAt: 'createdAt',
     deletedAt: 'deletedAt'
 };
 export const CmsContactScalarFieldEnum = {

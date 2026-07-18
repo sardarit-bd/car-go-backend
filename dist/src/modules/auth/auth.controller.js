@@ -1,11 +1,10 @@
 import * as authService from "./auth.service.js";
 import sendResponse from "../../shared/utils/response.js";
-// Cookie configuration
 const COOKIE_OPTIONS = {
-    httpOnly: true, // Prevents XSS (JavaScript cannot read it)
-    secure: process.env.NODE_ENV === "production", // Use true in production (requires HTTPS)
-    sameSite: "lax", // Protects against CSRF
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days (matches your JWT expiry)
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 export const register = async (req, res, next) => {
     try {
@@ -32,8 +31,11 @@ export const login = async (req, res, next) => {
 };
 export const logout = async (req, res, next) => {
     try {
-        // Clear the cookie
-        res.clearCookie("token");
+        res.clearCookie("token", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+        });
         sendResponse(res, 200, true, "Logged out successfully", null);
     }
     catch (error) {
@@ -75,6 +77,30 @@ export const updateProfile = async (req, res, next) => {
         const userId = req.user.id;
         const user = await authService.updateProfile(userId, req.body);
         sendResponse(res, 200, true, "Profile updated successfully", user);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const activateAccount = async (req, res, next) => {
+    try {
+        const { email, token, password } = req.body;
+        const result = await authService.activateAccount({
+            email,
+            token,
+            password,
+        });
+        sendResponse(res, 200, true, "Profile updated successfully", result);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const changePassword = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const result = await authService.changePassword(userId, req.body);
+        sendResponse(res, 200, true, "Profile updated successfully", result);
     }
     catch (error) {
         next(error);

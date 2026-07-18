@@ -1,17 +1,31 @@
 import * as yup from "yup";
 const emptyStringToUndefined = (value, originalValue) => originalValue === "" ? undefined : value;
-const validStatuses = ["PENDING", "CONFIRMED", "CANCELLED", "COMPLETED"];
+const validStatuses = [
+    "PENDING",
+    "CONFIRMED",
+    "CANCELLED",
+    "COMPLETED",
+];
 export const reservationIdParamsSchema = yup.object({
     id: yup.string().required("Reservation ID is required"),
 });
-export const phoneNumberParamsSchema = yup.object({
-    phoneNumber: yup.string().required("Phone number is required"),
+export const emailParamsSchema = yup.object({
+    email: yup.string().required("email is required"),
+});
+export const revertionIdParamsSchema = yup.object({
+    id: yup.string().required("Id of the reservation is required"),
 });
 export const createReservationBodySchema = yup.object({
     vehicleId: yup.string().trim().required("Vehicle ID is required"),
     phoneNumber: yup.string().trim().required("Phone number is required"),
-    pickupDate: yup.date().typeError("Invalid pickup date").required("Pickup date is required"),
-    returnDate: yup.date().typeError("Invalid return date").required("Return date is required"),
+    pickupDate: yup
+        .date()
+        .typeError("Invalid pickup date")
+        .required("Pickup date is required"),
+    returnDate: yup
+        .date()
+        .typeError("Invalid return date")
+        .required("Return date is required"),
     pickupLocationId: yup.string().trim().optional().nullable(),
     returnLocationId: yup.string().trim().optional().nullable(),
     totalPrice: yup
@@ -21,7 +35,10 @@ export const createReservationBodySchema = yup.object({
         .required("Total price is required"),
     customerFirstName: yup.string().trim().required("First name is required"),
     customerLastName: yup.string().trim().required("Last name is required"),
-    customerEmail: yup.string().email("Invalid email").required("Email is required"),
+    customerEmail: yup
+        .string()
+        .email("Invalid email")
+        .required("Email is required"),
     customerNotes: yup.string().trim().optional().nullable(),
     packageData: yup.mixed().optional().nullable(),
     addonsData: yup.mixed().optional().nullable(),
@@ -46,7 +63,10 @@ export const updateReservationBodySchema = yup.object({
     addonsData: yup.mixed().optional().nullable(),
 });
 export const updateStatusBodySchema = yup.object({
-    status: yup.string().oneOf(validStatuses, `Status must be one of: ${validStatuses.join(", ")}`).required("Status is required"),
+    status: yup
+        .string()
+        .oneOf(validStatuses, `Status must be one of: ${validStatuses.join(", ")}`)
+        .required("Status is required"),
 });
 export const updateQuoteBodySchema = yup.object({
     totalPrice: yup

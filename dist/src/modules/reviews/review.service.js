@@ -2,6 +2,10 @@ import { reviewRepository } from "./review.repository.js";
 import AppError from "../../shared/utils/AppError.js";
 export const reviewService = {
     createReview: async (userId, payload) => {
+        const existingReview = await reviewRepository.findByUserId(userId);
+        if (existingReview) {
+            throw new AppError("You have already submitted a review", 409);
+        }
         return reviewRepository.create({
             userId,
             rating: payload.rating,
