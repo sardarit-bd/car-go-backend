@@ -49,7 +49,6 @@ export const getReservationByEmail = async (
   next: NextFunction,
 ) => {
   try {
-    console.log("hit");
     // const { email } = req?.user;
     // console.log("email", email);
     // const result = await reservationService.getReservationsByEmail(
