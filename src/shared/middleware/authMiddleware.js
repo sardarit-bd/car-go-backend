@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import * as authRepository from "../../modules/auth/auth.repository";
 import AppError from "../utils/AppError";
+
 const authMiddleware = async (req, res, next) => {
   let token = req.cookies?.token;
   if (!token) {
@@ -16,12 +17,15 @@ const authMiddleware = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     const user = await authRepository.findUserById(decoded.id);
     if (!user) {
+      res.clearCookie("token", { path: "/" });
       return next(new AppError("User not found", 404));
     }
     req.user = user;
     next();
   } catch (err) {
+    res.clearCookie("token", { path: "/" });
     return next(new AppError("Invalid or expired token", 401));
   }
 };
+
 export default authMiddleware;
