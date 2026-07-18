@@ -16,7 +16,7 @@ router.get(
   controller.getReservationById,
 );
 
-router.use(authMiddleware);
+// router.use(authMiddleware);
 
 router.get("/", controller.getReservations);
 router.post(
