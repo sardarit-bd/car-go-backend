@@ -3,7 +3,6 @@ import * as authRepository from "../../modules/auth/auth.repository";
 import AppError from "../utils/AppError";
 const authMiddleware = async (req, res, next) => {
   let token = req.cookies?.token;
-  console.log("authMiddleware hit for:", req.originalUrl);
   if (!token) {
     const authHeader = req.headers.authorization;
     if (authHeader && authHeader.startsWith("Bearer ")) {

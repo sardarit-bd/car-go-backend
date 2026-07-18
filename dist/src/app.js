@@ -26,42 +26,47 @@ import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cms
 import cmsAboutUsRoutes from "./modules/cms/cmsAboutUs/cmsAboutUs.routes.js";
 const app = express();
 app.use((req, res, next) => {
-    console.log("INCOMING:", req.method, req.originalUrl);
-    next();
+  next();
 });
 app.set("trust proxy", 1);
-app.use(rateLimit({
+app.use(
+  rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 300,
     standardHeaders: true,
     legacyHeaders: false,
     message: {
-        success: false,
-        message: "Too many requests, please try again in a minute.",
+      success: false,
+      message: "Too many requests, please try again in a minute.",
     },
-}));
+  }),
+);
 app.use(xss());
 app.use(cookieParser());
-app.use(cors({
+app.use(
+  cors({
     origin: [
-        "http://localhost:3000",
-        "http://192.168.0.105:3000",
-        "https://car-go-flame.vercel.app",
+      "http://localhost:3000",
+      "http://192.168.0.105:3000",
+      "https://car-go-flame.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-}));
-app.use(helmet({
+  }),
+);
+app.use(
+  helmet({
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: "cross-origin" },
-}));
+  }),
+);
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
 app.use(express.json({ limit: "10kb" }));
 const uploadsPath = path.join(process.cwd(), "uploads");
 app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req, res) => {
-    res.send("right endpoint");
+  res.send("right endpoint");
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicle", vehicleRoutes);
