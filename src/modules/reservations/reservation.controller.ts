@@ -43,18 +43,22 @@ export const getReservations = async (
   }
 };
 
-export const getReservationByPhone = async (
+export const getReservationByEmail = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const { phoneNumber } = req.params;
-    const result = await reservationService.getReservationsByPhone(
-      phoneNumber as string,
-    );
-    sendResponse(res, 200, true, "Reservations fetched successfully", result);
+    console.log("hit");
+    // const { email } = req?.user;
+    // console.log("email", email);
+    // const result = await reservationService.getReservationsByEmail(
+    //   email as string,
+    // );
+    // console.log("result", result);
+    // sendResponse(res, 200, true, "Reservations fetched successfully", result);
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
@@ -65,7 +69,6 @@ export const createReservation = async (
   next: NextFunction,
 ) => {
   try {
-    // UPDATED: Cast req.body to CreateReservationDto
     const result = await reservationService.createReservation(
       req.body as CreateReservationDto,
     );
@@ -196,6 +199,21 @@ export const handleStripeWebhook = async (
     // req.body is a Buffer here because of the express.raw middleware in app.ts
     const result = await reservationService.handleStripeWebhook(sig, req.body);
     sendResponse(res, 200, true, "Webhook received", result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getReservationById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { id } = req.params;
+
+    const result = await reservationService.getReservationById(id as string);
+    sendResponse(res, 200, true, "Reservation fetched successfully", result);
   } catch (error) {
     next(error);
   }

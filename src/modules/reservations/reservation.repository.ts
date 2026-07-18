@@ -145,20 +145,24 @@ export const softDeleteReservation = async (id: string) => {
   });
 };
 
-export const findReservationsByPhoneNumber = async (phoneNumber: string) => {
-  const normalizedSearch = phoneNumber.replace(/\D/g, "");
-  if (!normalizedSearch) return [];
-  const matchingIds = await prisma.$queryRaw<{ id: string }[]>`
-    SELECT id FROM "Booking" 
-    WHERE "deletedAt" IS NULL 
-    AND regexp_replace("phoneNumber", '[^0-9]', '', 'g') LIKE ${`%${normalizedSearch}%`}
-  `;
+export const findReservationsByEmail = async (email: string) => {
+  const normalizedEmail = email.trim().toLowerCase();
 
-  const ids = matchingIds.map((row) => row.id);
-  if (ids.length === 0) return [];
+  if (!normalizedEmail) return [];
+
   return prisma.booking.findMany({
-    where: { id: { in: ids }, deletedAt: null },
-    include: { vehicle: true },
-    orderBy: { createdAt: "desc" },
+    where: {
+      customerEmail: {
+        equals: normalizedEmail,
+        mode: "insensitive",
+      },
+      deletedAt: null,
+    },
+    include: {
+      vehicle: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 };

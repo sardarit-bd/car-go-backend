@@ -21,7 +21,11 @@ export const createAddon = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const result = await addonService.createAddon(req.body);
+    const data = { ...req.body };
+    if (req.file) {
+      data.image = req.file.filename;
+    }
+    const result = await addonService.createAddon(data);
     sendResponse(res, 201, true, "Addon created successfully", result);
   } catch (error) {
     next(error);
@@ -35,7 +39,11 @@ export const updateAddon = async (
 ): Promise<void> => {
   try {
     const { id } = req.params as { id: string };
-    const result = await addonService.updateAddon(id, req.body);
+    const data = { ...req.body };
+    if (req.file) {
+      data.image = req.file.filename;
+    }
+    const result = await addonService.updateAddon(id, data);
     sendResponse(res, 200, true, "Addon updated successfully", result);
   } catch (error) {
     next(error);

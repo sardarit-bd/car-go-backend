@@ -13,10 +13,7 @@ const authMiddleware = async (
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
-  // 1. Try to get token from httpOnly cookie
   let token = req.cookies?.token;
-
-  // 2. Fallback to Authorization header (useful for Postman testing)
   if (!token) {
     const authHeader = req.headers.authorization;
     if (authHeader && authHeader.startsWith("Bearer ")) {

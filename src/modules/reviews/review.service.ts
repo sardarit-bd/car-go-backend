@@ -6,6 +6,11 @@ export const reviewService = {
     userId: string,
     payload: { rating: number; comment: string },
   ) => {
+    const existingReview = await reviewRepository.findByUserId(userId);
+    if (existingReview) {
+      throw new AppError("You have already submitted a review", 409);
+    }
+
     return reviewRepository.create({
       userId,
       rating: payload.rating,

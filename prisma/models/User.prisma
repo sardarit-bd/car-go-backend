@@ -5,20 +5,22 @@ enum Role {
 }
 
 model User {
-  id               String    @id @default(uuid())
-  firstName        String
-  lastName         String
-  email            String    @unique
-  phone            String?
-  password         String
-  role             Role      @default(USER)
-  resetToken       String?
-  resetTokenExpiry DateTime?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  deletedAt        DateTime? // Consistent with your soft delete pattern
-  reviews   Review[]
-  blogs     Blog[]
+  id                    String    @id @default(uuid())
+  firstName             String
+  lastName              String
+  email                 String    @unique
+  phone                 String?
+  password              String? // Made optional for guest accounts pending activation
+  role                  Role      @default(USER)
+  resetToken            String?
+  resetTokenExpiry      DateTime?
+  activationToken       String? // New: Secure token for 1-step email verification & activation
+  activationTokenExpiry DateTime? // New: Expiry time for the activation token
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  deletedAt             DateTime?
 
+  reviews Review[]
+  blogs   Blog[]
   // Add your relations here (e.g., bookings, vehicles)
 }

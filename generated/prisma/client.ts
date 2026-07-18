@@ -57,6 +57,11 @@ export type User = Prisma.UserModel
  */
 export type Addon = Prisma.AddonModel
 /**
+ * Model CmsAboutUs
+ * 
+ */
+export type CmsAboutUs = Prisma.CmsAboutUsModel
+/**
  * Model CmsContact
  * 
  */

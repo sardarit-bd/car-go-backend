@@ -39,6 +39,7 @@ export type AddonMinAggregateOutputType = {
   name: string | null
   description: string | null
   price: runtime.Decimal | null
+  image: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -49,6 +50,7 @@ export type AddonMaxAggregateOutputType = {
   name: string | null
   description: string | null
   price: runtime.Decimal | null
+  image: string | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -59,6 +61,7 @@ export type AddonCountAggregateOutputType = {
   name: number
   description: number
   price: number
+  image: number
   createdAt: number
   updatedAt: number
   deletedAt: number
@@ -79,6 +82,7 @@ export type AddonMinAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  image?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -89,6 +93,7 @@ export type AddonMaxAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  image?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -99,6 +104,7 @@ export type AddonCountAggregateInputType = {
   name?: true
   description?: true
   price?: true
+  image?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -196,6 +202,7 @@ export type AddonGroupByOutputType = {
   name: string
   description: string
   price: runtime.Decimal
+  image: string | null
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
@@ -229,6 +236,7 @@ export type AddonWhereInput = {
   name?: Prisma.StringFilter<"Addon"> | string
   description?: Prisma.StringFilter<"Addon"> | string
   price?: Prisma.DecimalFilter<"Addon"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.StringNullableFilter<"Addon"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Addon"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Addon"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Addon"> | Date | string | null
@@ -239,6 +247,7 @@ export type AddonOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -252,6 +261,7 @@ export type AddonWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Addon"> | string
   description?: Prisma.StringFilter<"Addon"> | string
   price?: Prisma.DecimalFilter<"Addon"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.StringNullableFilter<"Addon"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Addon"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Addon"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Addon"> | Date | string | null
@@ -262,6 +272,7 @@ export type AddonOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -280,6 +291,7 @@ export type AddonScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Addon"> | string
   description?: Prisma.StringWithAggregatesFilter<"Addon"> | string
   price?: Prisma.DecimalWithAggregatesFilter<"Addon"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.StringNullableWithAggregatesFilter<"Addon"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Addon"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Addon"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Addon"> | Date | string | null
@@ -290,6 +302,7 @@ export type AddonCreateInput = {
   name: string
   description: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -300,6 +313,7 @@ export type AddonUncheckedCreateInput = {
   name: string
   description: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -310,6 +324,7 @@ export type AddonUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -320,6 +335,7 @@ export type AddonUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -330,6 +346,7 @@ export type AddonCreateManyInput = {
   name: string
   description: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -340,6 +357,7 @@ export type AddonUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -350,6 +368,7 @@ export type AddonUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.StringFieldUpdateOperationsInput | string
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -360,6 +379,7 @@ export type AddonCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -374,6 +394,7 @@ export type AddonMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -384,6 +405,7 @@ export type AddonMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   description?: Prisma.SortOrder
   price?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -408,6 +430,7 @@ export type AddonSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   name?: boolean
   description?: boolean
   price?: boolean
+  image?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -418,6 +441,7 @@ export type AddonSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   description?: boolean
   price?: boolean
+  image?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -428,6 +452,7 @@ export type AddonSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   description?: boolean
   price?: boolean
+  image?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -438,12 +463,13 @@ export type AddonSelectScalar = {
   name?: boolean
   description?: boolean
   price?: boolean
+  image?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type AddonOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["addon"]>
+export type AddonOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "image" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["addon"]>
 
 export type $AddonPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Addon"
@@ -453,6 +479,7 @@ export type $AddonPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     name: string
     description: string
     price: runtime.Decimal
+    image: string | null
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -883,6 +910,7 @@ export interface AddonFieldRefs {
   readonly name: Prisma.FieldRef<"Addon", 'String'>
   readonly description: Prisma.FieldRef<"Addon", 'String'>
   readonly price: Prisma.FieldRef<"Addon", 'Decimal'>
+  readonly image: Prisma.FieldRef<"Addon", 'String'>
   readonly createdAt: Prisma.FieldRef<"Addon", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Addon", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Addon", 'DateTime'>

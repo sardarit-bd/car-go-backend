@@ -1,0 +1,39 @@
+model CmsAboutUs {
+    id String @id @default(uuid())
+
+    // Main Content - Polish
+    titlePl    String @default("")
+    subtitlePl String @default("") @db.Text
+
+    // Main Content - English
+    titleEn    String @default("")
+    subtitleEn String @default("") @db.Text
+
+    // Feature 1
+    feature1Icon    String @default("")
+    feature1TitlePl String @default("")
+    feature1TitleEn String @default("")
+    feature1DescPl  String @default("") @db.Text
+    feature1DescEn  String @default("") @db.Text
+
+    // Feature 2
+    feature2Icon    String @default("")
+    feature2TitlePl String @default("")
+    feature2TitleEn String @default("")
+    feature2DescPl  String @default("") @db.Text
+    feature2DescEn  String @default("") @db.Text
+
+    // CTA Button
+    ctaTextPl String @default("")
+    ctaTextEn String @default("")
+    ctaLink   String @default("")
+
+    // Images
+    image1Url String @default("")
+    image2Url String @default("")
+
+    // Metadata
+    updatedAt DateTime  @updatedAt
+    createdAt DateTime  @default(now())
+    deletedAt DateTime?
+}
