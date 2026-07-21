@@ -10,23 +10,24 @@ router.get(
   validate(validator.revertionIdParamsSchema, "params"),
   controller.getReservationById,
 );
-
-router.use(authMiddleware);
-router.get(
-  "/myrevertion",
-  // validate(validator.emailParamsSchema, "params"),
-  controller.getReservationByEmail,
-);
-router.get(
-  "/",
-  //   validate(validator.getReservationsQuerySchema, "query"),
-  controller.getReservations,
-);
 router.post(
   "/",
   validate(validator.createReservationBodySchema, "body"),
   controller.createReservation,
 );
+
+router.get(
+  "/myrevertion",
+  // validate(validator.emailParamsSchema, "params"),
+  controller.getReservationByEmail,
+);
+router.use(authMiddleware);
+router.get(
+  "/",
+  // validate(validator.getReservationsQuerySchema, "query"),
+  controller.getReservations,
+);
+
 router.patch(
   "/:id",
   validate(validator.reservationIdParamsSchema, "params"),
