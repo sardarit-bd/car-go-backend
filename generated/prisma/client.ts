@@ -146,3 +146,8 @@ export type VehicleAvailability = Prisma.VehicleAvailabilityModel
  * 
  */
 export type Booking = Prisma.BookingModel
+/**
+ * Model VehicleClass
+ * 
+ */
+export type VehicleClass = Prisma.VehicleClassModel

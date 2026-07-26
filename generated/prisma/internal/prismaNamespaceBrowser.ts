@@ -71,7 +71,8 @@ export const ModelName = {
   VehicleImage: 'VehicleImage',
   VehicleLocation: 'VehicleLocation',
   VehicleAvailability: 'VehicleAvailability',
-  Booking: 'Booking'
+  Booking: 'Booking',
+  VehicleClass: 'VehicleClass'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -304,7 +305,7 @@ export const LocationScalarFieldEnum = {
   name: 'name',
   address: 'address',
   city: 'city',
-  country: 'country',
+  postalCode: 'postalCode',
   phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -350,6 +351,9 @@ export const VehicleScalarFieldEnum = {
   description: 'description',
   class: 'class',
   seats: 'seats',
+  fuelType: 'fuelType',
+  transmissionType: 'transmissionType',
+  trunkCapacity: 'trunkCapacity',
   pricePerDay: 'pricePerDay',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
@@ -362,7 +366,8 @@ export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeo
 export const VehicleImageScalarFieldEnum = {
   id: 'id',
   vehicleId: 'vehicleId',
-  imageUrl: 'imageUrl'
+  imageUrl: 'imageUrl',
+  isPrimary: 'isPrimary'
 } as const
 
 export type VehicleImageScalarFieldEnum = (typeof VehicleImageScalarFieldEnum)[keyof typeof VehicleImageScalarFieldEnum]
@@ -391,6 +396,7 @@ export type VehicleAvailabilityScalarFieldEnum = (typeof VehicleAvailabilityScal
 
 export const BookingScalarFieldEnum = {
   id: 'id',
+  bookingReference: 'bookingReference',
   vehicleId: 'vehicleId',
   phoneNumber: 'phoneNumber',
   pickupDate: 'pickupDate',
@@ -413,6 +419,17 @@ export const BookingScalarFieldEnum = {
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const VehicleClassScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type VehicleClassScalarFieldEnum = (typeof VehicleClassScalarFieldEnum)[keyof typeof VehicleClassScalarFieldEnum]
 
 
 export const SortOrder = {

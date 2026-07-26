@@ -10,20 +10,20 @@ export interface VehicleFilters {
   returnDate: Date;
 }
 
-
 export interface PaginationOptions {
   skip: number;
   take: number;
 }
 
 const buildWhereClause = (filters: VehicleFilters) => {
-  const { model, search, transmission, seats, pickupDate, returnDate } = filters;
+  const { model, search, transmission, seats, pickupDate, returnDate } =
+    filters;
 
   return {
     deletedAt: null,
     ...(model && { model: { contains: model, mode: "insensitive" as const } }),
     ...(seats !== undefined && { seats: { gte: seats } }),
-    
+
     ...(search && {
       OR: [
         { brand: { contains: search, mode: "insensitive" as const } },
@@ -32,23 +32,20 @@ const buildWhereClause = (filters: VehicleFilters) => {
       ],
     }),
 
-
     ...(transmission && {
-      transmission: { equals: transmission, mode: "insensitive" as const },
+      transmissionType: { equals: transmission, mode: "insensitive" as const },
     }),
-
 
     bookings: {
       none: {
         status: "CONFIRMED" as const,
-        deletedAt: null, 
+        deletedAt: null,
         pickupDate: { lt: returnDate },
         returnDate: { gt: pickupDate },
       },
     },
   };
 };
-
 
 export const findAvailableVehicles = async (
   filters: VehicleFilters,
@@ -92,8 +89,12 @@ export const createVehicle = async (data: any) => {
     data: {
       ...scalarData,
       images: images && images.length > 0 ? { create: images } : undefined,
-      locations: locations && locations.length > 0 ? { create: locations } : undefined,
-      availabilities: availabilities && availabilities.length > 0 ? { create: availabilities } : undefined,
+      locations:
+        locations && locations.length > 0 ? { create: locations } : undefined,
+      availabilities:
+        availabilities && availabilities.length > 0
+          ? { create: availabilities }
+          : undefined,
     },
     include: {
       images: true,
@@ -105,6 +106,12 @@ export const createVehicle = async (data: any) => {
 
 export const updateVehicle = async (id: string, data: any) => {
   const { images, locations, availabilities, ...scalarData } = data;
+  if (images && images.some((img: any) => img.isPrimary)) {
+    await prisma.vehicleImage.updateMany({
+      where: { vehicleId: id, isPrimary: true },
+      data: { isPrimary: false },
+    });
+  }
 
   return prisma.vehicle.update({
     where: { id },
@@ -112,7 +119,9 @@ export const updateVehicle = async (id: string, data: any) => {
       ...scalarData,
       images: images && images.length > 0 ? { create: images } : undefined,
       locations: locations ? { deleteMany: {}, create: locations } : undefined,
-      availabilities: availabilities ? { deleteMany: {}, create: availabilities } : undefined,
+      availabilities: availabilities
+        ? { deleteMany: {}, create: availabilities }
+        : undefined,
     },
     include: {
       images: true,

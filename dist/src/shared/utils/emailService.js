@@ -4,9 +4,13 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 /**
  * Sends the account activation email to the guest user.
  */
-export const sendActivationEmail = async (toEmail, firstName, activationLink) => {
-    // Clean, responsive HTML template with inline styles for email client compatibility
-    const htmlTemplate = `
+export const sendActivationEmail = async (
+  toEmail,
+  firstName,
+  activationLink,
+) => {
+  // Clean, responsive HTML template with inline styles for email client compatibility
+  const htmlTemplate = `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -65,7 +69,7 @@ export const sendActivationEmail = async (toEmail, firstName, activationLink) =>
         <tr>
           <td style="background-color: #f1f5f9; padding: 20px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
             <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.5;">
-              CAR-GO Sp. z o.o. | Skarbimierz-Osiedle, Polska
+              CAR-GO Sp. z o.o.
               <br>
               © ${new Date().getFullYear()} CAR-GO. Wszelkie prawa zastrzeżone. / All rights reserved.
             </p>
@@ -76,21 +80,20 @@ export const sendActivationEmail = async (toEmail, firstName, activationLink) =>
     </body>
     </html>
   `;
-    try {
-        const { data, error } = await resend.emails.send({
-            from: "CAR-GO <onboarding@resend.dev>",
-            to: [toEmail],
-            subject: "Aktywuj swoje konto CAR-GO / Activate your CAR-GO account",
-            html: htmlTemplate,
-        });
-        if (error) {
-            console.error("[Email Service] Resend API Error:", error);
-            return { success: false, error: error.message };
-        }
-        return { success: true, messageId: data?.id };
+  try {
+    const { data, error } = await resend.emails.send({
+      from: "CAR-GO <onboarding@resend.dev>",
+      to: [toEmail],
+      subject: "Aktywuj swoje konto CAR-GO / Activate your CAR-GO account",
+      html: htmlTemplate,
+    });
+    if (error) {
+      console.error("[Email Service] Resend API Error:", error);
+      return { success: false, error: error.message };
     }
-    catch (err) {
-        console.error("[Email Service] Unexpected Error:", err.message);
-        return { success: false, error: err.message };
-    }
+    return { success: true, messageId: data?.id };
+  } catch (err) {
+    console.error("[Email Service] Unexpected Error:", err.message);
+    return { success: false, error: err.message };
+  }
 };

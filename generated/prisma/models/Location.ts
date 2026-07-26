@@ -29,7 +29,7 @@ export type LocationMinAggregateOutputType = {
   name: string | null
   address: string | null
   city: string | null
-  country: string | null
+  postalCode: string | null
   phone: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -41,7 +41,7 @@ export type LocationMaxAggregateOutputType = {
   name: string | null
   address: string | null
   city: string | null
-  country: string | null
+  postalCode: string | null
   phone: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -53,7 +53,7 @@ export type LocationCountAggregateOutputType = {
   name: number
   address: number
   city: number
-  country: number
+  postalCode: number
   phone: number
   createdAt: number
   updatedAt: number
@@ -67,7 +67,7 @@ export type LocationMinAggregateInputType = {
   name?: true
   address?: true
   city?: true
-  country?: true
+  postalCode?: true
   phone?: true
   createdAt?: true
   updatedAt?: true
@@ -79,7 +79,7 @@ export type LocationMaxAggregateInputType = {
   name?: true
   address?: true
   city?: true
-  country?: true
+  postalCode?: true
   phone?: true
   createdAt?: true
   updatedAt?: true
@@ -91,7 +91,7 @@ export type LocationCountAggregateInputType = {
   name?: true
   address?: true
   city?: true
-  country?: true
+  postalCode?: true
   phone?: true
   createdAt?: true
   updatedAt?: true
@@ -176,7 +176,7 @@ export type LocationGroupByOutputType = {
   name: string
   address: string
   city: string
-  country: string
+  postalCode: string
   phone: string | null
   createdAt: Date
   updatedAt: Date
@@ -209,7 +209,7 @@ export type LocationWhereInput = {
   name?: Prisma.StringFilter<"Location"> | string
   address?: Prisma.StringFilter<"Location"> | string
   city?: Prisma.StringFilter<"Location"> | string
-  country?: Prisma.StringFilter<"Location"> | string
+  postalCode?: Prisma.StringFilter<"Location"> | string
   phone?: Prisma.StringNullableFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
@@ -221,7 +221,7 @@ export type LocationOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
+  postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -236,7 +236,7 @@ export type LocationWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"Location"> | string
   address?: Prisma.StringFilter<"Location"> | string
   city?: Prisma.StringFilter<"Location"> | string
-  country?: Prisma.StringFilter<"Location"> | string
+  postalCode?: Prisma.StringFilter<"Location"> | string
   phone?: Prisma.StringNullableFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
@@ -248,7 +248,7 @@ export type LocationOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
+  postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -266,7 +266,7 @@ export type LocationScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Location"> | string
   address?: Prisma.StringWithAggregatesFilter<"Location"> | string
   city?: Prisma.StringWithAggregatesFilter<"Location"> | string
-  country?: Prisma.StringWithAggregatesFilter<"Location"> | string
+  postalCode?: Prisma.StringWithAggregatesFilter<"Location"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
@@ -278,7 +278,7 @@ export type LocationCreateInput = {
   name: string
   address: string
   city: string
-  country: string
+  postalCode: string
   phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -290,7 +290,7 @@ export type LocationUncheckedCreateInput = {
   name: string
   address: string
   city: string
-  country: string
+  postalCode: string
   phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -302,7 +302,7 @@ export type LocationUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -314,7 +314,7 @@ export type LocationUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -326,7 +326,7 @@ export type LocationCreateManyInput = {
   name: string
   address: string
   city: string
-  country: string
+  postalCode: string
   phone?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -338,7 +338,7 @@ export type LocationUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -350,7 +350,7 @@ export type LocationUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.StringFieldUpdateOperationsInput | string
   city?: Prisma.StringFieldUpdateOperationsInput | string
-  country?: Prisma.StringFieldUpdateOperationsInput | string
+  postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -362,7 +362,7 @@ export type LocationCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
+  postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -374,7 +374,7 @@ export type LocationMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
+  postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -386,7 +386,7 @@ export type LocationMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   address?: Prisma.SortOrder
   city?: Prisma.SortOrder
-  country?: Prisma.SortOrder
+  postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -400,7 +400,7 @@ export type LocationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   name?: boolean
   address?: boolean
   city?: boolean
-  country?: boolean
+  postalCode?: boolean
   phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -412,7 +412,7 @@ export type LocationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   name?: boolean
   address?: boolean
   city?: boolean
-  country?: boolean
+  postalCode?: boolean
   phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -424,7 +424,7 @@ export type LocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   name?: boolean
   address?: boolean
   city?: boolean
-  country?: boolean
+  postalCode?: boolean
   phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -436,14 +436,14 @@ export type LocationSelectScalar = {
   name?: boolean
   address?: boolean
   city?: boolean
-  country?: boolean
+  postalCode?: boolean
   phone?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "city" | "country" | "phone" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["location"]>
+export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "city" | "postalCode" | "phone" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["location"]>
 
 export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Location"
@@ -453,7 +453,7 @@ export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     name: string
     address: string
     city: string
-    country: string
+    postalCode: string
     phone: string | null
     createdAt: Date
     updatedAt: Date
@@ -885,7 +885,7 @@ export interface LocationFieldRefs {
   readonly name: Prisma.FieldRef<"Location", 'String'>
   readonly address: Prisma.FieldRef<"Location", 'String'>
   readonly city: Prisma.FieldRef<"Location", 'String'>
-  readonly country: Prisma.FieldRef<"Location", 'String'>
+  readonly postalCode: Prisma.FieldRef<"Location", 'String'>
   readonly phone: Prisma.FieldRef<"Location", 'String'>
   readonly createdAt: Prisma.FieldRef<"Location", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Location", 'DateTime'>

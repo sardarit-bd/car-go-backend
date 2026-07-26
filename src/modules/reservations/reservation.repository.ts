@@ -1,6 +1,6 @@
 import { prisma } from "../../../lib/prisma.js";
 import { BookingStatus, Prisma } from "../../../generated/prisma/client.js";
-
+import { generateBookingReference } from "../../shared/utils/generateBookingReference.js";
 interface FilterOptions {
   status?: "PENDING" | "CONFIRMED" | "CANCELLED";
   pickupDateFrom?: string;
@@ -85,23 +85,47 @@ export const findAllReservations = async (
 // --- ADDED MISSING FUNCTIONS BELOW ---
 
 export const createReservation = async (data: any) => {
-  return prisma.booking.create({
-    data: {
-      vehicleId: data.vehicleId,
-      phoneNumber: data.phoneNumber,
-      pickupDate: new Date(data.pickupDate),
-      returnDate: new Date(data.returnDate),
-      pickupLocationId: data.pickupLocationId,
-      returnLocationId: data.returnLocationId,
-      totalPrice: data.totalPrice,
-      customerFirstName: data.customerFirstName,
-      customerLastName: data.customerLastName,
-      customerEmail: data.customerEmail,
-      customerNotes: data.customerNotes,
-      packageData: data.packageData,
-      addonsData: data.addonsData,
-    },
-  });
+  const MAX_ATTEMPTS = 5;
+  let attempt = 0;
+  console.log("issues");
+  while (attempt < MAX_ATTEMPTS) {
+    try {
+      return await prisma.booking.create({
+        data: {
+          vehicleId: data.vehicleId,
+          phoneNumber: data.phoneNumber,
+          pickupDate: new Date(data.pickupDate),
+          returnDate: new Date(data.returnDate),
+          pickupLocationId: data.pickupLocationId,
+          returnLocationId: data.returnLocationId,
+          totalPrice: data.totalPrice,
+          customerFirstName: data.customerFirstName,
+          customerLastName: data.customerLastName,
+          customerEmail: data.customerEmail,
+          customerNotes: data.customerNotes,
+          packageData: data.packageData,
+          addonsData: data.addonsData,
+          bookingReference: generateBookingReference(),
+        },
+      });
+    } catch (error) {
+      if (
+        error instanceof Prisma.PrismaClientKnownRequestError &&
+        error.code === "P2002" &&
+        (error.meta?.target as string[] | undefined)?.includes(
+          "bookingReference",
+        )
+      ) {
+        attempt++;
+        continue;
+      }
+      throw error;
+    }
+  }
+
+  throw new Error(
+    "Failed to generate a unique booking reference after multiple attempts",
+  );
 };
 
 export const findReservationById = async (id: string) => {

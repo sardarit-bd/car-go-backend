@@ -28,18 +28,21 @@ export type VehicleImageMinAggregateOutputType = {
   id: string | null
   vehicleId: string | null
   imageUrl: string | null
+  isPrimary: boolean | null
 }
 
 export type VehicleImageMaxAggregateOutputType = {
   id: string | null
   vehicleId: string | null
   imageUrl: string | null
+  isPrimary: boolean | null
 }
 
 export type VehicleImageCountAggregateOutputType = {
   id: number
   vehicleId: number
   imageUrl: number
+  isPrimary: number
   _all: number
 }
 
@@ -48,18 +51,21 @@ export type VehicleImageMinAggregateInputType = {
   id?: true
   vehicleId?: true
   imageUrl?: true
+  isPrimary?: true
 }
 
 export type VehicleImageMaxAggregateInputType = {
   id?: true
   vehicleId?: true
   imageUrl?: true
+  isPrimary?: true
 }
 
 export type VehicleImageCountAggregateInputType = {
   id?: true
   vehicleId?: true
   imageUrl?: true
+  isPrimary?: true
   _all?: true
 }
 
@@ -139,6 +145,7 @@ export type VehicleImageGroupByOutputType = {
   id: string
   vehicleId: string
   imageUrl: string
+  isPrimary: boolean
   _count: VehicleImageCountAggregateOutputType | null
   _min: VehicleImageMinAggregateOutputType | null
   _max: VehicleImageMaxAggregateOutputType | null
@@ -166,6 +173,7 @@ export type VehicleImageWhereInput = {
   id?: Prisma.StringFilter<"VehicleImage"> | string
   vehicleId?: Prisma.StringFilter<"VehicleImage"> | string
   imageUrl?: Prisma.StringFilter<"VehicleImage"> | string
+  isPrimary?: Prisma.BoolFilter<"VehicleImage"> | boolean
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }
 
@@ -173,6 +181,7 @@ export type VehicleImageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   vehicle?: Prisma.VehicleOrderByWithRelationInput
 }
 
@@ -183,6 +192,7 @@ export type VehicleImageWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.VehicleImageWhereInput | Prisma.VehicleImageWhereInput[]
   vehicleId?: Prisma.StringFilter<"VehicleImage"> | string
   imageUrl?: Prisma.StringFilter<"VehicleImage"> | string
+  isPrimary?: Prisma.BoolFilter<"VehicleImage"> | boolean
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }, "id">
 
@@ -190,6 +200,7 @@ export type VehicleImageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
   _count?: Prisma.VehicleImageCountOrderByAggregateInput
   _max?: Prisma.VehicleImageMaxOrderByAggregateInput
   _min?: Prisma.VehicleImageMinOrderByAggregateInput
@@ -202,11 +213,13 @@ export type VehicleImageScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"VehicleImage"> | string
   vehicleId?: Prisma.StringWithAggregatesFilter<"VehicleImage"> | string
   imageUrl?: Prisma.StringWithAggregatesFilter<"VehicleImage"> | string
+  isPrimary?: Prisma.BoolWithAggregatesFilter<"VehicleImage"> | boolean
 }
 
 export type VehicleImageCreateInput = {
   id?: string
   imageUrl: string
+  isPrimary?: boolean
   vehicle: Prisma.VehicleCreateNestedOneWithoutImagesInput
 }
 
@@ -214,11 +227,13 @@ export type VehicleImageUncheckedCreateInput = {
   id?: string
   vehicleId: string
   imageUrl: string
+  isPrimary?: boolean
 }
 
 export type VehicleImageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicle?: Prisma.VehicleUpdateOneRequiredWithoutImagesNestedInput
 }
 
@@ -226,23 +241,27 @@ export type VehicleImageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleImageCreateManyInput = {
   id?: string
   vehicleId: string
   imageUrl: string
+  isPrimary?: boolean
 }
 
 export type VehicleImageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleImageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleImageListRelationFilter = {
@@ -259,18 +278,21 @@ export type VehicleImageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
 }
 
 export type VehicleImageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
 }
 
 export type VehicleImageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   imageUrl?: Prisma.SortOrder
+  isPrimary?: Prisma.SortOrder
 }
 
 export type VehicleImageCreateNestedManyWithoutVehicleInput = {
@@ -318,11 +340,13 @@ export type VehicleImageUncheckedUpdateManyWithoutVehicleNestedInput = {
 export type VehicleImageCreateWithoutVehicleInput = {
   id?: string
   imageUrl: string
+  isPrimary?: boolean
 }
 
 export type VehicleImageUncheckedCreateWithoutVehicleInput = {
   id?: string
   imageUrl: string
+  isPrimary?: boolean
 }
 
 export type VehicleImageCreateOrConnectWithoutVehicleInput = {
@@ -358,26 +382,31 @@ export type VehicleImageScalarWhereInput = {
   id?: Prisma.StringFilter<"VehicleImage"> | string
   vehicleId?: Prisma.StringFilter<"VehicleImage"> | string
   imageUrl?: Prisma.StringFilter<"VehicleImage"> | string
+  isPrimary?: Prisma.BoolFilter<"VehicleImage"> | boolean
 }
 
 export type VehicleImageCreateManyVehicleInput = {
   id?: string
   imageUrl: string
+  isPrimary?: boolean
 }
 
 export type VehicleImageUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleImageUncheckedUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleImageUncheckedUpdateManyWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   imageUrl?: Prisma.StringFieldUpdateOperationsInput | string
+  isPrimary?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -386,6 +415,7 @@ export type VehicleImageSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   vehicleId?: boolean
   imageUrl?: boolean
+  isPrimary?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleImage"]>
 
@@ -393,6 +423,7 @@ export type VehicleImageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   vehicleId?: boolean
   imageUrl?: boolean
+  isPrimary?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleImage"]>
 
@@ -400,6 +431,7 @@ export type VehicleImageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   vehicleId?: boolean
   imageUrl?: boolean
+  isPrimary?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleImage"]>
 
@@ -407,9 +439,10 @@ export type VehicleImageSelectScalar = {
   id?: boolean
   vehicleId?: boolean
   imageUrl?: boolean
+  isPrimary?: boolean
 }
 
-export type VehicleImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "imageUrl", ExtArgs["result"]["vehicleImage"]>
+export type VehicleImageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "imageUrl" | "isPrimary", ExtArgs["result"]["vehicleImage"]>
 export type VehicleImageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -429,6 +462,7 @@ export type $VehicleImagePayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     vehicleId: string
     imageUrl: string
+    isPrimary: boolean
   }, ExtArgs["result"]["vehicleImage"]>
   composites: {}
 }
@@ -856,6 +890,7 @@ export interface VehicleImageFieldRefs {
   readonly id: Prisma.FieldRef<"VehicleImage", 'String'>
   readonly vehicleId: Prisma.FieldRef<"VehicleImage", 'String'>
   readonly imageUrl: Prisma.FieldRef<"VehicleImage", 'String'>
+  readonly isPrimary: Prisma.FieldRef<"VehicleImage", 'Boolean'>
 }
     
 

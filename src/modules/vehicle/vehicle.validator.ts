@@ -5,7 +5,7 @@ const emptyStringToUndefined = (value: unknown, originalValue: unknown) =>
 
 export const getVehiclesQuerySchema = yup.object({
   model: yup.string().trim().optional(),
-  
+
   search: yup.string().trim().optional(),
   transmission: yup.string().trim().optional(),
 
@@ -34,7 +34,7 @@ export const getVehiclesQuerySchema = yup.object({
       "returnDate must be after pickupDate",
       function (returnDate) {
         const { pickupDate } = this.parent;
-        if (!pickupDate || !returnDate) return true; 
+        if (!pickupDate || !returnDate) return true;
         return returnDate.getTime() > pickupDate.getTime();
       },
     ),
@@ -61,7 +61,7 @@ const parseJsonString = (value: unknown) => {
   try {
     return JSON.parse(value);
   } catch {
-    return value; 
+    return value;
   }
 };
 
@@ -82,6 +82,17 @@ export const createVehicleBodySchema = yup.object({
     .integer("Seats must be a whole number")
     .positive("Seats must be greater than 0")
     .required("Seats is required"),
+  fuelType: yup.string().trim().required("Fuel type is required"),
+  transmissionType: yup
+    .string()
+    .trim()
+    .required("Transmission type is required"),
+  trunkCapacity: yup
+    .number()
+    .transform((_, val) => (typeof val === "string" ? parseInt(val, 10) : val))
+    .integer("Trunk capacity must be a whole number")
+    .min(0, "Trunk capacity cannot be negative")
+    .required("Trunk capacity is required"),
   pricePerDay: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
@@ -122,6 +133,14 @@ export const updateVehicleBodySchema = yup.object({
     .transform((_, val) => (typeof val === "string" ? parseInt(val, 10) : val))
     .integer("Seats must be a whole number")
     .positive("Seats must be greater than 0")
+    .optional(),
+  fuelType: yup.string().trim().optional(),
+  transmissionType: yup.string().trim().optional(),
+  trunkCapacity: yup
+    .number()
+    .transform((_, val) => (typeof val === "string" ? parseInt(val, 10) : val))
+    .integer("Trunk capacity must be a whole number")
+    .min(0, "Trunk capacity cannot be negative")
     .optional(),
   pricePerDay: yup
     .number()
