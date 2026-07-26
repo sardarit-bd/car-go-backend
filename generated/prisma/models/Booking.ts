@@ -36,6 +36,7 @@ export type BookingSumAggregateOutputType = {
 
 export type BookingMinAggregateOutputType = {
   id: string | null
+  bookingReference: string | null
   vehicleId: string | null
   phoneNumber: string | null
   pickupDate: Date | null
@@ -57,6 +58,7 @@ export type BookingMinAggregateOutputType = {
 
 export type BookingMaxAggregateOutputType = {
   id: string | null
+  bookingReference: string | null
   vehicleId: string | null
   phoneNumber: string | null
   pickupDate: Date | null
@@ -78,6 +80,7 @@ export type BookingMaxAggregateOutputType = {
 
 export type BookingCountAggregateOutputType = {
   id: number
+  bookingReference: number
   vehicleId: number
   phoneNumber: number
   pickupDate: number
@@ -111,6 +114,7 @@ export type BookingSumAggregateInputType = {
 
 export type BookingMinAggregateInputType = {
   id?: true
+  bookingReference?: true
   vehicleId?: true
   phoneNumber?: true
   pickupDate?: true
@@ -132,6 +136,7 @@ export type BookingMinAggregateInputType = {
 
 export type BookingMaxAggregateInputType = {
   id?: true
+  bookingReference?: true
   vehicleId?: true
   phoneNumber?: true
   pickupDate?: true
@@ -153,6 +158,7 @@ export type BookingMaxAggregateInputType = {
 
 export type BookingCountAggregateInputType = {
   id?: true
+  bookingReference?: true
   vehicleId?: true
   phoneNumber?: true
   pickupDate?: true
@@ -263,6 +269,7 @@ export type BookingGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 
 export type BookingGroupByOutputType = {
   id: string
+  bookingReference: string | null
   vehicleId: string
   phoneNumber: string
   pickupDate: Date
@@ -309,6 +316,7 @@ export type BookingWhereInput = {
   OR?: Prisma.BookingWhereInput[]
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
+  bookingReference?: Prisma.StringNullableFilter<"Booking"> | string | null
   vehicleId?: Prisma.StringFilter<"Booking"> | string
   phoneNumber?: Prisma.StringFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
@@ -333,6 +341,7 @@ export type BookingWhereInput = {
 
 export type BookingOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  bookingReference?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
@@ -357,6 +366,7 @@ export type BookingOrderByWithRelationInput = {
 
 export type BookingWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  bookingReference?: string
   AND?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
   OR?: Prisma.BookingWhereInput[]
   NOT?: Prisma.BookingWhereInput | Prisma.BookingWhereInput[]
@@ -380,10 +390,11 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Booking"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Booking"> | Date | string | null
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
-}, "id">
+}, "id" | "bookingReference">
 
 export type BookingOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  bookingReference?: Prisma.SortOrderInput | Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
@@ -415,6 +426,7 @@ export type BookingScalarWhereWithAggregatesInput = {
   OR?: Prisma.BookingScalarWhereWithAggregatesInput[]
   NOT?: Prisma.BookingScalarWhereWithAggregatesInput | Prisma.BookingScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Booking"> | string
+  bookingReference?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   vehicleId?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   phoneNumber?: Prisma.StringWithAggregatesFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
@@ -438,6 +450,7 @@ export type BookingScalarWhereWithAggregatesInput = {
 
 export type BookingCreateInput = {
   id?: string
+  bookingReference?: string | null
   phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
@@ -461,6 +474,7 @@ export type BookingCreateInput = {
 
 export type BookingUncheckedCreateInput = {
   id?: string
+  bookingReference?: string | null
   vehicleId: string
   phoneNumber: string
   pickupDate: Date | string
@@ -484,6 +498,7 @@ export type BookingUncheckedCreateInput = {
 
 export type BookingUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -507,6 +522,7 @@ export type BookingUpdateInput = {
 
 export type BookingUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -530,6 +546,7 @@ export type BookingUncheckedUpdateInput = {
 
 export type BookingCreateManyInput = {
   id?: string
+  bookingReference?: string | null
   vehicleId: string
   phoneNumber: string
   pickupDate: Date | string
@@ -553,6 +570,7 @@ export type BookingCreateManyInput = {
 
 export type BookingUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -575,6 +593,7 @@ export type BookingUpdateManyMutationInput = {
 
 export type BookingUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -608,6 +627,7 @@ export type BookingOrderByRelationAggregateInput = {
 
 export type BookingCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  bookingReference?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
@@ -635,6 +655,7 @@ export type BookingAvgOrderByAggregateInput = {
 
 export type BookingMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  bookingReference?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
@@ -656,6 +677,7 @@ export type BookingMaxOrderByAggregateInput = {
 
 export type BookingMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  bookingReference?: Prisma.SortOrder
   vehicleId?: Prisma.SortOrder
   phoneNumber?: Prisma.SortOrder
   pickupDate?: Prisma.SortOrder
@@ -727,6 +749,7 @@ export type EnumBookingStatusFieldUpdateOperationsInput = {
 
 export type BookingCreateWithoutVehicleInput = {
   id?: string
+  bookingReference?: string | null
   phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
@@ -749,6 +772,7 @@ export type BookingCreateWithoutVehicleInput = {
 
 export type BookingUncheckedCreateWithoutVehicleInput = {
   id?: string
+  bookingReference?: string | null
   phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
@@ -800,6 +824,7 @@ export type BookingScalarWhereInput = {
   OR?: Prisma.BookingScalarWhereInput[]
   NOT?: Prisma.BookingScalarWhereInput | Prisma.BookingScalarWhereInput[]
   id?: Prisma.StringFilter<"Booking"> | string
+  bookingReference?: Prisma.StringNullableFilter<"Booking"> | string | null
   vehicleId?: Prisma.StringFilter<"Booking"> | string
   phoneNumber?: Prisma.StringFilter<"Booking"> | string
   pickupDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
@@ -823,6 +848,7 @@ export type BookingScalarWhereInput = {
 
 export type BookingCreateManyVehicleInput = {
   id?: string
+  bookingReference?: string | null
   phoneNumber: string
   pickupDate: Date | string
   returnDate: Date | string
@@ -845,6 +871,7 @@ export type BookingCreateManyVehicleInput = {
 
 export type BookingUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -867,6 +894,7 @@ export type BookingUpdateWithoutVehicleInput = {
 
 export type BookingUncheckedUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -889,6 +917,7 @@ export type BookingUncheckedUpdateWithoutVehicleInput = {
 
 export type BookingUncheckedUpdateManyWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  bookingReference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string
   pickupDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -913,6 +942,7 @@ export type BookingUncheckedUpdateManyWithoutVehicleInput = {
 
 export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  bookingReference?: boolean
   vehicleId?: boolean
   phoneNumber?: boolean
   pickupDate?: boolean
@@ -937,6 +967,7 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 
 export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  bookingReference?: boolean
   vehicleId?: boolean
   phoneNumber?: boolean
   pickupDate?: boolean
@@ -961,6 +992,7 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  bookingReference?: boolean
   vehicleId?: boolean
   phoneNumber?: boolean
   pickupDate?: boolean
@@ -985,6 +1017,7 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 
 export type BookingSelectScalar = {
   id?: boolean
+  bookingReference?: boolean
   vehicleId?: boolean
   phoneNumber?: boolean
   pickupDate?: boolean
@@ -1006,7 +1039,7 @@ export type BookingSelectScalar = {
   deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "stripeSessionId" | "paymentStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingReference" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "stripeSessionId" | "paymentStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -1024,6 +1057,7 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    bookingReference: string | null
     vehicleId: string
     phoneNumber: string
     pickupDate: Date
@@ -1468,6 +1502,7 @@ export interface Prisma__BookingClient<T, Null = never, ExtArgs extends runtime.
  */
 export interface BookingFieldRefs {
   readonly id: Prisma.FieldRef<"Booking", 'String'>
+  readonly bookingReference: Prisma.FieldRef<"Booking", 'String'>
   readonly vehicleId: Prisma.FieldRef<"Booking", 'String'>
   readonly phoneNumber: Prisma.FieldRef<"Booking", 'String'>
   readonly pickupDate: Prisma.FieldRef<"Booking", 'DateTime'>

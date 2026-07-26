@@ -1,27 +1,30 @@
 model Vehicle {
-    id             String                @id @default(cuid())
-    ownerId        String
-    name           String
-    brand          String
-    model          String
-    description    String
-    class          String
-    seats          Int
-    pricePerDay    Decimal               @db.Decimal(10, 2)
-    //   owner User @relation(fields: [ownerId], references: [id])
-    images         VehicleImage[]
-    locations      VehicleLocation[]
-    availabilities VehicleAvailability[]
-    bookings       Booking[]
-    deletedAt      DateTime?
-    createdAt      DateTime              @default(now())
-    updatedAt      DateTime              @updatedAt
+    id               String                @id @default(cuid())
+    ownerId          String
+    name             String
+    brand            String
+    model            String
+    description      String
+    class            String
+    seats            Int
+    fuelType         String?
+    transmissionType String?
+    trunkCapacity    Int?
+    pricePerDay      Decimal               @db.Decimal(10, 2)
+    images           VehicleImage[]
+    locations        VehicleLocation[]
+    availabilities   VehicleAvailability[]
+    bookings         Booking[]
+    deletedAt        DateTime?
+    createdAt        DateTime              @default(now())
+    updatedAt        DateTime              @updatedAt
 }
 
 model VehicleImage {
     id        String  @id @default(cuid())
     vehicleId String
     imageUrl  String
+    isPrimary Boolean @default(false)
     vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }
 
@@ -50,6 +53,7 @@ enum BookingStatus {
 
 model Booking {
     id               String        @id @default(cuid())
+    bookingReference String?       @unique
     vehicleId        String
     phoneNumber      String
     pickupDate       DateTime

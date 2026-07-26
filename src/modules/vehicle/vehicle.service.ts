@@ -19,7 +19,7 @@ const resolveSearchDates = (
 ): { pickupDate: Date; returnDate: Date } => {
   const effectivePickup = pickupDate
     ? startOfDay(pickupDate)
-    : addDays(startOfDay(new Date()), 1); 
+    : addDays(startOfDay(new Date()), 1);
 
   const effectiveReturn = returnDate
     ? startOfDay(returnDate)
@@ -62,9 +62,6 @@ export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
   };
 };
 
-
-
-
 export const getVehicleById = async (id: string) => {
   const vehicle = await vehicleRepository.findVehicleById(id);
   if (!vehicle) {
@@ -73,10 +70,33 @@ export const getVehicleById = async (id: string) => {
   return vehicle;
 };
 
-export const createVehicle = async (data: any, files: Express.Multer.File[]) => {
-  
-  const images = files.map((file) => ({ imageUrl: `/uploads/${file.filename}` }));
-  
+type VehicleImageFiles = {
+  mainImage?: Express.Multer.File[];
+  galleryImages?: Express.Multer.File[];
+};
+
+const buildImagesPayload = (files?: VehicleImageFiles) => {
+  const images: { imageUrl: string; isPrimary: boolean }[] = [];
+
+  if (files?.mainImage?.[0]) {
+    images.push({
+      imageUrl: `/uploads/${files.mainImage[0].filename}`,
+      isPrimary: true,
+    });
+  }
+
+  if (files?.galleryImages?.length) {
+    for (const file of files.galleryImages) {
+      images.push({ imageUrl: `/uploads/${file.filename}`, isPrimary: false });
+    }
+  }
+
+  return images;
+};
+
+export const createVehicle = async (data: any, files?: VehicleImageFiles) => {
+  const images = buildImagesPayload(files);
+
   const payload = {
     ...data,
     images,
@@ -85,15 +105,18 @@ export const createVehicle = async (data: any, files: Express.Multer.File[]) => 
   return vehicleRepository.createVehicle(payload);
 };
 
-export const updateVehicle = async (id: string, data: any, files?: Express.Multer.File[]) => {
+export const updateVehicle = async (
+  id: string,
+  data: any,
+  files?: VehicleImageFiles,
+) => {
   const vehicle = await vehicleRepository.findVehicleById(id);
   if (!vehicle) {
     throw new AppError("Vehicle not found", 404);
   }
 
-
-  if (files && files.length > 0) {
-    const newImages = files.map((file) => ({ imageUrl: `/uploads/${file.filename}` }));
+  const newImages = buildImagesPayload(files);
+  if (newImages.length > 0) {
     data.images = newImages;
   }
 

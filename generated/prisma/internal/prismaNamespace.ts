@@ -404,7 +404,8 @@ export const ModelName = {
   VehicleImage: 'VehicleImage',
   VehicleLocation: 'VehicleLocation',
   VehicleAvailability: 'VehicleAvailability',
-  Booking: 'Booking'
+  Booking: 'Booking',
+  VehicleClass: 'VehicleClass'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +421,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "blog" | "user" | "addon" | "cmsAboutUs" | "cmsContact" | "cmsFaq" | "cmsHero" | "cmsHeroFeature" | "cmsPage" | "cmsSocialMedia" | "cmsWhyChooseUs" | "cmsWhyChooseUsFeature" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking"
+    modelProps: "blog" | "user" | "addon" | "cmsAboutUs" | "cmsContact" | "cmsFaq" | "cmsHero" | "cmsHeroFeature" | "cmsPage" | "cmsSocialMedia" | "cmsWhyChooseUs" | "cmsWhyChooseUsFeature" | "contactMessage" | "location" | "protectionPackage" | "review" | "vehicle" | "vehicleImage" | "vehicleLocation" | "vehicleAvailability" | "booking" | "vehicleClass"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1978,6 +1979,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VehicleClass: {
+      payload: Prisma.$VehicleClassPayload<ExtArgs>
+      fields: Prisma.VehicleClassFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VehicleClassFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VehicleClassFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        findFirst: {
+          args: Prisma.VehicleClassFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VehicleClassFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        findMany: {
+          args: Prisma.VehicleClassFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>[]
+        }
+        create: {
+          args: Prisma.VehicleClassCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        createMany: {
+          args: Prisma.VehicleClassCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VehicleClassCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>[]
+        }
+        delete: {
+          args: Prisma.VehicleClassDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        update: {
+          args: Prisma.VehicleClassUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        deleteMany: {
+          args: Prisma.VehicleClassDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VehicleClassUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VehicleClassUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>[]
+        }
+        upsert: {
+          args: Prisma.VehicleClassUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VehicleClassPayload>
+        }
+        aggregate: {
+          args: Prisma.VehicleClassAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVehicleClass>
+        }
+        groupBy: {
+          args: Prisma.VehicleClassGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleClassGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VehicleClassCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VehicleClassCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -2231,7 +2306,7 @@ export const LocationScalarFieldEnum = {
   name: 'name',
   address: 'address',
   city: 'city',
-  country: 'country',
+  postalCode: 'postalCode',
   phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
@@ -2277,6 +2352,9 @@ export const VehicleScalarFieldEnum = {
   description: 'description',
   class: 'class',
   seats: 'seats',
+  fuelType: 'fuelType',
+  transmissionType: 'transmissionType',
+  trunkCapacity: 'trunkCapacity',
   pricePerDay: 'pricePerDay',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
@@ -2289,7 +2367,8 @@ export type VehicleScalarFieldEnum = (typeof VehicleScalarFieldEnum)[keyof typeo
 export const VehicleImageScalarFieldEnum = {
   id: 'id',
   vehicleId: 'vehicleId',
-  imageUrl: 'imageUrl'
+  imageUrl: 'imageUrl',
+  isPrimary: 'isPrimary'
 } as const
 
 export type VehicleImageScalarFieldEnum = (typeof VehicleImageScalarFieldEnum)[keyof typeof VehicleImageScalarFieldEnum]
@@ -2318,6 +2397,7 @@ export type VehicleAvailabilityScalarFieldEnum = (typeof VehicleAvailabilityScal
 
 export const BookingScalarFieldEnum = {
   id: 'id',
+  bookingReference: 'bookingReference',
   vehicleId: 'vehicleId',
   phoneNumber: 'phoneNumber',
   pickupDate: 'pickupDate',
@@ -2340,6 +2420,17 @@ export const BookingScalarFieldEnum = {
 } as const
 
 export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const VehicleClassScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+} as const
+
+export type VehicleClassScalarFieldEnum = (typeof VehicleClassScalarFieldEnum)[keyof typeof VehicleClassScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -2666,6 +2757,7 @@ export type GlobalOmitConfig = {
   vehicleLocation?: Prisma.VehicleLocationOmit
   vehicleAvailability?: Prisma.VehicleAvailabilityOmit
   booking?: Prisma.BookingOmit
+  vehicleClass?: Prisma.VehicleClassOmit
 }
 
 /* Types for Logging */

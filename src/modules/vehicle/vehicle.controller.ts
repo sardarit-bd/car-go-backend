@@ -33,13 +33,18 @@ export const getVehicleById = async (
   }
 };
 
+type VehicleImageFiles = {
+  mainImage?: Express.Multer.File[];
+  galleryImages?: Express.Multer.File[];
+};
+
 export const createVehicle = async (
   req: Request,
   res: Response,
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const files = req.files as Express.Multer.File[];
+    const files = req.files as VehicleImageFiles | undefined;
     const result = await vehicleService.createVehicle(req.body, files);
     sendResponse(res, 201, true, "Vehicle created successfully", result);
   } catch (error) {
@@ -55,7 +60,7 @@ export const updateVehicle = async (
   try {
     const { id } = req.params as { id: string };
 
-    const files = req.files as Express.Multer.File[] | undefined;
+    const files = req.files as VehicleImageFiles | undefined;
     const result = await vehicleService.updateVehicle(id, req.body, files);
     sendResponse(res, 200, true, "Vehicle updated successfully", result);
   } catch (error) {

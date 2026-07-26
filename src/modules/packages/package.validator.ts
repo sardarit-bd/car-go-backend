@@ -17,21 +17,17 @@ export const createPackageBodySchema = yup.object({
   price: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
-    .positive("Price must be greater than 0")
+    .min(0, "Price cannot be negative")
     .required("Price is required"),
 });
 
 export const updatePackageBodySchema = yup.object({
   name: yup.string().trim().optional(),
-  description: yup
-    .array()
-    .of(yup.string().trim().required())
-    .min(1)
-    .optional(),
+  description: yup.array().of(yup.string().trim().required()).min(1).optional(),
   price: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
-    .positive("Price must be greater than 0")
+    .min(0, "Price cannot be negative")
     .optional(),
 });
 

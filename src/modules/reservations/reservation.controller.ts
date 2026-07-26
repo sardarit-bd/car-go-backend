@@ -184,6 +184,7 @@ export const createCheckoutSession = async (
       result,
     );
   } catch (error) {
+    console.log(error);
     next(error);
   }
 };
