@@ -43,6 +43,8 @@ export type BookingMinAggregateOutputType = {
   returnDate: Date | null
   pickupLocationId: string | null
   returnLocationId: string | null
+  customPickupAddress: string | null
+  customReturnAddress: string | null
   totalPrice: runtime.Decimal | null
   status: $Enums.BookingStatus | null
   customerFirstName: string | null
@@ -65,6 +67,8 @@ export type BookingMaxAggregateOutputType = {
   returnDate: Date | null
   pickupLocationId: string | null
   returnLocationId: string | null
+  customPickupAddress: string | null
+  customReturnAddress: string | null
   totalPrice: runtime.Decimal | null
   status: $Enums.BookingStatus | null
   customerFirstName: string | null
@@ -87,6 +91,8 @@ export type BookingCountAggregateOutputType = {
   returnDate: number
   pickupLocationId: number
   returnLocationId: number
+  customPickupAddress: number
+  customReturnAddress: number
   totalPrice: number
   status: number
   customerFirstName: number
@@ -121,6 +127,8 @@ export type BookingMinAggregateInputType = {
   returnDate?: true
   pickupLocationId?: true
   returnLocationId?: true
+  customPickupAddress?: true
+  customReturnAddress?: true
   totalPrice?: true
   status?: true
   customerFirstName?: true
@@ -143,6 +151,8 @@ export type BookingMaxAggregateInputType = {
   returnDate?: true
   pickupLocationId?: true
   returnLocationId?: true
+  customPickupAddress?: true
+  customReturnAddress?: true
   totalPrice?: true
   status?: true
   customerFirstName?: true
@@ -165,6 +175,8 @@ export type BookingCountAggregateInputType = {
   returnDate?: true
   pickupLocationId?: true
   returnLocationId?: true
+  customPickupAddress?: true
+  customReturnAddress?: true
   totalPrice?: true
   status?: true
   customerFirstName?: true
@@ -276,6 +288,8 @@ export type BookingGroupByOutputType = {
   returnDate: Date
   pickupLocationId: string | null
   returnLocationId: string | null
+  customPickupAddress: string | null
+  customReturnAddress: string | null
   totalPrice: runtime.Decimal
   status: $Enums.BookingStatus
   customerFirstName: string
@@ -323,6 +337,8 @@ export type BookingWhereInput = {
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
   returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customPickupAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customReturnAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFilter<"Booking"> | string
@@ -348,6 +364,8 @@ export type BookingOrderByWithRelationInput = {
   returnDate?: Prisma.SortOrder
   pickupLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
   returnLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  customPickupAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  customReturnAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   customerFirstName?: Prisma.SortOrder
@@ -376,6 +394,8 @@ export type BookingWhereUniqueInput = Prisma.AtLeast<{
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
   returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customPickupAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customReturnAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFilter<"Booking"> | string
@@ -401,6 +421,8 @@ export type BookingOrderByWithAggregationInput = {
   returnDate?: Prisma.SortOrder
   pickupLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
   returnLocationId?: Prisma.SortOrderInput | Prisma.SortOrder
+  customPickupAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  customReturnAddress?: Prisma.SortOrderInput | Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   customerFirstName?: Prisma.SortOrder
@@ -433,6 +455,8 @@ export type BookingScalarWhereWithAggregatesInput = {
   returnDate?: Prisma.DateTimeWithAggregatesFilter<"Booking"> | Date | string
   pickupLocationId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   returnLocationId?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  customPickupAddress?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
+  customReturnAddress?: Prisma.StringNullableWithAggregatesFilter<"Booking"> | string | null
   totalPrice?: Prisma.DecimalWithAggregatesFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusWithAggregatesFilter<"Booking"> | $Enums.BookingStatus
   customerFirstName?: Prisma.StringWithAggregatesFilter<"Booking"> | string
@@ -456,6 +480,8 @@ export type BookingCreateInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -481,6 +507,8 @@ export type BookingUncheckedCreateInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -504,6 +532,8 @@ export type BookingUpdateInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -529,6 +559,8 @@ export type BookingUncheckedUpdateInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -553,6 +585,8 @@ export type BookingCreateManyInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -576,6 +610,8 @@ export type BookingUpdateManyMutationInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -600,6 +636,8 @@ export type BookingUncheckedUpdateManyInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -634,6 +672,8 @@ export type BookingCountOrderByAggregateInput = {
   returnDate?: Prisma.SortOrder
   pickupLocationId?: Prisma.SortOrder
   returnLocationId?: Prisma.SortOrder
+  customPickupAddress?: Prisma.SortOrder
+  customReturnAddress?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   customerFirstName?: Prisma.SortOrder
@@ -662,6 +702,8 @@ export type BookingMaxOrderByAggregateInput = {
   returnDate?: Prisma.SortOrder
   pickupLocationId?: Prisma.SortOrder
   returnLocationId?: Prisma.SortOrder
+  customPickupAddress?: Prisma.SortOrder
+  customReturnAddress?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   customerFirstName?: Prisma.SortOrder
@@ -684,6 +726,8 @@ export type BookingMinOrderByAggregateInput = {
   returnDate?: Prisma.SortOrder
   pickupLocationId?: Prisma.SortOrder
   returnLocationId?: Prisma.SortOrder
+  customPickupAddress?: Prisma.SortOrder
+  customReturnAddress?: Prisma.SortOrder
   totalPrice?: Prisma.SortOrder
   status?: Prisma.SortOrder
   customerFirstName?: Prisma.SortOrder
@@ -755,6 +799,8 @@ export type BookingCreateWithoutVehicleInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -778,6 +824,8 @@ export type BookingUncheckedCreateWithoutVehicleInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -831,6 +879,8 @@ export type BookingScalarWhereInput = {
   returnDate?: Prisma.DateTimeFilter<"Booking"> | Date | string
   pickupLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
   returnLocationId?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customPickupAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
+  customReturnAddress?: Prisma.StringNullableFilter<"Booking"> | string | null
   totalPrice?: Prisma.DecimalFilter<"Booking"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFilter<"Booking"> | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFilter<"Booking"> | string
@@ -854,6 +904,8 @@ export type BookingCreateManyVehicleInput = {
   returnDate: Date | string
   pickupLocationId?: string | null
   returnLocationId?: string | null
+  customPickupAddress?: string | null
+  customReturnAddress?: string | null
   totalPrice: runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: $Enums.BookingStatus
   customerFirstName: string
@@ -877,6 +929,8 @@ export type BookingUpdateWithoutVehicleInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -900,6 +954,8 @@ export type BookingUncheckedUpdateWithoutVehicleInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -923,6 +979,8 @@ export type BookingUncheckedUpdateManyWithoutVehicleInput = {
   returnDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pickupLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   returnLocationId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customPickupAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customReturnAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   totalPrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   status?: Prisma.EnumBookingStatusFieldUpdateOperationsInput | $Enums.BookingStatus
   customerFirstName?: Prisma.StringFieldUpdateOperationsInput | string
@@ -949,6 +1007,8 @@ export type BookingSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   returnDate?: boolean
   pickupLocationId?: boolean
   returnLocationId?: boolean
+  customPickupAddress?: boolean
+  customReturnAddress?: boolean
   totalPrice?: boolean
   status?: boolean
   customerFirstName?: boolean
@@ -974,6 +1034,8 @@ export type BookingSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   returnDate?: boolean
   pickupLocationId?: boolean
   returnLocationId?: boolean
+  customPickupAddress?: boolean
+  customReturnAddress?: boolean
   totalPrice?: boolean
   status?: boolean
   customerFirstName?: boolean
@@ -999,6 +1061,8 @@ export type BookingSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   returnDate?: boolean
   pickupLocationId?: boolean
   returnLocationId?: boolean
+  customPickupAddress?: boolean
+  customReturnAddress?: boolean
   totalPrice?: boolean
   status?: boolean
   customerFirstName?: boolean
@@ -1024,6 +1088,8 @@ export type BookingSelectScalar = {
   returnDate?: boolean
   pickupLocationId?: boolean
   returnLocationId?: boolean
+  customPickupAddress?: boolean
+  customReturnAddress?: boolean
   totalPrice?: boolean
   status?: boolean
   customerFirstName?: boolean
@@ -1039,7 +1105,7 @@ export type BookingSelectScalar = {
   deletedAt?: boolean
 }
 
-export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingReference" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "stripeSessionId" | "paymentStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
+export type BookingOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bookingReference" | "vehicleId" | "phoneNumber" | "pickupDate" | "returnDate" | "pickupLocationId" | "returnLocationId" | "customPickupAddress" | "customReturnAddress" | "totalPrice" | "status" | "customerFirstName" | "customerLastName" | "customerEmail" | "customerNotes" | "packageData" | "addonsData" | "stripeSessionId" | "paymentStatus" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["booking"]>
 export type BookingInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -1064,6 +1130,8 @@ export type $BookingPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     returnDate: Date
     pickupLocationId: string | null
     returnLocationId: string | null
+    customPickupAddress: string | null
+    customReturnAddress: string | null
     totalPrice: runtime.Decimal
     status: $Enums.BookingStatus
     customerFirstName: string
@@ -1509,6 +1577,8 @@ export interface BookingFieldRefs {
   readonly returnDate: Prisma.FieldRef<"Booking", 'DateTime'>
   readonly pickupLocationId: Prisma.FieldRef<"Booking", 'String'>
   readonly returnLocationId: Prisma.FieldRef<"Booking", 'String'>
+  readonly customPickupAddress: Prisma.FieldRef<"Booking", 'String'>
+  readonly customReturnAddress: Prisma.FieldRef<"Booking", 'String'>
   readonly totalPrice: Prisma.FieldRef<"Booking", 'Decimal'>
   readonly status: Prisma.FieldRef<"Booking", 'BookingStatus'>
   readonly customerFirstName: Prisma.FieldRef<"Booking", 'String'>

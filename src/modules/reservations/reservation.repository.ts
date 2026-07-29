@@ -1,6 +1,7 @@
 import { prisma } from "../../../lib/prisma.js";
 import { BookingStatus, Prisma } from "../../../generated/prisma/client.js";
 import { generateBookingReference } from "../../shared/utils/generateBookingReference.js";
+
 interface FilterOptions {
   status?: "PENDING" | "CONFIRMED" | "CANCELLED";
   pickupDateFrom?: string;
@@ -64,7 +65,9 @@ export const findAllReservations = async (
     prisma.booking.findMany({
       where: whereClause,
       orderBy: { createdAt: "desc" },
-      include: { vehicle: true },
+      include: {
+        vehicle: true, // ONLY include vehicle, as location relations do not exist in schema
+      },
       skip,
       take: limit,
     }),
@@ -82,12 +85,9 @@ export const findAllReservations = async (
   };
 };
 
-// --- ADDED MISSING FUNCTIONS BELOW ---
-
 export const createReservation = async (data: any) => {
   const MAX_ATTEMPTS = 5;
   let attempt = 0;
-  console.log("issues");
   while (attempt < MAX_ATTEMPTS) {
     try {
       return await prisma.booking.create({
@@ -98,6 +98,8 @@ export const createReservation = async (data: any) => {
           returnDate: new Date(data.returnDate),
           pickupLocationId: data.pickupLocationId,
           returnLocationId: data.returnLocationId,
+          customPickupAddress: data.customPickupAddress,
+          customReturnAddress: data.customReturnAddress,
           totalPrice: data.totalPrice,
           customerFirstName: data.customerFirstName,
           customerLastName: data.customerLastName,
@@ -105,7 +107,6 @@ export const createReservation = async (data: any) => {
           customerNotes: data.customerNotes,
           packageData: data.packageData,
           addonsData: data.addonsData,
-          bookingReference: generateBookingReference(),
         },
       });
     } catch (error) {
@@ -128,10 +129,18 @@ export const createReservation = async (data: any) => {
   );
 };
 
-export const findReservationById = async (id: string) => {
+export const findReservationById = async (idOrReference: string) => {
   return prisma.booking.findFirst({
-    where: { id, deletedAt: null },
-    include: { vehicle: true },
+    where: {
+      deletedAt: null,
+      OR: [
+        { id: idOrReference },
+        { bookingReference: { equals: idOrReference, mode: "insensitive" } },
+      ],
+    },
+    include: {
+      vehicle: true, // ONLY include vehicle
+    },
   });
 };
 
@@ -183,7 +192,7 @@ export const findReservationsByEmail = async (email: string) => {
       deletedAt: null,
     },
     include: {
-      vehicle: true,
+      vehicle: true, // ONLY include vehicle
     },
     orderBy: {
       createdAt: "desc",
