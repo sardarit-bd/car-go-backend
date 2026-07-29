@@ -92,6 +92,7 @@ export const createReservation = async (data: any) => {
     try {
       return await prisma.booking.create({
         data: {
+          bookingReference: generateBookingReference(),
           vehicleId: data.vehicleId,
           phoneNumber: data.phoneNumber,
           pickupDate: new Date(data.pickupDate),
