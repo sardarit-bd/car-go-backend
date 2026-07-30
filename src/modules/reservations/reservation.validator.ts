@@ -35,6 +35,8 @@ export const createReservationBodySchema = yup.object({
     .required("Return date is required"),
   pickupLocationId: yup.string().trim().optional().nullable(),
   returnLocationId: yup.string().trim().optional().nullable(),
+  customPickupAddress: yup.string().trim().optional().nullable(),
+  customReturnAddress: yup.string().trim().optional().nullable(),
   totalPrice: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
@@ -59,6 +61,8 @@ export const updateReservationBodySchema = yup.object({
   returnDate: yup.date().typeError("Invalid return date").optional(),
   pickupLocationId: yup.string().trim().optional().nullable(),
   returnLocationId: yup.string().trim().optional().nullable(),
+  customPickupAddress: yup.string().trim().optional().nullable(),
+  customReturnAddress: yup.string().trim().optional().nullable(),
   totalPrice: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))

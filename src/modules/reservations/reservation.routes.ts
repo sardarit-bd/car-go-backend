@@ -5,28 +5,22 @@ import * as validator from "./reservation.validator.js";
 import authMiddleware from "../../shared/middleware/authMiddleware.js";
 const router = Router();
 
+router.get("/my-reservations", controller.getReservationByEmail);
+
 router.get(
   "/:id",
   validate(validator.revertionIdParamsSchema, "params"),
   controller.getReservationById,
 );
+
 router.post(
   "/",
   validate(validator.createReservationBodySchema, "body"),
   controller.createReservation,
 );
 
-router.get(
-  "/myrevertion",
-  // validate(validator.emailParamsSchema, "params"),
-  controller.getReservationByEmail,
-);
 router.use(authMiddleware);
-router.get(
-  "/",
-  // validate(validator.getReservationsQuerySchema, "query"),
-  controller.getReservations,
-);
+router.get("/", controller.getReservations);
 
 router.patch(
   "/:id",

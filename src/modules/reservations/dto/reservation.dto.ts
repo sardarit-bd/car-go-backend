@@ -19,6 +19,8 @@ export interface CreateReservationDto {
   returnDate: Date | string;
   pickupLocationId?: string | null;
   returnLocationId?: string | null;
+  customPickupAddress?: string | null;
+  customReturnAddress?: string | null;
   totalPrice: number;
   customerFirstName: string;
   customerLastName: string;

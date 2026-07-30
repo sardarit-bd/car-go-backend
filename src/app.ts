@@ -32,6 +32,19 @@ app.use((req, res, next) => {
 });
 app.set("trust proxy", 1);
 app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "http://192.168.0.105:3000",
+      "https://car-go-flame.vercel.app",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
+app.use(
   rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 300,
@@ -46,18 +59,7 @@ app.use(
 
 app.use(xss());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "http://192.168.0.105:3000",
-      "https://car-go-flame.vercel.app",
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+
 app.use(
   helmet({
     crossOriginEmbedderPolicy: false,

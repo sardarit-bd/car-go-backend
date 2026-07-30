@@ -52,16 +52,18 @@ enum BookingStatus {
 }
 
 model Booking {
-    id               String        @id @default(cuid())
-    bookingReference String?       @unique
-    vehicleId        String
-    phoneNumber      String
-    pickupDate       DateTime
-    returnDate       DateTime
-    pickupLocationId String?
-    returnLocationId String?
-    totalPrice       Decimal       @db.Decimal(10, 2)
-    status           BookingStatus @default(PENDING)
+    id                  String        @id @default(cuid())
+    bookingReference    String?       @unique
+    vehicleId           String
+    phoneNumber         String
+    pickupDate          DateTime
+    returnDate          DateTime
+    pickupLocationId    String?
+    returnLocationId    String?
+    customPickupAddress String?
+    customReturnAddress String?
+    totalPrice          Decimal       @db.Decimal(10, 2)
+    status              BookingStatus @default(PENDING)
 
     customerFirstName String
     customerLastName  String

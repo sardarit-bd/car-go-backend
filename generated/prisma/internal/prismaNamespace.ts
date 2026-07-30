@@ -2404,6 +2404,8 @@ export const BookingScalarFieldEnum = {
   returnDate: 'returnDate',
   pickupLocationId: 'pickupLocationId',
   returnLocationId: 'returnLocationId',
+  customPickupAddress: 'customPickupAddress',
+  customReturnAddress: 'customReturnAddress',
   totalPrice: 'totalPrice',
   status: 'status',
   customerFirstName: 'customerFirstName',
