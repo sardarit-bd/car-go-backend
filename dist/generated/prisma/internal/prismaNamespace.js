@@ -87,7 +87,8 @@ export const ModelName = {
     VehicleImage: 'VehicleImage',
     VehicleLocation: 'VehicleLocation',
     VehicleAvailability: 'VehicleAvailability',
-    Booking: 'Booking'
+    Booking: 'Booking',
+    VehicleClass: 'VehicleClass'
 };
 /**
  * Enums
@@ -260,7 +261,7 @@ export const LocationScalarFieldEnum = {
     name: 'name',
     address: 'address',
     city: 'city',
-    country: 'country',
+    postalCode: 'postalCode',
     phone: 'phone',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -294,7 +295,11 @@ export const VehicleScalarFieldEnum = {
     description: 'description',
     class: 'class',
     seats: 'seats',
+    fuelType: 'fuelType',
+    transmissionType: 'transmissionType',
+    trunkCapacity: 'trunkCapacity',
     pricePerDay: 'pricePerDay',
+    isActive: 'isActive',
     deletedAt: 'deletedAt',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -302,7 +307,8 @@ export const VehicleScalarFieldEnum = {
 export const VehicleImageScalarFieldEnum = {
     id: 'id',
     vehicleId: 'vehicleId',
-    imageUrl: 'imageUrl'
+    imageUrl: 'imageUrl',
+    isPrimary: 'isPrimary'
 };
 export const VehicleLocationScalarFieldEnum = {
     id: 'id',
@@ -319,12 +325,15 @@ export const VehicleAvailabilityScalarFieldEnum = {
 };
 export const BookingScalarFieldEnum = {
     id: 'id',
+    bookingReference: 'bookingReference',
     vehicleId: 'vehicleId',
     phoneNumber: 'phoneNumber',
     pickupDate: 'pickupDate',
     returnDate: 'returnDate',
     pickupLocationId: 'pickupLocationId',
     returnLocationId: 'returnLocationId',
+    customPickupAddress: 'customPickupAddress',
+    customReturnAddress: 'customReturnAddress',
     totalPrice: 'totalPrice',
     status: 'status',
     customerFirstName: 'customerFirstName',
@@ -335,6 +344,13 @@ export const BookingScalarFieldEnum = {
     addonsData: 'addonsData',
     stripeSessionId: 'stripeSessionId',
     paymentStatus: 'paymentStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+};
+export const VehicleClassScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'

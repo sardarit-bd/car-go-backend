@@ -355,6 +355,7 @@ export const VehicleScalarFieldEnum = {
   transmissionType: 'transmissionType',
   trunkCapacity: 'trunkCapacity',
   pricePerDay: 'pricePerDay',
+  isActive: 'isActive',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

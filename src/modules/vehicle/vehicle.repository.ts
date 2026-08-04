@@ -8,6 +8,7 @@ export interface VehicleFilters {
   location?: string;
   pickupDate: Date;
   returnDate: Date;
+  includeInactive?: boolean;
 }
 
 export interface PaginationOptions {
@@ -16,11 +17,19 @@ export interface PaginationOptions {
 }
 
 const buildWhereClause = (filters: VehicleFilters) => {
-  const { model, search, transmission, seats, pickupDate, returnDate } =
-    filters;
+  const {
+    model,
+    search,
+    transmission,
+    seats,
+    pickupDate,
+    returnDate,
+    includeInactive,
+  } = filters;
 
   return {
     deletedAt: null,
+    ...(!includeInactive && { isActive: true }),
     ...(model && { model: { contains: model, mode: "insensitive" as const } }),
     ...(seats !== undefined && { seats: { gte: seats } }),
 
@@ -72,6 +81,17 @@ export const countAvailableVehicles = async (filters: VehicleFilters) => {
 };
 
 export const findVehicleById = async (id: string) => {
+  return prisma.vehicle.findFirst({
+    where: { id, deletedAt: null, isActive: true },
+    include: {
+      images: true,
+      locations: true,
+      availabilities: true,
+    },
+  });
+};
+
+export const findVehicleByIdAdmin = async (id: string) => {
   return prisma.vehicle.findFirst({
     where: { id, deletedAt: null },
     include: {

@@ -9,6 +9,7 @@ import errorHandler from "./shared/errors/errorHandler.js";
 import vehicleRoutes from "./modules/vehicle/vehicle.routes.js";
 import packageRoutes from "./modules/packages/package.routes.js";
 import addonRoutes from "./modules/addons/addon.routes.js";
+import vehicleClassRoutes from "./modules/vehicleClass/vehicleClass.routes.js";
 import locationRoutes from "./modules/locations/location.routes.js";
 import reservationRoutes from "./modules/reservations/reservation.routes.js";
 import authRoutes from "./modules/auth/auth.routes.js";
@@ -26,52 +27,47 @@ import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cms
 import cmsAboutUsRoutes from "./modules/cms/cmsAboutUs/cmsAboutUs.routes.js";
 const app = express();
 app.use((req, res, next) => {
-  next();
+    next();
 });
 app.set("trust proxy", 1);
-app.use(
-  rateLimit({
+app.use(cors({
+    origin: [
+        "http://localhost:3000",
+        "http://192.168.0.105:3000",
+        "https://car-go-flame.vercel.app",
+    ],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
+app.use(rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 300,
     standardHeaders: true,
     legacyHeaders: false,
     message: {
-      success: false,
-      message: "Too many requests, please try again in a minute.",
+        success: false,
+        message: "Too many requests, please try again in a minute.",
     },
-  }),
-);
+}));
 app.use(xss());
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: [
-      "http://localhost:3000",
-      "http://192.168.0.105:3000",
-      "https://car-go-flame.vercel.app",
-    ],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
-app.use(
-  helmet({
+app.use(helmet({
     crossOriginEmbedderPolicy: false,
     crossOriginResourcePolicy: { policy: "cross-origin" },
-  }),
-);
+}));
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
 app.use(express.json({ limit: "10kb" }));
 const uploadsPath = path.join(process.cwd(), "uploads");
 app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req, res) => {
-  res.send("right endpoint");
+    res.send("right endpoint");
 });
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicle", vehicleRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/addons", addonRoutes);
+app.use("/api/vehicle-classes", vehicleClassRoutes);
 app.use("/api/locations", locationRoutes);
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/reviews", reviewRoutes);

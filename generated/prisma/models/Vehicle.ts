@@ -51,6 +51,7 @@ export type VehicleMinAggregateOutputType = {
   transmissionType: string | null
   trunkCapacity: number | null
   pricePerDay: runtime.Decimal | null
+  isActive: boolean | null
   deletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -69,6 +70,7 @@ export type VehicleMaxAggregateOutputType = {
   transmissionType: string | null
   trunkCapacity: number | null
   pricePerDay: runtime.Decimal | null
+  isActive: boolean | null
   deletedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -87,6 +89,7 @@ export type VehicleCountAggregateOutputType = {
   transmissionType: number
   trunkCapacity: number
   pricePerDay: number
+  isActive: number
   deletedAt: number
   createdAt: number
   updatedAt: number
@@ -119,6 +122,7 @@ export type VehicleMinAggregateInputType = {
   transmissionType?: true
   trunkCapacity?: true
   pricePerDay?: true
+  isActive?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -137,6 +141,7 @@ export type VehicleMaxAggregateInputType = {
   transmissionType?: true
   trunkCapacity?: true
   pricePerDay?: true
+  isActive?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -155,6 +160,7 @@ export type VehicleCountAggregateInputType = {
   transmissionType?: true
   trunkCapacity?: true
   pricePerDay?: true
+  isActive?: true
   deletedAt?: true
   createdAt?: true
   updatedAt?: true
@@ -260,6 +266,7 @@ export type VehicleGroupByOutputType = {
   transmissionType: string | null
   trunkCapacity: number | null
   pricePerDay: runtime.Decimal
+  isActive: boolean
   deletedAt: Date | null
   createdAt: Date
   updatedAt: Date
@@ -301,6 +308,7 @@ export type VehicleWhereInput = {
   transmissionType?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   trunkCapacity?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   pricePerDay?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFilter<"Vehicle"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Vehicle"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
@@ -323,6 +331,7 @@ export type VehicleOrderByWithRelationInput = {
   transmissionType?: Prisma.SortOrderInput | Prisma.SortOrder
   trunkCapacity?: Prisma.SortOrderInput | Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -348,6 +357,7 @@ export type VehicleWhereUniqueInput = Prisma.AtLeast<{
   transmissionType?: Prisma.StringNullableFilter<"Vehicle"> | string | null
   trunkCapacity?: Prisma.IntNullableFilter<"Vehicle"> | number | null
   pricePerDay?: Prisma.DecimalFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFilter<"Vehicle"> | boolean
   deletedAt?: Prisma.DateTimeNullableFilter<"Vehicle"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Vehicle"> | Date | string
@@ -370,6 +380,7 @@ export type VehicleOrderByWithAggregationInput = {
   transmissionType?: Prisma.SortOrderInput | Prisma.SortOrder
   trunkCapacity?: Prisma.SortOrderInput | Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -396,6 +407,7 @@ export type VehicleScalarWhereWithAggregatesInput = {
   transmissionType?: Prisma.StringNullableWithAggregatesFilter<"Vehicle"> | string | null
   trunkCapacity?: Prisma.IntNullableWithAggregatesFilter<"Vehicle"> | number | null
   pricePerDay?: Prisma.DecimalWithAggregatesFilter<"Vehicle"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolWithAggregatesFilter<"Vehicle"> | boolean
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Vehicle"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Vehicle"> | Date | string
@@ -414,6 +426,7 @@ export type VehicleCreateInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -436,6 +449,7 @@ export type VehicleUncheckedCreateInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -458,6 +472,7 @@ export type VehicleUpdateInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -480,6 +495,7 @@ export type VehicleUncheckedUpdateInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -502,6 +518,7 @@ export type VehicleCreateManyInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -520,6 +537,7 @@ export type VehicleUpdateManyMutationInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -538,6 +556,7 @@ export type VehicleUncheckedUpdateManyInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -556,6 +575,7 @@ export type VehicleCountOrderByAggregateInput = {
   transmissionType?: Prisma.SortOrder
   trunkCapacity?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -580,6 +600,7 @@ export type VehicleMaxOrderByAggregateInput = {
   transmissionType?: Prisma.SortOrder
   trunkCapacity?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -598,6 +619,7 @@ export type VehicleMinOrderByAggregateInput = {
   transmissionType?: Prisma.SortOrder
   trunkCapacity?: Prisma.SortOrder
   pricePerDay?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -691,6 +713,7 @@ export type VehicleCreateWithoutImagesInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -712,6 +735,7 @@ export type VehicleUncheckedCreateWithoutImagesInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -749,6 +773,7 @@ export type VehicleUpdateWithoutImagesInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -770,6 +795,7 @@ export type VehicleUncheckedUpdateWithoutImagesInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -791,6 +817,7 @@ export type VehicleCreateWithoutLocationsInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -812,6 +839,7 @@ export type VehicleUncheckedCreateWithoutLocationsInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -849,6 +877,7 @@ export type VehicleUpdateWithoutLocationsInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -870,6 +899,7 @@ export type VehicleUncheckedUpdateWithoutLocationsInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -891,6 +921,7 @@ export type VehicleCreateWithoutAvailabilitiesInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -912,6 +943,7 @@ export type VehicleUncheckedCreateWithoutAvailabilitiesInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -949,6 +981,7 @@ export type VehicleUpdateWithoutAvailabilitiesInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -970,6 +1003,7 @@ export type VehicleUncheckedUpdateWithoutAvailabilitiesInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -991,6 +1025,7 @@ export type VehicleCreateWithoutBookingsInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1012,6 +1047,7 @@ export type VehicleUncheckedCreateWithoutBookingsInput = {
   transmissionType?: string | null
   trunkCapacity?: number | null
   pricePerDay: runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: boolean
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1049,6 +1085,7 @@ export type VehicleUpdateWithoutBookingsInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1070,6 +1107,7 @@ export type VehicleUncheckedUpdateWithoutBookingsInput = {
   transmissionType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   trunkCapacity?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   pricePerDay?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1149,6 +1187,7 @@ export type VehicleSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   transmissionType?: boolean
   trunkCapacity?: boolean
   pricePerDay?: boolean
+  isActive?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1172,6 +1211,7 @@ export type VehicleSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   transmissionType?: boolean
   trunkCapacity?: boolean
   pricePerDay?: boolean
+  isActive?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1190,6 +1230,7 @@ export type VehicleSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   transmissionType?: boolean
   trunkCapacity?: boolean
   pricePerDay?: boolean
+  isActive?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1208,12 +1249,13 @@ export type VehicleSelectScalar = {
   transmissionType?: boolean
   trunkCapacity?: boolean
   pricePerDay?: boolean
+  isActive?: boolean
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "name" | "brand" | "model" | "description" | "class" | "seats" | "fuelType" | "transmissionType" | "trunkCapacity" | "pricePerDay" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
+export type VehicleOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "ownerId" | "name" | "brand" | "model" | "description" | "class" | "seats" | "fuelType" | "transmissionType" | "trunkCapacity" | "pricePerDay" | "isActive" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["vehicle"]>
 export type VehicleInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   images?: boolean | Prisma.Vehicle$imagesArgs<ExtArgs>
   locations?: boolean | Prisma.Vehicle$locationsArgs<ExtArgs>
@@ -1245,6 +1287,7 @@ export type $VehiclePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     transmissionType: string | null
     trunkCapacity: number | null
     pricePerDay: runtime.Decimal
+    isActive: boolean
     deletedAt: Date | null
     createdAt: Date
     updatedAt: Date
@@ -1687,6 +1730,7 @@ export interface VehicleFieldRefs {
   readonly transmissionType: Prisma.FieldRef<"Vehicle", 'String'>
   readonly trunkCapacity: Prisma.FieldRef<"Vehicle", 'Int'>
   readonly pricePerDay: Prisma.FieldRef<"Vehicle", 'Decimal'>
+  readonly isActive: Prisma.FieldRef<"Vehicle", 'Boolean'>
   readonly deletedAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Vehicle", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Vehicle", 'DateTime'>

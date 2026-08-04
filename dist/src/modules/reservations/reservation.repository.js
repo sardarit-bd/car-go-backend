@@ -1,4 +1,6 @@
 import { prisma } from "../../../lib/prisma.js";
+import { Prisma } from "../../../generated/prisma/client.js";
+import { generateBookingReference } from "../../shared/utils/generateBookingReference.js";
 export const findAllReservations = async (page, limit, filters = {}) => {
     const skip = (page - 1) * limit;
     const whereClause = {
@@ -42,7 +44,9 @@ export const findAllReservations = async (page, limit, filters = {}) => {
         prisma.booking.findMany({
             where: whereClause,
             orderBy: { createdAt: "desc" },
-            include: { vehicle: true },
+            include: {
+                vehicle: true, // ONLY include vehicle, as location relations do not exist in schema
+            },
             skip,
             take: limit,
         }),
@@ -58,30 +62,56 @@ export const findAllReservations = async (page, limit, filters = {}) => {
         },
     };
 };
-// --- ADDED MISSING FUNCTIONS BELOW ---
 export const createReservation = async (data) => {
-    return prisma.booking.create({
-        data: {
-            vehicleId: data.vehicleId,
-            phoneNumber: data.phoneNumber,
-            pickupDate: new Date(data.pickupDate),
-            returnDate: new Date(data.returnDate),
-            pickupLocationId: data.pickupLocationId,
-            returnLocationId: data.returnLocationId,
-            totalPrice: data.totalPrice,
-            customerFirstName: data.customerFirstName,
-            customerLastName: data.customerLastName,
-            customerEmail: data.customerEmail,
-            customerNotes: data.customerNotes,
-            packageData: data.packageData,
-            addonsData: data.addonsData,
-        },
-    });
+    const MAX_ATTEMPTS = 5;
+    let attempt = 0;
+    while (attempt < MAX_ATTEMPTS) {
+        try {
+            return await prisma.booking.create({
+                data: {
+                    bookingReference: generateBookingReference(),
+                    vehicleId: data.vehicleId,
+                    phoneNumber: data.phoneNumber,
+                    pickupDate: new Date(data.pickupDate),
+                    returnDate: new Date(data.returnDate),
+                    pickupLocationId: data.pickupLocationId,
+                    returnLocationId: data.returnLocationId,
+                    customPickupAddress: data.customPickupAddress,
+                    customReturnAddress: data.customReturnAddress,
+                    totalPrice: data.totalPrice,
+                    customerFirstName: data.customerFirstName,
+                    customerLastName: data.customerLastName,
+                    customerEmail: data.customerEmail,
+                    customerNotes: data.customerNotes,
+                    packageData: data.packageData,
+                    addonsData: data.addonsData,
+                },
+            });
+        }
+        catch (error) {
+            if (error instanceof Prisma.PrismaClientKnownRequestError &&
+                error.code === "P2002" &&
+                error.meta?.target?.includes("bookingReference")) {
+                attempt++;
+                continue;
+            }
+            throw error;
+        }
+    }
+    throw new Error("Failed to generate a unique booking reference after multiple attempts");
 };
-export const findReservationById = async (id) => {
+export const findReservationById = async (idOrReference) => {
     return prisma.booking.findFirst({
-        where: { id, deletedAt: null },
-        include: { vehicle: true },
+        where: {
+            deletedAt: null,
+            OR: [
+                { id: idOrReference },
+                { bookingReference: { equals: idOrReference, mode: "insensitive" } },
+            ],
+        },
+        include: {
+            vehicle: true, // ONLY include vehicle
+        },
     });
 };
 export const updateReservation = async (id, data) => {
@@ -121,7 +151,7 @@ export const findReservationsByEmail = async (email) => {
             deletedAt: null,
         },
         include: {
-            vehicle: true,
+            vehicle: true, // ONLY include vehicle
         },
         orderBy: {
             createdAt: "desc",

@@ -1,0 +1,10 @@
+import { Router } from "express";
+import validate from "../../shared/middleware/validate.js";
+import { getVehicleClasses, createVehicleClass, updateVehicleClass, deleteVehicleClass, } from "./vehicleClass.controller.js";
+import { vehicleClassIdParamsSchema, createVehicleClassBodySchema, updateVehicleClassBodySchema, } from "./vehicleClass.validator.js";
+const router = Router();
+router.get("/", getVehicleClasses);
+router.post("/", validate(createVehicleClassBodySchema, "body"), createVehicleClass);
+router.patch("/:id", validate(vehicleClassIdParamsSchema, "params"), validate(updateVehicleClassBodySchema, "body"), updateVehicleClass);
+router.delete("/:id", validate(vehicleClassIdParamsSchema, "params"), deleteVehicleClass);
+export default router;

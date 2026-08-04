@@ -29,7 +29,8 @@ const resolveSearchDates = (
 };
 
 export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
-  const { model, seats, location, pickupDate, returnDate } = query;
+  const { model, seats, location, pickupDate, returnDate, includeInactive } =
+    query;
   const page = query.page ?? 1;
   const limit = query.limit ?? 10;
 
@@ -44,6 +45,7 @@ export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
     location,
     pickupDate: effectivePickup,
     returnDate: effectiveReturn,
+    includeInactive,
   };
 
   const [vehicles, total] = await Promise.all([
@@ -110,7 +112,7 @@ export const updateVehicle = async (
   data: any,
   files?: VehicleImageFiles,
 ) => {
-  const vehicle = await vehicleRepository.findVehicleById(id);
+  const vehicle = await vehicleRepository.findVehicleByIdAdmin(id);
   if (!vehicle) {
     throw new AppError("Vehicle not found", 404);
   }
@@ -124,7 +126,7 @@ export const updateVehicle = async (
 };
 
 export const deleteVehicle = async (id: string) => {
-  const vehicle = await vehicleRepository.findVehicleById(id);
+  const vehicle = await vehicleRepository.findVehicleByIdAdmin(id);
   if (!vehicle) {
     throw new AppError("Vehicle not found", 404);
   }

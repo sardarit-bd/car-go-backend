@@ -18,6 +18,11 @@ export const getVehiclesQuerySchema = yup.object({
 
   location: yup.string().trim().optional(),
 
+  includeInactive: yup
+    .boolean()
+    .transform((val) => (val === "true" ? true : val === "false" ? false : val))
+    .optional(),
+
   pickupDate: yup
     .date()
     .transform(emptyStringToUndefined)
@@ -146,6 +151,10 @@ export const updateVehicleBodySchema = yup.object({
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
     .positive("Price per day must be greater than 0")
+    .optional(),
+  isActive: yup
+    .boolean()
+    .transform((val) => (val === "true" ? true : val === "false" ? false : val))
     .optional(),
   locations: yup
     .array()

@@ -11,6 +11,7 @@ model Vehicle {
     transmissionType String?
     trunkCapacity    Int?
     pricePerDay      Decimal               @db.Decimal(10, 2)
+    isActive         Boolean               @default(true)
     images           VehicleImage[]
     locations        VehicleLocation[]
     availabilities   VehicleAvailability[]

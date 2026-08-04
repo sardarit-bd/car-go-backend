@@ -11,6 +11,10 @@ export const getVehiclesQuerySchema = yup.object({
         .positive("seats must be greater than 0")
         .optional(),
     location: yup.string().trim().optional(),
+    includeInactive: yup
+        .boolean()
+        .transform((val) => (val === "true" ? true : val === "false" ? false : val))
+        .optional(),
     pickupDate: yup
         .date()
         .transform(emptyStringToUndefined)
@@ -69,6 +73,17 @@ export const createVehicleBodySchema = yup.object({
         .integer("Seats must be a whole number")
         .positive("Seats must be greater than 0")
         .required("Seats is required"),
+    fuelType: yup.string().trim().required("Fuel type is required"),
+    transmissionType: yup
+        .string()
+        .trim()
+        .required("Transmission type is required"),
+    trunkCapacity: yup
+        .number()
+        .transform((_, val) => (typeof val === "string" ? parseInt(val, 10) : val))
+        .integer("Trunk capacity must be a whole number")
+        .min(0, "Trunk capacity cannot be negative")
+        .required("Trunk capacity is required"),
     pricePerDay: yup
         .number()
         .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
@@ -105,10 +120,22 @@ export const updateVehicleBodySchema = yup.object({
         .integer("Seats must be a whole number")
         .positive("Seats must be greater than 0")
         .optional(),
+    fuelType: yup.string().trim().optional(),
+    transmissionType: yup.string().trim().optional(),
+    trunkCapacity: yup
+        .number()
+        .transform((_, val) => (typeof val === "string" ? parseInt(val, 10) : val))
+        .integer("Trunk capacity must be a whole number")
+        .min(0, "Trunk capacity cannot be negative")
+        .optional(),
     pricePerDay: yup
         .number()
         .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
         .positive("Price per day must be greater than 0")
+        .optional(),
+    isActive: yup
+        .boolean()
+        .transform((val) => (val === "true" ? true : val === "false" ? false : val))
         .optional(),
     locations: yup
         .array()
