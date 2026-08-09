@@ -124,6 +124,14 @@ export const createVehicleBodySchema = yup.object({
     )
     .transform(parseJsonString)
     .optional(),
+  highlights: yup
+    .array()
+    .of(
+      yup.string().trim().max(80, "Each highlight must be under 80 characters"),
+    )
+    .max(3, "You can add up to 3 highlights")
+    .transform(parseJsonString)
+    .optional(),
 });
 
 export const updateVehicleBodySchema = yup.object({
@@ -177,5 +185,14 @@ export const updateVehicleBodySchema = yup.object({
     )
     .transform(parseJsonString)
     .optional(),
+  highlights: yup
+    .array()
+    .of(
+      yup.string().trim().max(80, "Each highlight must be under 80 characters"),
+    )
+    .max(3, "You can add up to 3 highlights")
+    .transform(parseJsonString)
+    .optional(),
 });
+
 export type GetVehiclesQuery = yup.InferType<typeof getVehiclesQuerySchema>;

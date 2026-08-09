@@ -106,6 +106,12 @@ export const createVehicleBodySchema = yup.object({
     }))
         .transform(parseJsonString)
         .optional(),
+    highlights: yup
+        .array()
+        .of(yup.string().trim().max(80, "Each highlight must be under 80 characters"))
+        .max(3, "You can add up to 3 highlights")
+        .transform(parseJsonString)
+        .optional(),
 });
 export const updateVehicleBodySchema = yup.object({
     ownerId: yup.string().trim().optional(),
@@ -152,6 +158,12 @@ export const updateVehicleBodySchema = yup.object({
         availableFrom: yup.date().required(),
         availableTo: yup.date().required(),
     }))
+        .transform(parseJsonString)
+        .optional(),
+    highlights: yup
+        .array()
+        .of(yup.string().trim().max(80, "Each highlight must be under 80 characters"))
+        .max(3, "You can add up to 3 highlights")
         .transform(parseJsonString)
         .optional(),
 });

@@ -12,6 +12,7 @@ model Vehicle {
     trunkCapacity    Int?
     pricePerDay      Decimal               @db.Decimal(10, 2)
     isActive         Boolean               @default(true)
+    highlights       String[]              @default([])
     images           VehicleImage[]
     locations        VehicleLocation[]
     availabilities   VehicleAvailability[]
@@ -50,6 +51,7 @@ enum BookingStatus {
     PENDING
     CONFIRMED
     CANCELLED
+    COMPLETED
 }
 
 model Booking {
