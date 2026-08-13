@@ -1,8 +1,11 @@
 model CmsPage {
     id        String    @id @default(uuid())
-    type      String    @unique // "PRIVACY_POLICY" or "TERMS_CONDITIONS"
-    content   String    @db.Text
+    type      String    @unique
+    contentPl String    @default("") @db.Text
+    contentEn String    @default("") @db.Text
     updatedAt DateTime  @updatedAt
     createdAt DateTime  @default(now())
     deletedAt DateTime?
 }
+
+// car-go-backend/prisma/migrations/<timestamp>_add_cms_page_multilang/migration.sql

@@ -27,7 +27,8 @@ export type AggregateCmsPage = {
 export type CmsPageMinAggregateOutputType = {
   id: string | null
   type: string | null
-  content: string | null
+  contentPl: string | null
+  contentEn: string | null
   updatedAt: Date | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -36,7 +37,8 @@ export type CmsPageMinAggregateOutputType = {
 export type CmsPageMaxAggregateOutputType = {
   id: string | null
   type: string | null
-  content: string | null
+  contentPl: string | null
+  contentEn: string | null
   updatedAt: Date | null
   createdAt: Date | null
   deletedAt: Date | null
@@ -45,7 +47,8 @@ export type CmsPageMaxAggregateOutputType = {
 export type CmsPageCountAggregateOutputType = {
   id: number
   type: number
-  content: number
+  contentPl: number
+  contentEn: number
   updatedAt: number
   createdAt: number
   deletedAt: number
@@ -56,7 +59,8 @@ export type CmsPageCountAggregateOutputType = {
 export type CmsPageMinAggregateInputType = {
   id?: true
   type?: true
-  content?: true
+  contentPl?: true
+  contentEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -65,7 +69,8 @@ export type CmsPageMinAggregateInputType = {
 export type CmsPageMaxAggregateInputType = {
   id?: true
   type?: true
-  content?: true
+  contentPl?: true
+  contentEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -74,7 +79,8 @@ export type CmsPageMaxAggregateInputType = {
 export type CmsPageCountAggregateInputType = {
   id?: true
   type?: true
-  content?: true
+  contentPl?: true
+  contentEn?: true
   updatedAt?: true
   createdAt?: true
   deletedAt?: true
@@ -156,7 +162,8 @@ export type CmsPageGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
 export type CmsPageGroupByOutputType = {
   id: string
   type: string
-  content: string
+  contentPl: string
+  contentEn: string
   updatedAt: Date
   createdAt: Date
   deletedAt: Date | null
@@ -186,7 +193,8 @@ export type CmsPageWhereInput = {
   NOT?: Prisma.CmsPageWhereInput | Prisma.CmsPageWhereInput[]
   id?: Prisma.StringFilter<"CmsPage"> | string
   type?: Prisma.StringFilter<"CmsPage"> | string
-  content?: Prisma.StringFilter<"CmsPage"> | string
+  contentPl?: Prisma.StringFilter<"CmsPage"> | string
+  contentEn?: Prisma.StringFilter<"CmsPage"> | string
   updatedAt?: Prisma.DateTimeFilter<"CmsPage"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsPage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"CmsPage"> | Date | string | null
@@ -195,7 +203,8 @@ export type CmsPageWhereInput = {
 export type CmsPageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  content?: Prisma.SortOrder
+  contentPl?: Prisma.SortOrder
+  contentEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -207,7 +216,8 @@ export type CmsPageWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.CmsPageWhereInput | Prisma.CmsPageWhereInput[]
   OR?: Prisma.CmsPageWhereInput[]
   NOT?: Prisma.CmsPageWhereInput | Prisma.CmsPageWhereInput[]
-  content?: Prisma.StringFilter<"CmsPage"> | string
+  contentPl?: Prisma.StringFilter<"CmsPage"> | string
+  contentEn?: Prisma.StringFilter<"CmsPage"> | string
   updatedAt?: Prisma.DateTimeFilter<"CmsPage"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"CmsPage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"CmsPage"> | Date | string | null
@@ -216,7 +226,8 @@ export type CmsPageWhereUniqueInput = Prisma.AtLeast<{
 export type CmsPageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  content?: Prisma.SortOrder
+  contentPl?: Prisma.SortOrder
+  contentEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -231,7 +242,8 @@ export type CmsPageScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CmsPageScalarWhereWithAggregatesInput | Prisma.CmsPageScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"CmsPage"> | string
   type?: Prisma.StringWithAggregatesFilter<"CmsPage"> | string
-  content?: Prisma.StringWithAggregatesFilter<"CmsPage"> | string
+  contentPl?: Prisma.StringWithAggregatesFilter<"CmsPage"> | string
+  contentEn?: Prisma.StringWithAggregatesFilter<"CmsPage"> | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CmsPage"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CmsPage"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"CmsPage"> | Date | string | null
@@ -240,7 +252,8 @@ export type CmsPageScalarWhereWithAggregatesInput = {
 export type CmsPageCreateInput = {
   id?: string
   type: string
-  content: string
+  contentPl?: string
+  contentEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -249,7 +262,8 @@ export type CmsPageCreateInput = {
 export type CmsPageUncheckedCreateInput = {
   id?: string
   type: string
-  content: string
+  contentPl?: string
+  contentEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -258,7 +272,8 @@ export type CmsPageUncheckedCreateInput = {
 export type CmsPageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
+  contentPl?: Prisma.StringFieldUpdateOperationsInput | string
+  contentEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -267,7 +282,8 @@ export type CmsPageUpdateInput = {
 export type CmsPageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
+  contentPl?: Prisma.StringFieldUpdateOperationsInput | string
+  contentEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -276,7 +292,8 @@ export type CmsPageUncheckedUpdateInput = {
 export type CmsPageCreateManyInput = {
   id?: string
   type: string
-  content: string
+  contentPl?: string
+  contentEn?: string
   updatedAt?: Date | string
   createdAt?: Date | string
   deletedAt?: Date | string | null
@@ -285,7 +302,8 @@ export type CmsPageCreateManyInput = {
 export type CmsPageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
+  contentPl?: Prisma.StringFieldUpdateOperationsInput | string
+  contentEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -294,7 +312,8 @@ export type CmsPageUpdateManyMutationInput = {
 export type CmsPageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   type?: Prisma.StringFieldUpdateOperationsInput | string
-  content?: Prisma.StringFieldUpdateOperationsInput | string
+  contentPl?: Prisma.StringFieldUpdateOperationsInput | string
+  contentEn?: Prisma.StringFieldUpdateOperationsInput | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -303,7 +322,8 @@ export type CmsPageUncheckedUpdateManyInput = {
 export type CmsPageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  content?: Prisma.SortOrder
+  contentPl?: Prisma.SortOrder
+  contentEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -312,7 +332,8 @@ export type CmsPageCountOrderByAggregateInput = {
 export type CmsPageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  content?: Prisma.SortOrder
+  contentPl?: Prisma.SortOrder
+  contentEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -321,7 +342,8 @@ export type CmsPageMaxOrderByAggregateInput = {
 export type CmsPageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   type?: Prisma.SortOrder
-  content?: Prisma.SortOrder
+  contentPl?: Prisma.SortOrder
+  contentEn?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -332,7 +354,8 @@ export type CmsPageMinOrderByAggregateInput = {
 export type CmsPageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
-  content?: boolean
+  contentPl?: boolean
+  contentEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -341,7 +364,8 @@ export type CmsPageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type CmsPageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
-  content?: boolean
+  contentPl?: boolean
+  contentEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -350,7 +374,8 @@ export type CmsPageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type CmsPageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   type?: boolean
-  content?: boolean
+  contentPl?: boolean
+  contentEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
@@ -359,13 +384,14 @@ export type CmsPageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type CmsPageSelectScalar = {
   id?: boolean
   type?: boolean
-  content?: boolean
+  contentPl?: boolean
+  contentEn?: boolean
   updatedAt?: boolean
   createdAt?: boolean
   deletedAt?: boolean
 }
 
-export type CmsPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "content" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsPage"]>
+export type CmsPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "contentPl" | "contentEn" | "updatedAt" | "createdAt" | "deletedAt", ExtArgs["result"]["cmsPage"]>
 
 export type $CmsPagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CmsPage"
@@ -373,7 +399,8 @@ export type $CmsPagePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     type: string
-    content: string
+    contentPl: string
+    contentEn: string
     updatedAt: Date
     createdAt: Date
     deletedAt: Date | null
@@ -802,7 +829,8 @@ export interface Prisma__CmsPageClient<T, Null = never, ExtArgs extends runtime.
 export interface CmsPageFieldRefs {
   readonly id: Prisma.FieldRef<"CmsPage", 'String'>
   readonly type: Prisma.FieldRef<"CmsPage", 'String'>
-  readonly content: Prisma.FieldRef<"CmsPage", 'String'>
+  readonly contentPl: Prisma.FieldRef<"CmsPage", 'String'>
+  readonly contentEn: Prisma.FieldRef<"CmsPage", 'String'>
   readonly updatedAt: Prisma.FieldRef<"CmsPage", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"CmsPage", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"CmsPage", 'DateTime'>

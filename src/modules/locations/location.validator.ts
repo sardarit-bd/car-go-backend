@@ -17,6 +17,11 @@ export const createLocationBodySchema = yup.object({
     .matches(/^\d{2}-\d{3}$/, "Postal code must be in format XX-XXX")
     .required("Postal code is required"),
   phone: yup.string().trim().optional(),
+  minDays: yup
+    .number()
+    .integer("Minimum days must be a whole number")
+    .min(1, "Minimum days must be at least 1")
+    .optional(),
 });
 
 export const updateLocationBodySchema = yup.object({
@@ -29,6 +34,11 @@ export const updateLocationBodySchema = yup.object({
     .matches(/^\d{2}-\d{3}$/, "Postal code must be in format XX-XXX")
     .optional(),
   phone: yup.string().trim().optional(),
+  minDays: yup
+    .number()
+    .integer("Minimum days must be a whole number")
+    .min(1, "Minimum days must be at least 1")
+    .optional(),
 });
 
 export type CreateLocationBody = yup.InferType<typeof createLocationBodySchema>;

@@ -67,7 +67,8 @@ app.use(
   }),
 );
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
-app.use(express.json({ limit: "10kb" }));
+app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
+app.use(express.json({ limit: "2mb" }));
 
 const uploadsPath = path.join(process.cwd(), "uploads");
 

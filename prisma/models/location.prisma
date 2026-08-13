@@ -5,6 +5,7 @@ model Location {
     city       String
     postalCode String
     phone      String?
+    minDays    Int       @default(1)
     createdAt  DateTime  @default(now())
     updatedAt  DateTime  @updatedAt
     deletedAt  DateTime?

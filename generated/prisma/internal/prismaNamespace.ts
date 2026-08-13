@@ -2233,7 +2233,8 @@ export type CmsHeroFeatureScalarFieldEnum = (typeof CmsHeroFeatureScalarFieldEnu
 export const CmsPageScalarFieldEnum = {
   id: 'id',
   type: 'type',
-  content: 'content',
+  contentPl: 'contentPl',
+  contentEn: 'contentEn',
   updatedAt: 'updatedAt',
   createdAt: 'createdAt',
   deletedAt: 'deletedAt'
