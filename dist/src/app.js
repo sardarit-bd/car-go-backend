@@ -57,7 +57,8 @@ app.use(helmet({
     crossOriginResourcePolicy: { policy: "cross-origin" },
 }));
 app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
-app.use(express.json({ limit: "10kb" }));
+app.use("/api/reservations/webhook", express.raw({ type: "application/json" }));
+app.use(express.json({ limit: "2mb" }));
 const uploadsPath = path.join(process.cwd(), "uploads");
 app.use("/uploads", express.static(uploadsPath));
 app.get("/", (req, res) => {

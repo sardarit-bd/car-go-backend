@@ -1,10 +1,12 @@
 model Addon {
-    id          String    @id @default(cuid())
-    name        String
-    description String
-    price       Decimal   @db.Decimal(10, 2)
-    image       String?
-    createdAt   DateTime  @default(now())
-    updatedAt   DateTime  @updatedAt
-    deletedAt   DateTime?
+    id            String    @id @default(cuid())
+    nameEn        String    @default("")
+    namePl        String    @default("")
+    descriptionEn String    @default("")
+    descriptionPl String    @default("")
+    price         Decimal   @db.Decimal(10, 2)
+    image         String?   @default("")
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @updatedAt
+    deletedAt     DateTime?
 }

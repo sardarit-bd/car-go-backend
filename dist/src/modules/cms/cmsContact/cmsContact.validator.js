@@ -2,7 +2,7 @@ import * as yup from "yup";
 export const createCmsContactSchema = yup.object({
     type: yup
         .string()
-        .oneOf(["EMAIL", "PHONE", "ADDRESS"], "Invalid contact type")
+        .oneOf(["EMAIL", "PHONE", "ADDRESS", "HOURS"], "Invalid contact type")
         .required("Contact type is required"),
     value: yup
         .string()
@@ -17,12 +17,12 @@ export const createCmsContactSchema = yup.object({
             // Allows optional +, digits, spaces, dashes, parentheses. Length 7 to 20.
             return /^\+?[0-9\s\-()]{7,20}$/.test(value);
         }
-        return true; // ADDRESS can be any string
+        return true; // ADDRESS and HOURS can be any string (HOURS stores JSON)
     }),
     label: yup.string().optional(),
 });
 export const updateCmsContactSchema = yup.object({
-    type: yup.string().oneOf(["EMAIL", "PHONE", "ADDRESS"]).optional(),
+    type: yup.string().oneOf(["EMAIL", "PHONE", "ADDRESS", "HOURS"]).optional(),
     value: yup
         .string()
         .optional()

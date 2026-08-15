@@ -1,15 +1,14 @@
 import * as yup from "yup";
 
-const emptyStringToUndefined = (value: unknown, originalValue: unknown) =>
-  originalValue === "" ? undefined : value;
-
 export const addonIdParamsSchema = yup.object({
   id: yup.string().required("Addon ID is required"),
 });
 
 export const createAddonBodySchema = yup.object({
-  name: yup.string().trim().required("Name is required"),
-  description: yup.string().trim().required("Description is required"),
+  nameEn: yup.string().trim().required("Name (EN) is required"),
+  namePl: yup.string().trim().required("Name (PL) is required"),
+  descriptionEn: yup.string().trim().required("Description (EN) is required"),
+  descriptionPl: yup.string().trim().required("Description (PL) is required"),
   price: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))
@@ -19,8 +18,10 @@ export const createAddonBodySchema = yup.object({
 });
 
 export const updateAddonBodySchema = yup.object({
-  name: yup.string().trim().optional(),
-  description: yup.string().trim().optional(),
+  nameEn: yup.string().trim().optional(),
+  namePl: yup.string().trim().optional(),
+  descriptionEn: yup.string().trim().optional(),
+  descriptionPl: yup.string().trim().optional(),
   price: yup
     .number()
     .transform((_, val) => (typeof val === "string" ? parseFloat(val) : val))

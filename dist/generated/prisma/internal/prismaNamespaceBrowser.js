@@ -101,8 +101,10 @@ export const UserScalarFieldEnum = {
 };
 export const AddonScalarFieldEnum = {
     id: 'id',
-    name: 'name',
-    description: 'description',
+    nameEn: 'nameEn',
+    namePl: 'namePl',
+    descriptionEn: 'descriptionEn',
+    descriptionPl: 'descriptionPl',
     price: 'price',
     image: 'image',
     createdAt: 'createdAt',
@@ -180,7 +182,8 @@ export const CmsHeroFeatureScalarFieldEnum = {
 export const CmsPageScalarFieldEnum = {
     id: 'id',
     type: 'type',
-    content: 'content',
+    contentPl: 'contentPl',
+    contentEn: 'contentEn',
     updatedAt: 'updatedAt',
     createdAt: 'createdAt',
     deletedAt: 'deletedAt'
@@ -235,14 +238,17 @@ export const LocationScalarFieldEnum = {
     city: 'city',
     postalCode: 'postalCode',
     phone: 'phone',
+    minDays: 'minDays',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
 };
 export const ProtectionPackageScalarFieldEnum = {
     id: 'id',
-    name: 'name',
-    description: 'description',
+    nameEn: 'nameEn',
+    namePl: 'namePl',
+    descriptionEn: 'descriptionEn',
+    descriptionPl: 'descriptionPl',
     price: 'price',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',

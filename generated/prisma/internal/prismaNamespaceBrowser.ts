@@ -129,8 +129,10 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const AddonScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  description: 'description',
+  nameEn: 'nameEn',
+  namePl: 'namePl',
+  descriptionEn: 'descriptionEn',
+  descriptionPl: 'descriptionPl',
   price: 'price',
   image: 'image',
   createdAt: 'createdAt',
@@ -308,6 +310,7 @@ export const LocationScalarFieldEnum = {
   city: 'city',
   postalCode: 'postalCode',
   phone: 'phone',
+  minDays: 'minDays',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
@@ -318,8 +321,10 @@ export type LocationScalarFieldEnum = (typeof LocationScalarFieldEnum)[keyof typ
 
 export const ProtectionPackageScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  description: 'description',
+  nameEn: 'nameEn',
+  namePl: 'namePl',
+  descriptionEn: 'descriptionEn',
+  descriptionPl: 'descriptionPl',
   price: 'price',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',

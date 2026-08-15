@@ -36,7 +36,8 @@ export type ProtectionPackageSumAggregateOutputType = {
 
 export type ProtectionPackageMinAggregateOutputType = {
   id: string | null
-  name: string | null
+  nameEn: string | null
+  namePl: string | null
   price: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -45,7 +46,8 @@ export type ProtectionPackageMinAggregateOutputType = {
 
 export type ProtectionPackageMaxAggregateOutputType = {
   id: string | null
-  name: string | null
+  nameEn: string | null
+  namePl: string | null
   price: runtime.Decimal | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -54,8 +56,10 @@ export type ProtectionPackageMaxAggregateOutputType = {
 
 export type ProtectionPackageCountAggregateOutputType = {
   id: number
-  name: number
-  description: number
+  nameEn: number
+  namePl: number
+  descriptionEn: number
+  descriptionPl: number
   price: number
   createdAt: number
   updatedAt: number
@@ -74,7 +78,8 @@ export type ProtectionPackageSumAggregateInputType = {
 
 export type ProtectionPackageMinAggregateInputType = {
   id?: true
-  name?: true
+  nameEn?: true
+  namePl?: true
   price?: true
   createdAt?: true
   updatedAt?: true
@@ -83,7 +88,8 @@ export type ProtectionPackageMinAggregateInputType = {
 
 export type ProtectionPackageMaxAggregateInputType = {
   id?: true
-  name?: true
+  nameEn?: true
+  namePl?: true
   price?: true
   createdAt?: true
   updatedAt?: true
@@ -92,8 +98,10 @@ export type ProtectionPackageMaxAggregateInputType = {
 
 export type ProtectionPackageCountAggregateInputType = {
   id?: true
-  name?: true
-  description?: true
+  nameEn?: true
+  namePl?: true
+  descriptionEn?: true
+  descriptionPl?: true
   price?: true
   createdAt?: true
   updatedAt?: true
@@ -189,8 +197,10 @@ export type ProtectionPackageGroupByArgs<ExtArgs extends runtime.Types.Extension
 
 export type ProtectionPackageGroupByOutputType = {
   id: string
-  name: string
-  description: string[]
+  nameEn: string
+  namePl: string
+  descriptionEn: string[]
+  descriptionPl: string[]
   price: runtime.Decimal
   createdAt: Date
   updatedAt: Date
@@ -222,8 +232,10 @@ export type ProtectionPackageWhereInput = {
   OR?: Prisma.ProtectionPackageWhereInput[]
   NOT?: Prisma.ProtectionPackageWhereInput | Prisma.ProtectionPackageWhereInput[]
   id?: Prisma.StringFilter<"ProtectionPackage"> | string
-  name?: Prisma.StringFilter<"ProtectionPackage"> | string
-  description?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  nameEn?: Prisma.StringFilter<"ProtectionPackage"> | string
+  namePl?: Prisma.StringFilter<"ProtectionPackage"> | string
+  descriptionEn?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  descriptionPl?: Prisma.StringNullableListFilter<"ProtectionPackage">
   price?: Prisma.DecimalFilter<"ProtectionPackage"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"ProtectionPackage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProtectionPackage"> | Date | string
@@ -232,8 +244,10 @@ export type ProtectionPackageWhereInput = {
 
 export type ProtectionPackageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
+  namePl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
   price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -245,8 +259,10 @@ export type ProtectionPackageWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.ProtectionPackageWhereInput | Prisma.ProtectionPackageWhereInput[]
   OR?: Prisma.ProtectionPackageWhereInput[]
   NOT?: Prisma.ProtectionPackageWhereInput | Prisma.ProtectionPackageWhereInput[]
-  name?: Prisma.StringFilter<"ProtectionPackage"> | string
-  description?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  nameEn?: Prisma.StringFilter<"ProtectionPackage"> | string
+  namePl?: Prisma.StringFilter<"ProtectionPackage"> | string
+  descriptionEn?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  descriptionPl?: Prisma.StringNullableListFilter<"ProtectionPackage">
   price?: Prisma.DecimalFilter<"ProtectionPackage"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFilter<"ProtectionPackage"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ProtectionPackage"> | Date | string
@@ -255,8 +271,10 @@ export type ProtectionPackageWhereUniqueInput = Prisma.AtLeast<{
 
 export type ProtectionPackageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
+  namePl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
   price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -273,8 +291,10 @@ export type ProtectionPackageScalarWhereWithAggregatesInput = {
   OR?: Prisma.ProtectionPackageScalarWhereWithAggregatesInput[]
   NOT?: Prisma.ProtectionPackageScalarWhereWithAggregatesInput | Prisma.ProtectionPackageScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"ProtectionPackage"> | string
-  name?: Prisma.StringWithAggregatesFilter<"ProtectionPackage"> | string
-  description?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  nameEn?: Prisma.StringWithAggregatesFilter<"ProtectionPackage"> | string
+  namePl?: Prisma.StringWithAggregatesFilter<"ProtectionPackage"> | string
+  descriptionEn?: Prisma.StringNullableListFilter<"ProtectionPackage">
+  descriptionPl?: Prisma.StringNullableListFilter<"ProtectionPackage">
   price?: Prisma.DecimalWithAggregatesFilter<"ProtectionPackage"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ProtectionPackage"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ProtectionPackage"> | Date | string
@@ -283,8 +303,10 @@ export type ProtectionPackageScalarWhereWithAggregatesInput = {
 
 export type ProtectionPackageCreateInput = {
   id?: string
-  name: string
-  description?: Prisma.ProtectionPackageCreatedescriptionInput | string[]
+  nameEn: string
+  namePl: string
+  descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -293,8 +315,10 @@ export type ProtectionPackageCreateInput = {
 
 export type ProtectionPackageUncheckedCreateInput = {
   id?: string
-  name: string
-  description?: Prisma.ProtectionPackageCreatedescriptionInput | string[]
+  nameEn: string
+  namePl: string
+  descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -303,8 +327,10 @@ export type ProtectionPackageUncheckedCreateInput = {
 
 export type ProtectionPackageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.ProtectionPackageUpdatedescriptionInput | string[]
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  namePl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.ProtectionPackageUpdatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageUpdatedescriptionPlInput | string[]
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -313,8 +339,10 @@ export type ProtectionPackageUpdateInput = {
 
 export type ProtectionPackageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.ProtectionPackageUpdatedescriptionInput | string[]
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  namePl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.ProtectionPackageUpdatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageUpdatedescriptionPlInput | string[]
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -323,8 +351,10 @@ export type ProtectionPackageUncheckedUpdateInput = {
 
 export type ProtectionPackageCreateManyInput = {
   id?: string
-  name: string
-  description?: Prisma.ProtectionPackageCreatedescriptionInput | string[]
+  nameEn: string
+  namePl: string
+  descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -333,8 +363,10 @@ export type ProtectionPackageCreateManyInput = {
 
 export type ProtectionPackageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.ProtectionPackageUpdatedescriptionInput | string[]
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  namePl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.ProtectionPackageUpdatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageUpdatedescriptionPlInput | string[]
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -343,8 +375,10 @@ export type ProtectionPackageUpdateManyMutationInput = {
 
 export type ProtectionPackageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.ProtectionPackageUpdatedescriptionInput | string[]
+  nameEn?: Prisma.StringFieldUpdateOperationsInput | string
+  namePl?: Prisma.StringFieldUpdateOperationsInput | string
+  descriptionEn?: Prisma.ProtectionPackageUpdatedescriptionEnInput | string[]
+  descriptionPl?: Prisma.ProtectionPackageUpdatedescriptionPlInput | string[]
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -361,8 +395,10 @@ export type StringNullableListFilter<$PrismaModel = never> = {
 
 export type ProtectionPackageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
+  namePl?: Prisma.SortOrder
+  descriptionEn?: Prisma.SortOrder
+  descriptionPl?: Prisma.SortOrder
   price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -375,7 +411,8 @@ export type ProtectionPackageAvgOrderByAggregateInput = {
 
 export type ProtectionPackageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
+  namePl?: Prisma.SortOrder
   price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -384,7 +421,8 @@ export type ProtectionPackageMaxOrderByAggregateInput = {
 
 export type ProtectionPackageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
+  namePl?: Prisma.SortOrder
   price?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -395,11 +433,20 @@ export type ProtectionPackageSumOrderByAggregateInput = {
   price?: Prisma.SortOrder
 }
 
-export type ProtectionPackageCreatedescriptionInput = {
+export type ProtectionPackageCreatedescriptionEnInput = {
   set: string[]
 }
 
-export type ProtectionPackageUpdatedescriptionInput = {
+export type ProtectionPackageCreatedescriptionPlInput = {
+  set: string[]
+}
+
+export type ProtectionPackageUpdatedescriptionEnInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ProtectionPackageUpdatedescriptionPlInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -408,8 +455,10 @@ export type ProtectionPackageUpdatedescriptionInput = {
 
 export type ProtectionPackageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
-  description?: boolean
+  nameEn?: boolean
+  namePl?: boolean
+  descriptionEn?: boolean
+  descriptionPl?: boolean
   price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -418,8 +467,10 @@ export type ProtectionPackageSelect<ExtArgs extends runtime.Types.Extensions.Int
 
 export type ProtectionPackageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
-  description?: boolean
+  nameEn?: boolean
+  namePl?: boolean
+  descriptionEn?: boolean
+  descriptionPl?: boolean
   price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -428,8 +479,10 @@ export type ProtectionPackageSelectCreateManyAndReturn<ExtArgs extends runtime.T
 
 export type ProtectionPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  name?: boolean
-  description?: boolean
+  nameEn?: boolean
+  namePl?: boolean
+  descriptionEn?: boolean
+  descriptionPl?: boolean
   price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -438,23 +491,27 @@ export type ProtectionPackageSelectUpdateManyAndReturn<ExtArgs extends runtime.T
 
 export type ProtectionPackageSelectScalar = {
   id?: boolean
-  name?: boolean
-  description?: boolean
+  nameEn?: boolean
+  namePl?: boolean
+  descriptionEn?: boolean
+  descriptionPl?: boolean
   price?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type ProtectionPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["protectionPackage"]>
+export type ProtectionPackageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nameEn" | "namePl" | "descriptionEn" | "descriptionPl" | "price" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["protectionPackage"]>
 
 export type $ProtectionPackagePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ProtectionPackage"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    name: string
-    description: string[]
+    nameEn: string
+    namePl: string
+    descriptionEn: string[]
+    descriptionPl: string[]
     price: runtime.Decimal
     createdAt: Date
     updatedAt: Date
@@ -883,8 +940,10 @@ export interface Prisma__ProtectionPackageClient<T, Null = never, ExtArgs extend
  */
 export interface ProtectionPackageFieldRefs {
   readonly id: Prisma.FieldRef<"ProtectionPackage", 'String'>
-  readonly name: Prisma.FieldRef<"ProtectionPackage", 'String'>
-  readonly description: Prisma.FieldRef<"ProtectionPackage", 'String[]'>
+  readonly nameEn: Prisma.FieldRef<"ProtectionPackage", 'String'>
+  readonly namePl: Prisma.FieldRef<"ProtectionPackage", 'String'>
+  readonly descriptionEn: Prisma.FieldRef<"ProtectionPackage", 'String[]'>
+  readonly descriptionPl: Prisma.FieldRef<"ProtectionPackage", 'String[]'>
   readonly price: Prisma.FieldRef<"ProtectionPackage", 'Decimal'>
   readonly createdAt: Prisma.FieldRef<"ProtectionPackage", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ProtectionPackage", 'DateTime'>

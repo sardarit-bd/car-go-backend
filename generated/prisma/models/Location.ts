@@ -20,8 +20,18 @@ export type LocationModel = runtime.Types.Result.DefaultSelection<Prisma.$Locati
 
 export type AggregateLocation = {
   _count: LocationCountAggregateOutputType | null
+  _avg: LocationAvgAggregateOutputType | null
+  _sum: LocationSumAggregateOutputType | null
   _min: LocationMinAggregateOutputType | null
   _max: LocationMaxAggregateOutputType | null
+}
+
+export type LocationAvgAggregateOutputType = {
+  minDays: number | null
+}
+
+export type LocationSumAggregateOutputType = {
+  minDays: number | null
 }
 
 export type LocationMinAggregateOutputType = {
@@ -31,6 +41,7 @@ export type LocationMinAggregateOutputType = {
   city: string | null
   postalCode: string | null
   phone: string | null
+  minDays: number | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -43,6 +54,7 @@ export type LocationMaxAggregateOutputType = {
   city: string | null
   postalCode: string | null
   phone: string | null
+  minDays: number | null
   createdAt: Date | null
   updatedAt: Date | null
   deletedAt: Date | null
@@ -55,12 +67,21 @@ export type LocationCountAggregateOutputType = {
   city: number
   postalCode: number
   phone: number
+  minDays: number
   createdAt: number
   updatedAt: number
   deletedAt: number
   _all: number
 }
 
+
+export type LocationAvgAggregateInputType = {
+  minDays?: true
+}
+
+export type LocationSumAggregateInputType = {
+  minDays?: true
+}
 
 export type LocationMinAggregateInputType = {
   id?: true
@@ -69,6 +90,7 @@ export type LocationMinAggregateInputType = {
   city?: true
   postalCode?: true
   phone?: true
+  minDays?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -81,6 +103,7 @@ export type LocationMaxAggregateInputType = {
   city?: true
   postalCode?: true
   phone?: true
+  minDays?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -93,6 +116,7 @@ export type LocationCountAggregateInputType = {
   city?: true
   postalCode?: true
   phone?: true
+  minDays?: true
   createdAt?: true
   updatedAt?: true
   deletedAt?: true
@@ -137,6 +161,18 @@ export type LocationAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: LocationAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: LocationSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: LocationMinAggregateInputType
@@ -167,6 +203,8 @@ export type LocationGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: LocationCountAggregateInputType | true
+  _avg?: LocationAvgAggregateInputType
+  _sum?: LocationSumAggregateInputType
   _min?: LocationMinAggregateInputType
   _max?: LocationMaxAggregateInputType
 }
@@ -178,10 +216,13 @@ export type LocationGroupByOutputType = {
   city: string
   postalCode: string
   phone: string | null
+  minDays: number
   createdAt: Date
   updatedAt: Date
   deletedAt: Date | null
   _count: LocationCountAggregateOutputType | null
+  _avg: LocationAvgAggregateOutputType | null
+  _sum: LocationSumAggregateOutputType | null
   _min: LocationMinAggregateOutputType | null
   _max: LocationMaxAggregateOutputType | null
 }
@@ -211,6 +252,7 @@ export type LocationWhereInput = {
   city?: Prisma.StringFilter<"Location"> | string
   postalCode?: Prisma.StringFilter<"Location"> | string
   phone?: Prisma.StringNullableFilter<"Location"> | string | null
+  minDays?: Prisma.IntFilter<"Location"> | number
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Location"> | Date | string | null
@@ -223,6 +265,7 @@ export type LocationOrderByWithRelationInput = {
   city?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  minDays?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -238,6 +281,7 @@ export type LocationWhereUniqueInput = Prisma.AtLeast<{
   city?: Prisma.StringFilter<"Location"> | string
   postalCode?: Prisma.StringFilter<"Location"> | string
   phone?: Prisma.StringNullableFilter<"Location"> | string | null
+  minDays?: Prisma.IntFilter<"Location"> | number
   createdAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Location"> | Date | string
   deletedAt?: Prisma.DateTimeNullableFilter<"Location"> | Date | string | null
@@ -250,12 +294,15 @@ export type LocationOrderByWithAggregationInput = {
   city?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  minDays?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.LocationCountOrderByAggregateInput
+  _avg?: Prisma.LocationAvgOrderByAggregateInput
   _max?: Prisma.LocationMaxOrderByAggregateInput
   _min?: Prisma.LocationMinOrderByAggregateInput
+  _sum?: Prisma.LocationSumOrderByAggregateInput
 }
 
 export type LocationScalarWhereWithAggregatesInput = {
@@ -268,6 +315,7 @@ export type LocationScalarWhereWithAggregatesInput = {
   city?: Prisma.StringWithAggregatesFilter<"Location"> | string
   postalCode?: Prisma.StringWithAggregatesFilter<"Location"> | string
   phone?: Prisma.StringNullableWithAggregatesFilter<"Location"> | string | null
+  minDays?: Prisma.IntWithAggregatesFilter<"Location"> | number
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Location"> | Date | string
   deletedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Location"> | Date | string | null
@@ -280,6 +328,7 @@ export type LocationCreateInput = {
   city: string
   postalCode: string
   phone?: string | null
+  minDays?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -292,6 +341,7 @@ export type LocationUncheckedCreateInput = {
   city: string
   postalCode: string
   phone?: string | null
+  minDays?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -304,6 +354,7 @@ export type LocationUpdateInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minDays?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -316,6 +367,7 @@ export type LocationUncheckedUpdateInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minDays?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -328,6 +380,7 @@ export type LocationCreateManyInput = {
   city: string
   postalCode: string
   phone?: string | null
+  minDays?: number
   createdAt?: Date | string
   updatedAt?: Date | string
   deletedAt?: Date | string | null
@@ -340,6 +393,7 @@ export type LocationUpdateManyMutationInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minDays?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -352,6 +406,7 @@ export type LocationUncheckedUpdateManyInput = {
   city?: Prisma.StringFieldUpdateOperationsInput | string
   postalCode?: Prisma.StringFieldUpdateOperationsInput | string
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  minDays?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -364,9 +419,14 @@ export type LocationCountOrderByAggregateInput = {
   city?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  minDays?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+}
+
+export type LocationAvgOrderByAggregateInput = {
+  minDays?: Prisma.SortOrder
 }
 
 export type LocationMaxOrderByAggregateInput = {
@@ -376,6 +436,7 @@ export type LocationMaxOrderByAggregateInput = {
   city?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  minDays?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
@@ -388,9 +449,14 @@ export type LocationMinOrderByAggregateInput = {
   city?: Prisma.SortOrder
   postalCode?: Prisma.SortOrder
   phone?: Prisma.SortOrder
+  minDays?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   deletedAt?: Prisma.SortOrder
+}
+
+export type LocationSumOrderByAggregateInput = {
+  minDays?: Prisma.SortOrder
 }
 
 
@@ -402,6 +468,7 @@ export type LocationSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   city?: boolean
   postalCode?: boolean
   phone?: boolean
+  minDays?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -414,6 +481,7 @@ export type LocationSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   city?: boolean
   postalCode?: boolean
   phone?: boolean
+  minDays?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -426,6 +494,7 @@ export type LocationSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   city?: boolean
   postalCode?: boolean
   phone?: boolean
+  minDays?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
@@ -438,12 +507,13 @@ export type LocationSelectScalar = {
   city?: boolean
   postalCode?: boolean
   phone?: boolean
+  minDays?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   deletedAt?: boolean
 }
 
-export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "city" | "postalCode" | "phone" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["location"]>
+export type LocationOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "address" | "city" | "postalCode" | "phone" | "minDays" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["location"]>
 
 export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Location"
@@ -455,6 +525,7 @@ export type $LocationPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     city: string
     postalCode: string
     phone: string | null
+    minDays: number
     createdAt: Date
     updatedAt: Date
     deletedAt: Date | null
@@ -887,6 +958,7 @@ export interface LocationFieldRefs {
   readonly city: Prisma.FieldRef<"Location", 'String'>
   readonly postalCode: Prisma.FieldRef<"Location", 'String'>
   readonly phone: Prisma.FieldRef<"Location", 'String'>
+  readonly minDays: Prisma.FieldRef<"Location", 'Int'>
   readonly createdAt: Prisma.FieldRef<"Location", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Location", 'DateTime'>
   readonly deletedAt: Prisma.FieldRef<"Location", 'DateTime'>

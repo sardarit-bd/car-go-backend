@@ -2,12 +2,14 @@ import * as yup from "yup";
 export const createCmsPageSchema = yup.object({
     type: yup
         .string()
-        .oneOf(["PRIVACY_POLICY", "TERMS_CONDITIONS"], "Invalid page type")
+        .oneOf(["PRIVACY_POLICY", "TERMS_CONDITIONS", "COOKIE_POLICY"], "Invalid page type")
         .required("Page type is required"),
-    content: yup.string().required("Content is required"),
+    contentPl: yup.string().required("Content (PL) is required"),
+    contentEn: yup.string().required("Content (EN) is required"),
 });
 export const updateCmsPageSchema = yup.object({
-    content: yup.string().required("Content is required"),
+    contentPl: yup.string().optional(),
+    contentEn: yup.string().optional(),
 });
 export const cmsPageParamsSchema = yup.object({
     id: yup.string().uuid("Invalid ID format").required("ID is required"),
@@ -15,6 +17,6 @@ export const cmsPageParamsSchema = yup.object({
 export const cmsPageTypeParamsSchema = yup.object({
     type: yup
         .string()
-        .oneOf(["PRIVACY_POLICY", "TERMS_CONDITIONS"])
+        .oneOf(["PRIVACY_POLICY", "TERMS_CONDITIONS", "COOKIE_POLICY"])
         .required("Page type is required"),
 });

@@ -26,5 +26,6 @@ export const ReviewStatus = {
 export const BookingStatus = {
     PENDING: 'PENDING',
     CONFIRMED: 'CONFIRMED',
-    CANCELLED: 'CANCELLED'
+    CANCELLED: 'CANCELLED',
+    COMPLETED: 'COMPLETED'
 };
