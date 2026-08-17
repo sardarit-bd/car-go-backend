@@ -4,8 +4,8 @@ import sendResponse from "../../shared/utils/response.js";
 
 const COOKIE_OPTIONS = {
   httpOnly: true,
-  secure: true,
-  sameSite: "none" as const,
+  secure: false,
+  sameSite: "lax" as const,
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 
