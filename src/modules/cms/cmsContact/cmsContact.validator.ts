@@ -3,7 +3,18 @@ import * as yup from "yup";
 export const createCmsContactSchema = yup.object({
   type: yup
     .string()
-    .oneOf(["EMAIL", "PHONE", "ADDRESS", "HOURS"], "Invalid contact type")
+    .oneOf(
+      [
+        "EMAIL",
+        "PHONE",
+        "ADDRESS",
+        "HOURS",
+        "COMPANY_NAME",
+        "COMPANY_NIP",
+        "COMPANY_ADDRESS",
+      ],
+      "Invalid contact type",
+    )
     .required("Contact type is required"),
   value: yup
     .string()
@@ -14,21 +25,33 @@ export const createCmsContactSchema = yup.object({
       function (value) {
         const { type } = this.parent;
         if (type === "EMAIL") {
-          // Standard email regex
           return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
         }
         if (type === "PHONE") {
-          // Allows optional +, digits, spaces, dashes, parentheses. Length 7 to 20.
           return /^\+?[0-9\s\-()]{7,20}$/.test(value);
         }
-        return true; // ADDRESS and HOURS can be any string (HOURS stores JSON)
+        if (type === "COMPANY_NIP") {
+          return /^[0-9]{10}$/.test(value);
+        }
+        return true;
       },
     ),
   label: yup.string().optional(),
 });
 
 export const updateCmsContactSchema = yup.object({
-  type: yup.string().oneOf(["EMAIL", "PHONE", "ADDRESS", "HOURS"]).optional(),
+  type: yup
+    .string()
+    .oneOf([
+      "EMAIL",
+      "PHONE",
+      "ADDRESS",
+      "HOURS",
+      "COMPANY_NAME",
+      "COMPANY_NIP",
+      "COMPANY_ADDRESS",
+    ])
+    .optional(),
   value: yup
     .string()
     .optional()
@@ -43,6 +66,9 @@ export const updateCmsContactSchema = yup.object({
         }
         if (type === "PHONE") {
           return /^\+?[0-9\s\-()]{7,20}$/.test(value);
+        }
+        if (type === "COMPANY_NIP") {
+          return /^[0-9]{10}$/.test(value);
         }
         return true;
       },

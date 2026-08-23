@@ -16,11 +16,7 @@ export const register = async (
 ) => {
   try {
     const { user, token } = await authService.register(req.body);
-
-    // Set the httpOnly cookie
     res.cookie("token", token, COOKIE_OPTIONS);
-
-    // We no longer send the token in the body for security reasons
     sendResponse(res, 201, true, "User registered successfully", { user });
   } catch (error) {
     next(error);
@@ -35,7 +31,6 @@ export const login = async (
   try {
     const { user, token } = await authService.login(req.body);
 
-    // Set the httpOnly cookie
     res.cookie("token", token, COOKIE_OPTIONS);
 
     sendResponse(res, 200, true, "Login successful", { user });
