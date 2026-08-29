@@ -323,10 +323,10 @@ export type AddonScalarWhereWithAggregatesInput = {
 
 export type AddonCreateInput = {
   id?: string
-  nameEn: string
-  namePl: string
-  descriptionEn: string
-  descriptionPl: string
+  nameEn?: string
+  namePl?: string
+  descriptionEn?: string
+  descriptionPl?: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   image?: string | null
   createdAt?: Date | string
@@ -336,10 +336,10 @@ export type AddonCreateInput = {
 
 export type AddonUncheckedCreateInput = {
   id?: string
-  nameEn: string
-  namePl: string
-  descriptionEn: string
-  descriptionPl: string
+  nameEn?: string
+  namePl?: string
+  descriptionEn?: string
+  descriptionPl?: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   image?: string | null
   createdAt?: Date | string
@@ -375,10 +375,10 @@ export type AddonUncheckedUpdateInput = {
 
 export type AddonCreateManyInput = {
   id?: string
-  nameEn: string
-  namePl: string
-  descriptionEn: string
-  descriptionPl: string
+  nameEn?: string
+  namePl?: string
+  descriptionEn?: string
+  descriptionPl?: string
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   image?: string | null
   createdAt?: Date | string

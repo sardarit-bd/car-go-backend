@@ -44,6 +44,7 @@ model VehicleAvailability {
     vehicleId     String
     availableFrom DateTime
     availableTo   DateTime
+    isBlocked     Boolean  @default(false)
     vehicle       Vehicle  @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }
 

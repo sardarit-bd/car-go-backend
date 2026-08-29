@@ -1,0 +1,1 @@
+ALTER TABLE "VehicleAvailability" ADD COLUMN "isBlocked" BOOLEAN NOT NULL DEFAULT false;
