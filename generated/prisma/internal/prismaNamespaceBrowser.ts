@@ -396,7 +396,8 @@ export const VehicleAvailabilityScalarFieldEnum = {
   id: 'id',
   vehicleId: 'vehicleId',
   availableFrom: 'availableFrom',
-  availableTo: 'availableTo'
+  availableTo: 'availableTo',
+  isBlocked: 'isBlocked'
 } as const
 
 export type VehicleAvailabilityScalarFieldEnum = (typeof VehicleAvailabilityScalarFieldEnum)[keyof typeof VehicleAvailabilityScalarFieldEnum]

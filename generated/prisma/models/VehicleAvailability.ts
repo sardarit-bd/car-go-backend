@@ -29,6 +29,7 @@ export type VehicleAvailabilityMinAggregateOutputType = {
   vehicleId: string | null
   availableFrom: Date | null
   availableTo: Date | null
+  isBlocked: boolean | null
 }
 
 export type VehicleAvailabilityMaxAggregateOutputType = {
@@ -36,6 +37,7 @@ export type VehicleAvailabilityMaxAggregateOutputType = {
   vehicleId: string | null
   availableFrom: Date | null
   availableTo: Date | null
+  isBlocked: boolean | null
 }
 
 export type VehicleAvailabilityCountAggregateOutputType = {
@@ -43,6 +45,7 @@ export type VehicleAvailabilityCountAggregateOutputType = {
   vehicleId: number
   availableFrom: number
   availableTo: number
+  isBlocked: number
   _all: number
 }
 
@@ -52,6 +55,7 @@ export type VehicleAvailabilityMinAggregateInputType = {
   vehicleId?: true
   availableFrom?: true
   availableTo?: true
+  isBlocked?: true
 }
 
 export type VehicleAvailabilityMaxAggregateInputType = {
@@ -59,6 +63,7 @@ export type VehicleAvailabilityMaxAggregateInputType = {
   vehicleId?: true
   availableFrom?: true
   availableTo?: true
+  isBlocked?: true
 }
 
 export type VehicleAvailabilityCountAggregateInputType = {
@@ -66,6 +71,7 @@ export type VehicleAvailabilityCountAggregateInputType = {
   vehicleId?: true
   availableFrom?: true
   availableTo?: true
+  isBlocked?: true
   _all?: true
 }
 
@@ -146,6 +152,7 @@ export type VehicleAvailabilityGroupByOutputType = {
   vehicleId: string
   availableFrom: Date
   availableTo: Date
+  isBlocked: boolean
   _count: VehicleAvailabilityCountAggregateOutputType | null
   _min: VehicleAvailabilityMinAggregateOutputType | null
   _max: VehicleAvailabilityMaxAggregateOutputType | null
@@ -174,6 +181,7 @@ export type VehicleAvailabilityWhereInput = {
   vehicleId?: Prisma.StringFilter<"VehicleAvailability"> | string
   availableFrom?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
   availableTo?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
+  isBlocked?: Prisma.BoolFilter<"VehicleAvailability"> | boolean
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }
 
@@ -182,6 +190,7 @@ export type VehicleAvailabilityOrderByWithRelationInput = {
   vehicleId?: Prisma.SortOrder
   availableFrom?: Prisma.SortOrder
   availableTo?: Prisma.SortOrder
+  isBlocked?: Prisma.SortOrder
   vehicle?: Prisma.VehicleOrderByWithRelationInput
 }
 
@@ -193,6 +202,7 @@ export type VehicleAvailabilityWhereUniqueInput = Prisma.AtLeast<{
   vehicleId?: Prisma.StringFilter<"VehicleAvailability"> | string
   availableFrom?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
   availableTo?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
+  isBlocked?: Prisma.BoolFilter<"VehicleAvailability"> | boolean
   vehicle?: Prisma.XOR<Prisma.VehicleScalarRelationFilter, Prisma.VehicleWhereInput>
 }, "id">
 
@@ -201,6 +211,7 @@ export type VehicleAvailabilityOrderByWithAggregationInput = {
   vehicleId?: Prisma.SortOrder
   availableFrom?: Prisma.SortOrder
   availableTo?: Prisma.SortOrder
+  isBlocked?: Prisma.SortOrder
   _count?: Prisma.VehicleAvailabilityCountOrderByAggregateInput
   _max?: Prisma.VehicleAvailabilityMaxOrderByAggregateInput
   _min?: Prisma.VehicleAvailabilityMinOrderByAggregateInput
@@ -214,12 +225,14 @@ export type VehicleAvailabilityScalarWhereWithAggregatesInput = {
   vehicleId?: Prisma.StringWithAggregatesFilter<"VehicleAvailability"> | string
   availableFrom?: Prisma.DateTimeWithAggregatesFilter<"VehicleAvailability"> | Date | string
   availableTo?: Prisma.DateTimeWithAggregatesFilter<"VehicleAvailability"> | Date | string
+  isBlocked?: Prisma.BoolWithAggregatesFilter<"VehicleAvailability"> | boolean
 }
 
 export type VehicleAvailabilityCreateInput = {
   id?: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
   vehicle: Prisma.VehicleCreateNestedOneWithoutAvailabilitiesInput
 }
 
@@ -228,12 +241,14 @@ export type VehicleAvailabilityUncheckedCreateInput = {
   vehicleId: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
 }
 
 export type VehicleAvailabilityUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   vehicle?: Prisma.VehicleUpdateOneRequiredWithoutAvailabilitiesNestedInput
 }
 
@@ -242,6 +257,7 @@ export type VehicleAvailabilityUncheckedUpdateInput = {
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleAvailabilityCreateManyInput = {
@@ -249,12 +265,14 @@ export type VehicleAvailabilityCreateManyInput = {
   vehicleId: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
 }
 
 export type VehicleAvailabilityUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleAvailabilityUncheckedUpdateManyInput = {
@@ -262,6 +280,7 @@ export type VehicleAvailabilityUncheckedUpdateManyInput = {
   vehicleId?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleAvailabilityListRelationFilter = {
@@ -279,6 +298,7 @@ export type VehicleAvailabilityCountOrderByAggregateInput = {
   vehicleId?: Prisma.SortOrder
   availableFrom?: Prisma.SortOrder
   availableTo?: Prisma.SortOrder
+  isBlocked?: Prisma.SortOrder
 }
 
 export type VehicleAvailabilityMaxOrderByAggregateInput = {
@@ -286,6 +306,7 @@ export type VehicleAvailabilityMaxOrderByAggregateInput = {
   vehicleId?: Prisma.SortOrder
   availableFrom?: Prisma.SortOrder
   availableTo?: Prisma.SortOrder
+  isBlocked?: Prisma.SortOrder
 }
 
 export type VehicleAvailabilityMinOrderByAggregateInput = {
@@ -293,6 +314,7 @@ export type VehicleAvailabilityMinOrderByAggregateInput = {
   vehicleId?: Prisma.SortOrder
   availableFrom?: Prisma.SortOrder
   availableTo?: Prisma.SortOrder
+  isBlocked?: Prisma.SortOrder
 }
 
 export type VehicleAvailabilityCreateNestedManyWithoutVehicleInput = {
@@ -341,12 +363,14 @@ export type VehicleAvailabilityCreateWithoutVehicleInput = {
   id?: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
 }
 
 export type VehicleAvailabilityUncheckedCreateWithoutVehicleInput = {
   id?: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
 }
 
 export type VehicleAvailabilityCreateOrConnectWithoutVehicleInput = {
@@ -383,30 +407,35 @@ export type VehicleAvailabilityScalarWhereInput = {
   vehicleId?: Prisma.StringFilter<"VehicleAvailability"> | string
   availableFrom?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
   availableTo?: Prisma.DateTimeFilter<"VehicleAvailability"> | Date | string
+  isBlocked?: Prisma.BoolFilter<"VehicleAvailability"> | boolean
 }
 
 export type VehicleAvailabilityCreateManyVehicleInput = {
   id?: string
   availableFrom: Date | string
   availableTo: Date | string
+  isBlocked?: boolean
 }
 
 export type VehicleAvailabilityUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleAvailabilityUncheckedUpdateWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type VehicleAvailabilityUncheckedUpdateManyWithoutVehicleInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   availableFrom?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   availableTo?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isBlocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 
@@ -416,6 +445,7 @@ export type VehicleAvailabilitySelect<ExtArgs extends runtime.Types.Extensions.I
   vehicleId?: boolean
   availableFrom?: boolean
   availableTo?: boolean
+  isBlocked?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleAvailability"]>
 
@@ -424,6 +454,7 @@ export type VehicleAvailabilitySelectCreateManyAndReturn<ExtArgs extends runtime
   vehicleId?: boolean
   availableFrom?: boolean
   availableTo?: boolean
+  isBlocked?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleAvailability"]>
 
@@ -432,6 +463,7 @@ export type VehicleAvailabilitySelectUpdateManyAndReturn<ExtArgs extends runtime
   vehicleId?: boolean
   availableFrom?: boolean
   availableTo?: boolean
+  isBlocked?: boolean
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["vehicleAvailability"]>
 
@@ -440,9 +472,10 @@ export type VehicleAvailabilitySelectScalar = {
   vehicleId?: boolean
   availableFrom?: boolean
   availableTo?: boolean
+  isBlocked?: boolean
 }
 
-export type VehicleAvailabilityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "availableFrom" | "availableTo", ExtArgs["result"]["vehicleAvailability"]>
+export type VehicleAvailabilityOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "vehicleId" | "availableFrom" | "availableTo" | "isBlocked", ExtArgs["result"]["vehicleAvailability"]>
 export type VehicleAvailabilityInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   vehicle?: boolean | Prisma.VehicleDefaultArgs<ExtArgs>
 }
@@ -463,6 +496,7 @@ export type $VehicleAvailabilityPayload<ExtArgs extends runtime.Types.Extensions
     vehicleId: string
     availableFrom: Date
     availableTo: Date
+    isBlocked: boolean
   }, ExtArgs["result"]["vehicleAvailability"]>
   composites: {}
 }
@@ -891,6 +925,7 @@ export interface VehicleAvailabilityFieldRefs {
   readonly vehicleId: Prisma.FieldRef<"VehicleAvailability", 'String'>
   readonly availableFrom: Prisma.FieldRef<"VehicleAvailability", 'DateTime'>
   readonly availableTo: Prisma.FieldRef<"VehicleAvailability", 'DateTime'>
+  readonly isBlocked: Prisma.FieldRef<"VehicleAvailability", 'Boolean'>
 }
     
 

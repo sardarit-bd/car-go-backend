@@ -5,6 +5,9 @@ import {
   createVehicle,
   updateVehicle,
   deleteVehicle,
+  getBlockedDates,
+  blockVehicleDates,
+  unblockVehicleDates,
 } from "./vehicle.controller.js";
 import validate from "../../shared/middleware/validate.js";
 import {
@@ -12,6 +15,8 @@ import {
   vehicleIdParamsSchema,
   createVehicleBodySchema,
   updateVehicleBodySchema,
+  blockVehicleDatesBodySchema,
+  availabilityIdParamsSchema,
 } from "./vehicle.validator.js";
 import upload from "../../shared/utils/upload.js";
 const router = Router();
@@ -40,4 +45,24 @@ router.patch(
 );
 
 router.delete("/:id", validate(vehicleIdParamsSchema, "params"), deleteVehicle);
+
+router.get(
+  "/:id/blocked-dates",
+  validate(vehicleIdParamsSchema, "params"),
+  getBlockedDates,
+);
+
+router.post(
+  "/:id/blocked-dates",
+  validate(vehicleIdParamsSchema, "params"),
+  validate(blockVehicleDatesBodySchema, "body"),
+  blockVehicleDates,
+);
+
+router.delete(
+  "/blocked-dates/:availabilityId",
+  validate(availabilityIdParamsSchema, "params"),
+  unblockVehicleDates,
+);
+
 export default router;

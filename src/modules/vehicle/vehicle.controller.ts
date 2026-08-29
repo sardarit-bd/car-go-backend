@@ -81,3 +81,45 @@ export const deleteVehicle = async (
     next(error);
   }
 };
+
+export const getBlockedDates = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params as { id: string };
+    const result = await vehicleService.getBlockedDates(id);
+    sendResponse(res, 200, true, "Blocked dates fetched successfully", result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const blockVehicleDates = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
+  try {
+    const { id } = req.params as { id: string };
+    const result = await vehicleService.blockVehicleDates(id, req.body);
+    sendResponse(res, 201, true, "Dates blocked successfully", result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const unblockVehicleDates = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+): Promise<void> => {
+  try {
+    const { availabilityId } = req.params as { availabilityId: string };
+    await vehicleService.unblockVehicleDates(availabilityId);
+    sendResponse(res, 200, true, "Dates unblocked successfully", null);
+  } catch (error) {
+    next(error);
+  }
+};

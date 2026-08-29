@@ -303,8 +303,8 @@ export type ProtectionPackageScalarWhereWithAggregatesInput = {
 
 export type ProtectionPackageCreateInput = {
   id?: string
-  nameEn: string
-  namePl: string
+  nameEn?: string
+  namePl?: string
   descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
   descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -315,8 +315,8 @@ export type ProtectionPackageCreateInput = {
 
 export type ProtectionPackageUncheckedCreateInput = {
   id?: string
-  nameEn: string
-  namePl: string
+  nameEn?: string
+  namePl?: string
   descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
   descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -351,8 +351,8 @@ export type ProtectionPackageUncheckedUpdateInput = {
 
 export type ProtectionPackageCreateManyInput = {
   id?: string
-  nameEn: string
-  namePl: string
+  nameEn?: string
+  namePl?: string
   descriptionEn?: Prisma.ProtectionPackageCreatedescriptionEnInput | string[]
   descriptionPl?: Prisma.ProtectionPackageCreatedescriptionPlInput | string[]
   price: runtime.Decimal | runtime.DecimalJsLike | number | string

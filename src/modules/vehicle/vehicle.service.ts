@@ -132,3 +132,26 @@ export const deleteVehicle = async (id: string) => {
   }
   await vehicleRepository.softDeleteVehicle(id);
 };
+
+export const getBlockedDates = async (vehicleId: string) => {
+  return vehicleRepository.findBlockedAvailabilities(vehicleId);
+};
+
+export const blockVehicleDates = async (
+  vehicleId: string,
+  data: { availableFrom: Date; availableTo: Date },
+) => {
+  const vehicle = await vehicleRepository.findVehicleByIdAdmin(vehicleId);
+  if (!vehicle) {
+    throw new AppError("Vehicle not found", 404);
+  }
+  return vehicleRepository.createBlockedAvailability(
+    vehicleId,
+    data.availableFrom,
+    data.availableTo,
+  );
+};
+
+export const unblockVehicleDates = async (availabilityId: string) => {
+  await vehicleRepository.deleteBlockedAvailability(availabilityId);
+};
