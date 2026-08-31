@@ -52,3 +52,33 @@ export const deleteVehicle = async (req, res, next) => {
         next(error);
     }
 };
+export const getBlockedDates = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result = await vehicleService.getBlockedDates(id);
+        sendResponse(res, 200, true, "Blocked dates fetched successfully", result);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const blockVehicleDates = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result = await vehicleService.blockVehicleDates(id, req.body);
+        sendResponse(res, 201, true, "Dates blocked successfully", result);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const unblockVehicleDates = async (req, res, next) => {
+    try {
+        const { availabilityId } = req.params;
+        await vehicleService.unblockVehicleDates(availabilityId);
+        sendResponse(res, 200, true, "Dates unblocked successfully", null);
+    }
+    catch (error) {
+        next(error);
+    }
+};

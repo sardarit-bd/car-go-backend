@@ -167,3 +167,22 @@ export const updateVehicleBodySchema = yup.object({
         .transform(parseJsonString)
         .optional(),
 });
+export const blockVehicleDatesBodySchema = yup.object({
+    availableFrom: yup
+        .date()
+        .typeError("Invalid start date")
+        .required("Start date is required"),
+    availableTo: yup
+        .date()
+        .typeError("Invalid end date")
+        .required("End date is required")
+        .test("after-start", "End date must be after start date", function (availableTo) {
+        const { availableFrom } = this.parent;
+        if (!availableFrom || !availableTo)
+            return true;
+        return availableTo.getTime() >= availableFrom.getTime();
+    }),
+});
+export const availabilityIdParamsSchema = yup.object({
+    availabilityId: yup.string().required("Availability ID is required"),
+});

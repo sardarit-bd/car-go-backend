@@ -300,7 +300,8 @@ export const VehicleAvailabilityScalarFieldEnum = {
     id: 'id',
     vehicleId: 'vehicleId',
     availableFrom: 'availableFrom',
-    availableTo: 'availableTo'
+    availableTo: 'availableTo',
+    isBlocked: 'isBlocked'
 };
 export const BookingScalarFieldEnum = {
     id: 'id',

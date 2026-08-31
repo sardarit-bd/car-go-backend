@@ -1,5 +1,6 @@
 // backend/src/modules/reservations/reservation.service.ts
 import * as reservationRepository from "./reservation.repository.js";
+import * as vehicleRepository from "../vehicle/vehicle.repository.js";
 import AppError from "../../shared/utils/AppError.js";
 import Stripe from "stripe";
 import { triggerGuestAccountActivation } from "../../shared/utils/accountActivation.js";
@@ -28,6 +29,14 @@ export const createReservation = async (data) => {
     });
     if (diffDays < 3) {
         throw new AppError(`Minimalny okres wynajmu to 3 dni. Wybrany okres to tylko ${diffDays} dni.`, 400);
+    }
+    const blockedOverlaps = await vehicleRepository.findOverlappingBlockedAvailability(data.vehicleId, pickupDate, returnDate);
+    if (blockedOverlaps.length > 0) {
+        const latestBlockedEnd = blockedOverlaps.reduce((latest, b) => (b.availableTo > latest ? b.availableTo : latest), blockedOverlaps[0].availableTo);
+        const earliestAvailable = new Date(latestBlockedEnd);
+        earliestAvailable.setDate(earliestAvailable.getDate() + 1);
+        const earliestAvailableStr = earliestAvailable.toISOString().split("T")[0];
+        throw new AppError(`Ten pojazd jest niedostępny w wybranym terminie. Najwcześniejszy dostępny termin to ${earliestAvailableStr}.`, 400);
     }
     const reservation = await reservationRepository.createReservation(data);
     if (reservation.status === "CONFIRMED" || reservation.status === "PENDING") {

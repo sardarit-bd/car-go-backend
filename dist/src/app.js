@@ -35,6 +35,7 @@ app.use(cors({
         "http://localhost:3000",
         "http://192.168.0.105:3000",
         "https://car-go-flame.vercel.app",
+        "https://car-go.pl",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],

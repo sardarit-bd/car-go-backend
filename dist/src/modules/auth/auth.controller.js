@@ -2,16 +2,14 @@ import * as authService from "./auth.service.js";
 import sendResponse from "../../shared/utils/response.js";
 const COOKIE_OPTIONS = {
     httpOnly: true,
-    secure: true,
-    sameSite: "none",
+    secure: false,
+    sameSite: "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 export const register = async (req, res, next) => {
     try {
         const { user, token } = await authService.register(req.body);
-        // Set the httpOnly cookie
         res.cookie("token", token, COOKIE_OPTIONS);
-        // We no longer send the token in the body for security reasons
         sendResponse(res, 201, true, "User registered successfully", { user });
     }
     catch (error) {
@@ -21,7 +19,6 @@ export const register = async (req, res, next) => {
 export const login = async (req, res, next) => {
     try {
         const { user, token } = await authService.login(req.body);
-        // Set the httpOnly cookie
         res.cookie("token", token, COOKIE_OPTIONS);
         sendResponse(res, 200, true, "Login successful", { user });
     }
