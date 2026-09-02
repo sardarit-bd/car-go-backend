@@ -41,6 +41,7 @@ app.use(
       "http://car-go.pl",
       "http://www.car-go.pl",
       "https://www.car-go.pl",
+      "",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
