@@ -6,10 +6,29 @@ import {
   calculateNotificationSign,
 } from "./p24.client.js";
 
-export const createP24Transaction = async (bookingId: string) => {
+
+const ALLOWED_FRONTEND_ORIGINS = [
+  "https://car-go.pl",
+  "http://car-go.pl",
+  "https://www.car-go.pl",
+  "http://www.car-go.pl",
+  "https://car-go-flame.vercel.app",
+  "http://localhost:3000",
+];
+
+const resolveFrontendOrigin = (origin?: string) => {
+  if (origin && ALLOWED_FRONTEND_ORIGINS.includes(origin)) return origin;
+  return process.env.FRONTEND_URL as string;
+};
+
+export const createP24Transaction = async (
+  bookingId: string,
+  requestOrigin?: string,
+) => {
   const booking = await p24Repository.findBookingById(bookingId);
   if (!booking) throw new AppError("Reservation not found", 404);
 
+  const frontendOrigin = resolveFrontendOrigin(requestOrigin);
   const amountInGrosz = Math.round(Number(booking.totalPrice) * 100);
   const sessionId = `${booking.id}-${Date.now()}`;
 
@@ -18,7 +37,7 @@ export const createP24Transaction = async (bookingId: string) => {
     amount: amountInGrosz,
     description: `Car Rental Booking ${booking.bookingReference || booking.id}`,
     email: booking.customerEmail,
-    urlReturn: `${process.env.FRONTEND_URL}/checkout/pay?status=success&id=${booking.bookingReference || booking.id}`,
+    urlReturn: `${frontendOrigin}/checkout/pay?status=success&id=${booking.id}`,
     urlStatus: `${process.env.BACKEND_URL}/api/p24/webhook`,
   });
 

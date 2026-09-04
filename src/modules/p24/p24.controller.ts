@@ -9,7 +9,8 @@ export const createTransaction = async (
 ) => {
   try {
     const { id } = req.params as { id: string };
-    const result = await p24Service.createP24Transaction(id);
+    const origin = req.get("origin");
+    const result = await p24Service.createP24Transaction(id, origin);
     sendResponse(res, 200, true, "P24 transaction created", result);
   } catch (error) {
     next(error);
