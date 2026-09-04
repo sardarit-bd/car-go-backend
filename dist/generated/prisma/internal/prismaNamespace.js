@@ -352,6 +352,8 @@ export const BookingScalarFieldEnum = {
     addonsData: 'addonsData',
     stripeSessionId: 'stripeSessionId',
     paymentStatus: 'paymentStatus',
+    p24SessionId: 'p24SessionId',
+    p24OrderId: 'p24OrderId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'

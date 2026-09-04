@@ -79,6 +79,9 @@ model Booking {
     stripeSessionId String?
     paymentStatus   String  @default("UNPAID")
 
+    p24SessionId String?
+    p24OrderId   Int?
+
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt
     deletedAt DateTime?
