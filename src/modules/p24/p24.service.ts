@@ -18,7 +18,7 @@ export const createP24Transaction = async (bookingId: string) => {
     amount: amountInGrosz,
     description: `Car Rental Booking ${booking.bookingReference || booking.id}`,
     email: booking.customerEmail,
-    urlReturn: `${process.env.FRONTEND_URL}/checkout?step=4&id=${booking.id}`,
+    urlReturn: `${process.env.FRONTEND_URL}/checkout/pay?status=success&id=${booking.bookingReference || booking.id}`,
     urlStatus: `${process.env.BACKEND_URL}/api/p24/webhook`,
   });
 
