@@ -3,7 +3,8 @@ import * as p24Service from "./p24.service.js";
 export const createTransaction = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const result = await p24Service.createP24Transaction(id);
+        const origin = req.get("origin");
+        const result = await p24Service.createP24Transaction(id, origin);
         sendResponse(res, 200, true, "P24 transaction created", result);
     }
     catch (error) {

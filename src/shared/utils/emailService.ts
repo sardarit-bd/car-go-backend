@@ -1,17 +1,11 @@
 import { Resend } from "resend";
-
-// Initialize Resend with your API key from .env
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-/**
- * Sends the account activation email to the guest user.
- */
 export const sendActivationEmail = async (
   toEmail: string,
   firstName: string,
   activationLink: string,
 ) => {
-  // Clean, responsive HTML template with inline styles for email client compatibility
   const htmlTemplate = `
     <!DOCTYPE html>
     <html lang="en">
@@ -85,7 +79,7 @@ export const sendActivationEmail = async (
 
   try {
     const { data, error } = await resend.emails.send({
-      from: "CAR-GO <onboarding@resend.dev>",
+      from: "CAR-GO <noreply@car-go.pl>",
       to: [toEmail],
       subject: "Aktywuj swoje konto CAR-GO / Activate your CAR-GO account",
       html: htmlTemplate,
