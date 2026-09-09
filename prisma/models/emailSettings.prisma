@@ -1,0 +1,12 @@
+model EmailSettings {
+  id            String   @id @default(cuid())
+  logoUrl       String?
+  primaryColor  String   @default("#dc2626")
+  companyPhone  String   @default("+48 459 111 828")
+  companyEmail  String   @default("rezerwacje@car-go.pl")
+  website       String   @default("www.car-go.pl")
+  signature     String   @default("Z poważaniem,<br>Zespół CAR-GO")
+  facebookUrl   String?
+  instagramUrl  String?
+  updatedAt     DateTime @updatedAt
+}

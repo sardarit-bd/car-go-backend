@@ -149,6 +149,7 @@ export const updateReservation = async (id: string, data: any) => {
   return prisma.booking.update({
     where: { id },
     data,
+     include: { vehicle: true }
   });
 };
 
@@ -159,6 +160,7 @@ export const updateReservationStatus = async (
   return prisma.booking.update({
     where: { id },
     data: { status },
+     include: { vehicle: true }
   });
 };
 
@@ -169,6 +171,7 @@ export const updateReservationQuote = async (
   return prisma.booking.update({
     where: { id },
     data: { totalPrice },
+     include: { vehicle: true }
   });
 };
 
@@ -176,6 +179,7 @@ export const softDeleteReservation = async (id: string) => {
   return prisma.booking.update({
     where: { id },
     data: { deletedAt: new Date() },
+
   });
 };
 

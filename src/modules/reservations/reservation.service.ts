@@ -4,6 +4,8 @@ import * as reservationRepository from "./reservation.repository.js";
 import * as vehicleRepository from "../vehicle/vehicle.repository.js";
 import AppError from "../../shared/utils/AppError.js";
 import { BookingStatus } from "../../../generated/prisma/enums.js";
+import { sendReservationConfirmationEmail } from "../../shared/utils/emailService.js";
+
 import {
   CreateReservationDto,
   UpdateReservationDto,
@@ -45,11 +47,6 @@ export const createReservation = async (data: CreateReservationDto) => {
   const diffTime = returnDate.getTime() - pickupDate.getTime();
   const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-  console.log("Backend Date Validation:", {
-    pickupDate: data.pickupDate,
-    returnDate: data.returnDate,
-    calculatedDays: diffDays,
-  });
 
   if (diffDays < 3) {
     throw new AppError(
@@ -81,6 +78,11 @@ export const createReservation = async (data: CreateReservationDto) => {
   }
 
   const reservation = await reservationRepository.createReservation(data);
+  try {
+    await sendReservationConfirmationEmail(reservation);
+  } catch (emailError) {
+    console.error("[Reservation] Failed to send confirmation email:", emailError);
+  }
 
   if (reservation.status === "CONFIRMED" || reservation.status === "PENDING") {
     try {
