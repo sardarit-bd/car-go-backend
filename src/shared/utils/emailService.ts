@@ -1,22 +1,23 @@
 import { Resend } from "resend";
-import { prisma } from "../../lib/prisma.js";
+import { prisma } from "../../../lib/prisma.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export const sendReservationConfirmationEmail = async (reservation: any) => {
+export const sendActivationEmail = async (
+  email: string,
+  firstName: string,
+  activationLink: string,
+) => {
   const settings = await prisma.emailSettings.findFirst();
-  const logoUrl = settings?.logoUrl || "https://car-go.pl/logo.png"; 
+  const logoUrl = settings?.logoUrl || "https://car-go.pl/logo.png";
   const primaryColor = settings?.primaryColor || "#dc2626";
   const companyName = "CAR-GO - wypożyczalnia samochodów | Rent a car";
   const phone = settings?.companyPhone || "+48 459 111 828";
-  const email = settings?.companyEmail || "rezerwacje@car-go.pl";
+  const companyEmail = settings?.companyEmail || "rezerwacje@car-go.pl";
   const website = settings?.website || "www.car-go.pl";
   const signature = settings?.signature || "Z poważaniem,<br>Zespół CAR-GO";
   const fbLink = settings?.facebookUrl || "#";
   const igLink = settings?.instagramUrl || "#";
-
-  const pickupDate = new Date(reservation.pickupDate).toLocaleDateString("pl-PL");
-  const returnDate = new Date(reservation.returnDate).toLocaleDateString("pl-PL");
 
   const htmlTemplate = `
     <!DOCTYPE html>
@@ -24,17 +25,17 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Potwierdzenie rezerwacji CAR-GO</title>
+      <title>Aktywacja konta CAR-GO</title>
     </head>
     <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; color: #0f172a;">
       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-        
+
         <!-- Header -->
         <tr>
           <td style="background-color: ${primaryColor}; padding: 24px; text-align: center;">
             <img src="${logoUrl}" alt="CAR-GO Logo" style="max-height: 50px; margin-bottom: 8px;" />
             <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 900; letter-spacing: -0.5px;">
-              POTWIERDZENIE REZERWACJI
+              AKTYWACJA KONTA
             </h1>
           </td>
         </tr>
@@ -43,20 +44,23 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
         <tr>
           <td style="padding: 32px 24px;">
             <h2 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 800; color: #0f172a;">
-              Cześć ${reservation.customerFirstName}!
+              Cześć ${firstName}!
             </h2>
-            
+
             <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #475569;">
-              Dziękujemy za dokonanie rezerwacji w CAR-GO. Poniżej znajdziesz szczegóły swojego wynajmu.
+              Twoje konto CAR-GO zostało utworzone na podstawie rezerwacji. Aby ustawić hasło i aktywować konto, kliknij poniższy przycisk.
             </p>
 
-            <div style="background-color: #f1f5f9; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Pojazd:</strong> ${reservation.vehicle?.brand || ''} ${reservation.vehicle?.model || ''}</p>
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Data odbioru:</strong> ${pickupDate}</p>
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Data zwrotu:</strong> ${returnDate}</p>
-              <p style="margin: 0; font-size: 14px;"><strong>Numer rezerwacji:</strong> ${reservation.bookingReference || reservation.id}</p>
-              <p style="margin: 8px 0 0 0; font-size: 16px; font-weight: 800; color: ${primaryColor};"><strong>Łączna kwota: PLN ${reservation.totalPrice}</strong></p>
+            <div style="text-align: center; margin: 24px 0;">
+              <a href="${activationLink}" target="_blank" style="display: inline-block; background-color: ${primaryColor}; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 15px; padding: 12px 28px; border-radius: 8px;">
+                Aktywuj konto
+              </a>
             </div>
+
+            <p style="margin: 0 0 16px 0; font-size: 13px; line-height: 1.6; color: #94a3b8;">
+              Jeśli przycisk nie działa, skopiuj i wklej ten link do przeglądarki:<br>
+              <a href="${activationLink}" style="color: ${primaryColor};">${activationLink}</a>
+            </p>
 
             <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #475569;">
               ${signature}
@@ -72,11 +76,10 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
             </p>
             <p style="margin: 0 0 8px 0; font-size: 13px; color: #475569;">
               📞 ${phone} <br>
-              ✉️ ${email} <br>
+              ✉️ ${companyEmail} <br>
               🌐 ${website}
             </p>
-            
-            <!-- Social Media Links -->
+
             <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 16px;">
               <tr>
                 <td style="padding: 0 8px;">
@@ -101,19 +104,19 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
   try {
     const { data, error } = await resend.emails.send({
       from: "CAR-GO <noreply@car-go.pl>",
-      to: [reservation.customerEmail],
-      subject: `Potwierdzenie rezerwacji #${reservation.bookingReference || reservation.id}`,
+      to: [email],
+      subject: "Aktywuj swoje konto CAR-GO",
       html: htmlTemplate,
     });
 
     if (error) {
-      console.error("[Email Service] Resend API Error:", error);
+      console.error("[Email Service] Resend API Error (activation):", error);
       return { success: false, error: error.message };
     }
 
     return { success: true, messageId: data?.id };
   } catch (err: any) {
-    console.error("[Email Service] Unexpected Error:", err.message);
+    console.error("[Email Service] Unexpected Error (activation):", err.message);
     return { success: false, error: err.message };
   }
 };
