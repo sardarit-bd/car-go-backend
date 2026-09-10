@@ -64,13 +64,21 @@ export const forgotPassword = async (
   try {
     const { email } = req.body;
     const result = await authService.forgotPassword(email);
-    sendResponse(
-      res,
-      200,
-      true,
-      "Password reset link generated successfully",
-      result,
-    );
+    sendResponse(res, 200, true, result.message, null);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const verifyOtp = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  try {
+    const { email, otp } = req.body;
+    await authService.verifyOtp(email, otp);
+    sendResponse(res, 200, true, "OTP verified successfully", null);
   } catch (error) {
     next(error);
   }
@@ -82,8 +90,8 @@ export const resetPassword = async (
   next: NextFunction,
 ) => {
   try {
-    const { token, newPassword } = req.body;
-    await authService.resetPassword(token, newPassword);
+    const { email, otp, newPassword } = req.body;
+    await authService.resetPassword(email, otp, newPassword);
     sendResponse(res, 200, true, "Password reset successfully", null);
   } catch (error) {
     next(error);

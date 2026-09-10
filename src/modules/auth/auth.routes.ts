@@ -9,6 +9,7 @@ import {
   resetPasswordSchema,
   updateProfileSchema,
   activateAccountSchema,
+  verifyOtpSchema,
 } from "./auth.validator.js";
 
 const router = Router();
@@ -20,6 +21,11 @@ router.post(
   "/forgot-password",
   validate(forgotPasswordSchema),
   authController.forgotPassword,
+);
+router.post(
+  "/verify-otp",
+  validate(verifyOtpSchema),
+  authController.verifyOtp,
 );
 router.post(
   "/reset-password",
