@@ -8,39 +8,32 @@ import {
   UpdateReservationDto,
 } from "./dto/reservation.dto.js";
 import { BookingStatus } from "../../../generated/prisma/enums.js";
-
-export const getReservations = async (
-  req: Request,
+import AppError from "../../shared/utils/AppError.js";
+export const getReservations = async (  req: Request,
   res: Response,
-  next: NextFunction,
-) => {
-  try {
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
+  next: NextFunction,) => {
+    try {
+        if (!req.user) {
+            throw new AppError("Unauthorized", 401);
+        }
 
-    const filters = {
-      status: req.query.status as
-        | "PENDING"
-        | "CONFIRMED"
-        | "CANCELLED"
-        | undefined,
-      pickupDateFrom: req.query.pickupDateFrom as string | undefined,
-      pickupDateTo: req.query.pickupDateTo as string | undefined,
-      returnDateFrom: req.query.returnDateFrom as string | undefined,
-      returnDateTo: req.query.returnDateTo as string | undefined,
-      phoneNumber: req.query.phoneNumber as string | undefined,
-      customerEmail: req.query.customerEmail as string | undefined,
-    };
-
-    const result = await reservationService.getAllReservations(
-      page,
-      limit,
-      filters,
-    );
-    sendResponse(res, 200, true, "Reservations fetched successfully", result);
-  } catch (error) {
-    next(error);
-  }
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const filters = {
+            status: req.query.status as "PENDING" | "CONFIRMED" | "CANCELLED" | undefined,
+            pickupDateFrom: req.query.pickupDateFrom as string | undefined,
+            pickupDateTo: req.query.pickupDateTo as string | undefined,
+            returnDateFrom: req.query.returnDateFrom as string | undefined,
+            returnDateTo: req.query.returnDateTo as string | undefined,
+            phoneNumber: req.query.phoneNumber as string | undefined,
+            customerEmail: req.query.customerEmail as string | undefined,
+        };
+        const result = await reservationService.getAllReservations(page, limit, filters, req.user);
+        sendResponse(res, 200, true, "Reservations fetched successfully", result);
+    }
+    catch (error) {
+        next(error);
+    }
 };
 
 export const getReservationByEmail = async (

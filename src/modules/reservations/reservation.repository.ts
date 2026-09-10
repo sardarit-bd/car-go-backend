@@ -10,6 +10,7 @@ interface FilterOptions {
   returnDateTo?: string;
   phoneNumber?: string;
   customerEmail?: string;
+  userEmail?: string;
 }
 
 export const findAllReservations = async (
@@ -61,12 +62,19 @@ export const findAllReservations = async (
     };
   }
 
+  if (filters.userEmail) {
+    whereClause.customerEmail = {
+      equals: filters.userEmail,
+      mode: "insensitive",
+    };
+  }
+
   const [data, total] = await Promise.all([
     prisma.booking.findMany({
       where: whereClause,
       orderBy: { createdAt: "desc" },
       include: {
-        vehicle: true, // ONLY include vehicle, as location relations do not exist in schema
+        vehicle: true, 
       },
       skip,
       take: limit,
@@ -140,7 +148,7 @@ export const findReservationById = async (idOrReference: string) => {
       ],
     },
     include: {
-      vehicle: true, // ONLY include vehicle
+      vehicle: true,
     },
   });
 };
@@ -197,7 +205,7 @@ export const findReservationsByEmail = async (email: string) => {
       deletedAt: null,
     },
     include: {
-      vehicle: true, // ONLY include vehicle
+      vehicle: true,
     },
     orderBy: {
       createdAt: "desc",

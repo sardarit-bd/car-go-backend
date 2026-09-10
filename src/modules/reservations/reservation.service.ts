@@ -16,7 +16,7 @@ import { triggerGuestAccountActivation } from "../../shared/utils/accountActivat
 export const getAllReservations = async (
   page: number,
   limit: number,
-  filters?: {
+  filters: {
     status?: "PENDING" | "CONFIRMED" | "CANCELLED";
     pickupDateFrom?: string;
     pickupDateTo?: string;
@@ -24,9 +24,18 @@ export const getAllReservations = async (
     returnDateTo?: string;
     phoneNumber?: string;
     customerEmail?: string;
+    userEmail?: string;
   },
+  user: { email: string; role: string },
 ) => {
-  return reservationRepository.findAllReservations(page, limit, filters);
+    const scopedFilters = { ...filters };
+
+  if (user.role !== "ADMIN") {
+    delete scopedFilters.customerEmail;
+    scopedFilters.userEmail = user.email;
+  }
+
+  return reservationRepository.findAllReservations(page, limit, scopedFilters);
 };
 
 export const getReservationById = async (id: string) => {
