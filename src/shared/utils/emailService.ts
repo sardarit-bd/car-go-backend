@@ -26,15 +26,16 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Potwierdzenie rezerwacji CAR-GO</title>
     </head>
-    <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: system-ui, -apple-system, sans-serif; color: #0f172a;">
+    <body style="margin: 0; padding: 0; background-color: #f8fafc; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: #0f172a;">
       <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="100%" style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
         
         <!-- Header -->
         <tr>
-          <td style="background-color: ${primaryColor}; padding: 24px; text-align: center;">
-            <img src="${logoUrl}" alt="CAR-GO Logo" style="max-height: 50px; margin-bottom: 8px;" />
-            <h1 style="margin: 0; color: #ffffff; font-size: 24px; font-weight: 900; letter-spacing: -0.5px;">
-              POTWIERDZENIE REZERWACJI
+          <td style="background-color: ${primaryColor}; padding: 32px 24px; text-align: center;">
+            <!-- Added width="auto" and background fallback to ensure logo matches website design -->
+            <img src="${logoUrl}" alt="CAR-GO Logo" style="max-height: 60px; width: auto; background-color: #ffffff; padding: 8px 16px; border-radius: 8px; margin-bottom: 12px;" />
+            <h1 style="margin: 0; color: #ffffff; font-size: 22px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">
+              Potwierdzenie Rezerwacji
             </h1>
           </td>
         </tr>
@@ -42,49 +43,53 @@ export const sendReservationConfirmationEmail = async (reservation: any) => {
         <!-- Body Content -->
         <tr>
           <td style="padding: 32px 24px;">
-            <h2 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 800; color: #0f172a;">
+            <h2 style="margin: 0 0 16px 0; font-size: 20px; font-weight: 700; color: #0f172a;">
               Cześć ${reservation.customerFirstName}!
             </h2>
             
-            <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #475569;">
+            <p style="margin: 0 0 24px 0; font-size: 15px; line-height: 1.6; color: #475569;">
               Dziękujemy za dokonanie rezerwacji w CAR-GO. Poniżej znajdziesz szczegóły swojego wynajmu.
             </p>
 
-            <div style="background-color: #f1f5f9; padding: 16px; border-radius: 8px; margin: 24px 0;">
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Pojazd:</strong> ${reservation.vehicle?.brand || ''} ${reservation.vehicle?.model || ''}</p>
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Data odbioru:</strong> ${pickupDate}</p>
-              <p style="margin: 0 0 8px 0; font-size: 14px;"><strong>Data zwrotu:</strong> ${returnDate}</p>
-              <p style="margin: 0; font-size: 14px;"><strong>Numer rezerwacji:</strong> ${reservation.bookingReference || reservation.id}</p>
-              <p style="margin: 8px 0 0 0; font-size: 16px; font-weight: 800; color: ${primaryColor};"><strong>Łączna kwota: PLN ${reservation.totalPrice}</strong></p>
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 8px; margin: 24px 0;">
+              <p style="margin: 0 0 10px 0; font-size: 14px; color: #334155;"><strong>Pojazd:</strong> ${reservation.vehicle?.brand || ''} ${reservation.vehicle?.model || ''}</p>
+              <p style="margin: 0 0 10px 0; font-size: 14px; color: #334155;"><strong>Data odbioru:</strong> ${pickupDate}</p>
+              <p style="margin: 0 0 10px 0; font-size: 14px; color: #334155;"><strong>Data zwrotu:</strong> ${returnDate}</p>
+              <p style="margin: 0; font-size: 14px; color: #334155;"><strong>Numer rezerwacji:</strong> ${reservation.bookingReference || reservation.id}</p>
+              <div style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed #cbd5e1;">
+                <p style="margin: 0; font-size: 18px; font-weight: 800; color: ${primaryColor};">Łączna kwota: PLN ${reservation.totalPrice}</p>
+              </div>
             </div>
 
-            <p style="margin: 0 0 16px 0; font-size: 15px; line-height: 1.6; color: #475569;">
+            <p style="margin: 24px 0 0 0; font-size: 15px; line-height: 1.6; color: #475569;">
               ${signature}
             </p>
           </td>
         </tr>
 
-        <!-- Footer -->
+        <!-- Dynamic Footer -->
         <tr>
-          <td style="background-color: #f1f5f9; padding: 24px; text-align: center; border-top: 1px solid #e2e8f0;">
-            <p style="margin: 0 0 8px 0; font-size: 14px; font-weight: 700; color: #0f172a;">
-              ${companyName}
+          <td style="background-color: #f1f5f9; padding: 32px 24px; text-align: center; border-top: 1px solid #e2e8f0;">
+            <p style="margin: 0 0 16px 0; font-size: 14px; font-weight: 700; color: #0f172a; letter-spacing: 0.5px;">
+              CAR-GO
             </p>
-            <p style="margin: 0 0 8px 0; font-size: 13px; color: #475569;">
-              📞 ${phone} <br>
-              ✉️ ${email} <br>
-              🌐 ${website}
+            <p style="margin: 0 0 16px 0; font-size: 13px; color: #475569; line-height: 1.8;">
+              📞 <a href="tel:${phone}" style="color: #475569; text-decoration: none;">${phone}</a><br>
+              ✉️ <a href="mailto:${email}" style="color: #475569; text-decoration: none;">${email}</a><br>
+              🌐 <a href="https://${website}" target="_blank" style="color: #475569; text-decoration: none;">${website}</a>
             </p>
             
-            <!-- Social Media Links -->
-            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 16px;">
+            <!-- Dynamic Social Media Links -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 20px;">
               <tr>
-                <td style="padding: 0 8px;">
-                  <a href="${fbLink}" target="_blank" style="text-decoration: none; color: ${primaryColor}; font-weight: 600; font-size: 13px;">Facebook</a>
-                </td>
-                <td style="padding: 0 8px;">
-                  <a href="${igLink}" target="_blank" style="text-decoration: none; color: ${primaryColor}; font-weight: 600; font-size: 13px;">Instagram</a>
-                </td>
+                ${fbLink && fbLink !== '#' ? `
+                <td style="padding: 0 12px;">
+                  <a href="${fbLink}" target="_blank" style="text-decoration: none; color: #ffffff; background-color: ${primaryColor}; font-weight: 600; font-size: 12px; padding: 8px 16px; border-radius: 6px; display: inline-block;">Facebook</a>
+                </td>` : ''}
+                ${igLink && igLink !== '#' ? `
+                <td style="padding: 0 12px;">
+                  <a href="${igLink}" target="_blank" style="text-decoration: none; color: #ffffff; background-color: ${primaryColor}; font-weight: 600; font-size: 12px; padding: 8px 16px; border-radius: 6px; display: inline-block;">Instagram</a>
+                </td>` : ''}
               </tr>
             </table>
 
