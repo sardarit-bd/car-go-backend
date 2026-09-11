@@ -29,7 +29,7 @@ const resolveSearchDates = (
 };
 
 export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
-  const { model, seats, location, pickupDate, returnDate, includeInactive } =
+  const { model, seats, location, pickupDate, returnDate, includeInactive, isAdmin } =
     query;
   const page = query.page ?? 1;
   const limit = query.limit ?? 10;
@@ -46,6 +46,7 @@ export const getAvailableVehicles = async (query: GetVehiclesQuery) => {
     pickupDate: effectivePickup,
     returnDate: effectiveReturn,
     includeInactive,
+    isAdmin,
   };
 
   const [vehicles, total] = await Promise.all([

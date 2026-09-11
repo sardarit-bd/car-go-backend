@@ -23,6 +23,11 @@ export const getVehiclesQuerySchema = yup.object({
     .transform((val) => (val === "true" ? true : val === "false" ? false : val))
     .optional(),
 
+  isAdmin: yup
+    .boolean()
+    .transform((val) => (val === "true" ? true : val === "false" ? false : val))
+    .optional(),
+
   pickupDate: yup
     .date()
     .transform(emptyStringToUndefined)

@@ -9,6 +9,7 @@ export interface VehicleFilters {
   pickupDate: Date;
   returnDate: Date;
   includeInactive?: boolean;
+  isAdmin?: boolean;
 }
 
 export interface PaginationOptions {
@@ -25,6 +26,7 @@ const buildWhereClause = (filters: VehicleFilters) => {
     pickupDate,
     returnDate,
     includeInactive,
+    isAdmin,
   } = filters;
 
   return {
@@ -53,13 +55,15 @@ const buildWhereClause = (filters: VehicleFilters) => {
         returnDate: { gt: pickupDate },
       },
     },
-    availabilities: {
-      none: {
-        isBlocked: true,
-        availableFrom: { lt: returnDate },
-        availableTo: { gt: pickupDate },
+    ...(!isAdmin && {
+      availabilities: {
+        none: {
+          isBlocked: true,
+          availableFrom: { lt: returnDate },
+          availableTo: { gt: pickupDate },
+        },
       },
-    },
+    }),
   };
 };
 
