@@ -5,6 +5,7 @@ import { prisma } from "../../../lib/prisma.js";
 import { Role } from "../../../generated/prisma/enums.js";
 import * as authRepository from "./auth.repository.js";
 import AppError from "../../shared/utils/AppError.js";
+import { sendResetPasswordOtpEmail } from "../../shared/utils/emailService.js";
 export const register = async (data) => {
     const existingUser = await authRepository.findUserByEmail(data.email);
     if (existingUser) {
@@ -51,17 +52,29 @@ export const forgotPassword = async (email) => {
     if (!user) {
         throw new AppError("User with this email does not exist", 404);
     }
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    const resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
-    await authRepository.saveResetToken(email, resetToken, resetTokenExpiry);
-    // In production, this link would be sent via email.
-    const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
-    return { resetLink, resetToken }; // Returning token for easy Postman testing
+    const otp = crypto.randomInt(100000, 999999).toString();
+    const otpExpiry = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+    await authRepository.saveResetToken(email, otp, otpExpiry);
+    await sendResetPasswordOtpEmail(user.email, user.firstName, otp);
+    return { message: "An OTP has been sent to your email address" };
 };
-export const resetPassword = async (token, newPassword) => {
-    const user = await authRepository.findUserByResetToken(token);
-    if (!user) {
-        throw new AppError("Invalid or expired reset token", 400);
+export const verifyOtp = async (email, otp) => {
+    const user = await authRepository.findUserByEmail(email);
+    if (!user || !user.resetToken || !user.resetTokenExpiry) {
+        throw new AppError("Invalid or expired OTP", 400);
+    }
+    if (user.resetToken !== otp || user.resetTokenExpiry < new Date()) {
+        throw new AppError("Invalid or expired OTP", 400);
+    }
+    return { valid: true };
+};
+export const resetPassword = async (email, otp, newPassword) => {
+    const user = await authRepository.findUserByEmail(email);
+    if (!user || !user.resetToken || !user.resetTokenExpiry) {
+        throw new AppError("Invalid or expired OTP", 400);
+    }
+    if (user.resetToken !== otp || user.resetTokenExpiry < new Date()) {
+        throw new AppError("Invalid or expired OTP", 400);
     }
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     await authRepository.updateUser(user.id, {

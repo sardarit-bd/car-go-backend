@@ -125,6 +125,21 @@ export const findBlockedAvailabilities = async (vehicleId) => {
         orderBy: { availableFrom: "asc" },
     });
 };
+export const createBlockedAvailability = async (vehicleId, availableFrom, availableTo) => {
+    return prisma.vehicleAvailability.create({
+        data: {
+            vehicleId,
+            availableFrom,
+            availableTo,
+            isBlocked: true,
+        },
+    });
+};
+export const deleteBlockedAvailability = async (availabilityId) => {
+    return prisma.vehicleAvailability.delete({
+        where: { id: availabilityId },
+    });
+};
 export const findOverlappingBlockedAvailability = async (vehicleId, pickupDate, returnDate) => {
     return prisma.vehicleAvailability.findMany({
         where: {
@@ -133,13 +148,6 @@ export const findOverlappingBlockedAvailability = async (vehicleId, pickupDate, 
             availableFrom: { lt: returnDate },
             availableTo: { gt: pickupDate },
         },
+        orderBy: { availableFrom: "asc" },
     });
-};
-export const createBlockedAvailability = async (vehicleId, availableFrom, availableTo) => {
-    return prisma.vehicleAvailability.create({
-        data: { vehicleId, availableFrom, availableTo, isBlocked: true },
-    });
-};
-export const deleteBlockedAvailability = async (id) => {
-    return prisma.vehicleAvailability.delete({ where: { id } });
 };

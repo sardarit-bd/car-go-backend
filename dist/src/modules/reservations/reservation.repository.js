@@ -40,12 +40,18 @@ export const findAllReservations = async (page, limit, filters = {}) => {
             mode: "insensitive",
         };
     }
+    if (filters.userEmail) {
+        whereClause.customerEmail = {
+            equals: filters.userEmail,
+            mode: "insensitive",
+        };
+    }
     const [data, total] = await Promise.all([
         prisma.booking.findMany({
             where: whereClause,
             orderBy: { createdAt: "desc" },
             include: {
-                vehicle: true, // ONLY include vehicle, as location relations do not exist in schema
+                vehicle: true,
             },
             skip,
             take: limit,
@@ -110,7 +116,7 @@ export const findReservationById = async (idOrReference) => {
             ],
         },
         include: {
-            vehicle: true, // ONLY include vehicle
+            vehicle: true,
         },
     });
 };
@@ -118,18 +124,21 @@ export const updateReservation = async (id, data) => {
     return prisma.booking.update({
         where: { id },
         data,
+        include: { vehicle: true }
     });
 };
 export const updateReservationStatus = async (id, status) => {
     return prisma.booking.update({
         where: { id },
         data: { status },
+        include: { vehicle: true }
     });
 };
 export const updateReservationQuote = async (id, totalPrice) => {
     return prisma.booking.update({
         where: { id },
         data: { totalPrice },
+        include: { vehicle: true }
     });
 };
 export const softDeleteReservation = async (id) => {
@@ -151,7 +160,7 @@ export const findReservationsByEmail = async (email) => {
             deletedAt: null,
         },
         include: {
-            vehicle: true, // ONLY include vehicle
+            vehicle: true,
         },
         orderBy: {
             createdAt: "desc",

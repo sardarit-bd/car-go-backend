@@ -2,10 +2,16 @@
 import * as reservationRepository from "./reservation.repository.js";
 import * as vehicleRepository from "../vehicle/vehicle.repository.js";
 import AppError from "../../shared/utils/AppError.js";
+import { sendReservationConfirmationEmail } from "../../shared/utils/emailService.js";
 import Stripe from "stripe";
 import { triggerGuestAccountActivation } from "../../shared/utils/accountActivation.js";
-export const getAllReservations = async (page, limit, filters) => {
-    return reservationRepository.findAllReservations(page, limit, filters);
+export const getAllReservations = async (page, limit, filters, user) => {
+    const scopedFilters = { ...filters };
+    if (user.role !== "ADMIN") {
+        delete scopedFilters.customerEmail;
+        scopedFilters.userEmail = user.email;
+    }
+    return reservationRepository.findAllReservations(page, limit, scopedFilters);
 };
 export const getReservationById = async (id) => {
     const reservation = await reservationRepository.findReservationById(id);
@@ -22,11 +28,6 @@ export const createReservation = async (data) => {
     const returnDate = new Date(data.returnDate);
     const diffTime = returnDate.getTime() - pickupDate.getTime();
     const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24)) + 1;
-    console.log("Backend Date Validation:", {
-        pickupDate: data.pickupDate,
-        returnDate: data.returnDate,
-        calculatedDays: diffDays,
-    });
     if (diffDays < 3) {
         throw new AppError(`Minimalny okres wynajmu to 3 dni. Wybrany okres to tylko ${diffDays} dni.`, 400);
     }
@@ -39,6 +40,12 @@ export const createReservation = async (data) => {
         throw new AppError(`Ten pojazd jest niedostępny w wybranym terminie. Najwcześniejszy dostępny termin to ${earliestAvailableStr}.`, 400);
     }
     const reservation = await reservationRepository.createReservation(data);
+    try {
+        await sendReservationConfirmationEmail(reservation);
+    }
+    catch (emailError) {
+        console.error("[Reservation] Failed to send confirmation email:", emailError);
+    }
     if (reservation.status === "CONFIRMED" || reservation.status === "PENDING") {
         try {
             const activationResult = await triggerGuestAccountActivation({

@@ -1,8 +1,12 @@
 // backend/src/modules/reservations/reservation.controller.ts
 import sendResponse from "../../shared/utils/response.js";
 import * as reservationService from "./reservation.service.js";
+import AppError from "../../shared/utils/AppError.js";
 export const getReservations = async (req, res, next) => {
     try {
+        if (!req.user) {
+            throw new AppError("Unauthorized", 401);
+        }
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;
         const filters = {
@@ -14,7 +18,7 @@ export const getReservations = async (req, res, next) => {
             phoneNumber: req.query.phoneNumber,
             customerEmail: req.query.customerEmail,
         };
-        const result = await reservationService.getAllReservations(page, limit, filters);
+        const result = await reservationService.getAllReservations(page, limit, filters, req.user);
         sendResponse(res, 200, true, "Reservations fetched successfully", result);
     }
     catch (error) {

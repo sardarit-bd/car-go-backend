@@ -25,6 +25,7 @@ import cmsHeroFeatureRoutes from "./modules/cms/cmsHeroFeature/cmsHeroFeature.ro
 import cmsWhyChooseUsRoutes from "./modules/cms/cmsWhyChooseUs/cmsWhyChooseUs.routes.js";
 import cmsWhyChooseUsFeatureRoutes from "./modules/cms/cmsWhyChooseUsFeature/cmsWhyChooseUsFeature.routes.js";
 import cmsAboutUsRoutes from "./modules/cms/cmsAboutUs/cmsAboutUs.routes.js";
+import emailSettingsRoutes from "./modules/cms/emailSettings/emailSettings.routes.js";
 import p24Routes from "./modules/p24/p24.routes.js";
 const app = express();
 app.use((req, res, next) => {
@@ -89,6 +90,7 @@ app.use("/api/admin/cms/hero-feature", cmsHeroFeatureRoutes);
 app.use("/api/admin/cms/why-choose-us", cmsWhyChooseUsRoutes);
 app.use("/api/admin/cms/about-us", cmsAboutUsRoutes);
 app.use("/api/admin/cms/why-choose-us-feature", cmsWhyChooseUsFeatureRoutes);
+app.use("/api/cms/email-settings", emailSettingsRoutes);
 app.use("/api/p24", p24Routes);
 app.use(errorHandler);
 export default app;

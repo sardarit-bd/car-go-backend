@@ -2,8 +2,8 @@ import * as authService from "./auth.service.js";
 import sendResponse from "../../shared/utils/response.js";
 const COOKIE_OPTIONS = {
     httpOnly: true,
-    secure: true,
-    sameSite: "none",
+    secure: false,
+    sameSite: "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000,
 };
 export const register = async (req, res, next) => {
@@ -43,7 +43,17 @@ export const forgotPassword = async (req, res, next) => {
     try {
         const { email } = req.body;
         const result = await authService.forgotPassword(email);
-        sendResponse(res, 200, true, "Password reset link generated successfully", result);
+        sendResponse(res, 200, true, result.message, null);
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export const verifyOtp = async (req, res, next) => {
+    try {
+        const { email, otp } = req.body;
+        await authService.verifyOtp(email, otp);
+        sendResponse(res, 200, true, "OTP verified successfully", null);
     }
     catch (error) {
         next(error);
@@ -51,8 +61,8 @@ export const forgotPassword = async (req, res, next) => {
 };
 export const resetPassword = async (req, res, next) => {
     try {
-        const { token, newPassword } = req.body;
-        await authService.resetPassword(token, newPassword);
+        const { email, otp, newPassword } = req.body;
+        await authService.resetPassword(email, otp, newPassword);
         sendResponse(res, 200, true, "Password reset successfully", null);
     }
     catch (error) {
